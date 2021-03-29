@@ -12,3 +12,9 @@
   An <a>execution</a> has as result the value of the output of the function.
   For example, `sum(2, 4)` is an execution.
   The value of the output is known after the function is executed, and should in this case be the integer `6`.
+- A <dfn>function map</dfn> is a specific type of [term map](https://rml.io/specs/rml/#term-map): it generates an [RDF term](https://rml.io/specs/rml/#rdf-term) from a [triples map](https://rml.io/specs/rml/#triples-map) that describes an <a>execution</a>.
+
+<p class="note" data-format="markdown">
+It is currently assumed that a <a>function map</a> always returns an RDF term [[rdf-concepts]] **or list thereof**.
+How a list of RDF terms is handled, is out of scope of this spec, but currently discussed at https://github.com/kg-construct/mapping-challenges/pull/26 and https://github.com/kg-construct/mapping-challenges/pull/27
+</p>

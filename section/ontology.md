@@ -30,22 +30,23 @@ graph LR
 
 <figure data-format="markdown">
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgICBBKFt0ZXJtIG1hcF0pIC0tPnxycjpjb25zdGFudHwgQltjb25zdGFudCB2YWx1ZV1cbiAgICBBIC0tPnxybWw6cmVmZXJlbmNlfCBDW3JlZmVyZW5jZSBmb3JtdWxhdGlvbl1cbiAgICBBIC0tPnxycjp0ZW1wbGF0ZXwgRFtzdHJpbmcgdGVtcGxhdGVdXG4gICAgQSAtLT58cnI6dGVybVR5cGV8IEUoW3JyOklSSSAvIHJyOkJsYW5rTm9kZSAvIHJyOkxpdGVyYWxdKVxuICAgIEEgLS0-fHJyOmxhbmd1YWdlfCBGW2xhbmd1YWdlIHRhZ11cbiAgICBBIC0tPnxycjpkYXRhdHlwZXwgRyhbcmRmczpEYXRhdHlwZV0pXG4gICAgXG4gICAgSChbcnI6U3ViamVjdE1hcF0pOjo6bm90ZVxuICAgIEooW3JyOlByZWRpY2F0ZU1hcF0pOjo6bm90ZVxuICAgIEsoW3JyOk9iamVjdE1hcF0pOjo6bm90ZVxuICAgIEwoW3JyOkdyYXBoTWFwXSk6Ojpub3RlXG4gICAgTShbZm5tbDpGdW5jdGlvbk1hcF0pOjo6bmV3XG4gICAgTSAtLT58Zm5tbDpmdW5jdGlvblZhbHVlfCBJKFtycjpUcmlwbGVzTWFwXSlcbiAgICBjbGFzc0RlZiBub3RlIGZpbGw6I2VlZSxzdHJva2Utd2lkdGg6MHB4LGNvbG9yOiM2NjZcbiAgICBjbGFzc0RlZiBuZXcgZmlsbDojOEY5XG4gICAgbGlua1N0eWxlIDYgc3Ryb2tlOiM4RjkiLCJtZXJtYWlkIjp7fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcbiAgICBBKFt0ZXJtIG1hcF0pIC0tPnxycjpjb25zdGFudHwgQltjb25zdGFudCB2YWx1ZV1cbiAgICBBIC0tPnxybWw6cmVmZXJlbmNlfCBDW3JlZmVyZW5jZSBmb3JtdWxhdGlvbl1cbiAgICBBIC0tPnxycjp0ZW1wbGF0ZXwgRFtzdHJpbmcgdGVtcGxhdGVdXG4gICAgQSAtLT58cnI6dGVybVR5cGV8IEUoW3JyOklSSSAvIHJyOkJsYW5rTm9kZSAvIHJyOkxpdGVyYWxdKVxuICAgIEEgLS0-fHJyOmxhbmd1YWdlfCBGW2xhbmd1YWdlIHRhZ11cbiAgICBBIC0tPnxycjpkYXRhdHlwZXwgRyhbcmRmczpEYXRhdHlwZV0pXG4gICAgXG4gICAgSChbcnI6U3ViamVjdE1hcF0pOjo6bm90ZVxuICAgIEooW3JyOlByZWRpY2F0ZU1hcF0pOjo6bm90ZVxuICAgIEsoW3JyOk9iamVjdE1hcF0pOjo6bm90ZVxuICAgIEwoW3JyOkdyYXBoTWFwXSk6Ojpub3RlXG4gICAgTShbZm5tbDpGdW5jdGlvbk1hcF0pOjo6bmV3XG4gICAgTSAtLT58Zm5tbDpmdW5jdGlvblZhbHVlfCBJKFtycjpUcmlwbGVzTWFwXSlcbiAgICBjbGFzc0RlZiBub3RlIGZpbGw6I2VlZSxzdHJva2Utd2lkdGg6MHB4LGNvbG9yOiM2NjZcbiAgICBjbGFzc0RlZiBuZXcgZmlsbDojOEY5XG4gICAgbGlua1N0eWxlIDYgc3Ryb2tlOiM4RjkiLCJtZXJtYWlkIjp7fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
-<figcaption>FNML terms, in relation to the R2RML term map</figcaption>
+<figcaption>FNML terms, in relation to the RML/R2RML [term map](https://rml.io/specs/rml/#term-map)</figcaption>
 </figure>
 
 ### fnml:FunctionMap
 
-<dfn>fnml:FunctionMap</dfn> is a subclass of [rr:TermMap](http://www.w3.org/ns/r2rml#TermMap).
-Specifically, this means that, when a FunctionMap is used within a <a>RML mapping</a>,
-this term map has two classes: `fnml:FunctionMap`, and the term map within the context of the RML Mapping,
+<dfn>fnml:FunctionMap</dfn> is a subclass of [rr:TermMap](http://www.w3.org/ns/r2rml#TermMap),
+to denote that this [term map](https://rml.io/specs/rml/#term-map) is also a <a>function map</a>.
+Specifically, this means that, when a <a>function map</a> is used within a <a>RML mapping</a>,
+this [term map](https://rml.io/specs/rml/#term-map) has two classes: `fnml:FunctionMap`, and the [term map](https://rml.io/specs/rml/#term-map) within the context of the RML Mapping,
 namely, subject map, predicate map, object map, or graph map.
 As a consequence, all default [[RML]] processing hold, e.g.,
 the [default term type depends on whether the term map is an object map or not](https://rml.io/specs/rml/#termtype),
 **with following extension**:
 
-If the term map does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
+If the [term map](https://rml.io/specs/rml/#term-map) does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
 * `rr:Literal`, if it is an [object map](https://www.w3.org/TR/r2rml/#dfn-object-map) and at least one of the following conditions is true:
-   * It is a [reference-based term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or also a fnml:FunctionMap**
+   * It is a [reference-based term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or also a <a>function map</a>**
    * It has a `rml:languageMap` and/or `rr:language` property (and thus a [language map](https://rml.io/specs/rml/#language-map) and/or a [specified language tag](https://rml.io/specs/rml/#specified-language-tag)).
    * It has a `rr:datatype` property (and thus a [specified datatype](https://rml.io/specs/rml/#specified-datatype)).
 * `rr:IRI`, otherwise.
@@ -56,12 +57,7 @@ or go (so `rr:IRI` by default).
 </p>
 
 <p class="issue" data-number="7" data-format="markdown">
-It is currently unspecified how to override the termtype of a fnml:FunctionMap result.
-</p>
-
-<p class="note" data-format="markdown">
-It is currently assumed that an `fnml:FunctionMap` always returns an RDF term [[rdf-concepts]] or list thereof.
-How a list of RDF terms is handled, is out of scope of this spec, but currently discussed at https://github.com/kg-construct/mapping-challenges/pull/26 and https://github.com/kg-construct/mapping-challenges/pull/27
+It is currently unspecified how to override the termtype of a <a>function map</a> result.
 </p>
 
 ### fnml:functionValue
