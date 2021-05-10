@@ -13,7 +13,7 @@ graph LR
     A -->|rr:termType| E([rr:IRI / rr:BlankNode / rr:Literal])
     A -->|rr:language| F[language tag]
     A -->|rr:datatype| G([rdfs:Datatype])
-
+    
     H([rr:SubjectMap]):::note
     J([rr:PredicateMap]):::note
     K([rr:ObjectMap]):::note
