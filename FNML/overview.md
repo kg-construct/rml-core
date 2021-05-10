@@ -43,10 +43,11 @@ To connect this function with the RML mapping document, we make use of a `fnml:F
 
 <#NameMapping>
     rr:predicate dbo:title ;                              # Specify the predicate
-    rr:objectMap <#FunctionMap> .                         # Specify the object-map
+    rr:objectMap <#FunctionTermMap> .                         # Specify the object-map
 
-<#FunctionMap>
+<#FunctionTermMap>
     fnml:functionValue [                                  # The object is the result of the function
+        a fnml:FunctionTriplesMap ;
         rr:predicateObjectMap [
             rr:predicate fno:executes ;                   # Execute the function&hellip;
             rr:objectMap [ rr:constant grel:toUppercase ] # grel:toUppercase

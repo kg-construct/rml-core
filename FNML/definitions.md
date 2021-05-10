@@ -12,9 +12,18 @@
   An <a>execution</a> has as result the value of the output of the function.
   For example, `sum(2, 4)` is an execution.
   The value of the output is known after the function is executed, and should in this case be the integer `6`.
-- A <dfn>function map</dfn> is a specific type of [term map](https://rml.io/specs/rml/#term-map): it generates an [RDF term](https://rml.io/specs/rml/#rdf-term) from a [triples map](https://rml.io/specs/rml/#triples-map) that describes an <a>execution</a>.
+- A <dfn>function triples map</dfn> is a specific type of [triples map](https://rml.io/specs/rml/#triples-map): it is used to describe an [=execution=] using [=RML=].
+  As opposed to a [triples map](https://rml.io/specs/rml/#triples-map), a [=function triples map=] has optional [logical source](https://rml.io/specs/rml/#logical-source) and [subject map](https://rml.io/specs/rml/#subject-map).
+  When no logical source is given, the logical source of the triples map referring to the function triples map is used.
+  When no subject map is given, a blank node as subject is generated.
+- A <dfn>function term map</dfn> is a specific type of [term map](https://rml.io/specs/rml/#term-map): it generates an [RDF term](https://rml.io/specs/rml/#rdf-term) from a [=function triples map=] that describes an [=execution=].
 
 <p class="note" data-format="markdown">
-It is currently assumed that a <a>function map</a> always returns an RDF term [[rdf-concepts]] **or list thereof**.
+It is currently assumed that a [=function term map=] always returns an RDF term [[rdf-concepts]] **or list thereof**.
 How a list of RDF terms is handled, is out of scope of this spec, but currently discussed at https://github.com/kg-construct/mapping-challenges/pull/26 and https://github.com/kg-construct/mapping-challenges/pull/27
+</p>
+
+<p class="issue" data-number="11" data-format="markdown">
+The definitions of [=function term map=] and [=function triples map=] are under discussion,
+but also depend on the evolution of RML.
 </p>
