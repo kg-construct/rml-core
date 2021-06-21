@@ -14,7 +14,7 @@
   The value of the output is known after the function is executed, and should in this case be the integer `6`.
 - A <dfn>function triples map</dfn> is a specific type of [triples map](https://rml.io/specs/rml/#triples-map): it is used to describe an [=execution=] using [=RML=].
   As opposed to a [triples map](https://rml.io/specs/rml/#triples-map), a [=function triples map=] has optional [logical source](https://rml.io/specs/rml/#logical-source) and [subject map](https://rml.io/specs/rml/#subject-map).
-  When no logical source is given, the logical source of the triples map referring to the function triples map is used.
+  When no logical source is specified, the logical source of the triples map referring to the function triples map is used.
   When no subject map is given, a blank node as subject is generated.
 - A <dfn>function term map</dfn> is a specific type of [term map](https://rml.io/specs/rml/#term-map): it generates an [RDF term](https://rml.io/specs/rml/#rdf-term) from a [=function triples map=] that describes an [=execution=].
 
