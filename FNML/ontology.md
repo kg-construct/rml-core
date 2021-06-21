@@ -13,7 +13,6 @@ graph LR
     A -->|rr:termType| E([rr:IRI / rr:BlankNode / rr:Literal])
     A -->|rr:language| F[language tag]
     A -->|rr:datatype| G([rdfs:Datatype])
-    
     H([rr:SubjectMap]):::note
     J([rr:PredicateMap]):::note
     K([rr:ObjectMap]):::note
@@ -64,16 +63,15 @@ For now, we refer to the R2RML spec, but it is assumed these references will be 
 
 ### fnml:FunctionTriplesMap
 
-<dfn>fnml:FunctionTriplesMap</dfn> is a subclass of [rr:TripleMap](http://www.w3.org/ns/r2rml#TriplesMap),
-to denote that this [triples map](https://rml.io/specs/rml/#term-map) is also a [=function triples map=].
-The [=function triples map=] should be an [[RML]] conforming triples map
+<dfn>fnml:FunctionTriplesMap</dfn> is a subclass of [rr:TripleMap](http://www.w3.org/ns/r2rml#TriplesMap).
+The [=function triples map=] should be an [[RML]] conforming [triples map](https://rml.io/specs/rml/#triples-map)
 that generates an [=execution=] description.
 
 #### Logical source
 
 When this triples map **does not specify a logical source**, the logical source of the 'parent' triples map is used.
-When the triples map _does_ define a logical source (different from the logical source of the knowledge graph generating triples map),
-then each result of each iteration of the function execution triples map should be used by the knowledge graph generating triples map
+When the triples map _does_ define a logical source (different from the logical source of the RDF dataset generating triples map),
+then each result of each iteration of the function execution triples map should be used by the RDF dataset generating triples map
 (i.e., a full join).
 For an example on joining values across data sources, without join conditions, see test case [RMLFNOTC009](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0009-CSV).
 
@@ -97,10 +95,11 @@ The mapping challenge [Join on literals](https://github.com/kg-construct/mapping
 #### Subject map
 
 When this triples map **does not specify a subject map**, a blank node should be generated for the subject.
+The blank node's ID should be unique.
 
 ### fnml:functionValue
 
-<dfn>fnml:functionValue</dfn> connects the knowledge graph generating triples map using a [=function term map=] with a [=function triples map=].
+<dfn>fnml:functionValue</dfn> connects the RDF dataset generating triples map using a [=function term map=] with a [=function triples map=].
 It has domain [=fnml:FunctionTermMap=] and range [=fnml:FunctionTriplesMap=].
 
 ### Nested functions
