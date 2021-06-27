@@ -13,5 +13,7 @@
 
 [FNML](FNML) describes the connection between RML and FnO.
 
+[RML-star](RML-star) describes the extension of RML to generate RDF-star.
+
 
 
