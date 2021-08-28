@@ -28,7 +28,7 @@ place some or all of the triples into [named graphs]() instead.
 
 # 3. Conformance
 
-# 4. [R2]RML Processors, Validators and Mapping Documents
+# 4. RML Mapping Documents
 
 ### RML Mapping
 
@@ -36,54 +36,6 @@ An [RML mapping]() defines a mapping from a data source to RDF.
 It is a structure that consists of one or more [triples maps]().
 
 The input to an RML mapping is called the [input data source]().
-
-### RML Processor
-
-An RML processor is a system that, given an RML mapping and an input data source,
-provides access to the output dataset.
-
-There are no constraints on the method of access to the output dataset
-provided by a conforming [RML processor]().
-An [RML processor]() MAY materialize the output dataset into a file,
-or offer virtual access through an interface,
-or offer any other means of providing access to the output dataset.
-
-An [RML processor]() also has access to an execution environment consisting of:
-* A [Logical Source]()
-* a base IRI used in resolving relative IRIs produced by the RML mapping.
-
-How the [Logical Source]() is accessed,
-or how users are authenticated against the database,
-is outside of the scope of this document.
-
-The [base IRI]() MUST be a valid [IRI]().
-It SHOULD NOT contain question mark (“?”) or hash (“#”) characters and
-SHOULD end in a slash (“/”) character.
-
-**NOTE**
-To obtain an absolute IRI from a relative IRI,
-the [term generation rules]() of RML use simple string concatenation,
-rather than the more complex algorithm for resolution of relative URIs
-defined in [Section 5.2]() of [RFC3986]().
-This ensures that the original database value can be reconstructed from the generated absolute IRI.
-Both algorithms are equivalent if all of the following are true:
-
-
-1. The base IRI does not contain question marks or hashes,
-2. the base IRI ends in a slash,
-3. the relative IRI does not start with a slash, and
-4. the relative IRI does not contain any “.” or “..” path segments.
-
-### RML Validator
-
-An RML data validator is a system that takes as its input
-an [RML mapping](), a [base IRI](), and a [SQL connection]() to an [input database](),
-and checks for the presence of [data errors]().
-When checking the input database,
-a data validator MUST report any data errors
-that are raised in the process of generating the output dataset.
-
-An [RML processor]() MAY include an [RML data validator](), but this is not required.
 
 ## 4.1 Mapping Graphs and the RML Vocabulary
 
@@ -141,6 +93,9 @@ as defined throughout this specification.
 A resource SHOULD NOT be typed as an RML class
 if it does not meet the definition of that class.
 
+The [default mapping]() SHOULD be such that
+its output is the [Direct Graph]() [[DM]()] corresponding to the [input data source]().
+
 
 ## 4.2 RDF-based Turtle Syntax; Media Type
 
@@ -156,7 +111,70 @@ and the charset parameter on the media type SHOULD always be used:
 A conforming [RML processor]() SHOULD accept [RML mapping documents]() in Turtle syntax.
 It MAY accept [RML mapping graphs]() encoded in other RDF syntaxes.
 
-## Data Errors
+# 5. RML Processors, Validators and Generators
+
+
+### RML Processor
+
+An RML processor is a system that, given an RML mapping and an input data source,
+provides access to the output dataset.
+
+There are no constraints on the method of access to the output dataset
+provided by a conforming [RML processor]().
+An [RML processor]() MAY materialize the output dataset into a file,
+or offer virtual access through an interface,
+or offer any other means of providing access to the output dataset.
+
+An [RML processor]() also has access to an execution environment consisting of:
+* A [Logical Source]()
+* a base IRI used in resolving relative IRIs produced by the RML mapping.
+
+How the [Logical Source]() is accessed,
+or how users are authenticated against the database,
+is outside of the scope of this document.
+
+The [base IRI]() MUST be a valid [IRI]().
+It SHOULD NOT contain question mark (“?”) or hash (“#”) characters and
+SHOULD end in a slash (“/”) character.
+
+**NOTE**
+To obtain an absolute IRI from a relative IRI,
+the [term generation rules]() of RML use simple string concatenation,
+rather than the more complex algorithm for resolution of relative URIs
+defined in [Section 5.2]() of [RFC3986]().
+This ensures that the original database value can be reconstructed from the generated absolute IRI.
+Both algorithms are equivalent if all of the following are true:
+
+
+1. The base IRI does not contain question marks or hashes,
+2. the base IRI ends in a slash,
+3. the relative IRI does not start with a slash, and
+4. the relative IRI does not contain any “.” or “..” path segments.
+
+### RML Validator
+
+An RML data validator is a system that takes as its input
+an [RML mapping](), a [base IRI](), and a [SQL connection]() to an [input database](),
+and checks for the presence of [data errors]().
+When checking the input database,
+a data validator MUST report any data errors
+that are raised in the process of generating the output dataset.
+
+An [RML processor]() MAY include an [RML data validator](), but this is not required.
+
+
+### Generators
+
+An [RML processor]() MAY include an **_RML default mapping generator_**.
+This is a facility that introspects the schema of the [input data source]()
+and generates an [RML mapping](), 
+possibly in the form of an [RML mapping document](),
+intended for further customization by a mapping author.
+Such a mapping is known as a _**default mapping**_.
+
+
+
+## 5.1 Data Errors
 
 A **_data error_** is a condition of the data in the [input data]()
 that would lead to the generation of an invalid [RDF term]().
@@ -189,9 +207,6 @@ and the behavior of such operations is well-defined. For the same reason,
 the conformance of [RML mappings]() is defined without regard for the presence of data errors.
 
 [RML data validators]() can be used to explicitly scan a database for data errors.
-
-
-
 
 
 
