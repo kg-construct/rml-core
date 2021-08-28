@@ -21,7 +21,7 @@ The _**references**_ of a [term map]()
 are the set of +++???+++ referenced in the [term map]()
 and depend on the type of [term map]().
 
-## 7.1 Constant (rr:constant)
+## 7.1 Constant (rml:constant)
 
 A _**constant-valued term map**_ ignores the logical iteration
 and always generates the same [RDF term]().
@@ -29,7 +29,7 @@ A [constant-valued ter map]() is represented by a resource
 that has exactly one `rml:constant` property.
 
 The [constant valued term map]() is the [RDF term]()
-that is the value of its `rr:constant` property.
+that is the value of its `rml:constant` property.
 
 If the [constant-valued term map]() is a [subject map](), [predicate map]() or [graph map](),
 then its constant value MUST be an IRI.
@@ -47,10 +47,10 @@ the following triples were present in the mapping graph instead:
 
 | Triple involving constant shortcut property | Replacement triples  |
 | :-------------| :-----|
-| ?x rml:subject ?y. | ?x rml:subjectMap [ rr:constant ?y ]. | 
-| ?x rml:predicate ?y. | ?x rml:predicateMap [ rr:constant ?y ]. |
-| ?x rml:object ?y. | ?x rml:objectMap [ rr:constant ?y ]. |
-| ?x rml:graph ?y. |  	?x rml:graphMap [ rr:constant ?y ]. |
+| ?x rml:subject ?y. | ?x rml:subjectMap [ rml:constant ?y ]. | 
+| ?x rml:predicate ?y. | ?x rml:predicateMap [ rml:constant ?y ]. |
+| ?x rml:object ?y. | ?x rml:objectMap [ rml:constant ?y ]. |
+| ?x rml:graph ?y. |  	?x rml:graphMap [ rml:constant ?y ]. |
 
 
 +++ ADD example +++
@@ -68,7 +68,7 @@ The [reference]() is the singleton set containing the value of the `rml:referenc
 
 +++ ADD example +++
 
-## 7.3 From a Template (rr:template)
+## 7.3 From a Template (rml:template)
 
 A [template-valued term map]() is represented by a resource
 that has exactly one `rml:template` property.
@@ -176,7 +176,7 @@ a double backslash is needed to escape each curly brace,
 and to get one literal backslash in the output
 one needs to write four backslashes in the template.
 
-## 7.4 IRIs, Literal, Blank Nodes (rr:termType)
+## 7.4 IRIs, Literal, Blank Nodes (rml:termType)
 
 The term type of a [column-valued term map] or [template-valued term map]
 determines the kind of [generated RDF term]() ([IRIs](), [blank nodes]() or [literals]()).
@@ -198,7 +198,7 @@ and at least one of the following conditions is true:
 * It is a [column-based term map]().
     * It has a `rml:language` property (and thus a [specified language tag]()).
     * It has a `rml:datatype` property (and thus a [specified datatype]()).
-* rr:IRI, otherwise.
+* rml:IRI, otherwise.
 
 **NOTE**
 
@@ -217,7 +217,7 @@ The type of the generated [RDF term]() is determined directly by the value of `r
 If it is an [IRI](), then an [IRI]() will be generated;
 if it is a literal, a literal will be generated.
 
-## 7.5 Language Tags (rr:language)
+## 7.5 Language Tags (rml:language)
 
 A [term map]() with a term type of `rml:Literal` MAY have a specified language tag.
 It is represented by the `rml:language` property on a [term map]().
@@ -231,7 +231,7 @@ will be generated for the data values in the DNAME column.
 +++ ADD EXAMPLE +++
 
 
-## 7.6 Typed Literals (rr:datatype)
+## 7.6 Typed Literals (rml:datatype)
 
 A _**datatypeable term map**_ is a term map with a term type of `rml:Literal`
 that does not have a [specified language tag]().
