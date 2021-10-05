@@ -1,0 +1,121 @@
+@prefix :      <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix afn:   <http://jena.apache.org/ARQ/function#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml:   <http://semweb.mmlab.be/ns/rml#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix ql:    <http://semweb.mmlab.be/ns/ql#> .
+@prefix vann:  <http://purl.org/vocab/vann/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://astrea.linkeddata.es/report>
+        a       <https://w3id.org/def/astrea#ShapeReport> ;
+        <https://w3id.org/def/astrea#contains>
+                <https://astrea.linkeddata.es/shapes#250446bd60119ff1a4ba692893e7b1fb> , <https://astrea.linkeddata.es/shapes#040b911de9f976cdd2d22cf6c2cba3b7> , <https://astrea.linkeddata.es/shapes#29587c3534920c65344a1f3ee3abcf7f> , <https://astrea.linkeddata.es/shapes#53614b87cf65598281c4258d48f85a91> , <https://astrea.linkeddata.es/shapes#c79bf22d3f26eeef6f92485652b0e328> , <https://astrea.linkeddata.es/shapes#21d919e7dbeb523b79f0e3c838730f63> , <https://astrea.linkeddata.es/shapes#46d802660c256f5f1311aa075c2fab21> , <https://astrea.linkeddata.es/shapes#08ab43e67d0f125ab7ad1a28848cf2af> , <https://astrea.linkeddata.es/shapes#7ef4042515927a988db64446a15dfed8> , <https://astrea.linkeddata.es/shapes#b5c20e355b5faa5339ac142253fdd2ca> , <https://astrea.linkeddata.es/shapes#ca9b3ee1fc5cf896e0e964a114201192> ;
+        <https://w3id.org/def/astrea#generatedShapesFrom>
+                <https://astrea.linkeddata.es/report/01188340876> .
+
+<https://astrea.linkeddata.es/shapes#040b911de9f976cdd2d22cf6c2cba3b7>
+        a               sh:PropertyShape ;
+        rdfs:label      "reference" , "A valid expression that selects values from the source data. The reference should confront to the syntax rules/grammar of the specified Reference Formulation. "@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "A valid expression that selects values from the source data. The reference should confront to the syntax rules/grammar of the specified Reference Formulation. "@en ;
+        sh:name         "reference" ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         rml:reference ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#ca9b3ee1fc5cf896e0e964a114201192>
+        a               sh:PropertyShape ;
+        rdfs:label      "version" , "It defines the version of the reference Formulation used. "@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "It defines the version of the reference Formulation used. "@en ;
+        sh:name         "version" ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         rml:version ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#53614b87cf65598281c4258d48f85a91>
+        a               sh:PropertyShape ;
+        rdfs:label      "iterator" , "an expression qualified according to the reference formulation specified for pointing to an extract of the source data. "@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "an expression qualified according to the reference formulation specified for pointing to an extract of the source data. "@en ;
+        sh:name         "iterator" ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         rml:iterator ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#46d802660c256f5f1311aa075c2fab21>
+        a               sh:NodeShape ;
+        sh:property     <https://astrea.linkeddata.es/shapes#040b911de9f976cdd2d22cf6c2cba3b7> ;
+        sh:targetClass  rr:TermMap .
+
+<https://astrea.linkeddata.es/shapes#7ef4042515927a988db64446a15dfed8>
+        a               sh:NodeShape ;
+        sh:property     <https://astrea.linkeddata.es/shapes#b5c20e355b5faa5339ac142253fdd2ca> ;
+        sh:targetClass  rr:TriplesMap .
+
+<https://astrea.linkeddata.es/shapes#250446bd60119ff1a4ba692893e7b1fb>
+        a               sh:NodeShape ;
+        rdfs:label      "Logical Source" ;
+        sh:description  "Represents a logical source."@en ;
+        sh:name         "Logical Source" ;
+        sh:nodeKind     sh:IRI ;
+        sh:property     <https://astrea.linkeddata.es/shapes#29587c3534920c65344a1f3ee3abcf7f> , <https://astrea.linkeddata.es/shapes#53614b87cf65598281c4258d48f85a91> , <https://astrea.linkeddata.es/shapes#ca9b3ee1fc5cf896e0e964a114201192> ;
+        sh:targetClass  rml:LogicalSource .
+
+<https://astrea.linkeddata.es/shapes#c79bf22d3f26eeef6f92485652b0e328>
+        a               sh:PropertyShape ;
+        rdfs:label      "A valid query."@en ;
+        sh:description  "A valid query."@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         rml:query .
+
+<https://astrea.linkeddata.es/shapes#21d919e7dbeb523b79f0e3c838730f63>
+        a               sh:NodeShape ;
+        rdfs:label      "Base Source" ;
+        sh:description  "Represents a base source."@en , "Base Source" ;
+        sh:name         "Base Source" ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  rml:BaseSource .
+
+<https://astrea.linkeddata.es/shapes#08ab43e67d0f125ab7ad1a28848cf2af>
+        a               sh:NodeShape ;
+        rdfs:label      "Reference Formulation" ;
+        sh:description  "Represents a Reference Formulation."@en ;
+        sh:name         "Reference Formulation" ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  rml:ReferenceFormulation .
+
+<https://astrea.linkeddata.es/shapes#29587c3534920c65344a1f3ee3abcf7f>
+        a               sh:PropertyShape ;
+        rdfs:label      "reference formulation" , "The reference formulation used to refer to extracts of the source data. "@en ;
+        sh:class        rml:ReferenceFormulation ;
+        sh:description  "The reference formulation used to refer to extracts of the source data. "@en ;
+        sh:name         "reference formulation" ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         rml:referenceFormulation .
+
+<https://astrea.linkeddata.es/shapes#b5c20e355b5faa5339ac142253fdd2ca>
+        a               sh:PropertyShape ;
+        rdfs:label      "logical source" , "Represents the logical source to be mapped. This can be a pointer to any dataset."@en ;
+        sh:class        rml:LogicalSource ;
+        sh:description  "Represents the logical source to be mapped. This can be a pointer to any dataset."@en ;
+        sh:name         "logical source" ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         rml:logicalSource .
+
+<https://astrea.linkeddata.es/report/01188340876>
+        a       <https://w3id.org/def/astrea#ReportEntry> ;
+        <https://w3id.org/def/astrea#message>
+                "Shapes generated with no errors" ;
+        <https://w3id.org/def/astrea#source>
+                "http://semweb.mmlab.be/ns/rml#" ;
+        <https://w3id.org/def/astrea#statusCode>
+                "200"^^xsd:int .
