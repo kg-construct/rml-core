@@ -43,30 +43,30 @@ To connect this function with the RML mapping document, we make use of a `fnml:F
 
 ```turtle "example": "using toUppercase in an RML mapping"
 <#Person_Mapping>
-    rml:logicalSource <#LogicalSource> ;                  # Specify the data source
-    rr:subjectMap <#SubjectMap> ;                         # Specify the subject
-    rr:predicateObjectMap <#NameMapping> .                # Specify the predicate-object-map
+    rml:logicalSource <#LogicalSource> ;              # Specify the data source
+    rr:subjectMap <#SubjectMap> ;                     # Specify the subject
+    rr:predicateObjectMap <#NameMapping> .            # Specify the predicate-object-map
 
 <#NameMapping>
-    rr:predicate dbo:title ;                              # Specify the predicate
-    rr:objectMap <#FunctionTermMap> .                         # Specify the object-map
+    rr:predicate dbo:title ;                          # Specify the predicate
+    rr:objectMap <#FunctionTermMap> .                 # Specify the object-map
 
 <#FunctionTermMap>
-    fnml:functionValue [                                  # The object is the result of the function
-        a fnml:FunctionTriplesMap ;
-        rr:predicateObjectMap [
-            rr:predicate fno:executes ;                   # Execute the function&hellip;
-            rr:objectMap [ rr:constant grel:toUppercase ] # grel:toUppercase
-        ] ;
-        rr:predicateObjectMap [
-            rr:predicate grel:inputString ;
-            rr:objectMap [ rr:reference "name" ]          # Use as input the "name" reference
-        ]
+    fnml:functionValue <#FunctionTriplesMap> .        # The object is taken from the output of the execution triples of the function
+
+<#FunctionTriplesMap a fnml:FunctionTriplesMap ;      # Generating the execution triples
+    rr:predicateObjectMap [
+        rr:predicate fno:executes ;                   # Execute the function&hellip;
+        rr:objectMap [ rr:constant grel:toUppercase ] # grel:toUppercase
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate grel:inputString ;
+        rr:objectMap [ rr:reference "name" ]          # Use as input the "name" reference
     ] .
 ```
 
-Before the `name`-value is referenced,
-the value is first used as `grel:inputString`-parameter
+The `name`-value is not referenced directly,
+instead, its value is used as `grel:inputString`-parameter
 for the `grel:toUppercase`-function.
-The output of that function is then used as object
-within the `<#NameMapping>`
+The execution result triples of that function are then referred to have the object
+within the `<#NameMapping>`.
