@@ -6,12 +6,18 @@ we combine <a>RML</a> with declarative function descriptions in <a>FnO</a>.
 <a>FnO</a> consists of -- among others -- <a>function descriptions</a> and <a>execution</a> descriptions.
 We describe these <a>executions</a> -- which link to specific <a>function descriptions</a> -- within the <a>RML mapping</a>.
 
-The <a>RML processor</a> then needs to interpret these <a>executions</a> correctly to know which values to assign to the parameters of the function.
-After executing the correct function, the <a>RML processor</a> SHOULD return the resulting value, to be used for further processing by the <a>RML processor</a>.
+A [=triples map=] generates triples from input data.
+An [=RML mapping=] uses [=output triples map=]s to generate output triples from input data.
+We use an intermediate [=function triples map=] to generate [=execution triples=] from input data,
+and then use a [=function term map=] to link the output of those execution triples to the actual [=output triples map=],
+so that input data is transformed via a [=function triples map=] and then integrated in the output using a [=function term map=].
+
+The <a>RML processor</a> thus needs to interpret these [=execution=] triples correctly to know which input data values to assign to the parameters of the function.
+After executing the correct function, the <a>RML processor</a> SHOULD link the resulting value(s) to the right [=output triples map=]s.
 
 ### Example
 
-We use [Example 1](#example-1-rml-mapping-without-data-transformations),
+We use [Example 1](#example-rml-mapping-without-data-transformations),
 where we want to perform an uppercase operation to a set of fields.
 
 The FnO description of the function [toUppercase](https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#touppercasestring-s) is as follows:
