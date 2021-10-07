@@ -1,0 +1,45 @@
+###############################################################################
+# RML Logical Source: DCAT Dataset shape                                      #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# RML Logical Source: DCAT Dataset
+schema:DCATDatasetShape
+    a sh:NodeShape ;
+    sh:targetClass dcat:Dataset ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'dcat:Dataset'
+    sh:name "RML Logical Source description: DCAT Dataset" ;
+    sh:description """
+    An RML Logical Source description for a DCAT Dataset describes how a DCAT
+    Dataset must be accessed.
+    """ ;
+    sh:message """
+    An RML Logical Source description for a DCAT Dataset requires exactly one
+    dcat:distribution property.
+    """ ;
+
+    # dcat:distribution
+    sh:property [
+        sh:path dcat:distribution ;
+        sh:name "dcat:distribution" ;
+        sh:description """
+        An available distribution of the dataset.
+        """ ;
+        sh:message """
+        Exactly one dcat:distribution is required to access a distribution of 
+        the data.
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:class dcat:Distribution ;  # Must be a dcat:Distribution
+        sh:node schema:DCATDistributionShape ;  # dcat/distribution.ttl
+    ];
+.

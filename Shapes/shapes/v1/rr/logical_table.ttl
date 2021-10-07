@@ -1,0 +1,81 @@
+###############################################################################
+# R2RML Logical Table shape                                                   #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RRLogicalTable
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:LogicalTable" ;
+    sh:description """
+    Represents a logical table.
+    """ ;
+    sh:message """
+    rr:LogicalTable must provide either one rr:tableName or one rr:sqlQuery.
+    rr:sqlVersion is optional. 
+    """ ;
+
+    # Exactly one rr:tableName or one rr:sqlQuery is required
+    sh:property [
+        sh:path [sh:alternativePath (rr:tableName rr:sqlQuery)] ;
+        sh:name "rr:tableName/rr:sqlQuery" ;
+        sh:description """
+        Exactly one rr:tableName or one rr:sqlQuery is required.
+        """ ;
+        sh:message """
+        Exactly one rr:tableName or one rr:sqlQuery is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:tableName
+    sh:property [
+        sh:path rr:tableName ;
+        sh:name "rr:tableName" ;
+        sh:description """
+        Schema-qualified name of a table or view.
+        """ ;
+        sh:message """
+        rr:tableName must be a string and may only be provided once.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:sqlQuery
+    sh:property [
+        sh:path rr:sqlQuery ;
+        sh:name "rr:sqlQuery" ;
+        sh:description """
+        A valid SQL query.
+        """ ;
+        sh:message """
+        rr:sqlQuery must be a string and may only be provided once.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:sqlVersion
+    sh:property [
+        sh:path rr:sqlVersion ;
+        sh:name "rr:sqlVersion" ;
+        sh:description """
+        An identifier for a SQL version.
+        """ ;
+        sh:message """
+        rr:sqlVersion may only be provided once and must its value must be 
+        rr:SQL2008.
+        """ ;
+        sh:nodeKind sh:IRI ;
+        sh:in (rr:SQL2008) ;
+    ] ;
+.

@@ -1,0 +1,137 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@base <http://example.com/base/> .
+@prefix sd:  <http://www.w3.org/ns/sparql-service-description#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+<TriplesMap1> a rr:TriplesMap;
+    
+  rml:logicalSource [ 
+    rml:source "student.json";
+    rml:referenceFormulation ql:JSONPath;
+  ];
+
+  rr:subjectMap [ 
+    rr:template "http://example.com/{ID}/{Name}";
+    rr:class foaf:Person 
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate ex:id ; 
+    rr:objectMap [ rml:reference "ID" ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate foaf:name ; 
+    rr:objectMap [ rml:reference "Name" ]
+  ].
+  
+<TriplesMap2>
+  a rr:TriplesMap;
+
+  rml:logicalSource [
+     rml:source <#DB_source>;
+     rr:tableName "Employee"
+  ];
+
+  rr:subjectMap [ rml:reference "firstname" ];
+
+  rr:predicateObjectMap [
+    rr:predicate foaf:name;
+    rr:objectMap [
+      rml:reference "firstname"
+    ]
+  ] .
+
+<#DB_source> a d2rq:Database;
+  d2rq:jdbcDSN "CONNECTIONDSN";
+  d2rq:username "postgres";
+  d2rq:password "" .
+  
+<TriplesMap3>
+  a rr:TriplesMap;
+
+    rml:logicalSource [
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "/";
+    rml:query " select distinct ?resource ?resource_label where { ?resource rdfs:label ?resource_label } " ] ;
+
+  rr:subjectMap [ rml:reference "firstname" ];
+
+  rr:predicateObjectMap [
+    rr:predicate foaf:name;
+    rr:objectMap [
+      rml:reference "firstname"
+    ]
+  ] .
+
+ <#SPARQL_JSON_source> a sd:Service ;
+    sd:endpoint  <http://dbpedia.org/sparql/> ;
+    sd:supportedLanguage sd:SPARQL11Query ;
+    sd:resultFormat  <http://www.w3.org/ns/formats/SPARQL_Results_JSON> .
+
+<TriplesMap4>
+  a rr:TriplesMap;
+
+    rml:logicalSource [
+     rml:source <#DCAT_source> ;
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/" ];
+
+  rr:subjectMap [ rml:reference "firstname" ];
+
+  rr:predicateObjectMap [
+    rr:predicate foaf:name;
+    rr:objectMap [
+      rml:reference "firstname"
+    ]
+  ] .
+
+<#DCAT_source>
+    a dcat:Dataset ;
+    dcat:distribution [
+        a dcat:Distribution;
+        dcat:downloadURL "http://example.org/file.xml" ].
+
+<#TriplesMap5> 
+a rr:TriplesMap;
+rml:logicalSource [
+    rml:source <#API_template_source> ;
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$" ] ;
+rr:subjectMap [ rml:reference "firstname" ].
+
+<#API_template_source>
+    a hydra:IriTemplate ;
+    hydra:template "https://biblio.ugent.be/publication/{id}?format={format}";
+    hydra:mapping
+        [ a hydra:TemplateMapping ;
+          hydra:variable "id";
+          hydra:required true ],
+        [ a hydra:TemplateMapping ;
+          hydra:variable "format";
+          hydra:required false ] .
+
+
+<#TriplesMap6> 
+a rr:TriplesMap;
+rml:logicalSource [
+    rml:source <#CSVW_source> ;
+    rml:referenceFormulation ql:CSV ] ;
+rr:subjectMap [ rml:reference "firstname" ].
+
+<#CSVW_source> a csvw:Table;
+    csvw:url "http://rml.io/data/csvw/Airport.csv" ;
+    csvw:dialect [ a csvw:Dialect;
+        csvw:delimiter ";";
+        csvw:encoding "UTF-8";
+        csvw:header "1"^^xsd:boolean
+    ] .
+        

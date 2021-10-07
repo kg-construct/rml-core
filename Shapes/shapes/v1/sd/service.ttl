@@ -1,0 +1,88 @@
+###############################################################################
+# RML Logical Source: SD Service shape                                        #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix format: <http://www.w3.org/ns/formats/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+# RML Logical Source: SD Service
+schema:SDServiceShape
+    a sh:NodeShape ;
+    sh:targetClass sd:Service ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'sd:Service'
+    sh:name "RML Logical Source description: SD Service" ;
+    sh:description """
+    An RML Logical Source description for an SD Service describes how a 
+    SPARQL service must be accessed. 
+    """ ;
+    sh:message """ 
+    An RML Logical Source description for an SD Service requires exactly
+    one sd:endpoint, one sd:supportedLanguage and one sd:resultFormat 
+    properties.
+    """ ;
+
+    # sd:endpoint: SPARQL service endpoint IRI
+    sh:property [
+        sh:path sd:endpoint ;
+        sh:name "sd:endpoint" ;
+        sh:description """
+        Relates an instance of sd:Service to a SPARQL endpoint that implements 
+        the SPARQL Protocol service (SPROT) for the service. The object of the 
+        sd:endpoint property is an IRI.
+        """ ;
+        sh:message """
+        Exactly one endpoint IRI is required to access a SPARQL service.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # sd:supportedLanguage: supported SPARQL language versions
+    sh:property [
+        sh:path sd:supportedLanguage ;
+        sh:name "sd:supportedLanguage" ;
+        sh:description """
+        Relates an instance of sd:Service to a SPARQL language 
+        (e.g. Query and Update) that it implements.
+        """ ;
+        sh:message """
+        The supported language for a RML Logical Source: SD Service doesn't 
+        match with sd:SPARQL10Query or sd:SPARQL11Query.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:in (sd:SPARQL10Query sd:SPARQL11Query) ;
+    ] ;
+
+    # sd:resultFormat: formats in which the results are returned
+    sh:property [
+        sh:path sd:resultFormat ;
+        sh:name "sd:resultFormat" ;
+        sh:description """
+        Relates an instance of sd:Service to a format that is supported for 
+        serializing query results.
+        """ ;
+        sh:message """
+        The result format for a RML Logical Source: SD Service doesn't match 
+        with  format:SPARQL_Results_XML, format:SPARQL_Results_JSON, 
+        format:SPARQL_Results_CSV or format:SPARQL_Results_TSV.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:in (
+            format:SPARQL_Results_XML
+            format:SPARQL_Results_JSON
+            format:SPARQL_Results_CSV
+            format:SPARQL_Results_TSV
+        ) ;
+    ] ;
+.

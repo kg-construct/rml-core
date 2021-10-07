@@ -1,0 +1,742 @@
+###############################################################################
+# RML Logical Source shape                                                    #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLLogicalSourceShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf rml:logicalSource ;  # Object of rr:TriplesMap
+    sh:targetClass rml:LogicalSource ;  # Used as a class
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    # Already targets 'rml:logicalSource'
+    # Ignores rml:referenceFormulation, rml:iterator and rml:query
+    # since they are validated depending on the type of source
+    sh:ignoredProperties (rdf:type
+                          rml:referenceFormulation
+                          rml:iterator
+                          rml:query
+                          rr:tableName
+                          rr:sqlQuery
+                          rr:sqlVersion) ;
+    sh:name "RML Logical Source" ;
+    sh:description """
+    A logical source is any source that is mapped to RDF triples. A logical 
+    source is a Base Source, rml:BaseSource.
+    """ ;
+    sh:message """
+    RML Logical Source requires one rml:source and depending on the source 
+    type: one rml:query/rr:sqlQuery, one rml:referenceFormulation and/or 
+    one rml:iterator.
+    """ ;
+
+    # rml:source
+    sh:property [
+        sh:path rml:source ;
+        sh:name "rml:source" ;
+        sh:description """
+        The source (rml:source) locates the input data source. It is a URI
+        that represents the data source where the data source is.
+        
+        Note: A literal as rml:source is still supported for compatibility with 
+        previous versions of RML.
+        """ ;
+        sh:message """
+        rml:source must be provided to locate the data source. rml:source must 
+        be provided exactly once as an URI or Literal for backwards 
+        compatiblity with previous versions of RML.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ; 
+
+    # Source specific rml:iterator and rml:referenceFormulation
+    # Depending on various factors, the right shape is chosen during validation
+    sh:xone (
+    # JSON/XML file
+        [
+            sh:and (
+                [
+                    # DCAT Dataset or local file
+                    sh:or (
+                        [
+                            sh:property [
+                                sh:path rml:source ;
+                                sh:class dcat:Dataset ;
+                            ] ;
+                        ]
+                        [
+                            sh:property [
+                                sh:path rml:source ;
+                                sh:nodeKind sh:Literal ;
+                            ] ;
+                        ]
+                    );
+                    # Must have rml:referenceFormulation since default is
+                    # tabular row
+                    sh:property [
+                        sh:path rml:referenceFormulation ;
+                        sh:in (ql:JSONPath ql:XPath) ;
+                    ] ;
+                ]
+                schema:JSONOrXMLFileShape
+            )
+        ]
+        # CSV file
+        [
+            sh:and (
+                # DCAT Dataset, CSVW Table or local file
+                sh:or(
+                    [
+                        sh:property [
+                            sh:path rml:source ;
+                            sh:nodeKind sh:Literal ;
+                        ] ;
+                    ]
+                    [
+                        sh:property [
+                            sh:path rml:source ;
+                            sh:class csvw:Table ;
+                        ] ;
+                    ]
+                    [
+                        sh:property [
+                            sh:path rml:source ;
+                            sh:class dcat:Dataset ;
+                        ] ;
+                    ]
+                )
+                schema:CSVFileShape
+            )
+        ]
+        # RDF file
+        [
+            sh:and (
+                [
+                    # DCAT Dataset or local file
+                    sh:or (
+                        [
+                            sh:property [
+                                sh:path rml:source ; 
+                                sh:class dcat:Dataset ;
+                            ] ;
+                        ]
+                        [
+                            sh:property [
+                                sh:path rml:source ;
+                                sh:nodeKind sh:Literal ;
+                            ] ;
+                        ]
+                    );
+                    # Must have rml:referenceFormulation since default is
+                    # tabular row
+                    sh:property [
+                        sh:path rml:query ;
+                        sh:minCount 1 ;
+                    ] ;
+               ] 
+               schema:RDFFileShape
+           )
+        ]
+        # RDB
+        [
+            sh:and (
+                # D2RQ Database
+                [
+                    sh:property [
+                        sh:path rml:source ;
+                        sh:class d2rq:Database ;
+                        sh:nodeKind sh:BlankNodeOrIRI ;
+                    ] ;
+                ]
+                schema:RDBShape
+            )
+        ]
+        # SPARQL endpoint
+        [
+            sh:and (
+                # SD Service
+                [
+                    sh:property [
+                        sh:path rml:source ;
+                        sh:class sd:Service ;
+                        sh:nodeKind sh:BlankNodeOrIRI ;
+                    ] ;
+                ]
+                schema:SPARQLEndpointShape
+            ) 
+        ]
+    );
+.
+
+
+schema:JSONOrXMLFileShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+
+    # rml:source
+    sh:property [
+        sh:path rml:source ;
+        sh:name "rml:source" ;
+        sh:description """
+        The source (rml:source) locates the input data source. It is a URI
+        that represents the data source where the data source is.
+        
+        Note: A literal as rml:source is still supported for compatibility with 
+        previous versions of RML.
+        """ ;
+        sh:message """
+        rml:source must be provided to locate the data source. rml:source must 
+        be provided exactly once as an URI or Literal for backwards 
+        compatiblity with previous versions of RML.
+        """ ;
+        sh:xone (
+            # Literal as backwards compatiblity with previous RML versions
+            [   
+                # Local JSON or XML file path
+                sh:nodeKind sh:Literal ;
+                sh:datatype xsd:string ;
+            ]
+            # RML spec requires URI for rml:source
+            [ 
+                # dcat:Dataset description
+                sh:nodeKind sh:BlankNodeOrIRI ;
+                sh:class dcat:Dataset ;
+                sh:node schema:DCATDatasetShape ;
+            ]
+        ) ;
+    ] ;
+
+    # rml:referenceFormulation
+    sh:property [
+        sh:path rml:referenceFormulation ;
+        sh:name "rml:referenceFormulation" ;
+        sh:description """
+        The reference formulation (rml:referenceFormulation) defines the 
+        reference formulation used to refer to the elements of the data source.
+        The reference formulation must be specified in the case of databases 
+        and XML and JSON data sources. By default SQL2008 for databases, as 
+        SQL2008 is the default for R2RML, XPath for XML and JSONPath for JSON 
+        data sources. 
+        """ ;
+        sh:message """
+        Reference formulation for XML or JSON files must be either ql:JSONPath
+        or ql:XPath.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in (ql:JSONPath ql:XPath) ;
+    ] ;
+
+    # rml:iterator
+    sh:property [
+        sh:path rml:iterator ;
+        sh:name "rml:iterator" ;
+        sh:description """
+        The logical iterator (rml:iterator) defines the iteration loop used to 
+        map the data of the input source.  
+        """ ;
+        sh:message """
+        rml:iterator is required to iterate over the data source. May only be
+        provided once as a string.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+.
+
+
+schema:CSVFileShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+
+    # rml:source
+    sh:property [
+        sh:path rml:source ;
+        sh:name "rml:source" ;
+        sh:description """
+        The source (rml:source) locates the input data source. It is a URI
+        that represents the data source where the data source is.
+        
+        Note: A literal as rml:source is still supported for compatibility with 
+        previous versions of RML.
+        """ ;
+        sh:message """
+        rml:source must be provided to locate the data source. rml:source must 
+        be provided exactly once as an URI or Literal for backwards 
+        compatiblity with previous versions of RML.
+
+        Locating CSV files is possible using a DCAT dataset description, 
+        a CSVW Table description or a file path to a local file.
+        """ ;
+
+        sh:xone (
+            # Literal as backwards compatiblity with previous RML versions
+            [   
+                # Local CSV file path
+                sh:nodeKind sh:Literal ;
+                sh:datatype xsd:string ;
+            ]
+            # RML spec requires URI for rml:source
+            [ 
+                # csvw:Table description
+                sh:nodeKind sh:BlankNodeOrIRI ;
+                sh:class csvw:Table ;
+                sh:node schema:CSVWTableShape ;
+            ]
+            [ 
+                # dcat:Dataset description
+                sh:nodeKind sh:BlankNodeOrIRI ;
+                sh:class dcat:Dataset ;
+                sh:node schema:DCATDatasetShape ;
+            ]
+        ) ;
+
+    ] ;
+
+
+    # rml:referenceFormulation
+    sh:property [
+        sh:path rml:referenceFormulation ;
+        sh:name "rml:referenceFormulation" ;
+        sh:description """
+        The reference formulation (rml:referenceFormulation) defines the 
+        reference formulation used to refer to the elements of the data source.
+        The reference formulation must be specified in the case of databases 
+        and XML and JSON data sources. By default SQL2008 for databases, as 
+        SQL2008 is the default for R2RML, XPath for XML and JSONPath for JSON 
+        data sources. 
+        """ ;
+        sh:message """
+        Reference formulation for CSV files must be ql:CSV.
+        TSV files must use ql:TSV. Providing rml:referenceFormulation for 
+        tabular data is optional.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:in (ql:CSV ql:TSV) ;
+    ] ;
+.
+
+schema:RDFFileShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+
+    # rml:source
+    sh:property [
+        sh:path rml:source ;
+        sh:name "rml:source" ;
+        sh:description """
+        The source (rml:source) locates the input data source. It is a URI
+        that represents the data source where the data source is.
+        
+        Note: A literal as rml:source is still supported for compatibility with 
+        previous versions of RML.
+        """ ;
+        sh:message """
+        rml:source must be provided to locate the data source. rml:source must 
+        be provided exactly once as an URI or Literal for backwards 
+        compatiblity with previous versions of RML.
+        
+        Locating RDF files is possible using a DCAT dataset description or a 
+        file path to a local file.
+        """ ;
+        sh:xone (
+            # Literal as backwards compatiblity with previous RML versions
+            [   
+                # Local RDF file path
+                sh:nodeKind sh:Literal ;
+                sh:datatype xsd:string ;
+            ]
+            # RML spec requires URI for rml:source
+            [ 
+                # dcat:Dataset description
+                sh:nodeKind sh:BlankNodeOrIRI ;
+                sh:class dcat:Dataset ;
+                sh:node schema:DCATDatasetShape ;
+            ]
+        ) ;
+    ] ;
+
+    # rml:referenceFormulation
+    sh:property [
+        sh:path rml:referenceFormulation ;
+        sh:name "rml:referenceFormulation" ;
+        sh:description """
+        The reference formulation (rml:referenceFormulation) defines the 
+        reference formulation used to refer to the elements of the data source.
+        The reference formulation must be specified in the case of databases 
+        and XML and JSON data sources. By default SQL2008 for databases, as 
+        SQL2008 is the default for R2RML, XPath for XML and JSONPath for JSON 
+        data sources. 
+        """ ;
+        # Subject to change, this is only to test my and Thomas' research ideas.
+        sh:message """
+        Reference formulation for RDF files is not required. If provided, it 
+        must be ql:CSV. Results of the SPARQL query are processed as tabular 
+        rows. 
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:in (ql:CSV) ;
+    ] ;
+
+    # rml:query
+    sh:property [
+        sh:path rml:query ;
+        sh:name "rml:query" ;
+        sh:description """
+        The query to execute on the data source.
+        Unofficially supported by RML, not in the specification.
+        """ ;
+        sh:message """
+        rml:query is required for RDF files. Must be provided once as a string.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+.
+
+
+schema:SPARQLEndpointShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rml:iterator rml:referenceFormulation) ;  # Optional properties
+
+    # rml:source
+    sh:property [
+        sh:path rml:source ;
+        sh:name "rml:source" ;
+        sh:description """
+        The source (rml:source) locates the input data source. It is a URI
+        that represents the data source where the data source is.
+        
+        Note: A literal as rml:source is still supported for compatibility with 
+        previous versions of RML.
+        """ ;
+        sh:message """
+        rml:source must be provided to locate the data source. rml:source must 
+        be provided exactly once as an URI or Literal for backwards 
+        compatiblity with previous versions of RML.
+        
+        Access SPARQL endpoints requires a SD Service description.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class sd:Service ;
+        sh:node schema:SDServiceShape ;
+    ] ;
+
+    # rml:query
+    sh:property [
+        sh:path rml:query ;
+        sh:name "rml:query" ;
+        sh:description """
+        The query to execute on the data source.
+        rml:query is unofficially supported by RML, but not in the 
+        specification.
+        """ ;
+        sh:message """
+        rml:query is required for querying a SPARQL endpoint.
+        Must be provided once as a string.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+    
+    # Require rml:iterator if rml:referenceFormulation is ql:JSONPath or ql:XPath
+    sh:or (
+        [
+        sh:and(
+        [
+            sh:property [ 
+                sh:path rml:referenceFormulation ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:in (ql:JSONPath ql:XPath) ;
+            ] ;
+        ]
+        [
+            sh:property [
+                sh:path rml:iterator ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:nodeKind sh:Literal ;
+                sh:datatype xsd:string ;  
+            ] ;
+        ]
+        ) ;
+        ]
+        [
+            sh:and(
+        [
+            sh:property [ 
+                sh:path rml:referenceFormulation ;
+                sh:minCount 0 ;
+                sh:maxCount 1 ;
+                sh:in (ql:CSV ql:TSV) ;
+            ] ;
+        ]
+        [
+            sh:property [
+                sh:path rml:iterator ;
+                sh:minCount 0 ;
+                sh:maxCount 0 ;
+                sh:nodeKind sh:Literal ;
+                sh:datatype xsd:string ;  
+            ] ;
+        ]
+        ) ;
+        ]
+    )
+.
+
+
+schema:RDBShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+
+    # rml:source
+    sh:property [
+        sh:path rml:source ;
+        sh:name "rml:source" ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class d2rq:Database ;
+
+        # d2rq:jdbcDSN
+        sh:property [
+            sh:path d2rq:jdbcDSN ;
+            sh:name "D2RQ jdbc DSN" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ] ;
+
+        # d2rq:jdbcDriver
+        sh:property [
+            sh:path d2rq:jdbcDriver ;
+            sh:name "D2RQ jdbc Driver" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ] ;
+
+        # d2rq:username
+        sh:property [
+            sh:path d2rq:username ;
+            sh:name "D2RQ username" ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ] ;
+
+        # d2rq:password
+        sh:property [
+            sh:path d2rq:password ;
+            sh:name "D2RQ password" ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    # rr:sqlVersion
+    sh:property [
+        sh:path rr:sqlVersion ;
+        sh:name "rr:sqlVersion" ;
+        sh:description """
+
+        """ ;
+        sh:message """
+        rr:sqlVersion must be rr:SQL2008. Providing rr:sqlVersion is optional.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:in (rr:SQL2008) ; # Only support for SQL 2008 at the moment
+    ] ;
+
+    # rml:query/rr:tableName/rr:sqlQuery must occur only once
+    sh:property [
+        sh:name "rml:query/rr:sqlQuery/rr:tableName" ;
+        sh:description """
+        Exactly one rml:query or one rr:sqlQuery or one rr:tableName must be 
+        provided to access the relational database.
+        """ ;
+        sh:path [sh:alternativePath (rml:query rr:sqlQuery rr:tableName)] ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ];
+
+    # rr:sqlQuery
+    sh:property [
+        sh:path rr:sqlQuery ;
+        sh:name "rr:sqlQuery" ;
+        sh:description """
+        An R2RML view is a logical table whose contents are the result of 
+        executing a SQL query against the input database. It is represented by 
+        a resource that has exactly one rr:sqlQuery property, whose value is a 
+        literal with a lexical form that is a valid SQL query.
+        """ ;
+        sh:message """
+        rr:sqlQuery is required for querying a relational database. 
+        Must be provided once as a string.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:query
+    sh:property [
+        sh:path rml:query ;
+        sh:name "rml:query" ;
+        sh:description """
+        The query to execute on the data source.
+        rml:query is unofficially supported by RML, but not in the 
+        specification.
+        """ ;
+        sh:message """
+        rml:query is required for relational database. 
+        Must be provided once as a string.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:tableName
+    sh:property [
+        sh:path rr:tableName ;
+        sh:name "rr:tableName" ;
+        sh:description """
+        The value of rr:tableName specifies the table or view name of 
+        the base table or view. Its value MUST be a valid 
+        schema-qualified name that names an existing base table or 
+        view in the input database.
+        """ ;
+        sh:message """
+        rr:tableName must be a string Literal and may only be provided 
+        once.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:referenceFormulation
+    sh:property [
+        sh:path rml:referenceFormulation ;
+        sh:name "rml:referenceFormulation" ;
+        sh:description """
+        The reference formulation (rml:referenceFormulation) defines the 
+        reference formulation used to refer to the elements of the data source.
+        The reference formulation must be specified in the case of databases 
+        and XML and JSON data sources. By default SQL2008 for databases, as 
+        SQL2008 is the default for R2RML, XPath for XML and JSONPath for JSON 
+        data sources. 
+        """ ;
+        sh:message """
+        Reference formulation for CSV files must be ql:CSV.
+        TSV files must use ql:TSV. Providing rml:referenceFormulation for 
+        tabular data is optional.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:in (ql:CSV ql:TSV) ;
+    ] ;
+.
+
+# RML Logical Source: DCAT Dataset
+schema:DCATDatasetShape
+    a sh:NodeShape ;
+    sh:targetClass dcat:Dataset ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'dcat:Dataset'
+    sh:name "RML Logical Source description: DCAT Dataset" ;
+    sh:description """
+    An RML Logical Source description for a DCAT Dataset describes how a DCAT
+    Dataset must be accessed.
+    """ ;
+    sh:message """
+    An RML Logical Source description for a DCAT Dataset requires exactly one
+    dcat:distribution property.
+    """ ;
+
+    # dcat:distribution
+    sh:property [
+        sh:path dcat:distribution ;
+        sh:name "dcat:distribution" ;
+        sh:description """
+        An available distribution of the dataset.
+        """ ;
+        sh:message """
+        Exactly one dcat:distribution is required to access a distribution of 
+        the data.
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:class dcat:Distribution ;  # Must be a dcat:Distribution
+        sh:node schema:DCATDistributionShape ;  # dcat/distribution.ttl
+    ];
+.
+
+# DCAT Dataset: DCAT Distribution
+schema:DCATDistributionShape
+    a sh:NodeShape ;
+    sh:targetClass dcat:Distribution ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'dcat:Distribution'
+    sh:name "DCAT Dataset description: DCAT Distribution" ;
+    sh:description """
+    A DCAT Distribution is a specific representation of a dataset. A dataset 
+    might be available in multiple serializations that may differ in various 
+    ways, including natural language, media-type or format, schematic 
+    organization, temporal and spatial resolution, level of detail or profiles 
+    (which might specify any or all of the above). 
+    """ ;
+    sh:message """
+    A DCAT Distribution requires exactly one dcat:downloadURL property.
+    """ ;
+
+    # dcat:downloadURL
+    sh:property [
+        sh:path dcat:downloadURL ;
+        sh:name "dcat:downloadURL" ;
+        sh:description """
+        The URL of the downloadable file in a given format. E.g. CSV file or 
+        RDF file. The format is indicated by the distribution's dct:format 
+        and/or dcat:mediaType.
+        """ ;
+        sh:message """
+        Exactly one dcat:downloadURL is required to download the dataset.
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+.
+

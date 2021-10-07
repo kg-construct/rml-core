@@ -1,0 +1,134 @@
+###############################################################################
+# R2RML Triples Map shape                                                     #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Validate an RML Triples Map
+schema:RRTriplesMapShape
+    a sh:NodeShape ;
+    sh:targetClass rr:TriplesMap ;
+    sh:message "rr:TriplesMap" ;
+    sh:description """
+    Represents a triples map.
+    """ ;
+    sh:message """
+    rr:TriplesMap requires exactly one rr:subject or one rr:subjectMap and zero
+    or more rr:predicateObjectMaps.
+    """ ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+
+    # A single rml:logicalSource or rr:logicalTable for a rr:triplesMap is 
+    # required.
+    sh:property [
+        sh:path [sh:alternativePath (rr:logicalTable rml:logicalSource)] ;
+        sh:name "rr:logicalTable/rml:logicalSource" ;
+        sh:description """
+        Either one rr:logicalTable or one rml:logicalSource is required, not 
+        both.
+        """ ;
+        sh:message """
+        Either one rr:logicalTable or one rml:logicalSource is required, not 
+        both.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:logicalTable
+    sh:property [
+        sh:path rr:logicalTable ;
+        sh:name "rr:logicalTable" ;
+        sh:description """
+        Definition of logical table to be mapped.
+        """ ;
+        sh:message """
+        Exactly one rr:logicalTable is required to access a relational 
+        database.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RRLogicalTableShape ;
+    ];
+
+    # rml:logicalSource
+    sh:property [
+        sh:path rml:logicalSource ;
+        sh:name "rml:logicalSource" ;
+        sh:description """
+        A logical source is any source that is mapped to RDF triples. A logical 
+        source is a Base Source, rml:BaseSource.
+        """ ;
+        sh:message """
+        Exactly one rml:logicalSource is required to access the data source.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLLogicalSourceShape ;
+    ] ;
+
+    # Either an rr:subject or rr:SubjectMap is required
+    sh:property [
+        sh:path [sh:alternativePath (rr:subjectMap rr:subject)] ;
+        sh:name "rr:subjectMap/rr:subject" ;
+        sh:description """
+        Either one rr:subject or one rr:SubjectMap is required, not both.
+        """ ;
+        sh:message """
+        Either one rr:subject or one rr:SubjectMap is required, not both.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:subjectMap
+    sh:property [
+        sh:path rr:subjectMap ;
+        sh:name "rr:subjectMap" ;
+        sh:description """
+        A SubjectMap element to generate a subject from a logical table row or
+        iterator.
+        """ ;
+        sh:message """
+        rr:SubjectMap must be an IRI or blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RRSubjectMapShape ;
+    ] ;
+
+    # rr:subject
+    sh:property [
+        sh:path rr:subject ;
+        sh:name "rr:subject" ;
+        sh:description """
+        An IRI reference for use as subject for all the RDF triples generated 
+        from a logical table row or iterator.
+        """ ;
+        sh:message """
+        rr:subject must be an IRI or blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RRsubjectShape ;
+    ] ;
+
+    # rr:predicateObjectMap
+    sh:property [
+        sh:path rr:predicateObjectMap ;
+        sh:name "rr:predicateObjectMap" ;
+        sh:description """
+        A PredicateObjectMap element to generate (predicate, object) pair from 
+        a logical table row.
+        """ ;
+        sh:message """
+        rr:PredicateObjectMap must be an IRI or blank node.
+        """ ;
+        sh:minCount 0 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RRPredicateObjectMapShape ; 
+    ] ;
+.
