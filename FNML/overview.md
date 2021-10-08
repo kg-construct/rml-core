@@ -51,7 +51,7 @@ To connect this function with the RML mapping document, we make use of a `fnml:F
 
 <#NameMapping>
     rr:predicate dbo:title ;                          # Specify the predicate
-    rr:objectMap [ rr:parentTriplesMap <#FunctionTermMap> ].                                                # Specify the object-map
+    rr:objectMap [ rr:parentTriplesMap <#FunctionTriplesMap> ].                                                # Specify the object-map
 
 <#FunctionTermMap>
     fnml:outputValue grel:stringOutput.               # grel:stringOutput
