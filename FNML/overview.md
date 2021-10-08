@@ -6,14 +6,16 @@ we combine <a>RML</a> with declarative function descriptions in <a>FnO</a>.
 <a>FnO</a> consists of -- among others -- <a>function descriptions</a> and <a>execution</a> descriptions.
 We describe these <a>executions</a> -- which link to specific <a>function descriptions</a> -- within the <a>RML mapping</a>.
 
-A [=triples map=] generates triples from input data.
-An [=RML mapping=] uses [=output triples map=]s to generate output triples from input data.
-We use an intermediate [=function triples map=] to generate [=execution triples=] from input data,
-and then use a [=function term map=] to link the output of those execution triples to the actual [=output triples map=],
-so that input data is transformed via a [=function triples map=] and then integrated in the output using a [=function term map=].
+A [=triples map=] "specifies the rules for translating each record" in input data into the output triples. We define [=function triples map=], a specific type of triplesMap (following the same semantics) to generate output of the function from input data. [=function triples map=] includes:
+- Exactly one rml:logicalSource
+- Exactly one fnml:functionTermMap to define the output of the function which is the output of the triplesMap.
+- Exactly one rml:predicateObjectMap to define the execution of the function
+- At least one rml:predicateObjectMap to define the input of the function
+ to generate the 
+ it has exactly one rml:logicalSource and one fnml:functionTermMap. 
 
-The <a>RML processor</a> thus needs to interpret these [=execution=] triples correctly to know which input data values to assign to the parameters of the function.
-After executing the correct function, the <a>RML processor</a> SHOULD link the resulting value(s) to the right [=output triples map=]s.
+Based on the definitions above, linking from any [=triples map=] to [=function triples map=] follows exactly the same semantic and rule as linking between any two [=triples map=] i.e. using rr:parentTriplesMap and in case of having different [=logical sources=], applying rr:joinCondition.
+
 
 ### Example
 
@@ -49,12 +51,17 @@ To connect this function with the RML mapping document, we make use of a `fnml:F
 
 <#NameMapping>
     rr:predicate dbo:title ;                          # Specify the predicate
-    rr:objectMap <#FunctionTermMap> .                 # Specify the object-map
+    rr:objectMap [ rr:parentTriplesMap <#FunctionTermMap> ].                                                # Specify the object-map
 
 <#FunctionTermMap>
-    fnml:functionValue <#FunctionTriplesMap> .        # The object is taken from the output of the execution triples of the function
+    fnml:outputValue grel:stringOutput.               # grel:stringOutput
 
 <#FunctionTriplesMap a fnml:FunctionTriplesMap ;      # Generating the execution triples
+
+    rml:logicalSource <#LogicalSource> ;              # Specify the data source
+
+    fnml:outputValue <#FunctionTermMap>;              # Specify the output of the triplesMap
+
     rr:predicateObjectMap [
         rr:predicate fno:executes ;                   # Execute the function&hellip;
         rr:objectMap [ rr:constant grel:toUppercase ] # grel:toUppercase
@@ -68,5 +75,4 @@ To connect this function with the RML mapping document, we make use of a `fnml:F
 The `name`-value is not referenced directly,
 instead, its value is used as `grel:inputString`-parameter
 for the `grel:toUppercase`-function.
-The execution result triples of that function are then referred to have the object
-within the `<#NameMapping>`.
+
