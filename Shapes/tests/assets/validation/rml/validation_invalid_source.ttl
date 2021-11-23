@@ -1,0 +1,36 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@base <http://example.com/base/> .
+@prefix sd:  <http://www.w3.org/ns/sparql-service-description#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+<#DCAT_CSV_source>
+    a dcat:InvalidClass ;
+    dcat:distribution [
+        a dcat:Distribution;
+        dcat:downloadURL "http://127.0.0.1:8000/tests/assets/csv/student.csv" ;
+        dcat:mediaType "text/csv"
+    ] .
+
+<TriplesMapDCAT_CSV>
+    a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source <#DCAT_CSV_source> ;
+        rml:referenceFormulation ql:CSV ;
+    ] ;
+
+    rr:subjectMap [ rr:template "http://example.com/csv/{name}" ];
+
+    rr:predicateObjectMap [
+        rr:predicate foaf:age;
+        rr:objectMap [
+            rml:reference "age"
+        ]
+    ] .

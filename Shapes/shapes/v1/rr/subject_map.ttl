@@ -1,0 +1,209 @@
+###############################################################################
+# R2RML Subject Map and subject shortcut shape                                #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RRSubjectMapShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'rr:subjectMap'
+    sh:name "rr:SubjectMap" ;
+    sh:description """
+    Represents a subject map.
+    """ ;
+    sh:message """
+    rr:subjectMap requires one rr:template or one rr:column or 1 rr:constant or
+    one rml:reference.
+    """ ;
+
+    # Exactly one rr:template, one rr:column, one rr:constant or one 
+    # rml:reference is required.
+    sh:property [
+        sh:path [sh:alternativePath (rr:template 
+                                     rr:column
+                                     rr:constant
+                                     rml:reference)] ;
+        sh:name "rr:template/rr:column/rr:constant/rml:reference" ;
+        sh:description """
+        Exactly one rr:template, one rr:column, one rr:constant or one 
+        rml:reference is required.
+        """ ;
+        sh:message """
+        Exactly one rr:template, one rr:column, one rr:constant or one 
+        rml:reference is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:template
+    sh:property [
+        sh:path rr:template ;
+        sh:name "rr:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rr:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:column
+    sh:property [
+        sh:path rr:column ;
+        sh:name "rr:column" ;
+        sh:description """
+        Name of a column in the logical table. When generating RDF triples from
+        a logical table row, value from the specified column is used as the 
+        subject, predicate, or object (based upon the specific domain).
+        """ ;
+        sh:message """
+        rr:column must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:constant
+    sh:property [
+        sh:path rr:constant ;
+        sh:name "rr:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rr:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:path rml:reference ;
+        sh:name "rml:reference" ;
+        sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:class
+    sh:property [
+        sh:path rr:class ;
+        sh:name "rr:class" ;
+        sh:description """
+        The subject value generated for a logical table row will be asserted 
+        as an instance of this RDFS class.
+        """ ;
+        sh:message """
+        rr:class must be an IRI and may be specified multiple times.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rr:termType
+    sh:property [
+        sh:path rr:termType ;
+        sh:name "rr:termType" ;
+        sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified for rr:column should be an IRI reference, 
+        or blank node.
+        """ ;
+        sh:message """
+        rr:termType must be either rr:IRI or rr:BlankNode for an rr:SubjectMap.
+        May only be provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:in (rr:IRI rr:BlankNode) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # Either an rr:graph or rr:graphMap may be optionally be provided, but not 
+    # both
+    sh:property [
+        sh:path [sh:alternativePath (rr:graph rr:graphMap)] ;
+        sh:name "rr:graph/rr:graphMap" ;
+        sh:description """
+        Either an rr:graph or rr:graphMap may be optionally be provided, but 
+        not both.
+        """ ;
+        sh:message """
+        Either an rr:graph or rr:graphMap may be optionally be provided, but
+        not both.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:graphMap
+    sh:property [
+        sh:path rr:graphMap ;
+        sh:name "rr:graphMap" ;
+        sh:description """
+        Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
+        triples generated from a logical row will be stored in the specified 
+        named graph. Otherwise, the RDF triple generated using the 
+        (predicate, object) pair will be stored in the specified named graph.
+        """ ;
+        sh:message """
+        rr:graphMap must be either an IRI or blank node. 
+        """ ;
+        sh:node schema:RRGraphMapShape ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+
+    # rr:graph
+    sh:property [
+        sh:path rr:graph ;
+        sh:name "rr:graph" ;
+        sh:description """
+        An IRI reference for use as the graph name of all triples generated 
+        with the GraphMap.
+        """ ;
+        sh:message """
+        rr:graphMap must be an IRI. 
+        """ ;
+        sh:node schema:RRgraphShape ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.
+
+
+schema:RRsubjectShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'rr:subject'
+    sh:name "rr:subject" ;
+    sh:description """
+    An IRI reference for use as subject for all the RDF triples generated from 
+    a logical table row or iterator.
+    """ ;
+    sh:message """
+    rr:subject shortcut for rr:subjectMap must be an IRI or BlankNode.
+    """ ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+.

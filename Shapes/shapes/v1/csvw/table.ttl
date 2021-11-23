@@ -1,0 +1,84 @@
+###############################################################################
+# RML Logical Source: CSVW Table shape                                        #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:CSVWTableShape
+    a sh:NodeShape ;
+    sh:targetClass csvw:Table ;
+    sh:closed "true"^^xsd:boolean ;  # Enforce CWA
+    sh:ignoredProperties (rdf:type) ;  # Already targets 'csvw:Table'
+    sh:name "RML Logical Source: CSVW Table" ;
+    sh:description """
+    An RML Logical Source: CSVW Table describes how a CSV needs to be accessed
+    and processed.
+    """ ;
+    sh:message """
+    An RML Logical Source description for a CSVW Table requires exactly one
+    csvw:url and optionally one csvw:dialect or one csvw:tableSchema.
+    """ ;
+    
+    # csvw:url
+    sh:property [
+        sh:path csvw:url ;
+        sh:name "csvw:url" ;
+        sh:description """
+        This link property gives the single URL of the CSV file that the table 
+        is held in, relative to the location of the metadata document. 
+        """ ;
+        sh:message """
+        The csvw:url must be a string URL pointing to the location of the CSV 
+        file.
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # csvw:dialect
+    sh:property [
+        sh:path csvw:dialect ;
+        sh:name "csvw:dialect" ;
+        sh:description """
+        An object property that provides a single dialect description. If 
+        provided, dialect provides hints to processors about how to parse the 
+        referenced files to create tabular data models for the tables in the 
+        group.
+        """ ;
+        sh:message """
+        A single csvw:Dialect description is expected. The dialect description 
+        is optional and falls back to the default dialect specified in the CSVW
+        specification.
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 0 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:CSVWDialectShape ;
+    ] ;
+
+    # csvw:tableSchema
+    sh:property [
+        sh:path csvw:tableSchema ;
+        sh:name "csvw:tableSchema" ;
+        sh:description """
+        An object property that provides a single schema, used as the default 
+        for all the tables in the group.
+        """ ;
+        sh:message """
+        A single csvw:TableSchema description is expected. The table schema 
+        description is optional and fallsback to extracting the CSV header from
+        the CSV file itself. 
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 0 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:CSVWTableSchemaShape ;
+    ] ;
+.

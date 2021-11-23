@@ -1,0 +1,131 @@
+###############################################################################
+# R2RML Graph Map and graph shortcut shape                                    #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RRGraphMapShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:graphMap" ;
+    sh:description """
+    Represents a graph map.
+    """ ;
+    sh:message """
+    rr:GraphMap must specify an rr:template, rml:reference, rr:column or
+    rr:constant with the IRI of the Named Graph.
+    """ ;
+
+    # Exactly one rr:template, one rml:reference, one rr:constant or one rr:column is required
+    sh:property [
+        sh:path [sh:alternativePath (rr:template rr:constant rml:reference rr:column)] ;
+        sh:name "rr:template/rr:constant/rml:reference/rr:column" ;
+        sh:description """
+        Exactly one rr:template, one rml:reference, one rr:constant or one rr:column is required.
+        """ ;
+        sh:message """
+        Exactly one rr:template, one rml:reference, one rr:constant or one rr:column is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:template
+    sh:property [
+        sh:path rr:template ;
+        sh:name "rr:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rr:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:constant
+    sh:property [
+        sh:path rr:constant ;
+        sh:name "rr:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rr:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:path rml:reference ;
+        sh:name "rml:reference" ;
+        sh:description """
+        A property for indicating whether a term map is an RML reference.
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:column
+    sh:property [
+        sh:path rr:column ;
+        sh:name "rr:column" ;
+        sh:description """
+        A property for indicating whether a term map is an R2RML column.
+        """ ;
+        sh:message """
+        rr:column must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:termType
+    sh:property [
+        sh:path rr:termType ;
+        sh:name "rr:termType" ;
+        sh:description """
+        An IRI indicating whether graph generated using the value 
+        from column name specified for rr:column or an RML reference
+        should be an IRI reference or blank node.
+        """ ;
+        sh:message """
+        rr:termType must be either rr:IRI or rr:BlankNode for an rr:GraphMap.
+        May only be provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:in (rr:IRI rr:BlankNode) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.
+
+
+schema:RRgraphShape 
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:graph" ;
+    sh:description """
+    An IRI reference for use as the graph name of all triples generated with 
+    the GraphMap. 
+    """ ;
+    sh:message """
+    rr:graph must be an IRI.
+    """ ;
+    sh:nodeKind sh:IRI ;
+.
