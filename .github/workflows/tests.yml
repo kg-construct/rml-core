@@ -24,7 +24,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pipenv
+        cd Shapes
         pipenv install
     - name: Run tests
       run: |
+        cd Shapes
         pipenv run python3 tests.py
