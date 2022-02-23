@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>RML+FnO</title>
+  <title>RML-core</title>
   <meta charset='utf-8'>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script class="remove">
@@ -10,22 +10,14 @@
       // check https://respec.org/docs/ for the meaning of these keys
       authors: [
         {
-          name: "Pano Maria"
-        },
-        {
-          name: "David Chaves-Fraga"
+          name: "Pano Maria",
+          company: "Skemu",
+          url: "https://panomaria.com",
+          companyURL: "https://skemu.com"
         },
       ],
-      edDraftURI: "https://kg-construct.github.io/rml-fno-spec/FNML",
+      edDraftURI: "https://kg-construct.github.io/rml-fno-spec/",
       editors: [
-        {
-          name: "Ben De Meester",
-          mailto: "ben.demeester@ugent.be",
-          company: "Ghent University &ndash; imec &ndash; IDLab",
-          url: "https://ben.de-meester.org/#me",
-          orcid: "0000-0003-0248-0987",
-          companyURL: "https://knows.idlab.ugent.be/"
-        },
         {
           name: "Anastasia Dimou",
           mailto: "anastasia.dimou@ugent.be",
@@ -62,7 +54,7 @@
           }]
         },
       ],
-      shortName: "RML+FnO",
+      shortName: "RML-core",
       specStatus: "CG-DRAFT",
       // W3C config
       copyrightStart: "2021",
@@ -82,15 +74,11 @@
 
   <section id="conformance"></section>
 
-  <section data-include="FNML/problem.md" data-include-format="markdown"></section>
+  <section data-include="definitions.md" data-include-format="markdown"></section>
 
-  <section data-include="FNML/definitions.md" data-include-format="markdown"></section>
+  <section data-include="temp.md" data-include-format="markdown"></section>
 
-  <section data-include="FNML/overview.md" data-include-format="markdown"></section>
-
-  <section data-include="FNML/ontology.md" data-include-format="markdown"></section>
-
-  <section data-include="FNML/implementation.md" data-include-format="markdown"></section>
+  <section data-include="ontology.md" data-include-format="markdown"></section>
 
 </body>
 

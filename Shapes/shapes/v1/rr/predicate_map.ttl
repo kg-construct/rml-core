@@ -1,0 +1,141 @@
+###############################################################################
+# R2RML Predicate Map and predicate shortcut shape                            #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RRPredicateMapShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:PredicateMap" ;
+    sh:description """
+    Represents a predicate map.
+    """ ;
+    # Exactly one rr:template, one rr:column, one rr:constant or one 
+    # rml:reference is required.
+    sh:property [
+        sh:path [sh:alternativePath (rr:template 
+                                     rr:column
+                                     rr:constant
+                                     rml:reference)] ;
+        sh:name "rr:template/rr:column/rr:constant/rml:reference" ;
+        sh:description """
+        Exactly one rr:template, one rr:column, one rr:constant or one 
+        rml:reference is required.
+        """ ;
+        sh:message """
+        Exactly one rr:template, one rr:column, one rr:constant or one 
+        rml:reference is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:template
+    sh:property [
+        sh:path rr:template ;
+        sh:name "rr:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rr:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:column
+    sh:property [
+        sh:path rr:column ;
+        sh:name "rr:column" ;
+        sh:description """
+        Name of a column in the logical table. When generating RDF triples from
+        a logical table row, value from the specified column is used as the 
+        subject, predicate, or object (based upon the specific domain).
+        """ ;
+        sh:message """
+        rr:column must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:constant
+    sh:property [
+        sh:path rr:constant ;
+        sh:name "rr:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rr:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:path rml:reference ;
+        sh:name "rml:reference" ;
+        sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:termType
+    sh:property [
+        sh:path rr:termType ;
+        sh:name "rr:termType" ;
+        sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified for rr:column should be an IRI reference, 
+        blank node, or a literal.
+        """ ;
+        sh:message """
+        rr:termType must be either rr:IRI for an rr:PredicateMap.
+        May only be provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:in (rr:IRI) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.
+
+
+schema:RRpredicateShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:predicate" ;
+    sh:description """
+    Specifies the predicate for the generated triple from the logical table 
+    row or iterator.
+    """ ;
+    sh:message """
+    rr:predicate must be an IRI.
+    """ ;
+    sh:nodeKind sh:IRI ;
+.

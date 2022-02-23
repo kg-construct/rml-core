@@ -1,0 +1,117 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@base <http://example.com/base/> .
+@prefix sd:  <http://www.w3.org/ns/sparql-service-description#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+<#DCAT_XML_source>
+    a dcat:Dataset ;
+    dcat:distribution [
+        a dcat:Distribution;
+        dcat:downloadURL "http://127.0.0.1:8000/tests/assets/xml/student.xml" ;
+        dcat:mediaType "text/xml"
+    ] .
+
+<TriplesMapDCAT_XML>
+    a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source <#DCAT_XML_source> ;
+        rml:referenceFormulation ql:XPath ;
+        rml:iterator "/students/student" ;
+    ] ;
+
+    rr:subjectMap [ rr:template "http://example.com/xml/{name}" ];
+
+    rr:predicateObjectMap [
+        rr:predicate foaf:age;
+        rr:objectMap [
+            rml:reference "age"
+        ]
+    ] .
+
+<#DCAT_JSON_source>
+    a dcat:Dataset ;
+    dcat:distribution [
+        a dcat:Distribution;
+        dcat:downloadURL "http://127.0.0.1:8000/tests/assets/json/student.json" ;
+        dcat:mediaType "application/json"
+    ] .
+
+<TriplesMapDCAT_JSON>
+    a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source <#DCAT_JSON_source> ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$.students.[*]" ;
+    ] ;
+
+    rr:subjectMap [ rr:template "http://example.com/json/{name}" ];
+
+    rr:predicateObjectMap [
+        rr:predicate foaf:age;
+        rr:objectMap [
+            rml:reference "age"
+        ]
+    ] .
+
+<#DCAT_CSV_source>
+    a dcat:Dataset ;
+    dcat:distribution [
+        a dcat:Distribution;
+        dcat:downloadURL "http://127.0.0.1:8000/tests/assets/csv/student.csv" ;
+        dcat:mediaType "text/csv"
+    ] .
+
+<TriplesMapDCAT_CSV>
+    a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source <#DCAT_CSV_source> ;
+        rml:referenceFormulation ql:CSV ;
+    ] ;
+
+    rr:subjectMap [ rr:template "http://example.com/csv/{name}" ];
+
+    rr:predicateObjectMap [
+        rr:predicate foaf:age;
+        rr:objectMap [
+            rml:reference "age"
+        ]
+    ] .
+
+<#DCAT_RDFXML_source>
+    a dcat:Dataset ;
+    dcat:distribution [
+        a dcat:Distribution;
+        dcat:downloadURL "http://127.0.0.1:8000/tests/assets/rdf/student.rdf" ;
+        dcat:mediaType "application/rdf+xml"
+    ] .
+
+<TriplesMapDCAT_RDFXML>
+    a rr:TriplesMap;
+    rml:logicalSource [
+        rml:source <#DCAT_RDFXML_source> ;
+        rml:query """PREFIX foaf: <http://xmlns.com/foaf/0.1/>                  
+                     PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+                     SELECT ?person ?name ?age                                  
+                     WHERE {                                                    
+                         ?person foaf:name ?name .                              
+                         ?person foaf:age ?age .                                
+                     }                                                          
+                     ORDER BY DESC(?age)""" ;
+    ] ;
+
+    rr:subjectMap [ rr:template "http://example.com/rdfxml/{name}" ];
+
+    rr:predicateObjectMap [
+        rr:predicate foaf:age;
+        rr:objectMap [
+            rml:reference "age"
+        ]
+    ] .
