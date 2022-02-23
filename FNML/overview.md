@@ -8,7 +8,7 @@ We describe these <a>executions</a> -- which link to specific <a>function descri
 
 A [=triples map=] is a rule that maps each iteration in the logical source to a number of RDF triples.
 An [=RML mapping=] uses [=triples map=]s to generate output triples from input data.
-We use an intermediate [=function triples map=] to generate [=execution triples=] from input data,
+We use an intermediate [=function triples map=] to generate [=execution=] triples from input data,
 and then use a [=function term map=] to link the output of those execution triples to the actual [=triples map=],
 so that input data is transformed via a [=function triples map=] and then integrated in the output using a [=function term map=].
 

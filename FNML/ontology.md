@@ -99,7 +99,7 @@ The blank node's ID should be unique.
 
 ### fnml:functionValue
 
-<dfn>fnml:functionValue</dfn> connects the RDF dataset generating triples map using a [=function term map=] with a [=function triples map=].
+<dfn class="lint-ignore">fnml:functionValue</dfn> connects the RDF dataset generating triples map using a [=function term map=] with a [=function triples map=].
 It has domain [=fnml:FunctionTermMap=] and range [=fnml:FunctionTriplesMap=].
 
 ### Nested functions
