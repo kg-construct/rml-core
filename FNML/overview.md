@@ -6,14 +6,14 @@ we combine <a>RML</a> with declarative function descriptions in <a>FnO</a>.
 <a>FnO</a> consists of -- among others -- <a>function descriptions</a> and <a>execution</a> descriptions.
 We describe these <a>executions</a> -- which link to specific <a>function descriptions</a> -- within the <a>RML mapping</a>.
 
-A [=triples map=] generates triples from input data.
-An [=RML mapping=] uses [=output triples map=]s to generate output triples from input data.
+A [=triples map=] is a rule that maps each iteration in the logical source to a number of RDF triples.
+An [=RML mapping=] uses [=triples map=]s to generate output triples from input data.
 We use an intermediate [=function triples map=] to generate [=execution triples=] from input data,
-and then use a [=function term map=] to link the output of those execution triples to the actual [=output triples map=],
+and then use a [=function term map=] to link the output of those execution triples to the actual [=triples map=],
 so that input data is transformed via a [=function triples map=] and then integrated in the output using a [=function term map=].
 
 The <a>RML processor</a> thus needs to interpret these [=execution=] triples correctly to know which input data values to assign to the parameters of the function.
-After executing the correct function, the <a>RML processor</a> SHOULD link the resulting value(s) to the right [=output triples map=]s.
+After executing the correct function, the <a>RML processor</a> SHOULD link the resulting value(s) to the right [=triples map=]s.
 
 ### Example
 
@@ -68,5 +68,5 @@ To connect this function with the RML mapping document, we make use of a `fnml:F
 The `name`-value is not referenced directly,
 instead, its value is used as `grel:inputString`-parameter
 for the `grel:toUppercase`-function.
-The execution result triples of that function are then referred to have the object
+The execution result triples of that function are then evaluated to generate the object
 within the `<#NameMapping>`.

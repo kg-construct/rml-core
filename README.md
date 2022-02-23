@@ -2,9 +2,9 @@
 
 For a rendered version, see <https://kg-construct.github.io/rml-fno-spec/>.
 
-# Quickstart
+## Quickstart
 
-Run a HTTP server in this directory: 
+Run a HTTP server in this directory:
 
 using php: `php -S localhost:8000`
 
