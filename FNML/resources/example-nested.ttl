@@ -1,0 +1,41 @@
+<#Person_Mapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap <#SubjectMap> ;
+    rr:predicateObjectMap <#NameMapping> .
+
+<#NameMapping>
+    rr:predicate dbo:title ;
+    rr:objectMap <#ExecutionTermMap> .
+
+<#ExecutionTermMap> a fnml:ExecutionTermMap ;
+    fnml:execution <#Execution> ;
+    fnml:output grel:stringOutput .
+
+<#Execution> a fnml:Execution ;
+    fnml:function grel:toUppercase ;
+    fnml:inputParameters
+        [
+            a fnml:ParameterTermMap
+            fnml:predicate grel:stringInput ;
+            fnml:execution <#Execution2> ;     # Link to the nested execution
+            fnml:output grel:stringOutput .    # Specify which output of the nested execution is taken
+        ] .
+
+<#Execution2> a fnml:Execution ;               # First, replace spaces with dashes from the `name` reference
+    fnml:function grel:string_replace ;
+    fnml:inputParameters
+        [
+            a fnml:ParameterTermMap
+            fnml:predicate grel:valueParameter ;
+            rr:reference "name" .
+        ] ;
+        [
+            a fnml:ParameterTermMap
+            fnml:predicate grel:p_string_find ;
+            rr:reference " " .
+        ] ;
+        [
+            a fnml:ParameterTermMap
+            fnml:predicate grel:p_string_replace ;
+            rr:reference "-" .
+        ] ;
