@@ -59,7 +59,7 @@ An [=fnml:ExecutionTermMap=] MUST have exactly one `fnml:execution` relation.
 Further, it MAY have following relations specified:
 
 * `rr:termType`: for processing, see paragraph above
-* `rr:language` OR `rml:langaugeMap` OR `rr:datatype`: for processing, see [RML Language Tags](https://rml.io/specs/rml/#language-tag) and [RML Typed Literals](https://rml.io/specs/rml/#typed-literals)
+* `rr:language` OR `rml:languageMap` OR `rr:datatype`: for processing, see [RML Language Tags](https://rml.io/specs/rml/#language-tag) and [RML Typed Literals](https://rml.io/specs/rml/#typed-literals)
 * `fnml:output`: this relationship MUST refer to exactly one of the output predicates as specified in the FnO [=function description=]. This signifies which result of the execution to use. The default value is the first output predicate as specified in the FnO [=function description=]. This order is deterministic as the outputs of an FnO [=function description=] are described in an rdf:List.
 
 <p class="issue" data-number="7" data-format="markdown">
@@ -73,8 +73,8 @@ For now, we refer to the R2RML spec, but it is assumed these references will be 
 
 ### fnml:Execution
 
-<dfn class="lint-ignore">fnml:Execution</dfn> is a new class to denote an [=FnML execution=].
-It is refered from a [=fnml:ExecutionTermMap=] via the predicate `fnml:execution`.
+<dfn class="lint-ignore">fnml:Execution</dfn> is a class to denote an [=FnML execution=].
+It is referred from a [=fnml:ExecutionTermMap=] via the predicate `fnml:execution`.
 It refers to an FnO [=function description=] via the predicate `fnml:function`,
 and to zero or more input parameters via the predicate `fnml:inputParameters`.
 

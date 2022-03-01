@@ -15,7 +15,7 @@
   For example, `sum(2, 4)` is an execution.
   The value of the output is known after the function is executed, and should in this case be the integer `6`.
 - An <dfn>FnML execution</dfn> is the link between RML and FnO. It specifies how to assign the values as extracted in RML (using parameter term maps) to an FnO Execution.
-- An <dfn>execution term map</dfn> is a specific type of [term map](https://rml.io/specs/rml/#term-map): it is referenced from an [=triples map=], generating an [RDF term](https://rml.io/specs/rml/#rdf-term) from a specific execution result of an [=FnML execution=].
+- An <dfn>execution term map</dfn> is a specific type of [term map](https://rml.io/specs/rml/#term-map): it is referenced from a [=triples map=], generating an [RDF term](https://rml.io/specs/rml/#rdf-term) from a specific execution result of an [=FnML execution=].
 
 <p class="note" data-format="markdown">
 It is currently assumed that an [=execution term map=] always returns an RDF term [[rdf-concepts]].
