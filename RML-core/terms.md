@@ -1,21 +1,4 @@
-# Temp
-
-## Expression map (`rml:ExpressionMap`)
-
-An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] can have the following properties:
-* 0 or 1 `rr:constant`
-* 0 or 1 `rml:reference`
-* 0 or 1 `rr:template`
-
-Each of these properties specifies an expression which can lead to a list of values.
-
-### Constant (`rr:constant`)
-
-... <dfn>constant shortcut property</dfn> ...
-
-### Reference (`rml:reference`)
-
-### Template (`rr:template`)
+# Terms
 
 ## Term map (`rml:TermMap`)
 
@@ -23,7 +6,13 @@ A <dfn>term map</dfn> (`rml:TermMap`) is ...
 
 ... <dfn>term type</dfn> ...
 
-### Datatypes (`rml:datatypeMap` and `rr:datatype`)
+<aside class="issue">
+incorporate the following text from r2rml templates somewhere.
+
+; or in the IRI-safe versions of the data values, if the term type is rr:IRI (see note below)
+</aside>
+
+## Datatypes (`rml:datatypeMap` and `rr:datatype`)
 
 A <dfn>datatypeable term map</dfn> is a [=term map=] with a [=term type=] of `rr:Literal` that does not have a [specified language map](#language-tags-rml-languagemap-and-rr-language).
 
@@ -55,8 +44,7 @@ leads to the following replacement triples.
 ] .
 ```
 
-#### Automatically deriving datatypes
-
+### Automatically deriving datatypes
 
 
 ### Language tags (`rml:languageMap` and `rr:language`)
