@@ -4,9 +4,9 @@ To be able to map data from structured sources to RDF, expressions are needed. <
 
 ## Expression map (`rml:ExpressionMap`)
 
-An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] can have at least the following properties that specify:
-* 0 or 1 `rr:constant`
-* 0 or 1 `rml:reference`
+An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] MAY have one the following properties that specify:
+* 0 or 1 `rr:constant`, or
+* 0 or 1 `rml:reference`, or
 * 0 or 1 `rr:template`
 
 Each of these properties specifies an [=expression=] which can result in a list of values.
