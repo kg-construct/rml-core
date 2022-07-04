@@ -37,7 +37,6 @@ A <dfn>string template</dfn> is a format string that can be used to build string
 * Curly braces that do not enclose [=reference expressions=] MUST be escaped by a backslash character (`\`). This also applies to curly braces within [=reference expressions=].
 * Backslash characters (`\`) MUST be escaped by preceding them with another backslash character, yielding (`\\`). This also applies to backslashes within [=reference expressions=].
 * There SHOULD be at least one pair of unescaped curly braces.
-* If a template contains multiple pairs of unescaped curly braces, then any pair SHOULD be separated from the next one by a <dfn>safe separator</dfn>. This is any character or string that does not occur anywhere in any of the data values of either [=reference expression=] result.
 
 The <dfn>template reference expressions</dfn> of a [=template expression=] is the set of [=reference expressions=] enclosed in unescaped curly braces in the [=string template=].
 
@@ -60,5 +59,3 @@ The <dfn>template value</dfn> when evaluating a [=string template=] for a given 
         2. Replace the pair of curly braces with `value`.
     3. Let `product` be `template`.
 5. Return `result`;
-
-<aside class="issue" data-number="47"></aside>
