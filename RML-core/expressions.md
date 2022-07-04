@@ -55,7 +55,7 @@ The <dfn>template value</dfn> when evaluating a [=string template=] for a given 
 4. For each ordered list `product` in `result`:
     1. Let `template` be the [=string template=]
     2. For each pair of unescaped curly braces in `template`:
-        1. Let `value` be the value at the index of `product` corresponding with the index of `value` in `template`.
-        2. Replace the pair of curly braces with `value`.
-    3. Let `product` be `template`.
-5. Return `result`;
+        1. Let `value` be the value at the index of `product` corresponding with the index of `value` in `template`
+        2. Replace the pair of curly braces with `value`
+    3. Let `product` be `template`
+5. Return `result`
