@@ -8,28 +8,90 @@ the preferred prefix is `fnml:`.
 <figure>
 <pre class="mermaid nohighlight override">
 graph LR
-    A([term map]) -->|rr:constant| B[constant value]
-    A -->|rml:reference| C[reference formulation]
-    A -->|rr:template| D[string template]
-    A -->|rr:termType| E([rr:IRI / rr:BlankNode / rr:Literal])
-    A -->|rr:language| F[language tag]
-    A -->|rr:datatype| G([rdfs:Datatype])
-    H([rr:SubjectMap]):::note
-    J([rr:PredicateMap]):::note
-    K([rr:ObjectMap]):::note
-    L([rr:GraphMap]):::note
+    A([rr:TermMap])
     M([fnml:ExecutionTermMap]):::new
-    A -->|fnml:execution| I([fnml:Execution]):::new
-    A -->|fnml:output| P([IRI]):::new
+    M -->|fnml:execution| I([fnml:Execution]):::new
+    M -->|fnml:output| P([IRI]):::new
     I -->|fnml:function| N([fno:Function]):::fno
-    I -->|fnml:inputParameters| O([fnml:ParameterTermMap]):::new
-    O -->|fnml:predicate| Q([IRI]):::new
-    classDef note fill:#eee,stroke-width:0px,color:#666
+    I -->|fnml:inputParameter| O([fnml:ParameterMap]):::new
+    O -->|fnml:input| Q([IRI]):::new
+    O -->|fnml:inputValue| R([rr:TermMap])
     classDef new fill:#8F9
     classDef fno fill:#F89
-    linkStyle 6 stroke:#8F9
 </pre>
 <figcaption>FNML terms, in relation to the RML/R2RML [term map](https://rml.io/specs/rml/#term-map)</figcaption>
+</figure>
+
+<figure>
+<pre class="mermaid nohighlight override">
+graph LR
+    A([rr:TermMap])
+    M([fnml:FunctionMap]):::new
+    M -->|fnml:functionValue| I([rr:TriplesMap])
+    M -->|fnml:output| J([IRI]):::new
+    I -->|rr:predicateobjectMap| P([execution rr:PredicateObjectMap])
+    I -->|rr:predicateobjectMap| N([rr:PredicateObjectMap])
+    P -->|rr:predicateMap| Q([executes constant rr:TermMap])
+    P -->|rr:objectMap| R([function constant rr:TermMap])
+    N -->|rr:predicateMap| O([parameter rr:TermMap])
+    N -->|rr:objectMap| S([parameter value rr:TermMap])
+    classDef new fill:#8F9
+</pre>
+<figcaption>ORIGINAL FNML terms</figcaption>
+</figure>
+
+<figure>
+<pre class="mermaid nohighlight override">
+graph LR
+    A([rr:TermMap])
+    M([fnml:FunctionMap]):::fnml
+    M -->|fnml:execution| I([fnml:Execution]):::fnml
+    M -->|fnml:output| J([IRI]):::fnml
+    I -->|rr:predicateobjectMap| P([rr:PredicateObjectMap])
+    I -->|rr:predicateobjectMap| N([rr:PredicateObjectMap])
+    P -->|rr:predicateMap| Q[fno:executes]:::fno
+    P -->|rr:objectMap| R([fno:Function rr:TermMap]):::fno
+    N -->|rr:predicateMap| O([parameter rr:TermMap])
+    N -->|rr:objectMap| S([parameter value rr:TermMap])
+    M -->|fnml:execution| V([fnml:Execution]):::fnml
+    M -->|fnml:output| JJ([IRI]):::fnml
+    V -->|fnml:functionMap| T([function rr:TermMap]):::shortcut
+    V -->|fnml:inputParameter| U([fnml:ParameterMap]):::fnml
+    U -->|rr:predicateMap| W([parameter rr:TermMap])
+    U -->|rr:objectMap| X([parameter value rr:TermMap])
+    classDef fnml fill:#8F9
+    classDef fno fill:#F89
+    classDef shortcut fill:#89F
+</pre>
+<figcaption>Some kind of combination</figcaption>
+</figure>
+
+<figure>
+<pre class="mermaid nohighlight override">
+graph LR
+    T3M([TriplesMap])
+    T3M-->|predicatObjectMap| POM([rr:PredicatObjectMap])
+    POM -->|objectMap| FM
+    FM([FunctionTermMap])
+    FM -->|execution| Ex([ExecutionMap])
+    FM -->|output| J(grel:stringOut):::fno
+    Ex -->|function| ExFn(grel:array_join):::fno
+    Ex -->|predicateobjectMap| ParamPOM([PredicateObjectMap])
+    ParamPOM -->|predicateMap| P1(grel:array_value):::fno
+    ParamPOM -->|objectMap| O1("{childsource_value}"):::fno
+    ParamPOM -->|predicateMap| P2(grel:array_value):::fno
+    ParamPOM -->|objectMap| ROM([ReferencingObjectMap])
+    ROM -->|parentTriplesMap| PT3M([TriplesMap]):::ls2
+    ROM -->|joinCondition| JC([JoinCondition])
+    ROM -->|joinResultTerm| JTM("{parentsource_value}"):::ls2
+    JC -->|childTerm| ChTM([TermMap]):::ls2
+    JC -->|parentTerm| PaTM([TermMap]):::ls2
+    classDef fnml fill:#8F9
+    classDef fno fill:#F89
+    classDef rml fill:#89F
+    classDef ls2 fill:#09F
+</pre>
+<figcaption>WIP</figcaption>
 </figure>
 
 ### fnml:ExecutionTermMap
@@ -76,17 +138,25 @@ For now, we refer to the R2RML spec, but it is assumed these references will be 
 <dfn class="lint-ignore">fnml:Execution</dfn> is a class to denote an [=FnML execution=].
 It is referred from a [=fnml:ExecutionTermMap=] via the predicate `fnml:execution`.
 It refers to an FnO [=function description=] via the predicate `fnml:function`,
-and to zero or more input parameters via the predicate `fnml:inputParameters`.
+and to zero or more input parameters via the predicate `fnml:inputParameter`.
 
-### fnml:ParameterTermMap
+### fnml:ParameterMap
 
-<dfn>fnml:ParameterTermMap</dfn> is a subclass of [rr:TermMap](http://www.w3.org/ns/r2rml#TermMap).
+<dfn>fnml:ParameterMap</dfn> is a subclass of [rr:TermMap](http://www.w3.org/ns/r2rml#TermMap).
 All default [[RML]] processing holds,
 **with the same extension as with the [=fnml:ExecutionTermMap=]**.
 
 #### Logical source
 
-The logical source of the [=fnml:ParameterTermMap=]s are determined by the logical source of the triples map that refers to the [=fnml:Execution=].
+The logical source is the same as the logical source of the triples map that refers to the [=fnml:Execution=].
+It is thus passed on from the triples map over the [=fnml:Execution=] to the [=fnml:ParameterMap=].
+An [=fnml:Execution=] or [=fnml:ParameterMap=] can be reused across triple maps, however,
+the logical source is determined at runtime and thus is always a single logical source, namely, the one specified by the triples map that is cuurently being processed.
+An engine needs to take into account which triples map is currently processed, to know which logical source's iterations to use for an [=fnml:Execution=] or [=fnml:ParameterMap=].
+
+<p class="issue" data-format="markdown">
+The assumption is that this handling of a logical source is the same behavior as, e.g., a term map definition that is being reused across triples maps, however, that doesn't seem to be clearly specified in the [currently R2RML specification](https://www.w3.org/2001/sw/rdb2rdf/r2rml/#dfn-triples-map)
+</p>
 
 <p class="issue" data-format="markdown">
 For an old example on joining values across data sources, without join conditions, see test case [RMLFNOTC009](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0009-CSV).
@@ -117,21 +187,32 @@ It has domain [=fnml:ExecutionTermMap=] and range [=fnml:Execution=].
 ### fnml:output
 
 <dfn class="lint-ignore">fnml:output</dfn> connects the RDF dataset generating triples map via a [fnml:ExecutionTermMap] with an output predicate.
-It has domain [=fnml:ExecutionTermMap=] and range [rdf:Property].
+It has domain [=fnml:ExecutionTermMap=].
 
 ### fnml:function
 
 <dfn class="lint-ignore">fnml:function</dfn> connects the [fnml:Execution] with an FnO [=function description=].
 It has domain [=fnml:Execution=] and range [fno:Function](https://w3id.org/function/ontology#Function).
 
-### fnml:predicate
+### fnml:inputParameter
 
-<dfn class="lint-ignore">fnml:predicate</dfn> connects the [fnml:ParameterTermMap] with a parameter predicate.
-It has domain [=fnml:ParameterTermMap=] and range [rdf:Property].
+<dfn class="lint-ignore">fnml:inputParameter</dfn> connects the [fnml:Execution] with zero or more [=fnml:ParameterMap=]s.
+It has domain [=fnml:Execution=] and range [=fnml:ParameterMap=].
+
+### fnml:input
+
+<dfn class="lint-ignore">fnml:input</dfn> connects the [=fnml:ParameterMap=] with a function input parameter predicate.
+It has domain [=fnml:ParameterMap=].
+
+### fnml:inputValue
+
+<dfn class="lint-ignore">fnml:inputValue</dfn> connects the [=fnml:ParameterMap=] with a function input value.
+This value is generated using [=term map=]s.
+It has domain [=fnml:ParameterMap=] and range [=term map=].
 
 ### Nested functions
 
-As [=fnml:ParameterTermMap=] is a subclass of [=term map=],
+As [=fnml:ParameterMap=] is a subclass of [=term map=],
 it is possible to nest functions: you generate a term in a first function, and that term is used as an parameter value in a second function.
 
 <p class="issue" data-format="markdown">
@@ -158,32 +239,38 @@ For now, it is unclear how to handle a nested function where that nested triples
 
 <#Execution> a fnml:Execution ;
     fnml:function grel:toUppercase ;
-    fnml:inputParameters
+    fnml:inputParameter
         [
-            a fnml:ParameterTermMap
-            fnml:predicate grel:stringInput ;
-            fnml:execution <#Execution2> ;     # Link to the nested execution
-            fnml:output grel:stringOutput .    # Specify which output of the nested execution is taken
+            a fnml:ParameterMap
+            fnml:input grel:stringInput ;
+            fnml:inputValue [
+                fnml:execution <#Execution2> ;     # Link to the nested execution
+                fnml:output grel:stringOutput .    # Specify which output of the nested execution is taken
+            ] .
         ] .
 
-<#Execution2> a fnml:Execution ;               # First, replace spaces with dashes from the `name` reference
+<#Execution2> a fnml:Execution ;                   # First, replace spaces with dashes from the `name` reference
     fnml:function grel:string_replace ;
-    fnml:inputParameters
+    fnml:inputParameter
         [
-            a fnml:ParameterTermMap
-            fnml:predicate grel:valueParameter ;
-            rr:reference "name" .
+            a fnml:ParameterMap
+            fnml:input grel:valueParameter ;
+            fnml:inputValue [
+                rr:reference "name" .
+            ] .
         ] ;
         [
-            a fnml:ParameterTermMap
-            fnml:predicate grel:p_string_find ;
-            rr:reference " " .
+            a fnml:ParameterMap
+            fnml:input grel:p_string_find ;
+            fnml:inputValue [
+                rr:reference " " .
+            ] .
         ] ;
         [
-            a fnml:ParameterTermMap
-            fnml:predicate grel:p_string_replace ;
-            rr:reference "-" .
-        ] ;
+            a fnml:ParameterMap
+            fnml:input grel:p_string_replace ;
+            fnml:inputValue [
+                rr:reference "-" .
+            ] .
+        ] .
 ```
-
-[rdf:Property]: http://www.w3.org/1999/02/22-rdf-syntax-ns#Property

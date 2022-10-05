@@ -13,9 +13,11 @@
 
 <#Execution> a fnml:Execution ;                # A new class
     fnml:function grel:toUppercase ;           # Specify which FnO function
-    fnml:inputParameters                       # Specify the input parameters
+    fnml:inputParameter                        # Specify the input parameters
         [
-            a fnml:ParameterTermMap            # A subclass of a term map
-            fnml:predicate grel:stringInput ;  # Specify this specific parameter
-            rr:reference "name" .              # Specify the value using existing Term Map constructions
+            a fnml:ParameterMap                # A subclass of a term map
+            fnml:input grel:stringInput ;      # Specify this specific parameter
+            fnml:inputValue [                  # Link to the term map that creates the input value
+                rr:reference "name" .          # Specify the value using existing Term Map constructions
+            ]
         ] .

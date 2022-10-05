@@ -6,7 +6,6 @@ we combine [=RML=] with declarative function descriptions in [=FnO=].
 <a>FnO</a> consists of -- among others -- <a>function descriptions</a> and <a>execution</a> descriptions.
 We describe these <a>executions</a> -- which link to specific <a>function descriptions</a> -- within the <a>RML mapping</a>.
 
-A [=triples map=] is a rule that maps each iteration in the logical source to a number of RDF triples.
 An [=RML mapping=] uses [=triples map=]s to generate output triples from input data.
 We use an intermediate [=FnML execution=] to refer to an FnO [=execution=] from input data,
 and then use an [=execution term map=] to link some specific output of an [=execution=] to the actual [=triples map=],
@@ -24,9 +23,9 @@ graph LR
     C -->|object map| B
     B -->|execution| D([FnML execution]):::fnml
     D -->|function| F([function]):::fno
-    D -->|inputParameters| G([parameter term map]):::fnml
-    B -->|output| E([output predicate]):::fno
-    G -->|predicate| H([parameter predicate]):::fno
+    D -->|inputParameter| G([parameter map]):::fnml
+    B -->|output| E([output]):::fno
+    G -->|input| H([input]):::fno
     classDef fnml fill:#8F9
     classDef fno fill:#F89
 </pre>
@@ -73,12 +72,15 @@ To connect this function with the RML mapping document, we make use of a `fnml:E
     fnml:execution <#Execution> ;              # Link to the execution
     fnml:output grel:stringOutput .            # Specify which output of the execution is taken
 
-<#Execution> a fnml:Execution ;                # A new class, unrelated to existing RML constructs
+<#Execution> a fnml:Execution ;                # A new class
     fnml:function grel:toUppercase ;           # Specify which FnO function
-    fnml:inputParameters                       # Specify the input parameters
+    fnml:inputParameter                        # Specify the input parameters
         [
-            fnml:predicate grel:stringInput ;  # Specify this specific parameter
-            rr:reference "name" .              # Specify the value using existing Term Map constructions
+            a fnml:ParameterMap                # A subclass of a term map
+            fnml:input grel:stringInput ;      # Specify this specific parameter
+            fnml:inputValue [                  # Link to the term map that creates the input value
+                rr:reference "name" .          # Specify the value using existing Term Map constructions
+            ]
         ] .
 ```
 
@@ -88,3 +90,12 @@ for the `grel:toUppercase`-function.
 After execution, the `grel:stringOutput` result of that function is returned to generate the object
 within the `<#NameMapping>`.
 We make use of an intermediate `<#ExecutionTermMap>` so that we can reuse the output of an execution in multiple TermMaps.
+
+<p class="issue" data-format="markdown">
+If an execution returns multiple outputs (eg, a result and a status code),
+by referring to the same execution,
+you can use both outputs in different locations of the same mapping.
+If you leave out the intermediate ExecutionTermMap, you don't allow for reuse,
+which means that you cannot specify the difference between
+'using 2 outputs from one execution' vs 'use a different output from 2 different executions'.
+</p>
