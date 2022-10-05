@@ -16,11 +16,10 @@
           name: "David Chaves-Fraga"
         },
       ],
-      edDraftURI: "https://kg-construct.github.io/rml-fno-spec/",
+      edDraftURI: "https://kg-construct.github.io/rml-fno-spec/FNML",
       editors: [
         {
           name: "Ben De Meester",
-          mailto: "ben.demeester@ugent.be",
           company: "Ghent University &ndash; imec &ndash; IDLab",
           url: "https://ben.de-meester.org/#me",
           orcid: "0000-0003-0248-0987",
@@ -28,7 +27,6 @@
         },
         {
           name: "Anastasia Dimou",
-          mailto: "anastasia.dimou@ugent.be",
           company: "Ghent University &ndash; imec &ndash; IDLab",
           url: "https://natadimou.com/#me",
           orcid: "0000-0003-2138-7972",
@@ -39,15 +37,15 @@
       ],
       github: "https://github.com/kg-construct/rml-fno-spec",
       isPreview: true,
-      license: "cc0",
+      license: "w3c-software-doc",
       localBiblio: {
         RML: {
-            title: "RDF Mapping Language (RML)",
-            href: "https://rml.io/specs/rml/",
-            status: "Unofficial Draft",
-            publisher: "IDLab - imec - Ghent University",
-            date: "08 October 2020",
-          },
+          title: "RDF Mapping Language (RML)",
+          href: "https://rml.io/specs/rml/",
+          status: "Unofficial Draft",
+          publisher: "IDLab - imec - Ghent University",
+          date: "08 October 2020",
+        },
       },
       otherLinks: [
         {
@@ -74,9 +72,22 @@
 
 <body>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script>
+    window.onload = (event) => {
+      mermaid.initialize({ startOnLoad: true });
+      setTimeout(() => {
+        mermaid.contentLoaded()
+      }, 1000)
+      setTimeout(() => {
+        mermaid.contentLoaded()
+      }, 10000)
+      setTimeout(() => {
+        mermaid.contentLoaded()
+      }, 20000)
+    }
+  </script>
 
-  <section id='abstract' data-include="abstract.md" data-include-format="markdown"></section>
+  <section id='abstract' data-include="./abstract.md" data-include-format="markdown"></section>
 
   <section id='sotd'></section>
 

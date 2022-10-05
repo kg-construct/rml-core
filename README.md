@@ -2,16 +2,15 @@
 
 For a rendered version, see <https://kg-construct.github.io/rml-fno-spec/>.
 
-# Quickstart
+## Quickstart
 
-Run a HTTP server in this directory: 
+Run a HTTP server in this directory:
 
 using php: `php -S localhost:8000`
 
 using node.js: `npx serve`
 
-
-# IRI Strategy followed by the specs
+## IRI Strategy followed by the specs
 
 base: http://xxx.xx/rml/ (xxx could be w3id.org now or w3.org in the future)
 
