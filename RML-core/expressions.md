@@ -1,6 +1,6 @@
 # Generating values with expressions
 
-To be able to map data from structured sources to RDF, expressions are needed. <dfn>Expressions</dfn> are mapping constructs that can be evaluated on a data source, according to the specified reference formulation, to generate values during the mapping process.
+To be able to map data from structured sources to RDF, expressions are needed. <dfn>Expressions</dfn> are mapping constructs that can be evaluated on a data source, according to the specified reference formulation, to generate values during the mapping process. These values are called <dfn>expression values</dfn>.
 
 ## Expression map (`rml:ExpressionMap`)
 
@@ -9,15 +9,13 @@ An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is
 * 0 or 1 `rml:reference`, or
 * 0 or 1 `rr:template`
 
-Each of these properties specifies an [=expression=] which can result in a set of values.
+Each of these properties specifies an [=expression=] which can result in a set of [=expression values=].
 
 ### Constant expression (`rr:constant`)
 
-A <dfn>constant-valued expression map</dfn> is an [=expression map=] that always generates the same expression value. A constant-valued expression map is represented by a resource that has exactly one `rr:constant` property, the value of which is called a <dfn>constant expression</dfn>.
+A <dfn>constant-valued expression map</dfn> is an [=expression map=] that always generates the same [=expression value=]. A [=constant-valued expression map=] is represented by a resource that has exactly one `rr:constant` property, the value of which is called a <dfn>constant expression</dfn>.
 
 The [=constant expression=] MUST be a valid [RDF term](https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-term).
-
-<aside class="issue" data-number="48"></aside>
 
 The <dfn>constant value</dfn> is a singleton set containing the [=constant expression=].
 
