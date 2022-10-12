@@ -7,7 +7,15 @@ A <dfn>term map</dfn> (`rml:TermMap`) is an [=expression map=]...
 ... <dfn>term type</dfn> ...
 
 <aside class="issue">
-incorporate the following text from r2rml templates somewhere.
+(incorporate the following text as a note somewhere in this paragraph:)
+
+NOTE: on constant expressions
+
+[=Constant expressions=] are only allowed to be IRIs and literals. Blank nodes are explicitly not allowed. The reason for this is that blank node identifiers are always locally scoped to the file or RDF store, and are _not_ persistent or portable identifiers [[rdf11-concepts-20140225]]. This means that they cannot be used as a constant expression, since the idea of a [=constant expression=] is to use that same [=constant value=] as the result of a mapping process. By definition, a blank node identifier cannot be ported from a mapping document to a mapping result.
+</aside>
+
+<aside class="issue">
+(incorporate the following text from r2rml templates somewhere:)
 
 ; or in the IRI-safe versions of the data values, if the term type is rr:IRI (see note below)
 </aside>
