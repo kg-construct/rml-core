@@ -1,0 +1,594 @@
+@prefix : <http://semweb.mmlab.be/ns/rml#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@base <http://semweb.mmlab.be/ns/rml#> .
+
+<http://semweb.mmlab.be/ns/rml#> rdf:type owl:Ontology ;
+                               cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+                               dc:description "RDF Mapping Language - Vocabulary"@en ;
+                               dc:issued "2012-12-20"^^xsd:date ;
+                               dc:modified "2012-12-20"^^xsd:date ;
+                               dc:title "RML vocabulary"@en ;
+                               vann:preferredNamespacePrefix "rml" ;
+                               vann:preferredNamespaceUri "http://semweb.mmlab.be/ns/rml#" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+cc:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/issued
+dc:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/modified
+dc:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/publisher
+dc:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.linkedmodel.org/schema/vaem#acronym
+vaem:acronym rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://semweb.mmlab.be/ns/rml#class
+rml:class rdf:type rdf:Property ;
+            rdfs:domain rml:SubjectMap ;
+            rdfs:range rdfs:Class ;
+            rdfs:comment "The subject value generated for a logical table row will be asserted as an instance of this RDFS class."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#constant
+rml:constant rdf:type rdf:Property .
+
+
+###  http://semweb.mmlab.be/ns/rml#datatype
+rml:datatype rdf:type rdf:Property ;
+               rdfs:domain rml:ObjectMap ;
+               rdfs:range rdfs:Datatype ;
+               rdfs:comment "Specifies the datatype of the object component for the generated triple from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#graph
+rml:graph rdf:type rdf:Property ;
+            rdfs:domain [ owl:intersectionOf ( rml:GraphMap
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty rml:template ;
+                                                 owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                 owl:onDataRange xsd:string
+                                               ]
+                                             ) ;
+                          rdf:type rdfs:Class
+                        ] ;
+            rdfs:comment "An IRI reference for use as the graph name of all triples generated with the GraphMap."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#graphMap
+rml:graphMap rdf:type rdf:Property ;
+               rdfs:domain [ rdf:type rdfs:Class ;
+                             owl:unionOf ( rml:PredicateObjectMap
+                                           rml:SubjectMap
+                                         )
+                           ] ;
+               rdfs:range rml:GraphMap ;
+               rdfs:comment "Specifies a GraphMap. When used with a SubjectMap element, all the RDF triples generated from a logical row will be stored in the specified named graph. Otherwise, the RDF triple generated using the (predicate, object) pair will be stored in the specified named graph."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#joinCondition
+rml:joinCondition rdf:type rdf:Property ;
+                    rdfs:domain rml:RefObjectMap ;
+                    rdfs:range rml:Join ;
+                    rdfs:comment "Specifies the join condition for joining the child logical table with the parent logical table of the foreign key constraint."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#logicalTable
+rml:logicalTable rdf:type rdf:Property ;
+                   rdfs:domain rml:TriplesMap ;
+                   rdfs:range rml:LogicalTable ;
+                   rdfs:comment "Definition of logical table to be mapped."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#object
+rml:object rdf:type rdf:Property ;
+             rdfs:domain [ owl:intersectionOf ( rml:ObjectMap
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty rml:column ;
+                                                  owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                  owl:onDataRange xsd:string
+                                                ]
+                                              ) ;
+                           rdf:type rdfs:Class
+                         ] ;
+             rdfs:range rdfs:Resource ;
+             rdfs:comment "Specifies the object for the generated triple from the logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#objectMap
+rml:objectMap rdf:type rdf:Property ;
+                rdfs:domain rml:PredicateObjectMap ;
+                rdfs:range [ rdf:type rdfs:Class ;
+                             owl:unionOf ( rml:ObjectMap
+                                           rml:RefObjectMap
+                                         )
+                           ] ;
+                rdfs:comment "An ObjectMap element to generate the object component of the (predicate, object) pair from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#parentTriplesMap
+rml:parentTriplesMap rdf:type rdf:Property ;
+                       rdfs:domain rml:RefObjectMap ;
+                       rdfs:range rml:TriplesMap ;
+                       rdfs:comment "Specifies the TriplesMap element corresponding to the parent logical table of the foreign key constraint."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#predicate
+rml:predicate rdf:type rdf:Property ;
+                rdfs:domain [ owl:intersectionOf ( rml:PredicateMap
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty rml:column ;
+                                                     owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                     owl:onDataRange xsd:string
+                                                   ]
+                                                 ) ;
+                              rdf:type rdfs:Class
+                            ] ;
+                rdfs:range rdf:Property ;
+                rdfs:comment "Specifies the predicate for the generated triple from the logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#predicateMap
+rml:predicateMap rdf:type rdf:Property ;
+                   rdfs:domain rml:PredicateObjectMap ;
+                   rdfs:range rml:PredicateMap ;
+                   rdfs:comment "A PredicateMap element to generate the predicate component of the (predicate, object) pair from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#predicateObjectMap
+rml:predicateObjectMap rdf:type rdf:Property ;
+                         rdfs:range rml:PredicateObjectMap ;
+                         rdfs:comment "A PredicateObjectMap element to generate (predicate, object) pair from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#sqlVersion
+rml:sqlVersion rdf:type rdf:Property ;
+                 rdfs:domain rml:R2RMLView ;
+                 rdfs:comment "An identifier for a SQL version."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#subject
+rml:subject rdf:type rdf:Property ;
+              rdfs:domain [ owl:intersectionOf ( rml:SubjectMap
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty rml:column ;
+                                                   owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                   owl:onDataRange xsd:string
+                                                 ]
+                                               ) ;
+                            rdf:type rdfs:Class
+                          ] ;
+              rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#subjectMap
+rml:subjectMap rdf:type rdf:Property ;
+                 rdfs:domain rml:TriplesMap ;
+                 rdfs:range rml:SubjectMap ;
+                 rdfs:comment "A SubjectMap element to generate a subject from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#termType
+rml:termType rdf:type rdf:Property ;
+               rdfs:domain rml:TermMap ;
+               rdfs:range [ rdf:type rdfs:Class ;
+                            owl:unionOf ( rml:BlankNode
+                                          rml:IRI
+                                          rml:Literal
+                                        )
+                          ] ;
+               rdfs:comment "A string indicating whether subject or object generated using the value from column name specified for rr:column should be an IRI reference, blank node, or a literal."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#logicalSource
+rml:logicalSource rdf:type owl:ObjectProperty ;
+    rdfs:label    "logical source" ;
+    rdfs:comment  "Represents the logical source to be mapped. This can be a pointer to any dataset."@en ;
+    rdfs:range    rml:LogicalSource;
+    rdfs:domain   rml:TriplesMap .
+
+
+###  http://semweb.mmlab.be/ns/rml#referenceFormulation
+rml:referenceFormulation rdf:type rdf:Property ;
+    rdfs:comment "The reference formulation used to refer to extracts of the source data. "@en ;
+    rdfs:label   "reference formulation" ;
+    rdfs:domain  rml:LogicalSource;
+    rdfs:range   rml:ReferenceFormulation .
+
+
+###  http://semweb.mmlab.be/ns/rml#datatypeMap
+rml:referenceFormulation rdf:type rdf:Property ;
+    rdfs:comment ""@en ;
+    rdfs:label   "datatype map" ;
+    rdfs:domain  rml:ObjectMap;
+    rdfs:range   rml:DatatypeMap .
+
+
+###  http://semweb.mmlab.be/ns/rml#languageMap
+rml:referenceFormulation rdf:type rdf:Property ;
+    rdfs:comment ""@en ;
+    rdfs:label   "language map" ;
+    rdfs:domain  rml:ObjectMap;
+    rdfs:range   rml:LanguageMap .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://semweb.mmlab.be/ns/rml#child
+rml:child rdf:type rdf:Property ;
+            rdfs:domain rml:Join ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Names a column in the child table of a join."@en .
+
+####### DEPRECATE?
+###  http://semweb.mmlab.be/ns/rml#column
+rml:column rdf:type rdf:Property ;
+             rdfs:domain rml:TermMap ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Name of a column in the logical table. When generating RDF triples from a logical table row, value from the specified column is used as the subject, predicate, or object (based upon the specific domain)."@en .
+
+
+####### DEPRECATE?
+###  http://semweb.mmlab.be/ns/rml#inverseExpression
+rml:inverseExpression rdf:type rdf:Property ;
+                        rdfs:domain rml:TermMap ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "An expression that allows, at query processing time, use of index-based access to the the (underlying) relational tables, instead of simply retrieving the table rows first and then applying a filter. This property is useful for retrieval based on conditions involving subject, predicate, or object generated from logical table column(s) and involves some transformation."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#language
+rml:language rdf:type rdf:Property ;
+               rdfs:domain rml:ObjectMap ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Specified the language for the object component for the generated triple from a logical table row."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#parent
+rml:parent rdf:type rdf:Property ;
+             rdfs:domain rml:Join ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Names a column in the parent table of a join."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#sqlQuery
+rml:sqlQuery rdf:type rdf:Property ;
+               rdfs:domain rml:R2RMLView ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A valid SQL query."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#tableName
+rml:tableName rdf:type rdf:Property ;
+                rdfs:domain rml:BaseTableOrView ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Schema-qualified name of a table or view."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#template
+rml:template rdf:type rdf:Property ;
+               rdfs:domain rml:TermMap ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more columns from a logical table row."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/vocommons/voaf#Vocabulary
+<http://purl.org/vocommons/voaf#Vocabulary> rdf:type rdfs:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
+rdf:Property rdf:type rdfs:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Class
+rdfs:Class rdf:type rdfs:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Datatype
+rdfs:Datatype rdf:type rdfs:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type rdfs:Class .
+
+
+###  http://semweb.mmlab.be/ns/rml#BaseTableOrView
+rml:BaseTableOrView rdf:type rdfs:Class ;
+                      rdfs:subClassOf rml:LogicalTable .
+
+
+###  http://semweb.mmlab.be/ns/rml#BlankNode
+rml:BlankNode rdf:type rdfs:Class ;
+                rdfs:comment "Denotes a blank node, used with termType"@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#GraphMap
+rml:GraphMap rdf:type rdfs:Class ;
+               rdfs:subClassOf rml:TermMap ;
+               rdfs:comment "Represents a graph map."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#IRI
+rml:IRI rdf:type rdfs:Class ;
+          rdfs:comment "Denotes an IRI, used with termpType."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#Join
+rml:Join rdf:type rdfs:Class ;
+           rdfs:subClassOf owl:Thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty rml:child ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty rml:parent ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty rml:child ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty rml:parent ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ;
+           rdfs:comment "Represents a join condition."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#Literal
+rml:Literal rdf:type rdfs:Class ;
+              rdfs:subClassOf owl:Thing ;
+              rdfs:comment "Denotes a Literal, used with termType."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#LogicalTable
+rml:LogicalTable rdf:type rdfs:Class ;
+                   rdfs:subClassOf owl:Thing ;
+                   rdfs:comment "Represents a logical table."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#ObjectMap
+rml:ObjectMap rdf:type rdfs:Class ;
+                rdfs:subClassOf owl:Thing ,
+                                rml:TermMap ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rml:datatype ;
+                                  owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                  owl:onClass rdfs:Datatype
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rml:object ;
+                                  owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                  owl:onClass rdfs:Resource
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rml:object ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass rdfs:Resource
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rml:language ;
+                                  owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ;
+                rdfs:comment "Represents an object map."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#PredicateMap
+rml:PredicateMap rdf:type rdfs:Class ;
+                   rdfs:subClassOf owl:Thing ,
+                                   rml:TermMap ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty rml:predicate ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass rdf:Property
+                                   ] ;
+                   rdfs:comment "Represents a predicate map."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#PredicateObjectMap
+rml:PredicateObjectMap rdf:type rdfs:Class ;
+                         rdfs:subClassOf owl:Thing ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rml:predicateMap ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass rml:PredicateMap
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rml:objectMap ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass rml:ObjectMap
+                                         ] ;
+                         rdfs:comment "Represents a predicate-object map."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#R2RMLView
+rml:R2RMLView rdf:type rdfs:Class ;
+                rdfs:subClassOf rml:LogicalTable .
+
+
+###  http://semweb.mmlab.be/ns/rml#RefObjectMap
+rml:RefObjectMap rdf:type rdfs:Class ;
+                   rdfs:subClassOf owl:Thing ;
+                   rdfs:comment "Denotes a reference to an object map."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#SubjectMap
+rml:SubjectMap rdf:type rdfs:Class ;
+                 rdfs:subClassOf owl:Thing ,
+                                 rml:TermMap ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rml:class ;
+                                   owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                   owl:onClass rdfs:Class
+                                 ] ;
+                 rdfs:comment "Represents a subject map."@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#TermMap
+rml:TermMap rdf:type rdfs:Class ;
+              rdfs:subClassOf rml:ExpressionMap
+              rdfs:comment "A function that generates an RDF term from a logical table row."@en ;
+              rdfs:label "Term Map"@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#TriplesMap
+rml:TriplesMap rdf:type rdfs:Class ;
+                 rdfs:subClassOf owl:Thing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rml:logicalTable ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass rml:LogicalTable
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rml:subjectMap ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass rml:SubjectMap
+                                 ] ;
+                 rdfs:comment "Represents a triples map."@en .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type rdfs:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type rdfs:Class .
+
+
+###  http://semweb.mmlab.be/ns/rml#ExpressionMap
+rml:ExpressionMap rdf:type rdfs:Class ;
+                rdfs:comment ""@en ;
+                rdfs:label "Expression Map"@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#DatatypeMap
+rml:TermMap rdf:type rdfs:Class ;
+             rdfs:subClassOf rml:ExpressionMap
+             rdfs:comment ""@en ;
+             rdfs:label "Datatype Map"@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#DatatypeMap
+rml:TermMap rdf:type rdfs:Class ;
+          rdfs:subClassOf rml:ExpressionMap
+          rdfs:comment ""@en ;
+          rdfs:label "Language Map"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+
+###  http://www.w3.org/
+<http://www.w3.org/> rdf:type owl:NamedIndividual ,
+                              foaf:Organization ;
+                     vaem:acronym "W3C" ;
+                     rdfs:label "The World Wide Web Consortium (W3C)"@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#
+<http://semweb.mmlab.be/ns/rml#> rdf:type owl:NamedIndividual ,
+                                       <http://purl.org/vocommons/voaf#Vocabulary> .
+
+
+###  http://semweb.mmlab.be/ns/rml#SQL2008
+rml:SQL2008 rdf:type owl:NamedIndividual ;
+              rdfs:comment "Core SQL 2008"@en .
+
+
+###  http://semweb.mmlab.be/ns/rml#defaultGraph
+rml:defaultGraph rdf:type owl:NamedIndividual ;
+                   rdfs:comment "Denotes a default graph"@en .
+
+
+###  http://semweb.mmlab.be/ns/ql/CSV
+ql:CSV rdf:type owl:NamedIndividual, rml:ReferenceFormulation ;
+    rdfs:label   "CSV" ; 
+    rdfs:comment "Denotes that the CSV file's column names are used for referring to extracts of CSV resources."@en ;
+    ql:specification <http://tools.ietf.org/html/rfc4180>.
+
+
+###  http://semweb.mmlab.be/ns/ql/XPath
+ql:XPath rdf:type owl:NamedIndividual, rml:ReferenceFormulation  ;
+    rdfs:label   "XPath" ;
+    rdfs:comment "Denotes the XPath reference formulation, used for referring to extracts of XML sources."@en ;
+    ql:specification <http://www.w3.org/TR/xpath20/> ;
+    rml:version "2.0".
+
+
+###  http://semweb.mmlab.be/ns/ql/JSONPath
+ql:JSONPath rdf:type owl:NamedIndividual, rml:ReferenceFormulation  ;
+    rdfs:label   "JSONPath" ;
+    rdfs:comment "Denotes the JSONPath reference formulation, used for referring to extracts of JSON sources."@en .
+
+
+###  http://semweb.mmlab.be/ns/ql/CSS3
+ql:CSS3 rdf:type owl:NamedIndividual, rml:ReferenceFormulation  ;
+    rdfs:label   "Selectors Level 3" ;
+    rdfs:comment "Denotes the selectors, namely the patterns that match against elements in a tree and are used in CSS and other thechnolgies to select elements in HTML or XML documents." ;
+    ql:specification <http://www.w3.org/TR/css3-selectors/> .
