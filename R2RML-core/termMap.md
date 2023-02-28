@@ -1,4 +1,4 @@
-# 7 Creating RDF Terms with Term Maps
+# 7 Term Maps
 
 An _**RDF term**_ is either an [IRI](), or a [blank node](), or a [literal]().
 
@@ -29,49 +29,65 @@ is a rule that should generate a [URI]();
 * An [Object Map]() (`rml:ObjectMap`)
 is a rule that should generate a [URI](), a [Blank Node]() or a [Literal]().
 
-A [Term Map]() (`rml:TermMap`) is specified as an [Expression Map]()
+A [Term Map]() (`rml:TermMap`) is specified as an [Expression Map]() and MAY have
+* one of the [Datatype Map]() and [Language Map](),
+which are also specified as [Expression Maps]() and
+* a [Term Type]().
 
-A [term map]() MUST be exactly one of the following:
+## 7.1 Expression Map
 
-* a [constant-valued term map](),
-* a [column-valued term map](),
-* a [template-valued term map]().
+An [Expression Map]() (`rml:ExpressionMap`)
+is an abstract class, that is specialized by other RML classes.
 
-The _**references**_ of a [term map]()
-are the set of +++???+++ referenced in the [term map]()
-and depend on the type of [term map]().
+An [Expression Map]() (`rml:ExpressionMap`) MUST be exactly one of the following:
 
-## 7.1 Constant (rml:constant)
+* a [constant-valued Expression Map](),
+* a [reference-valued Expression Map](),
+* a [template-valued Expression Map]().
 
-A _**constant-valued term map**_ ignores the logical iteration
+### 7.1.1 Constant Expression Map (rml:constant)
+
+A _**constant-valued Expression Map**_ ignores the logical iteration
 and always generates the same [RDF term]().
-A [constant-valued ter map]() is represented by a resource
+A [constant-valued Expression Map]() is represented by a resource
 that has exactly one `rml:constant` property.
 
-The [constant valued term map]() is the [RDF term]()
+The [constant valued Expression Map]() is the [RDF term]()
 that is the value of its `rml:constant` property.
 
-If the [constant-valued term map]() is a [subject map](), [predicate map]() or [graph map](),
-then its constant value MUST be an IRI.
+If the [constant-valued Expression Map]()
+is a [Subject Map](), [Predicate Map]() or [Graph Map](),
+then its constant value MUST be an [IRI]().
 
-If the [constant-valued term map]() is an [object map](),
+If the [constant-valued Expression Map]() is an [Object Map](),
 then its constant value MUST be an [IRI]() or [literal]().
 
-The [reference] of a [constant-valued]() is the empty set.
+| constant-valued Expression Map | default Termtype | default RDF Term type generated  |
+| :-------------| :-----| :-----|
+| Subject Map | `rr:IRI` | `IRI` | 
+| Predicate Map | `rr:IRI` | `IRI` |
+| Object Map | `rr:IRI` or `rr:Literal` | `IRI` or `Literal` |
+| Graph Map | `rr:IRI` |  	`IRI` |
 
-[Constant-valued term maps]() can be expressed more concisely
++++ ADD example +++
+
+The [reference]() of a [constant-valued]() is the empty set.
+
+[Constant-valued Expression Maps]() can be expressed more concisely
 using the _**constant shortcut properties**_
-`rml:subject`, `rml:predicate`, `rml:object` and `rml:graph`.
+`rml:subject`, `rml:predicate`, `rml:object` and `rml:graph` for the Term Maps, and
+`rml:datatype` and `rml:language` fot the [Datatype Map]() and [Language Map]() respectively.
 Occurrences of these properties MUST be treated exactly as if
 the following triples were present in the mapping graph instead:
 
 | Triple involving constant shortcut property | Replacement triples  |
 | :-------------| :-----|
-| ?x rml:subject ?y. | ?x rml:subjectMap [ rml:constant ?y ]. | 
-| ?x rml:predicate ?y. | ?x rml:predicateMap [ rml:constant ?y ]. |
-| ?x rml:object ?y. | ?x rml:objectMap [ rml:constant ?y ]. |
-| ?x rml:graph ?y. |  	?x rml:graphMap [ rml:constant ?y ]. |
-
+| `?x rml:subject ?y.` | `?x rml:subjectMap [ rml:constant ?y ].` | 
+| `?x rml:predicate ?y.` | `?x rml:predicateMap [ rml:constant ?y ].` |
+| `?x rml:object ?y.` | `?x rml:objectMap [ rml:constant ?y ].` |
+| `?x rml:graph ?y.` |  	`?x rml:graphMap [ rml:constant ?y ].` |
+| `?x rml:datatype ?y.` |  	`?x rml:datatypeMap [ rml:constant ?y ].` |
+| `?x rml:language ?y.` |  	`?x rml:languageMap [ rml:constant ?y ].` |
 
 +++ ADD example +++
 
