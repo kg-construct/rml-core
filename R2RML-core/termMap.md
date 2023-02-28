@@ -55,6 +55,12 @@ that has exactly one `rml:constant` property.
 The [constant valued Expression Map]() is the [RDF term]()
 that is the value of its `rml:constant` property.
 
+#### Constant-valued Expression Maps and term types
+
+A constant-valued Expression Map generates by default an [RDF Term]() which is an [IRI]().
+
++++ ADD example +++
+
 If the [constant-valued Expression Map]()
 is a [Subject Map](), [Predicate Map]() or [Graph Map](),
 then its constant value MUST be an [IRI]().
@@ -62,16 +68,20 @@ then its constant value MUST be an [IRI]().
 If the [constant-valued Expression Map]() is an [Object Map](),
 then its constant value MUST be an [IRI]() or [literal]().
 
-| constant-valued Expression Map | default Termtype | default RDF Term type generated  |
-| :-------------| :-----| :-----|
-| Subject Map | `rr:IRI` | `IRI` | 
-| Predicate Map | `rr:IRI` | `IRI` |
-| Object Map | `rr:IRI` or `rr:Literal` | `IRI` or `Literal` |
-| Graph Map | `rr:IRI` |  	`IRI` |
+To overwrite the default term type, one needs to specify the [Term Type]() of the [Term Map]().
 
 +++ ADD example +++
 
+| constant-valued Expression Map | Termtype | RDF Term type generated  |
+| :-------------| :-----| :-----|
+| Subject Map | `rr:IRI` (default) | `IRI` (default) | 
+| Predicate Map | `rr:IRI` (default) | `IRI` (default) |
+| Object Map | `rr:IRI` (default) or `rr:Literal` | `IRI` (default) or `Literal` |
+| Graph Map | `rr:IRI` (default) |  	`IRI` (default) |
+
 The [reference]() of a [constant-valued]() is the empty set.
+
+#### Shortcuts for constant-valued Expression Maps
 
 [Constant-valued Expression Maps]() can be expressed more concisely
 using the _**constant shortcut properties**_
@@ -91,20 +101,35 @@ the following triples were present in the mapping graph instead:
 
 +++ ADD example +++
 
-## 7.2 From a Reference (rml:reference)
+### 7.1.2 Reference (rml:reference)
 
-A _**reference-valued term map**_ is represented by a resource
+A _**reference-valued Expression Map**_ is represented by a resource
 that has exactly one `rml:reference` property.
 
-The value of the `rml:reference` property MUST be a valid reference.
-The _**column value**_ of the [term map]() is the data value of that reference
-in a given logical iteratino.
+The value of the `rml:reference` property MUST be a valid reference
+according to the reference formulation specified in the [Logical Source]().
+The _**reference value**_ of the [Term Map]() is the data value of that reference
+in a given logical iteration.
 
 The [reference]() is the singleton set containing the value of the `rml:reference` property.
 
+#### Reference-valued Expression Maps and term types
+
+A reference-valued [Expression Map]() generates an [RDF Term]()
+which is by default a [Literal]().
+
+To use a reference-valued [Expression Map]()
+in a [Subject Map]() or [Graph Map](),
+which should generate an [RDF Term]()
+which is either an [IRI]() or [Literal](), or
+a [Predicate Map](),
+which should generate an [RDF Term]() which is an [IRI](),
+or to generate an [IRI]() for an [Object Map](),
+then the default [Term Type]() needs to be overwritten.
+
 +++ ADD example +++
 
-## 7.3 From a Template (rml:template)
+### 7.1.3 From a Template (rml:template)
 
 A [template-valued term map]() is represented by a resource
 that has exactly one `rml:template` property.
