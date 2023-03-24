@@ -106,14 +106,10 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/graph
 :graph rdf:type owl:ObjectProperty ;
-       rdfs:domain [ owl:intersectionOf ( :GraphMap
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :template ;
-                                            owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                            owl:onDataRange xsd:string
-                                          ]
-                                        ) ;
-                     rdf:type owl:Class
+       rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :PredicateObjectMap
+                                   :SubjectMap
+                                 )
                    ] ;
        rdfs:comment "An IRI reference for use as the graph name of all triples generated with the GraphMap."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -172,6 +168,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/object
 :object rdf:type owl:ObjectProperty ;
+        rdfs:domain :PredicateObjectMap ;
         rdfs:range rdfs:Resource ;
         rdfs:comment "Specifies the object for the generated triple from the logical table row."@en ;
         rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -203,6 +200,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/predicate
 :predicate rdf:type owl:ObjectProperty ;
+           rdfs:domain :PredicateObjectMap ;
            rdfs:range rdf:Property ;
            rdfs:comment "Specifies the predicate for the generated triple from the logical table row."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -226,14 +224,9 @@ foaf:name rdf:type owl:AnnotationProperty .
                     rdfs:label "predicate object map" .
 
 
-###  http://w3id.org/rml/sqlVersion
-:sqlVersion rdf:type owl:ObjectProperty ;
-            rdfs:comment "An identifier for a SQL version."@en ;
-            owl:deprecated "true"^^xsd:boolean .
-
-
 ###  http://w3id.org/rml/subject
 :subject rdf:type owl:ObjectProperty ;
+         rdfs:domain :TriplesMap ;
          rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical table row."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "subject" .
@@ -273,14 +266,6 @@ foaf:name rdf:type owl:AnnotationProperty .
        rdfs:comment "Names a column in the child table of a join."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "child" .
-
-
-###  http://w3id.org/rml/inverseExpression
-:inverseExpression rdf:type owl:DatatypeProperty ;
-                   rdfs:domain :TermMap ;
-                   rdfs:range xsd:string ;
-                   rdfs:comment "An expression that allows, at query processing time, use of index-based access to the the (underlying) relational tables, instead of simply retrieving the table rows first and then applying a filter. This property is useful for retrieval based on conditions involving subject, predicate, or object generated from logical table column(s) and involves some transformation."@en ;
-                   owl:deprecated "true"^^xsd:boolean .
 
 
 ###  http://w3id.org/rml/language
