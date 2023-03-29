@@ -78,7 +78,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :class rdf:type owl:ObjectProperty ;
        rdfs:domain :SubjectMap ;
        rdfs:range rdfs:Class ;
-       rdfs:comment "The subject value generated for a logical table row will be asserted as an instance of this RDFS class."@en ;
+       rdfs:comment "The subject value generated for a logical source record will be asserted as an instance of this RDFS class."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "class" .
 
