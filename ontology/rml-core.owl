@@ -175,7 +175,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/rml/object
-:object rdf:type rdf:Property ;
+:object rdf:type owl:ObjectProperty ;
         rdfs:domain :PredicateObjectMap ;
         rdfs:range rdfs:Resource ;
         rdfs:comment "Specifies the object for the generated triple from the logical source record."@en ;
@@ -234,7 +234,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/rml/subject
-:subject rdf:type rdf:Property ;
+:subject rdf:type owl:ObjectProperty ;
          rdfs:domain :TriplesMap ;
          rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical source record."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
