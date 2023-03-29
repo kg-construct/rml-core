@@ -288,7 +288,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/reference
 :reference rdf:type owl:DatatypeProperty ;
-           rdfs:comment "A valid expression that selects values from the source data. The reference should confront to the syntax rules/grammar of the specified Reference Formulation." ;
+           rdfs:comment "A valid expression that selects values from the source data. The reference should conform to the syntax rules/grammar of the specified Reference Formulation." ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "reference"^^xsd:string .
 
