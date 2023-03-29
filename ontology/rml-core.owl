@@ -480,7 +480,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/TermMap
 :TermMap rdf:type owl:Class ;
          rdfs:subClassOf :ExpressionMap ;
-         rdfs:comment "A function that generates an RDF term from a logical table row."@en ;
+         rdfs:comment "A function that generates an RDF term from a logical source record."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "Term Map"@en .
 
