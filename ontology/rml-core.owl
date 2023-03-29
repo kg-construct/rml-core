@@ -202,7 +202,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :predicate rdf:type owl:ObjectProperty ;
            rdfs:domain :PredicateObjectMap ;
            rdfs:range rdf:Property ;
-           rdfs:comment "Specifies the predicate for the generated triple from the logical table row."@en ;
+           rdfs:comment "Specifies the predicate for the generated triple from the logical source record."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "predicate" .
 
