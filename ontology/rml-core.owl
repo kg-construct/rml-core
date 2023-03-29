@@ -170,7 +170,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :object rdf:type owl:ObjectProperty ;
         rdfs:domain :PredicateObjectMap ;
         rdfs:range rdfs:Resource ;
-        rdfs:comment "Specifies the object for the generated triple from the logical table row."@en ;
+        rdfs:comment "Specifies the object for the generated triple from the logical source record."@en ;
         rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
         rdfs:label "object" .
 
