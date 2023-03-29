@@ -236,7 +236,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :subjectMap rdf:type owl:ObjectProperty ;
             rdfs:domain :TriplesMap ;
             rdfs:range :SubjectMap ;
-            rdfs:comment "A SubjectMap element to generate a subject from a logical table row."@en ;
+            rdfs:comment "A SubjectMap element to generate a subject from a logical source record."@en ;
             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
             rdfs:label "subject map" .
 
