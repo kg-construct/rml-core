@@ -84,7 +84,9 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/rml/constant
-:constant rdf:type owl:ObjectProperty ;
+:constant rdf:type rdf:Property ;
+          rdfs:domain :ExpressionMap ;
+          rdfs:comment "A property for indicating whether a expression map is a constant-valued expression map."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "constant" .
 
@@ -93,13 +95,16 @@ foaf:name rdf:type owl:AnnotationProperty .
 :datatype rdf:type owl:ObjectProperty ;
           rdfs:domain :ObjectMap ;
           rdfs:range rdfs:Datatype ;
-          rdfs:comment "Specifies the datatype of the object component for the generated triple from a logical source record."@en ;
+          rdfs:comment "Specifies the datatype of the object component for the generated triple."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "datatype" .
 
 
 ###  http://w3id.org/rml/datatypeMap
 :datatypeMap rdf:type owl:ObjectProperty ;
+             rdfs:domain :ObjectMap ;
+             rdfs:range :DatatypeMap ;
+             rdfs:comment "A DatatypetMap element to generate the datatype component of the object component from a logical source record."@en ;
              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
              rdfs:label "datatype map" .
 
@@ -111,7 +116,7 @@ foaf:name rdf:type owl:AnnotationProperty .
                                    :SubjectMap
                                  )
                    ] ;
-       rdfs:comment "An IRI reference for use as the graph name of all triples generated with the GraphMap."@en ;
+       rdfs:comment "An IRI reference for use as the graph name of all triples generated with the SubjectMap or PredicateObjectMap."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "graph" .
 
@@ -137,13 +142,16 @@ foaf:name rdf:type owl:AnnotationProperty .
                                          )
                            ] ;
                rdfs:range :Join ;
-               rdfs:comment "Specifies the join condition for joining the child logical table with the parent logical table of the foreign key constraint."@en ;
+               rdfs:comment "Specifies the join condition for joining the child logical source with the parent logical source of the foreign key constraint."@en ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                rdfs:label "join condition" .
 
 
 ###  http://w3id.org/rml/languageMap
 :languageMap rdf:type owl:ObjectProperty ;
+             rdfs:domain :ObjectMap ;
+             rdfs:range :LanguageMap ;
+             rdfs:comment "A LanguagetMap element to generate the language tag of the object component from a logical source record."@en ;
              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
              rdfs:label "language map" .
 
@@ -152,22 +160,22 @@ foaf:name rdf:type owl:AnnotationProperty .
 :logicalSource rdf:type owl:ObjectProperty ;
                rdfs:domain :TriplesMap ;
                rdfs:range :LogicalSource ;
-               rdfs:comment "Represents the logical source to be mapped. This can be a pointer to any dataset."@en ;
+               rdfs:comment "Represents the logical source to be mapped."@en ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                rdfs:label "logical source" .
 
 
 ###  http://w3id.org/rml/logicalTarget
 :logicalTarget rdf:type owl:ObjectProperty ;
-               rdfs:domain :ExpressionMap ;
+               rdfs:domain :TermMap ;
                rdfs:range :LogicalTarget ;
-               rdfs:comment "Represents the logical target to where triples are exported to. This can be a pointer to any dataset." ;
+               rdfs:comment "Represents the logical target to where triples are exported to." ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                rdfs:label "logical target" .
 
 
 ###  http://w3id.org/rml/object
-:object rdf:type owl:ObjectProperty ;
+:object rdf:type rdf:Property ;
         rdfs:domain :PredicateObjectMap ;
         rdfs:range rdfs:Resource ;
         rdfs:comment "Specifies the object for the generated triple from the logical source record."@en ;
@@ -193,7 +201,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :parentTriplesMap rdf:type owl:ObjectProperty ;
                   rdfs:domain :RefObjectMap ;
                   rdfs:range :TriplesMap ;
-                  rdfs:comment "Specifies the TriplesMap element corresponding to the parent logical table of the foreign key constraint."@en ;
+                  rdfs:comment "Specifies the TriplesMap element corresponding to the parent logical source of the foreign key constraint."@en ;
                   rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                   rdfs:label "parent triples map" .
 
@@ -218,6 +226,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/predicateObjectMap
 :predicateObjectMap rdf:type owl:ObjectProperty ;
+                    rdfs:domain :TriplesMap ;
                     rdfs:range :PredicateObjectMap ;
                     rdfs:comment "A PredicateObjectMap element to generate (predicate, object) pair from a logical source record."@en ;
                     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -225,7 +234,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/rml/subject
-:subject rdf:type owl:ObjectProperty ;
+:subject rdf:type rdf:Property ;
          rdfs:domain :TriplesMap ;
          rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical source record."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -250,7 +259,7 @@ foaf:name rdf:type owl:AnnotationProperty .
                                      :Literal
                                    )
                      ] ;
-          rdfs:comment "A string indicating whether subject or object generated using the value from column name specified for rr:column should be an IRI reference, blank node, or a literal."@en ;
+          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "term type" .
 
@@ -263,7 +272,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :child rdf:type owl:DatatypeProperty ;
        rdfs:domain :Join ;
        rdfs:range xsd:string ;
-       rdfs:comment "Names a column in the child table of a join."@en ;
+       rdfs:comment "Names a source record in the child source of a join."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "child" .
 
@@ -272,7 +281,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :language rdf:type owl:DatatypeProperty ;
           rdfs:domain :ObjectMap ;
           rdfs:range xsd:string ;
-          rdfs:comment "Specified the language for the object component for the generated triple from a logical source record."@en ;
+          rdfs:comment "Specified the language for the object component for the generated triple."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "language" .
 
@@ -281,13 +290,15 @@ foaf:name rdf:type owl:AnnotationProperty .
 :parent rdf:type owl:DatatypeProperty ;
         rdfs:domain :Join ;
         rdfs:range xsd:string ;
-        rdfs:comment "Names a column in the parent table of a join."@en ;
+        rdfs:comment "Names a source record in the parent source of a join."@en ;
         rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
         rdfs:label "parent" .
 
 
 ###  http://w3id.org/rml/reference
 :reference rdf:type owl:DatatypeProperty ;
+           rdfs:domain :ExpressionMap ;
+           rdfs:range xsd:string ;
            rdfs:comment "A valid expression that selects values from the source data. The reference should conform to the syntax rules/grammar of the specified Reference Formulation." ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "reference"^^xsd:string .
@@ -297,7 +308,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :template rdf:type owl:DatatypeProperty ;
           rdfs:domain :ExpressionMap ;
           rdfs:range xsd:string ;
-          rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more columns from a logical source record."@en ;
+          rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more records from a logical source record."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "template" .
 
@@ -316,13 +327,14 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/DatatypeMap
 :DatatypeMap rdf:type owl:Class ;
              rdfs:subClassOf :ExpressionMap ;
-             rdfs:comment "Represents a datatype map" ;
+             rdfs:comment "Represents a datatype map"@en ;
              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
              rdfs:label "Datatype Map" .
 
 
 ###  http://w3id.org/rml/ExpressionMap
 :ExpressionMap rdf:type owl:Class ;
+             rdfs:comment "Represents an expression map"@en ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                rdfs:label "Expression Map" .
 
@@ -344,7 +356,6 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/Join
 :Join rdf:type owl:Class ;
-      rdfs:subClassOf owl:Thing ;
       rdfs:comment "Represents a join condition."@en ;
       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
       rdfs:label "Join" .
@@ -360,24 +371,9 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/Literal
 :Literal rdf:type owl:Class ;
-         rdfs:subClassOf owl:Thing ;
          rdfs:comment "Denotes a Literal, used with termType."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "Literal" .
-
-
-###  http://w3id.org/rml/LogicalSource
-:LogicalSource rdf:type owl:Class ;
-               rdfs:comment "Represents a logical source." ;
-               rdfs:isDefinedBy <http://w3id.org/rml/source-target/> ;
-               rdfs:label "Logical Source" .
-
-
-###  http://w3id.org/rml/LogicalTarget
-:LogicalTarget rdf:type owl:Class ;
-               rdfs:comment "Represents a Logical Target" ;
-               rdfs:isDefinedBy <http://w3id.org/rml/source-target/> ;
-               rdfs:label "Logical Target" .
 
 
 ###  http://w3id.org/rml/ObjectMap
@@ -398,7 +394,6 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/PredicateObjectMap
 :PredicateObjectMap rdf:type owl:Class ;
-                    rdfs:subClassOf owl:Thing ;
                     rdfs:comment "Represents a predicate-object map."@en ;
                     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                     rdfs:label "Predicate Object Map" .
@@ -406,17 +401,9 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/RefObjectMap
 :RefObjectMap rdf:type owl:Class ;
-              rdfs:subClassOf owl:Thing ;
               rdfs:comment "Denotes a reference to an object map."@en ;
               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
               rdfs:label "Reference Object Map" .
-
-
-###  http://w3id.org/rml/StarMap
-:StarMap rdf:type owl:Class ;
-         rdfs:comment "Represents a star map" ;
-         rdfs:isDefinedBy <http://w3id.org/rml/star/> ;
-         rdfs:label "Star Map" .
 
 
 ###  http://w3id.org/rml/SubjectMap
@@ -437,26 +424,8 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/TriplesMap
 :TriplesMap rdf:type owl:Class ;
-            rdfs:subClassOf owl:Thing ;
             rdfs:comment "Represents a triples map."@en ;
             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
             rdfs:label "Triples Map" .
-
-
-###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
-rdf:Property rdf:type owl:Class .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#Class
-rdfs:Class rdf:type owl:Class .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#Datatype
-rdfs:Datatype rdf:type owl:Class .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#Resource
-rdfs:Resource rdf:type owl:Class .
-
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
