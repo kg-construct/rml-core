@@ -227,7 +227,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/subject
 :subject rdf:type owl:ObjectProperty ;
          rdfs:domain :TriplesMap ;
-         rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical table row."@en ;
+         rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical source record."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "subject" .
 
