@@ -272,7 +272,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :language rdf:type owl:DatatypeProperty ;
           rdfs:domain :ObjectMap ;
           rdfs:range xsd:string ;
-          rdfs:comment "Specified the language for the object component for the generated triple from a logical table row."@en ;
+          rdfs:comment "Specified the language for the object component for the generated triple from a logical source record."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "language" .
 
