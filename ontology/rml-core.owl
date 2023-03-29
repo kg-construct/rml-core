@@ -297,7 +297,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :template rdf:type owl:DatatypeProperty ;
           rdfs:domain :ExpressionMap ;
           rdfs:range xsd:string ;
-          rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more columns from a logical table row."@en ;
+          rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more columns from a logical source record."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "template" .
 
