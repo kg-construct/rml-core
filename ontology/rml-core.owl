@@ -93,7 +93,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :datatype rdf:type owl:ObjectProperty ;
           rdfs:domain :ObjectMap ;
           rdfs:range rdfs:Datatype ;
-          rdfs:comment "Specifies the datatype of the object component for the generated triple from a logical table row."@en ;
+          rdfs:comment "Specifies the datatype of the object component for the generated triple from a logical source record."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "datatype" .
 
