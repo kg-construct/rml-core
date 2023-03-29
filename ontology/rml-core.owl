@@ -344,17 +344,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/Join
 :Join rdf:type owl:Class ;
-      rdfs:subClassOf owl:Thing ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :child ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:string
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :parent ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:string
-                      ] ;
+      rdfs:subClassOf owl:Thing ;
       rdfs:comment "Represents a join condition."@en ;
       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
       rdfs:label "Join" .
@@ -379,40 +369,20 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/LogicalSource
 :LogicalSource rdf:type owl:Class ;
                rdfs:comment "Represents a logical source." ;
-               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+               rdfs:isDefinedBy <http://w3id.org/rml/source-target/> ;
                rdfs:label "Logical Source" .
 
 
 ###  http://w3id.org/rml/LogicalTarget
 :LogicalTarget rdf:type owl:Class ;
                rdfs:comment "Represents a Logical Target" ;
-               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+               rdfs:isDefinedBy <http://w3id.org/rml/source-target/> ;
                rdfs:label "Logical Target" .
 
 
 ###  http://w3id.org/rml/ObjectMap
 :ObjectMap rdf:type owl:Class ;
-           rdfs:subClassOf :TermMap ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :datatype ;
-                             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                             owl:onClass rdfs:Datatype
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :object ;
-                             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                             owl:onClass rdfs:Resource
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :object ;
-                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass rdfs:Resource
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :language ;
-                             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:string
-                           ] ;
+           rdfs:subClassOf :TermMap ;
            rdfs:comment "Represents an object map."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "Object Map" .
@@ -420,12 +390,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/PredicateMap
 :PredicateMap rdf:type owl:Class ;
-              rdfs:subClassOf :TermMap ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :predicate ;
-                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass rdf:Property
-                              ] ;
+              rdfs:subClassOf :TermMap ;
               rdfs:comment "Represents a predicate map."@en ;
               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
               rdfs:label "Predicate Map" .
@@ -433,17 +398,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/PredicateObjectMap
 :PredicateObjectMap rdf:type owl:Class ;
-                    rdfs:subClassOf owl:Thing ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :predicateMap ;
-                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                      owl:onClass :PredicateMap
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :objectMap ;
-                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                      owl:onClass :ObjectMap
-                                    ] ;
+                    rdfs:subClassOf owl:Thing ;
                     rdfs:comment "Represents a predicate-object map."@en ;
                     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                     rdfs:label "Predicate Object Map" .
@@ -460,18 +415,13 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/StarMap
 :StarMap rdf:type owl:Class ;
          rdfs:comment "Represents a star map" ;
-         rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+         rdfs:isDefinedBy <http://w3id.org/rml/star/> ;
          rdfs:label "Star Map" .
 
 
 ###  http://w3id.org/rml/SubjectMap
 :SubjectMap rdf:type owl:Class ;
-            rdfs:subClassOf :TermMap ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :class ;
-                              owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                              owl:onClass rdfs:Class
-                            ] ;
+            rdfs:subClassOf :TermMap ;
             rdfs:comment "Represents a subject map."@en ;
             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
             rdfs:label "Subject Map" .
@@ -487,12 +437,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/TriplesMap
 :TriplesMap rdf:type owl:Class ;
-            rdfs:subClassOf owl:Thing ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :subjectMap ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :SubjectMap
-                            ] ;
+            rdfs:subClassOf owl:Thing ;
             rdfs:comment "Represents a triples map."@en ;
             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
             rdfs:label "Triples Map" .
