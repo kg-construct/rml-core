@@ -219,7 +219,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/predicateObjectMap
 :predicateObjectMap rdf:type owl:ObjectProperty ;
                     rdfs:range :PredicateObjectMap ;
-                    rdfs:comment "A PredicateObjectMap element to generate (predicate, object) pair from a logical table row."@en ;
+                    rdfs:comment "A PredicateObjectMap element to generate (predicate, object) pair from a logical source record."@en ;
                     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                     rdfs:label "predicate object map" .
 
