@@ -184,7 +184,7 @@ foaf:name rdf:type owl:AnnotationProperty .
                                       :StarMap
                                     )
                       ] ;
-           rdfs:comment "An ObjectMap element to generate the object component of the (predicate, object) pair from a logical table row."@en ;
+           rdfs:comment "An ObjectMap element to generate the object component of the (predicate, object) pair from a logical source record."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "object map" .
 
