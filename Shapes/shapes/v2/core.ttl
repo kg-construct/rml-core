@@ -1,0 +1,918 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://schema.org/RMLLanguageMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a Language Map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:LanguageMap must specify an rml:template or rml:constant with the IRI 
+    of the language.
+    """ ;
+    sh:name "rml:languageMap" ;
+    sh:property [ sh:description """
+        An IRI indicating whether subject or object generated using the 
+        value from column name specified should be an IRI reference, blank node,
+        or a Literal. 
+        """ ;
+            sh:in ( rml:Literal ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be an rml:Literal for a rml:LanguageMap.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ],
+        [ sh:description """
+        Exactly one rml:template or one rml:reference or one rml:constant
+        is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template or one rml:reference or one rml:constant
+        is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:template/rml:reference/rml:constant" ;
+            sh:path [ sh:alternativePath ( rml:template rml:reference rml:constant ) ] ],
+        [ sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:language xsd:string ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "rml:template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A reference rml:reference is used to refer to a column in case of
+        databases, a record in case of CSV or TSV data source, an element in
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the
+        logical source.   
+        """ ;
+            sh:language xsd:string ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "rml:reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ] .
+
+<http://schema.org/RMLTriplesMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a triples map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:TriplesMap requires exactly one rml:subject or one rml:subjectMap and zero
+    or more rml:predicateObjectMaps.
+    """,
+        "rml:TriplesMap" ;
+    sh:property [ sh:description """
+        A logical source is any source that is mapped to RDF triples.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:logicalSource is required to access the data source.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:logicalSource" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalSource ],
+        [ sh:description """
+        Either one rml:subject or one rml:SubjectMap is required, not both.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Either one rml:subject or one rml:SubjectMap is required, not both.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:subjectMap/rml:subject" ;
+            sh:path [ sh:alternativePath ( rml:subjectMap rml:subject ) ] ],
+        [ sh:description """
+        A SubjectMap element to generate a subject from a logical table row or
+        iterator.
+        """ ;
+            sh:message """
+        rml:SubjectMap must be an IRI or blank node.
+        """ ;
+            sh:name "rml:subjectMap" ;
+            sh:node <http://schema.org/RMLSubjectMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:subjectMap ],
+        [ sh:description """
+        An IRI reference for use as subject for all the RDF triples generated 
+        from a logical table row or iterator.
+        """ ;
+            sh:message """
+        rml:subject must be an IRI or blank node.
+        """ ;
+            sh:name "rml:subject" ;
+            sh:node <http://schema.org/RMLsubjectShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:subject ],
+        [ sh:description """
+        A PredicateObjectMap element to generate (predicate, object) pair from 
+        a logical table row.
+        """ ;
+            sh:message """
+        rml:PredicateObjectMap must be an IRI or blank node.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:predicateObjectMap" ;
+            sh:node <http://schema.org/RMLPredicateObjectMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:predicateObjectMap ] ;
+    sh:targetClass rml:TriplesMap .
+
+<http://schema.org/RMLdatatypeShape> a sh:NodeShape ;
+    sh:description """
+    An IRI reference for use as the graph name of all triples generated with 
+    the datatype.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:datatype must be an IRI.
+    """ ;
+    sh:name "rml:datatype" ;
+    sh:nodeKind sh:IRI .
+
+<http://schema.org/RMLlanguageShape> a sh:NodeShape ;
+    sh:datatype xsd:string ;
+    sh:description """
+    Specified the language for the generated
+    Literal from a logical table row or iterator.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rr:language must be a valid language tag according to BCP47 and may
+    only be provided once as string.
+    """ ;
+    sh:name "rml:language" ;
+    sh:pattern "^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$" .
+
+<http://schema.org/RMLObjectMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents an object map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rml:ObjectMap" ;
+    sh:property [ sh:description """
+        An IRI indicating whether subject or object generated using the 
+        value from column name specified should be an IRI reference, blank node,
+        or a Literal. 
+        """ ;
+            sh:in ( rml:IRI rml:BlankNode rml:Literal ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be either rml:IRI, rml:BlankNode or rml:Literal for
+        a rml:ObjectMap.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        rml:language and rml:datatype may not be provided at the same time.
+        """ ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:name "rml:languageMap/rml:datatypeMap" ;
+            sh:path [ sh:alternativePath ( rml:languageMap rml:datatypeMap ) ] ],
+        [ sh:description """
+        Specified the language map for the object component for the generated 
+        triple from a logical table row or iterator.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:languageMap must point to a rml:LanguageMap specifying the language
+        of the string Literal.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:languageMap" ;
+            sh:node <http://schema.org/RMLDatatypeMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:languageMap ],
+        [ sh:description """
+        Specifies the datatype of the object component for the generated triple
+        from a logical table row or iterator.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:datatypeMap must point to a rml:DatatypeMap specifying the datatype
+        of the Literal.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:datatypeMap" ;
+            sh:node <http://schema.org/RMLDatatypeMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:datatypeMap ],
+        [ sh:description """
+        Exactly one rml:template, one rml:constant or one rml:reference
+        is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:template/rml:constant/rml:reference" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference ) ] ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "rml:template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:path rml:constant ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "rml:reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ] .
+
+<http://schema.org/RMLPredicateMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a predicate map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rml:PredicateMap" ;
+    sh:property [ sh:description """
+        The subject value generated for a logical table row will be asserted 
+        as an instance of this RDFS class.
+        """ ;
+            sh:message """
+        rml:class must be an IRI and may be specified multiple times.
+        """ ;
+            sh:name "rml:class" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:class ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified should be an IRI reference, blank node,
+        or a Literal.
+        """ ;
+            sh:in ( rml:IRI ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be either rml:IRI for an rml:PredicateMap.
+        May only be provided once.
+        """ ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ],
+        [ sh:description """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:template/rml:constant/rml:reference" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference ) ] ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "rml:template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "rml:reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ] .
+
+<http://schema.org/RMLPredicateObjectMapShape> a sh:NodeShape ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description """
+        An ObjectMap element to generate the object component of the 
+        (predicate, object) pair from a logical table row or iterator.
+        """ ;
+            sh:message """
+        rml:objectMap must be an IRI or blank node and be provided once.
+        """ ;
+            sh:name "rml:objectMap" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:objectMap ;
+            sh:xone ( [ sh:node <http://schema.org/RMLObjectMapShape> ] [ sh:node <http://schema.org/RMLRefObjectMapShape> ] ) ],
+        [ sh:description """
+        Specifies the object for the generated triple from the logical table 
+        row or iterator.
+        """ ;
+            sh:message """
+        rml:object must be an IRI and be provided once.
+        """ ;
+            sh:name "rml:object" ;
+            sh:node <http://schema.org/RMLobjectShape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:object ],
+        [ sh:description """
+        Either an rml:graph or rml:graphMap may be optionally be provided, but 
+        not both.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Either an rml:graph or rml:graphMap may be optionally be provided, but
+        not both.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:graph/rml:graphMap" ;
+            sh:path [ sh:alternativePath ( rml:graph rml:graphMap ) ] ],
+        [ sh:description """
+        Either an rml:predicate or rml:predicateMap must be provided, not both.
+        """ ;
+            sh:message """
+        Either an rml:predicate or rml:predicateMap must be provided, not both.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:predicate/rml:predicateMap" ;
+            sh:path [ sh:alternativePath ( rml:predicate rml:predicateMap ) ] ],
+        [ sh:description """
+        Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
+        triples generated from a logical row will be stored in the specified 
+        named graph. Otherwise, the RDF triple generated using the 
+        (predicate, object) pair will be stored in the specified named graph.
+        """ ;
+            sh:message """
+        rml:graphMap must be either an IRI or blank node. 
+        """ ;
+            sh:name "rml:graphMap" ;
+            sh:node <http://schema.org/RMLGraphMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:graphMap ],
+        [ sh:description """
+        An IRI reference for use as the graph name of all triples generated 
+        with the GraphMap.
+        """ ;
+            sh:message """
+        rml:graphMap must be an IRI. 
+        """ ;
+            sh:name "rml:graph" ;
+            sh:node <http://schema.org/RMLgraphShape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:graph ],
+        [ sh:description """
+        A PredicateMap element to generate the predicate component of the 
+        (predicate, object) pair from a logical table row or iterator.
+        """ ;
+            sh:message """
+        rml:predicateMap must be an IRI or blank node and be provided once.
+        """ ;
+            sh:name "rml:predicateMap" ;
+            sh:node <http://schema.org/RMLPredicateMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:predicateMap ],
+        [ sh:description """
+        Specifies the predicate for the generated triple from the logical table 
+        row or iterator.
+        """ ;
+            sh:message """
+        rml:predicate must be an IRI and be provided once.
+        """ ;
+            sh:name "rml:predicate" ;
+            sh:node <http://schema.org/RMLpredicateShape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:predicate ],
+        [ sh:description """
+        Either an rml:object or rml:objectMap must be provided, not both.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Either an rml:object or rml:objectMap must be provided, not both.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:object/rml:objectMap" ;
+            sh:path [ sh:alternativePath ( rml:object rml:objectMap ) ] ] .
+
+<http://schema.org/RMLRefObjectMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a reference object map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:RefObjectMap must specify a rml:parentTriplesMap and zero or more 
+    rml:joinConditions.
+    """ ;
+    sh:name "rml:RefObjectMap" ;
+    sh:property [ sh:class <http://www.w3.org/ns/r2rml#TriplesMap> ;
+            sh:description """
+        Specifies the TriplesMap element corresponding to the parent logical 
+        table of the foreign key constraint.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:parentTriplesMap may only be provided once and must be an IRI or 
+        blank node referring to a rml:TriplesMap.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:parentTriplesMap" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path <http://www.w3.org/ns/r2rml#parentTriplesMap> ],
+        [ sh:description """
+        Specifies the join condition for joining the child logical table with 
+        the parent logical table of the foreign key constraint.
+        """ ;
+            sh:message """
+        rml:joinCondition must specify an rml:parent and rml:child.
+        """ ;
+            sh:name "rml:joinCondition" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path <http://www.w3.org/ns/r2rml#joinCondition> ;
+            sh:property [ sh:datatype xsd:string ;
+                    sh:description """
+            Names a column in the parent table of a join.
+            """ ;
+                    sh:maxCount 1 ;
+                    sh:message """
+            rml:parent must be string and only occur once.
+            """ ;
+                    sh:minCount 1 ;
+                    sh:name "rml:parent" ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://www.w3.org/ns/r2rml#parent> ],
+                [ sh:datatype xsd:string ;
+                    sh:description """
+            Names a column in the child table of a join.
+            """ ;
+                    sh:maxCount 1 ;
+                    sh:message """
+            rml:child must be string and only occur once.
+            """ ;
+                    sh:minCount 1 ;
+                    sh:name "rml:child" ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://www.w3.org/ns/r2rml#child> ] ] .
+
+<http://schema.org/RMLSubjectMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a subject map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:subjectMap requires one rml:template or one rml:constant or one
+    rml:reference.
+    """ ;
+    sh:name "rml:SubjectMap" ;
+    sh:property [ sh:description """
+        The subject value generated for a logical table row will be asserted 
+        as an instance of this RDFS class.
+        """ ;
+            sh:message """
+        rml:class must be an IRI and may be specified multiple times.
+        """ ;
+            sh:name "rml:class" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:class ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified for rml:column should be an IRI reference, 
+        blank node, or a literal.
+        """ ;
+            sh:in ( rml:IRI rml:BlankNode ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be either rml:IRI or rml:BlankNode for an rml:SubjectMap.
+        May only be provided once.
+        """ ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        Either an rml:graph or rml:graphMap may be optionally be provided, but 
+        not both.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Either an rml:graph or rml:graphMap may be optionally be provided, but
+        not both.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:graph/rml:graphMap" ;
+            sh:path [ sh:alternativePath ( rml:graph rml:graphMap ) ] ],
+        [ sh:description """
+        Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
+        triples generated from a logical row will be stored in the specified 
+        named graph. Otherwise, the RDF triple generated using the 
+        (predicate, object) pair will be stored in the specified named graph.
+        """ ;
+            sh:message """
+        rml:graphMap must be either an IRI or blank node. 
+        """ ;
+            sh:name "rml:graphMap" ;
+            sh:node <http://schema.org/RMLGraphMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:graphMap ],
+        [ sh:description """
+        An IRI reference for use as the graph name of all triples generated 
+        with the GraphMap.
+        """ ;
+            sh:message """
+        rml:graphMap must be an IRI. 
+        """ ;
+            sh:name "rml:graph" ;
+            sh:node <http://schema.org/RMLgraphShape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:graph ],
+        [ sh:description """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:template/rml:constant/rml:reference" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference ) ] ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "rml:template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "rml:reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ] .
+
+<http://schema.org/RMLobjectShape> a sh:NodeShape ;
+    sh:description """
+    An IRI reference for use as object for all the RDF triples generated from 
+    a logical table row or iterator.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:object shortcut for rml:objectMap must be an IRI.
+    """ ;
+    sh:name "rml:object" ;
+    sh:nodeKind sh:BlankNodeOrIRI .
+
+<http://schema.org/RMLpredicateShape> a sh:NodeShape ;
+    sh:description """
+    Specifies the predicate for the generated triple from the logical table 
+    row or iterator.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:predicate must be an IRI.
+    """ ;
+    sh:name "rml:predicate" ;
+    sh:nodeKind sh:IRI .
+
+<http://schema.org/RMLsubjectShape> a sh:NodeShape ;
+    sh:description """
+    An IRI reference for use as subject for all the RDF triples generated from 
+    a logical table row or iterator.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:subject shortcut for rml:subjectMap must be an IRI.
+    """ ;
+    sh:name "rml:subject" ;
+    sh:nodeKind sh:IRI .
+
+<http://schema.org/RMLDatatypeMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a Datatype Map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:DatatypeMap must specify an rml:template, rml:reference, or rml:constant
+    with the IRI of the datatype.
+    """ ;
+    sh:name "rml:datatypeMap" ;
+    sh:property [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ],
+        [ sh:description """
+        Exactly one rml:template or one rml:reference or one rml:constant is
+        required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template or one rml:reference or one rml:constant is
+        required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:template/rml:reference/rml:constant" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant ) ] ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "rml:template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A reference rml:reference is used to refer to a column in case of
+        databases, a record in case of CSV or TSV data source, an element in
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the
+        logical source.   
+        """ ;
+            sh:language xsd:string ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "rml:reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the 
+        value from column name specified should be an IRI reference, blank node,
+        or a Literal. 
+        """ ;
+            sh:in ( rml:IRI ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be an rml:IRI for a rml:DatatypeMap.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ] .
+
+<http://schema.org/RMLGraphMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a graph map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:GraphMap must specify an rml:template, rml:reference or rml:constant 
+    with the IRI of the Named Graph.
+    """ ;
+    sh:name "rml:graphMap" ;
+    sh:property [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ],
+        [ sh:description """
+        Exactly one rml:template or one rml:reference or one rml:constant is
+        required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template or one rml:reference or one rml:constant is
+        required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:template/rml:reference/rml:constant" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant ) ] ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "rml:template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A reference rml:reference is used to refer to a column in case of
+        databases, a record in case of CSV or TSV data source, an element in
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the
+        logical source.   
+        """ ;
+            sh:language xsd:string ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "rml:reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the 
+        value from column name specified should be an IRI reference, blank node,
+        or a Literal. 
+        """ ;
+            sh:in ( rml:IRI ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be an rml:IRI for a rml:GraphMap.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ] .
+
+<http://schema.org/RMLgraphShape> a sh:NodeShape ;
+    sh:description """
+    An IRI reference for use as the graph name of all triples generated with 
+    the GraphMap. 
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:message """
+    rml:graph must be an IRI.
+    """ ;
+    sh:name "rml:graph" ;
+    sh:nodeKind sh:IRI .
+

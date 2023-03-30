@@ -1,0 +1,99 @@
+###############################################################################
+# RML Triples Map shape                                                       #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+###############################################################################
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Validate an RML Triples Map
+schema:RMLTriplesMapShape
+    a sh:NodeShape ;
+    sh:targetClass rml:TriplesMap ;
+    sh:message "rml:TriplesMap" ;
+    sh:description """
+    Represents a triples map.
+    """ ;
+    sh:message """
+    rml:TriplesMap requires exactly one rml:subject or one rml:subjectMap and zero
+    or more rml:predicateObjectMaps.
+    """ ;
+    sh:ignoredProperties (rdf:type) ;
+
+    # rml:logicalSource
+    sh:property [
+        sh:path rml:logicalSource ;
+        sh:name "rml:logicalSource" ;
+        sh:description """
+        A logical source is any source that is mapped to RDF triples.
+        """ ;
+        sh:message """
+        Exactly one rml:logicalSource is required to access the data source.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # Either an rml:subject or rml:SubjectMap is required
+    sh:property [
+        sh:path [sh:alternativePath (rml:subjectMap rml:subject)] ;
+        sh:name "rml:subjectMap/rml:subject" ;
+        sh:description """
+        Either one rml:subject or one rml:SubjectMap is required, not both.
+        """ ;
+        sh:message """
+        Either one rml:subject or one rml:SubjectMap is required, not both.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:subjectMap
+    sh:property [
+        sh:path rml:subjectMap ;
+        sh:name "rml:subjectMap" ;
+        sh:description """
+        A SubjectMap element to generate a subject from a logical table row or
+        iterator.
+        """ ;
+        sh:message """
+        rml:SubjectMap must be an IRI or blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLSubjectMapShape ;
+    ] ;
+
+    # rml:subject
+    sh:property [
+        sh:path rml:subject ;
+        sh:name "rml:subject" ;
+        sh:description """
+        An IRI reference for use as subject for all the RDF triples generated 
+        from a logical table row or iterator.
+        """ ;
+        sh:message """
+        rml:subject must be an IRI or blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLsubjectShape ;
+    ] ;
+
+    # rml:predicateObjectMap
+    sh:property [
+        sh:path rml:predicateObjectMap ;
+        sh:name "rml:predicateObjectMap" ;
+        sh:description """
+        A PredicateObjectMap element to generate (predicate, object) pair from 
+        a logical table row.
+        """ ;
+        sh:message """
+        rml:PredicateObjectMap must be an IRI or blank node.
+        """ ;
+        sh:minCount 0 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLPredicateObjectMapShape ; 
+    ] ;
+.

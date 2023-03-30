@@ -1,0 +1,150 @@
+###############################################################################
+# RML Predicate Map and predicate shortcut shape                              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLPredicateMapShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rml:PredicateMap" ;
+    sh:description """
+    Represents a predicate map.
+    """ ;
+    # Exactly one rml:template, one rml:constant or one 
+    # rml:reference is required.
+    sh:property [
+        sh:path [sh:alternativePath (rml:template 
+                                     rml:constant
+                                     rml:reference)] ;
+        sh:name "rml:template/rml:constant/rml:reference" ;
+        sh:description """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+        sh:message """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:template
+    sh:property [
+        sh:path rml:template ;
+        sh:name "rml:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rml:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:constant
+    sh:property [
+        sh:path rml:constant ;
+        sh:name "rml:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rml:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:path rml:reference ;
+        sh:name "rml:reference" ;
+        sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:class
+    sh:property [
+        sh:path rml:class ;
+        sh:name "rml:class" ;
+        sh:description """
+        The subject value generated for a logical table row will be asserted 
+        as an instance of this RDFS class.
+        """ ;
+        sh:message """
+        rml:class must be an IRI and may be specified multiple times.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:termType
+    sh:property [
+        sh:path rml:termType ;
+        sh:name "rml:termType" ;
+        sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified should be an IRI reference, blank node,
+        or a Literal.
+        """ ;
+        sh:message """
+        rml:termType must be either rml:IRI for an rml:PredicateMap.
+        May only be provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:in (rml:IRI) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:logicalTarget
+    sh:property [
+        sh:path rml:logicalTarget ;
+        sh:name "rml:logicalTarget" ;
+        sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+        sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+
+schema:RMLpredicateShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rml:predicate" ;
+    sh:description """
+    Specifies the predicate for the generated triple from the logical table 
+    row or iterator.
+    """ ;
+    sh:message """
+    rml:predicate must be an IRI.
+    """ ;
+    sh:nodeKind sh:IRI ;
+.
