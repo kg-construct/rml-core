@@ -1,0 +1,151 @@
+###############################################################################
+# RML Predicate Object Map shape                                              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLPredicateObjectMapShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    
+    # Either an rml:predicate or rml:predicateMap must be provided, not both
+    sh:property [
+        sh:path [sh:alternativePath (rml:predicate rml:predicateMap)] ;
+        sh:name "rml:predicate/rml:predicateMap" ;
+        sh:description """
+        Either an rml:predicate or rml:predicateMap must be provided, not both.
+        """ ;
+        sh:message """
+        Either an rml:predicate or rml:predicateMap must be provided, not both.
+        """ ;
+        sh:minCount 1 ;
+    ] ;
+
+    # rml:predicateMap
+    sh:property [
+        sh:path rml:predicateMap ;
+        sh:name "rml:predicateMap" ;
+        sh:description """
+        A PredicateMap element to generate the predicate component of the 
+        (predicate, object) pair from a logical table row or iterator.
+        """ ;
+        sh:message """
+        rml:predicateMap must be an IRI or blank node and be provided once.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLPredicateMapShape ;
+    ] ;
+
+    # rml:predicate
+    sh:property [
+        sh:path rml:predicate ;
+        sh:name "rml:predicate" ;
+        sh:description """
+        Specifies the predicate for the generated triple from the logical table 
+        row or iterator.
+        """ ;
+        sh:message """
+        rml:predicate must be an IRI and be provided once.
+        """ ;
+        sh:nodeKind sh:IRI ;
+        sh:node schema:RMLpredicateShape ;
+    ] ;
+
+    # Either an rml:object or rml:objectMap must be provided, not both
+    sh:property [
+        sh:path [sh:alternativePath (rml:object rml:objectMap)] ;
+        sh:name "rml:object/rml:objectMap" ;
+        sh:description """
+        Either an rml:object or rml:objectMap must be provided, not both.
+        """ ;
+        sh:message """
+        Either an rml:object or rml:objectMap must be provided, not both.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:objectMap
+    sh:property [
+        sh:path rml:objectMap ;
+        sh:name "rml:objectMap" ;
+        sh:description """
+        An ObjectMap element to generate the object component of the 
+        (predicate, object) pair from a logical table row or iterator.
+        """ ;
+        sh:message """
+        rml:objectMap must be an IRI or blank node and be provided once.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:xone ([sh:node schema:RMLObjectMapShape] 
+                 [sh:node schema:RMLRefObjectMapShape]) ;
+    ] ;
+
+    # rml:object
+    sh:property [
+        sh:path rml:object ;
+        sh:name "rml:object" ;
+        sh:description """
+        Specifies the object for the generated triple from the logical table 
+        row or iterator.
+        """ ;
+        sh:message """
+        rml:object must be an IRI and be provided once.
+        """ ;
+        sh:nodeKind sh:IRI ;
+        sh:node schema:RMLobjectShape ;
+    ] ;
+
+    # Either an rml:graph or rml:graphMap may be optionally be provided, but not 
+    # both
+    sh:property [
+        sh:path [sh:alternativePath (rml:graph rml:graphMap)] ;
+        sh:name "rml:graph/rml:graphMap" ;
+        sh:description """
+        Either an rml:graph or rml:graphMap may be optionally be provided, but 
+        not both.
+        """ ;
+        sh:message """
+        Either an rml:graph or rml:graphMap may be optionally be provided, but
+        not both.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:graphMap
+    sh:property [
+        sh:path rml:graphMap ;
+        sh:name "rml:graphMap" ;
+        sh:description """
+        Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
+        triples generated from a logical row will be stored in the specified 
+        named graph. Otherwise, the RDF triple generated using the 
+        (predicate, object) pair will be stored in the specified named graph.
+        """ ;
+        sh:message """
+        rml:graphMap must be either an IRI or blank node. 
+        """ ;
+        sh:node schema:RMLGraphMapShape ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+
+    # rml:graph
+    sh:property [
+        sh:path rml:graph ;
+        sh:name "rml:graph" ;
+        sh:description """
+        An IRI reference for use as the graph name of all triples generated 
+        with the GraphMap.
+        """ ;
+        sh:message """
+        rml:graphMap must be an IRI. 
+        """ ;
+        sh:node schema:RMLgraphShape ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.

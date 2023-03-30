@@ -1,0 +1,85 @@
+###############################################################################
+# RML RefObjectMap shape                                                      #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLRefObjectMapShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rml:RefObjectMap" ;
+    sh:description """
+    Represents a reference object map.
+    """ ;
+    sh:message """
+    rml:RefObjectMap must specify a rml:parentTriplesMap and zero or more 
+    rml:joinConditions.
+    """ ;
+
+    # rml:parentTriplesMap
+    sh:property [
+        sh:path rml:parentTriplesMap ;
+        sh:name "rml:parentTriplesMap" ;
+        sh:description """
+        Specifies the TriplesMap element corresponding to the parent logical 
+        table of the foreign key constraint.
+        """ ;
+        sh:message """
+        rml:parentTriplesMap may only be provided once and must be an IRI or 
+        blank node referring to a rml:TriplesMap.
+        """ ;
+        sh:class rml:TriplesMap ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:path rml:joinCondition ;
+        sh:name "rml:joinCondition" ;
+        sh:description """
+        Specifies the join condition for joining the child logical table with 
+        the parent logical table of the foreign key constraint.
+        """ ;
+        sh:message """
+        rml:joinCondition must specify an rml:parent and rml:child.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+
+        # rml:parent
+        sh:property [
+            sh:path rml:parent ;
+            sh:name "rml:parent" ;
+            sh:description """
+            Names a column in the parent table of a join.
+            """ ;
+            sh:message """
+            rml:parent must be string and only occur once.
+            """ ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ] ;
+
+        # rml:child
+        sh:property [
+            sh:path rml:child ;
+            sh:name "rml:child" ;
+            sh:description """
+            Names a column in the child table of a join.
+            """ ;
+            sh:message """
+            rml:child must be string and only occur once.
+            """ ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ] ;
+    ] ;
+.

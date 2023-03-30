@@ -1,0 +1,140 @@
+###############################################################################
+# RML Language Map and language shortcut shape                                #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLLanguageMapShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rml:languageMap" ;
+    sh:description """
+    Represents a Language Map.
+    """ ;
+    sh:message """
+    rml:LanguageMap must specify an rml:template or rml:constant with the IRI 
+    of the language.
+    """ ;
+
+    # Exactly one rml:template or one rml:constant is required
+    sh:property [
+        sh:path [sh:alternativePath (rml:template rml:reference rml:constant)] ;
+        sh:name "rml:template/rml:reference/rml:constant" ;
+        sh:description """
+        Exactly one rml:template or one rml:reference or one rml:constant
+        is required.
+        """ ;
+        sh:message """
+        Exactly one rml:template or one rml:reference or one rml:constant
+        is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:template
+    sh:property [
+        sh:path rml:template ;
+        sh:name "rml:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rml:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:language xsd:string ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:path rml:reference ;
+        sh:name "rml:reference" ;
+        sh:description """
+        A reference rml:reference is used to refer to a column in case of
+        databases, a record in case of CSV or TSV data source, an element in
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the
+        logical source.   
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:language xsd:string ;
+    ] ;
+
+    # rml:constant
+    sh:property [
+        sh:path rml:constant ;
+        sh:name "rml:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rml:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:termType
+    sh:property [
+        sh:path rml:termType ;
+        sh:name "rml:termType" ;
+        sh:description """
+        An IRI indicating whether subject or object generated using the 
+        value from column name specified should be an IRI reference, blank node,
+        or a Literal. 
+        """ ;
+        sh:message """
+        rml:termType must be an rml:Literal for a rml:LanguageMap.
+        """ ;
+        sh:maxCount 1 ;
+        sh:minCount 0 ;
+        sh:in (rml:Literal) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:logicalTarget
+    sh:property [
+        sh:path rml:logicalTarget ;
+        sh:name "rml:logicalTarget" ;
+        sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+        sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+
+schema:RMLlanguageShape 
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rml:language" ;
+    sh:description """
+    Specified the language for the generated
+    Literal from a logical table row or iterator.
+    """ ;
+    sh:message """
+    rr:language must be a valid language tag according to BCP47 and may
+    only be provided once as string.
+    """ ;
+    sh:pattern "^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$";
+    sh:datatype xsd:string ;
+.
