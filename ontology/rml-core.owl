@@ -233,6 +233,14 @@ foaf:name rdf:type owl:AnnotationProperty .
                     rdfs:label "predicate object map" .
 
 
+###  http://w3id.org/rml/strategy
+:strategy rdf:type owl:ObjectProperty ;
+          rdfs:range :Strategy ;
+          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "strategy" .
+
+
 ###  http://w3id.org/rml/subject
 :subject rdf:type owl:ObjectProperty ;
          rdfs:domain :TriplesMap ;
@@ -308,7 +316,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :template rdf:type owl:DatatypeProperty ;
           rdfs:domain :ExpressionMap ;
           rdfs:range xsd:string ;
-          rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more records from a logical source record."@en ;
+          rdfs:comment "A template (format string) to specify how to generate a value for a expression map, using one or more records from a logical source record."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "template" .
 
@@ -406,6 +414,13 @@ foaf:name rdf:type owl:AnnotationProperty .
               rdfs:label "Reference Object Map" .
 
 
+###  http://w3id.org/rml/Strategy
+:Strategy rdf:type owl:Class ;
+          dfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "Strategy" .
+
+
 ###  http://w3id.org/rml/SubjectMap
 :SubjectMap rdf:type owl:Class ;
             rdfs:subClassOf :TermMap ;
@@ -417,7 +432,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/TermMap
 :TermMap rdf:type owl:Class ;
          rdfs:subClassOf :ExpressionMap ;
-         rdfs:comment "A function that generates an RDF term from a logical source record."@en ;
+         rdfs:comment "A function that generates any number of RDF terms from a logical source record."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "Term Map"@en .
 
