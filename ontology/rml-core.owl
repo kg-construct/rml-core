@@ -11,12 +11,11 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @base <http://w3id.org/rml/> .
 
-<http://w3id.org/rml/> rdf:type owl:Ontology ;
+<http://w3id.org/rml/core> rdf:type owl:Ontology ;
                         dc:description "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
                         dc:modified "2023-03-13" ;
                         dc:title "RML: Generic Mapping Language for RDF"@en ;
-                        vann:preferredNamespacePrefix "rml" ;
-                        vann:preferredNamespaceUri "http://w3id.org/rml/" .
+                        vann:preferredNamespaceUri "http://w3id.org/rml/core/" .
 
 #################################################################
 #    Annotation properties
@@ -136,11 +135,6 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/joinCondition
 :joinCondition rdf:type owl:ObjectProperty ;
-               rdfs:domain [ rdf:type owl:Class ;
-                             owl:unionOf ( :RefObjectMap
-                                           :StarMap
-                                         )
-                           ] ;
                rdfs:range :Join ;
                rdfs:comment "Specifies the join condition for joining the child logical source with the parent logical source of the foreign key constraint."@en ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -175,7 +169,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/rml/object
-:object rdf:type owl:ObjectProperty ;
+:object rdf:type rdf:Property ;
         rdfs:domain :PredicateObjectMap ;
         rdfs:range rdfs:Resource ;
         rdfs:comment "Specifies the object for the generated triple from the logical source record."@en ;
@@ -186,12 +180,6 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/objectMap
 :objectMap rdf:type owl:ObjectProperty ;
            rdfs:domain :PredicateObjectMap ;
-           rdfs:range [ rdf:type owl:Class ;
-                        owl:unionOf ( :ObjectMap
-                                      :RefObjectMap
-                                      :StarMap
-                                    )
-                      ] ;
            rdfs:comment "An ObjectMap element to generate the object component of the (predicate, object) pair from a logical source record."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "object map" .
@@ -272,6 +260,25 @@ foaf:name rdf:type owl:AnnotationProperty .
           rdfs:label "term type" .
 
 
+### http://w3id.org/rml/childMap
+:childMap rdf:type owl:ObjectProperty ;
+       rdfs:domain :Join ;
+       rdfs:range :ChildMap ;
+       rdfs:comment "Names a child map in the child source of a join."@en ;
+       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+       rdfs:label "child map" .
+
+
+
+### http://w3id.org/rml/parentMap
+:parentMap rdf:type owl:ObjectProperty ;
+       rdfs:domain :Join ;
+       rdfs:range :ParentMap ;
+       rdfs:comment "Names a parent map in the parent source of a join."@en ;
+       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+       rdfs:label "parent map" .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -339,6 +346,14 @@ foaf:name rdf:type owl:AnnotationProperty .
              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
              rdfs:label "Datatype Map" .
 
+###  http://w3id.org/rml/ChildMap
+:ChildMap rdf:type owl:Class ;
+          rdfs:subClassOf :ExpressionMap ;
+          rdfs:comment "Represents a child map"@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "Child Map" .
+
+
 
 ###  http://w3id.org/rml/ExpressionMap
 :ExpressionMap rdf:type owl:Class ;
@@ -390,6 +405,14 @@ foaf:name rdf:type owl:AnnotationProperty .
            rdfs:comment "Represents an object map."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "Object Map" .
+
+
+###  http://w3id.org/rml/ChildMap
+:ParentMap rdf:type owl:Class ;
+          rdfs:subClassOf :ExpressionMap ;
+          rdfs:comment "Represents a parent map"@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "Parent Map" .
 
 
 ###  http://w3id.org/rml/PredicateMap
