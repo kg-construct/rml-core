@@ -13,8 +13,19 @@
 
 <http://w3id.org/rml/core> rdf:type owl:Ontology ;
                         dc:description "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
-                        dc:modified "2023-03-13" ;
+                        dc:modified "2023-04-19" ;
                         dc:title "RML: Generic Mapping Language for RDF"@en ;
+                        dc:contributor "Anastasia Dimou" ;
+                        dc:contributor "Pano Maria" ;
+                        dc:contributor "Ben de Meester" ;
+                        dc:contributor "Franck Michel" ;
+                        dc:contributor "David Chaves Fraga" ;
+                        dc:contributor "Christophe Debruyne" ;
+                        dc:contributor "Samaneh Jozashoori" ;
+                        dc:contributor "Dylan Van Assche" ;
+                        dc:contributor "Julián Arenas Guerrero" ;
+                        dc:contributor "Ana Iglesias Molina" ;
+                        dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
                         vann:preferredNamespaceUri "http://w3id.org/rml/core/" .
 
 #################################################################
@@ -439,7 +450,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/Strategy
 :Strategy rdf:type owl:Class ;
-          dfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
+          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "Strategy" .
 
