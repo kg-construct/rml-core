@@ -10,10 +10,9 @@
 
 schema:RMLGraphMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rml:graphMap" ;
+    sh:name "GraphMap" ;
     sh:description """
-    Represents a graph map.
+    Represents a Graph Map.
     """ ;
     sh:message """
     rml:GraphMap must specify an rml:template, rml:reference or rml:constant 
@@ -22,8 +21,8 @@ schema:RMLGraphMapShape
 
     # Exactly one rml:template or one rml:constant is required
     sh:property [
-        sh:path [sh:alternativePath (rml:template rml:constant)] ;
-        sh:name "rml:template/rml:reference/rml:constant" ;
+        sh:path [sh:alternativePath (rml:template rml:reference rml:constant)] ;
+        sh:name "template/reference/constant" ;
         sh:description """
         Exactly one rml:template or one rml:reference or one rml:constant is
         required.
@@ -39,7 +38,7 @@ schema:RMLGraphMapShape
     # rml:template
     sh:property [
         sh:path rml:template ;
-        sh:name "rml:template" ;
+        sh:name "template" ;
         sh:description """
         A template (format string) to specify how to generate a value for a 
         subject, predicate, or object, using one or more columns from a logical
@@ -55,7 +54,7 @@ schema:RMLGraphMapShape
     # rml:reference
     sh:property [
         sh:path rml:reference ;
-        sh:name "rml:reference" ;
+        sh:name "reference" ;
         sh:description """
         A reference rml:reference is used to refer to a column in case of
         databases, a record in case of CSV or TSV data source, an element in
@@ -70,13 +69,13 @@ schema:RMLGraphMapShape
         rml:reference must be a string.
         """ ;
         sh:nodeKind sh:Literal ;
-        sh:language xsd:string ;
+        sh:datatype xsd:string ;
     ] ;
 
     # rml:constant
     sh:property [
         sh:path rml:constant ;
-        sh:name "rml:constant" ;
+        sh:name "constant" ;
         sh:description """
         A property for indicating whether a term map is a constant-valued term 
         map.
@@ -90,7 +89,7 @@ schema:RMLGraphMapShape
     # rml:termType
     sh:property [
         sh:path rml:termType ;
-        sh:name "rml:termType" ;
+        sh:name "termType" ;
         sh:description """
         An IRI indicating whether subject or object generated using the 
         value from column name specified should be an IRI reference, blank node,
@@ -108,7 +107,7 @@ schema:RMLGraphMapShape
     # rml:logicalTarget
     sh:property [
         sh:path rml:logicalTarget ;
-        sh:name "rml:logicalTarget" ;
+        sh:name "logicalTarget" ;
         sh:description """
         A logical target is any target to where generated RDF triples are
         exported to.
@@ -125,11 +124,10 @@ schema:RMLGraphMapShape
 
 schema:RMLgraphShape 
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rml:graph" ;
+    sh:name "graph" ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 
-    the GraphMap. 
+    the Graph Map. 
     """ ;
     sh:message """
     rml:graph must be an IRI.

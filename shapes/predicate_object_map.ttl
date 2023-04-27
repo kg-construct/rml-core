@@ -10,12 +10,15 @@
 
 schema:RMLPredicateObjectMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
+    sh:name "PredicateObjectMap" ;
+    sh:description """
+    Represents a Predicate Object Map.
+    """;
     
     # Either an rml:predicate or rml:predicateMap must be provided, not both
     sh:property [
         sh:path [sh:alternativePath (rml:predicate rml:predicateMap)] ;
-        sh:name "rml:predicate/rml:predicateMap" ;
+        sh:name "predicate/predicateMap" ;
         sh:description """
         Either an rml:predicate or rml:predicateMap must be provided, not both.
         """ ;
@@ -28,7 +31,7 @@ schema:RMLPredicateObjectMapShape
     # rml:predicateMap
     sh:property [
         sh:path rml:predicateMap ;
-        sh:name "rml:predicateMap" ;
+        sh:name "predicateMap" ;
         sh:description """
         A PredicateMap element to generate the predicate component of the 
         (predicate, object) pair from a logical table row or iterator.
@@ -43,7 +46,7 @@ schema:RMLPredicateObjectMapShape
     # rml:predicate
     sh:property [
         sh:path rml:predicate ;
-        sh:name "rml:predicate" ;
+        sh:name "predicate" ;
         sh:description """
         Specifies the predicate for the generated triple from the logical table 
         row or iterator.
@@ -58,7 +61,7 @@ schema:RMLPredicateObjectMapShape
     # Either an rml:object or rml:objectMap must be provided, not both
     sh:property [
         sh:path [sh:alternativePath (rml:object rml:objectMap)] ;
-        sh:name "rml:object/rml:objectMap" ;
+        sh:name "object/objectMap" ;
         sh:description """
         Either an rml:object or rml:objectMap must be provided, not both.
         """ ;
@@ -72,7 +75,7 @@ schema:RMLPredicateObjectMapShape
     # rml:objectMap
     sh:property [
         sh:path rml:objectMap ;
-        sh:name "rml:objectMap" ;
+        sh:name "objectMap" ;
         sh:description """
         An ObjectMap element to generate the object component of the 
         (predicate, object) pair from a logical table row or iterator.
@@ -88,7 +91,7 @@ schema:RMLPredicateObjectMapShape
     # rml:object
     sh:property [
         sh:path rml:object ;
-        sh:name "rml:object" ;
+        sh:name "object" ;
         sh:description """
         Specifies the object for the generated triple from the logical table 
         row or iterator.
@@ -104,7 +107,7 @@ schema:RMLPredicateObjectMapShape
     # both
     sh:property [
         sh:path [sh:alternativePath (rml:graph rml:graphMap)] ;
-        sh:name "rml:graph/rml:graphMap" ;
+        sh:name "graph/graphMap" ;
         sh:description """
         Either an rml:graph or rml:graphMap may be optionally be provided, but 
         not both.
@@ -120,7 +123,7 @@ schema:RMLPredicateObjectMapShape
     # rml:graphMap
     sh:property [
         sh:path rml:graphMap ;
-        sh:name "rml:graphMap" ;
+        sh:name "graphMap" ;
         sh:description """
         Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
         triples generated from a logical row will be stored in the specified 
@@ -137,7 +140,7 @@ schema:RMLPredicateObjectMapShape
     # rml:graph
     sh:property [
         sh:path rml:graph ;
-        sh:name "rml:graph" ;
+        sh:name "graph" ;
         sh:description """
         An IRI reference for use as the graph name of all triples generated 
         with the GraphMap.

@@ -10,10 +10,9 @@
 
 schema:RMLRefObjectMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rml:RefObjectMap" ;
+    sh:name "RefObjectMap" ;
     sh:description """
-    Represents a reference object map.
+    Represents a Reference Object Map.
     """ ;
     sh:message """
     rml:RefObjectMap must specify a rml:parentTriplesMap and zero or more 
@@ -23,7 +22,7 @@ schema:RMLRefObjectMapShape
     # rml:parentTriplesMap
     sh:property [
         sh:path rml:parentTriplesMap ;
-        sh:name "rml:parentTriplesMap" ;
+        sh:name "parentTriplesMap" ;
         sh:description """
         Specifies the TriplesMap element corresponding to the parent logical 
         table of the foreign key constraint.
@@ -40,7 +39,7 @@ schema:RMLRefObjectMapShape
 
     sh:property [
         sh:path rml:joinCondition ;
-        sh:name "rml:joinCondition" ;
+        sh:name "joinCondition" ;
         sh:description """
         Specifies the join condition for joining the child logical table with 
         the parent logical table of the foreign key constraint.
@@ -53,7 +52,7 @@ schema:RMLRefObjectMapShape
         # rml:parent
         sh:property [
             sh:path rml:parent ;
-            sh:name "rml:parent" ;
+            sh:name "parent" ;
             sh:description """
             Names a column in the parent table of a join.
             """ ;
@@ -69,7 +68,7 @@ schema:RMLRefObjectMapShape
         # rml:child
         sh:property [
             sh:path rml:child ;
-            sh:name "rml:child" ;
+            sh:name "child" ;
             sh:description """
             Names a column in the child table of a join.
             """ ;

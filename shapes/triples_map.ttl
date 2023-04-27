@@ -12,7 +12,7 @@
 schema:RMLTriplesMapShape
     a sh:NodeShape ;
     sh:targetClass rml:TriplesMap ;
-    sh:message "rml:TriplesMap" ;
+    sh:name "TriplesMap" ;
     sh:description """
     Represents a triples map.
     """ ;
@@ -20,12 +20,11 @@ schema:RMLTriplesMapShape
     rml:TriplesMap requires exactly one rml:subject or one rml:subjectMap and zero
     or more rml:predicateObjectMaps.
     """ ;
-    sh:ignoredProperties (rdf:type) ;
 
     # rml:logicalSource
     sh:property [
         sh:path rml:logicalSource ;
-        sh:name "rml:logicalSource" ;
+        sh:name "logicalSource" ;
         sh:description """
         A logical source is any source that is mapped to RDF triples.
         """ ;
@@ -40,7 +39,7 @@ schema:RMLTriplesMapShape
     # Either an rml:subject or rml:SubjectMap is required
     sh:property [
         sh:path [sh:alternativePath (rml:subjectMap rml:subject)] ;
-        sh:name "rml:subjectMap/rml:subject" ;
+        sh:name "subjectMap/subject" ;
         sh:description """
         Either one rml:subject or one rml:SubjectMap is required, not both.
         """ ;
@@ -54,7 +53,7 @@ schema:RMLTriplesMapShape
     # rml:subjectMap
     sh:property [
         sh:path rml:subjectMap ;
-        sh:name "rml:subjectMap" ;
+        sh:name "subjectMap" ;
         sh:description """
         A SubjectMap element to generate a subject from a logical table row or
         iterator.
@@ -69,7 +68,7 @@ schema:RMLTriplesMapShape
     # rml:subject
     sh:property [
         sh:path rml:subject ;
-        sh:name "rml:subject" ;
+        sh:name "subject" ;
         sh:description """
         An IRI reference for use as subject for all the RDF triples generated 
         from a logical table row or iterator.
@@ -84,7 +83,7 @@ schema:RMLTriplesMapShape
     # rml:predicateObjectMap
     sh:property [
         sh:path rml:predicateObjectMap ;
-        sh:name "rml:predicateObjectMap" ;
+        sh:name "predicateObjectMap" ;
         sh:description """
         A PredicateObjectMap element to generate (predicate, object) pair from 
         a logical table row.

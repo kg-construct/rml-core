@@ -10,10 +10,9 @@
 
 schema:RMLPredicateMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rml:PredicateMap" ;
+    sh:name "PredicateMap" ;
     sh:description """
-    Represents a predicate map.
+    Represents a Predicate Map.
     """ ;
     # Exactly one rml:template, one rml:constant or one 
     # rml:reference is required.
@@ -21,7 +20,7 @@ schema:RMLPredicateMapShape
         sh:path [sh:alternativePath (rml:template 
                                      rml:constant
                                      rml:reference)] ;
-        sh:name "rml:template/rml:constant/rml:reference" ;
+        sh:name "template/constant/reference" ;
         sh:description """
         Exactly one rml:template, one rml:constant or one rml:reference is
         required.
@@ -37,7 +36,7 @@ schema:RMLPredicateMapShape
     # rml:template
     sh:property [
         sh:path rml:template ;
-        sh:name "rml:template" ;
+        sh:name "template" ;
         sh:description """
         A template (format string) to specify how to generate a value for a 
         subject, predicate, or object, using one or more columns from a logical
@@ -53,7 +52,7 @@ schema:RMLPredicateMapShape
     # rml:constant
     sh:property [
         sh:path rml:constant ;
-        sh:name "rml:constant" ;
+        sh:name "constant" ;
         sh:description """
         A property for indicating whether a term map is a constant-valued term 
         map.
@@ -67,7 +66,7 @@ schema:RMLPredicateMapShape
     # rml:reference
     sh:property [
         sh:path rml:reference ;
-        sh:name "rml:reference" ;
+        sh:name "reference" ;
         sh:description """
         A reference rml:reference is used to refer to a column in case of 
         databases, a record in case of CSV or TSV data source, an element in 
@@ -85,24 +84,10 @@ schema:RMLPredicateMapShape
         sh:datatype xsd:string ;
     ] ;
 
-    # rml:class
-    sh:property [
-        sh:path rml:class ;
-        sh:name "rml:class" ;
-        sh:description """
-        The subject value generated for a logical table row will be asserted 
-        as an instance of this RDFS class.
-        """ ;
-        sh:message """
-        rml:class must be an IRI and may be specified multiple times.
-        """ ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
     # rml:termType
     sh:property [
         sh:path rml:termType ;
-        sh:name "rml:termType" ;
+        sh:name "termType" ;
         sh:description """
         An IRI indicating whether subject or object generated using the value 
         from column name specified should be an IRI reference, blank node,
@@ -120,7 +105,7 @@ schema:RMLPredicateMapShape
     # rml:logicalTarget
     sh:property [
         sh:path rml:logicalTarget ;
-        sh:name "rml:logicalTarget" ;
+        sh:name "logicalTarget" ;
         sh:description """
         A logical target is any target to where generated RDF triples are
         exported to.
@@ -137,11 +122,9 @@ schema:RMLPredicateMapShape
 
 schema:RMLpredicateShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rml:predicate" ;
+    sh:name "predicate" ;
     sh:description """
-    Specifies the predicate for the generated triple from the logical table 
-    row or iterator.
+    Specifies the predicate for the generated triple.
     """ ;
     sh:message """
     rml:predicate must be an IRI.
