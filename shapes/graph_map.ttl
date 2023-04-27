@@ -38,8 +38,8 @@ schema:RMLGraphMapShape
 
 
 schema:RMLgraphShape 
-    a sh:PropertShape ;
-    sh:path rml:path ;
+    a sh:NodeShape ;
+    sh:targetSubjectsOf rml:graph ;
     sh:name "graph" ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 
@@ -48,5 +48,6 @@ schema:RMLgraphShape
     sh:message """
     rml:graph must be an IRI.
     """ ;
-    sh:nodeKind sh:IRI ;
+    # Allow blank nodes because SHACL sees ex:PersonGraph also as blank node.
+    sh:nodeKind sh:BlankNodeOrIRI ;
 .

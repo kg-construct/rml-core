@@ -45,8 +45,7 @@ schema:RMLChildMapShape
 .
 
 schema:RMLchildShape
-    a sh:PropertyShape ;
-    sh:path rml:child ;
+    a sh:NodeShape ;
     sh:targetSubjectsOf rml:child ;
     sh:name "child" ;
     sh:description """

@@ -23,19 +23,6 @@ schema:RMLPredicateObjectMapShape
         schema:RMLLogicalTargetPropertiesShape
         # Predicate Map specific shapes
         [
-            sh:targetSubjectsOf rml:predicate ;
-            sh:targetSubjectsOf rml:predicateMap ;
-            sh:path [sh:alternativePath (rml:predicate rml:predicateMap)] ;
-            sh:name "predicate/predicateMap" ;
-            sh:description """
-            Either an rml:predicate or rml:predicateMap must be provided, not both.
-            """ ;
-            sh:message """
-            Either an rml:predicate or rml:predicateMap must be provided, not both.
-            """ ;
-            sh:minCount 1 ;
-        ]
-        [
             sh:targetSubjectsOf rml:predicateMap ;
             sh:path rml:predicateMap ;
             sh:name "predicateMap" ;
@@ -98,13 +85,11 @@ schema:RMLPredicateObjectMapShape
             sh:path rml:object ;
             sh:name "object" ;
             sh:description """
-            Specifies the object for the generated triple from the logical table 
-            row or iterator.
+            Specifies the object for the generated RDF triples.
             """ ;
             sh:message """
             rml:object must be an IRI and be provided once.
             """ ;
-            sh:nodeKind sh:IRI ;
             sh:node schema:RMLobjectShape ;
         ]
     ) ;

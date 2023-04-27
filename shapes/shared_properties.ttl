@@ -59,8 +59,8 @@ schema:RMLGraphMapPropertiesShape
 
 schema:RMLJoinConditionPropertiesShape
     a sh:PropertyShape;
-    sh:targetSubjectsOf rml:joinCondition ;
     sh:path rml:joinCondition ;
+    sh:targetSubjectsOf rml:joinCondition ;
     sh:name "joinCondition" ;
     sh:description """
     Specifies the join condition for joining a child data source with 
@@ -70,5 +70,5 @@ schema:RMLJoinConditionPropertiesShape
     rml:joinCondition must specify an rml:parent and rml:child.
     """ ;
     sh:nodeKind sh:BlankNodeOrIRI ;
-    sh:node sh:RMLJoinShape ;
+    sh:node schema:RMLJoinShape ;
 .

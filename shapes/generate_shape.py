@@ -47,7 +47,7 @@ class ShapeGenerator:
         """
         print('Reading subshapes:')
         for sub_shape in glob(self._glob_pattern):
-            if 'core' in sub_shape:
+            if 'core' in sub_shape or 'shacl' in sub_shape:
                 continue
             print(f"\t{sub_shape}")
             g = Graph()
