@@ -1,53 +1,52 @@
 ###############################################################################
-# RML Datatype Map and datatype shortcut shape                                #
+# RML Parent Map shape                                                        #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/> .
+@prefix rml: <http://www.w3.org/ns/r2rml#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLDatatypeMapShape
+schema:RMLParentMapShape
     a sh:NodeShape ;
-    sh:targetClass rml:DatatypeMap ;
-    sh:targetObjectsOf rml:datatypeMap ;
-    sh:name "DatatypeMap" ;
+    sh:targetClass rml:ParentMap ;
+    sh:targetObjectsOf rml:parent ;
+    sh:name "ParentMap" ;
     sh:description """
-    Represents a Datatype Map.
+    Represents a Parent Map.
     """ ;
     sh:message """
-    rml:DatatypeMap must specify an rml:template, rml:reference, or rml:constant
-    with the IRI of the datatype.
+    rml:ParentMap must specify a literal referencing data in the parent data
+    source.
     """ ;
 
     sh:and (
         # Inherited shapes
         schema:RMLTermMapShape
         schema:RMLLogicalTargetPropertiesShape
-        # Datatype Map specific shapes
+        # Language Map specific shapes
         [
             sh:path rml:termType;
             sh:message """
-            rml:termType for Datatype Map can only be a rml:IRI;
+            rml:termType for Language Map can only be a rml:Literal;
             """;
-            sh:in (rml:IRI);
+            sh:in (rml:Literal);
         ]
     ) ;
 .
 
-
-schema:RMLdatatypeShape 
+schema:RMLparentShape
     a sh:PropertyShape ;
-    sh:path rml:datatype ;
-    sh:targetSubjectsOf rml:datatype ;
-    sh:name "datatype" ;
+    sh:path rml:parent ;
+    sh:targetSubjectsOf rml:parent ;
+    sh:name "parent" ;
     sh:description """
-    An IRI reference for use as the graph name of all triples generated with 
-    the datatype.
+    A Literal reference to use as reference to the parent data source.
     """ ;
     sh:message """
-    rml:datatype must be an IRI.
+    rml:parent shortcut for rml:ParentMap must be a Literal.
     """ ;
-    sh:nodeKind sh:IRI ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:string ;
 .

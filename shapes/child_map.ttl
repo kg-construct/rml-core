@@ -1,0 +1,60 @@
+###############################################################################
+# RML Child Map shape                                                        #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLChildMapShape
+    a sh:NodeShape ;
+    sh:targetClass rml:ChildMap ;
+    sh:targetObjectsOf rml:child ;
+    sh:name "ChildMap" ;
+    sh:description """
+    Represents a Child Map.
+    """ ;
+    sh:message """
+    rml:ChildMap must specify a literal referencing data in the child data
+    source.
+    """ ;
+
+    sh:and (
+        # Inherited shapes
+        schema:RMLTermMapShape
+        schema:RMLLogicalTargetPropertiesShape
+        # Language Map specific shapes
+        [
+            sh:path rml:termType;
+            sh:message """
+            rml:termType for Language Map can only be a rml:Literal;
+            """;
+            sh:in (rml:Literal);
+        ]
+        [
+            sh:alternativePath (rml:reference rml:template rml:constant) ;
+            sh:message """
+            RDF triple's language tag must be a Literal.
+            """ ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+.
+
+schema:RMLchildShape
+    a sh:PropertyShape ;
+    sh:path rml:child ;
+    sh:targetSubjectsOf rml:child ;
+    sh:name "child" ;
+    sh:description """
+    A Literal reference to use as reference to the child data source.
+    """ ;
+    sh:message """
+    rml:child shortcut for rml:ChildMap must be a Literal.
+    """ ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:string ;
+.

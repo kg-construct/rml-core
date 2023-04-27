@@ -1,0 +1,41 @@
+###############################################################################
+# RML Expression Map shape                                                    #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLTermMapShape
+    a sh:NodeShape ;
+    sh:name "TermMap" ;
+    sh:description """
+    Represents a Term Map.
+    """ ;
+    sh:message """
+    Term Map is an Expression Map with optionally a term type specified.
+    """ ;
+
+    # Inherit Expression Map shape and add rml:termType
+    sh:and (
+        schema:RMLExpressionMapShape
+        [
+            sh:targetSubjectsOf rml:termType ;
+            sh:path rml:termType ;
+            sh:name "termType" ;
+            sh:description """
+            An IRI indicating whether a generated term should be an IRI, 
+            Blank Node, or a Literal.
+            """ ;
+            sh:message """
+            rml:termType must be either rml:IRI, rml:Literal, or rml:BlankNode 
+            for a Term Map. May only be provided once.
+            """ ;
+            sh:maxCount 1 ;
+            sh:in (rml:IRI rml:Literal rml:BlankNode) ;
+            sh:nodeKind sh:IRI ;
+        ] 
+    ) ;
+.

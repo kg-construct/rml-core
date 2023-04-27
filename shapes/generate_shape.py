@@ -11,7 +11,7 @@ from rdflib import plugin
 SUBSHAPE_FORMAT = 'turtle'
 SUBSHAPE_GLOB_PATTERN = '*.ttl'
 SHACL = Namespace('http://www.w3.org/ns/shacl#')
-RML = Namespace('http://w3id.org/rml/core/')
+RML = Namespace('http://w3id.org/rml/')
 
 
 class TurtleWithPrefixes(TurtleSerializer):

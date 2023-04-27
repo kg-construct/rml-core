@@ -5,123 +5,41 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/core/> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
 schema:RMLPredicateMapShape
     a sh:NodeShape ;
+    sh:targetClass rml:PredicateMap ;
+    sh:targetObjectsOf rml:predicateMap ;
     sh:name "PredicateMap" ;
     sh:description """
     Represents a Predicate Map.
     """ ;
-    # Exactly one rml:template, one rml:constant or one 
-    # rml:reference is required.
-    sh:property [
-        sh:path [sh:alternativePath (rml:template 
-                                     rml:constant
-                                     rml:reference)] ;
-        sh:name "template/constant/reference" ;
-        sh:description """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
-        """ ;
-        sh:message """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
-        """ ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-    ] ;
-
-    # rml:template
-    sh:property [
-        sh:path rml:template ;
-        sh:name "template" ;
-        sh:description """
-        A template (format string) to specify how to generate a value for a 
-        subject, predicate, or object, using one or more columns from a logical
-        table row or iterator.
-        """ ;
-        sh:message """
-        rml:template must be a string.
-        """ ;
-        sh:nodeKind sh:Literal ;
-        sh:datatype xsd:string ;
-    ] ;
-
-    # rml:constant
-    sh:property [
-        sh:path rml:constant ;
-        sh:name "constant" ;
-        sh:description """
-        A property for indicating whether a term map is a constant-valued term 
-        map.
-        """ ;
-        sh:message """
-        rml:constant must be an IRI.
-        """ ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
-    # rml:reference
-    sh:property [
-        sh:path rml:reference ;
-        sh:name "reference" ;
-        sh:description """
-        A reference rml:reference is used to refer to a column in case of 
-        databases, a record in case of CSV or TSV data source, an element in 
-        case of XML data source, an object in case of a JSON data source, etc.
-
-        A reference must be a valid identifier, considering the reference 
-        formulation (rml:referenceFormulation) specified. The reference can be
-        an absolute path, or a path relative to the iterator specified at the 
-        logical source. 
-        """ ;
-        sh:message """
-        rml:reference must be a string.
-        """ ;
-        sh:nodeKind sh:Literal ;
-        sh:datatype xsd:string ;
-    ] ;
-
-    # rml:termType
-    sh:property [
-        sh:path rml:termType ;
-        sh:name "termType" ;
-        sh:description """
-        An IRI indicating whether subject or object generated using the value 
-        from column name specified should be an IRI reference, blank node,
-        or a Literal.
-        """ ;
-        sh:message """
-        rml:termType must be either rml:IRI for an rml:PredicateMap.
-        May only be provided once.
-        """ ;
-        sh:maxCount 1 ;
-        sh:in (rml:IRI) ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
-    # rml:logicalTarget
-    sh:property [
-        sh:path rml:logicalTarget ;
-        sh:name "logicalTarget" ;
-        sh:description """
-        A logical target is any target to where generated RDF triples are
-        exported to.
-        """ ;
-        sh:message """
-        Zero or one rml:logicalTarget is required to export RDF triples.
-        """ ;
-        sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:minCount 0 ;
-        sh:maxCount 1 ;
-    ] ;
+    sh:message """
+    Predicate Object Map must generate an IRI representing the predicate of an 
+    RDF triple.
+    """ ;
+    sh:and (
+        # Inherited shapes
+        schema:RMLTermMapShape
+        schema:RMLLogicalTargetPropertiesShape
+        # Predicate Map specific shapes
+        [
+            sh:path rml:termType;
+            sh:message """
+            rml:termType for Predicate Map can only be a rml:IRI;
+            """;
+            sh:in (rml:IRI);
+        ]
+    ) ;
 .
 
 
 schema:RMLpredicateShape
-    a sh:NodeShape ;
+    a sh:PropertyShape ;
+    sh:path rml:predicate ;
+    sh:targetSubjectsOf rml:predicate ;
     sh:name "predicate" ;
     sh:description """
     Specifies the predicate for the generated triple.
