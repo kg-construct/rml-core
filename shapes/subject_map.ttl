@@ -10,10 +10,9 @@
 
 schema:RMLSubjectMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;  # Already targets 'rml:subjectMap'
-    sh:name "rml:SubjectMap" ;
+    sh:name "SubjectMap" ;
     sh:description """
-    Represents a subject map.
+    Represents a Subject Map.
     """ ;
     sh:message """
     rml:subjectMap requires one rml:template or one rml:constant or one
@@ -26,7 +25,7 @@ schema:RMLSubjectMapShape
         sh:path [sh:alternativePath (rml:template 
                                      rml:constant
                                      rml:reference)] ;
-        sh:name "rml:template/rml:constant/rml:reference" ;
+        sh:name "template/constant/reference" ;
         sh:description """
         Exactly one rml:template, one rml:constant or one rml:reference is
         required.
@@ -42,7 +41,7 @@ schema:RMLSubjectMapShape
     # rml:template
     sh:property [
         sh:path rml:template ;
-        sh:name "rml:template" ;
+        sh:name "template" ;
         sh:description """
         A template (format string) to specify how to generate a value for a 
         subject, predicate, or object, using one or more columns from a logical
@@ -58,7 +57,7 @@ schema:RMLSubjectMapShape
     # rml:constant
     sh:property [
         sh:path rml:constant ;
-        sh:name "rml:constant" ;
+        sh:name "constant" ;
         sh:description """
         A property for indicating whether a term map is a constant-valued term 
         map.
@@ -72,7 +71,7 @@ schema:RMLSubjectMapShape
     # rml:reference
     sh:property [
         sh:path rml:reference ;
-        sh:name "rml:reference" ;
+        sh:name "reference" ;
         sh:description """
         A reference rml:reference is used to refer to a column in case of 
         databases, a record in case of CSV or TSV data source, an element in 
@@ -93,7 +92,7 @@ schema:RMLSubjectMapShape
     # rml:class
     sh:property [
         sh:path rml:class ;
-        sh:name "rml:class" ;
+        sh:name "class" ;
         sh:description """
         The subject value generated for a logical table row will be asserted 
         as an instance of this RDFS class.
@@ -107,7 +106,7 @@ schema:RMLSubjectMapShape
     # rml:termType
     sh:property [
         sh:path rml:termType ;
-        sh:name "rml:termType" ;
+        sh:name "termType" ;
         sh:description """
         An IRI indicating whether subject or object generated using the value 
         from column name specified for rml:column should be an IRI reference, 
@@ -126,7 +125,7 @@ schema:RMLSubjectMapShape
     # both
     sh:property [
         sh:path [sh:alternativePath (rml:graph rml:graphMap)] ;
-        sh:name "rml:graph/rml:graphMap" ;
+        sh:name "graph/graphMap" ;
         sh:description """
         Either an rml:graph or rml:graphMap may be optionally be provided, but 
         not both.
@@ -142,7 +141,7 @@ schema:RMLSubjectMapShape
     # rml:graphMap
     sh:property [
         sh:path rml:graphMap ;
-        sh:name "rml:graphMap" ;
+        sh:name "graphMap" ;
         sh:description """
         Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
         triples generated from a logical row will be stored in the specified 
@@ -159,7 +158,7 @@ schema:RMLSubjectMapShape
     # rml:graph
     sh:property [
         sh:path rml:graph ;
-        sh:name "rml:graph" ;
+        sh:name "graph" ;
         sh:description """
         An IRI reference for use as the graph name of all triples generated 
         with the GraphMap.
@@ -174,7 +173,7 @@ schema:RMLSubjectMapShape
     # rml:logicalTarget
     sh:property [
         sh:path rml:logicalTarget ;
-        sh:name "rml:logicalTarget" ;
+        sh:name "logicalTarget" ;
         sh:description """
         A logical target is any target to where generated RDF triples are
         exported to.
@@ -191,11 +190,9 @@ schema:RMLSubjectMapShape
 
 schema:RMLsubjectShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;  # Already targets 'rml:subject'
     sh:name "rml:subject" ;
     sh:description """
-    An IRI reference for use as subject for all the RDF triples generated from 
-    a logical table row or iterator.
+    An IRI reference for use as subject for all the RDF triples.
     """ ;
     sh:message """
     rml:subject shortcut for rml:subjectMap must be an IRI.
