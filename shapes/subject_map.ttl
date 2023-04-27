@@ -5,197 +5,61 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/core/> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
 
 schema:RMLSubjectMapShape
     a sh:NodeShape ;
+    sh:targetClass rml:SubjectMap ;
+    sh:targetObjectsOf rml:subjectMap ;
     sh:name "SubjectMap" ;
     sh:description """
     Represents a Subject Map.
     """ ;
     sh:message """
-    rml:subjectMap requires one rml:template or one rml:constant or one
-    rml:reference.
+    Subject Map must generate an IRI representing the subject of an RDF triple.
     """ ;
 
-    # Exactly one rml:template, one rml:constant or one rml:reference is 
-    # required.
-    sh:property [
-        sh:path [sh:alternativePath (rml:template 
-                                     rml:constant
-                                     rml:reference)] ;
-        sh:name "template/constant/reference" ;
-        sh:description """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
-        """ ;
-        sh:message """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
-        """ ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-    ] ;
-
-    # rml:template
-    sh:property [
-        sh:path rml:template ;
-        sh:name "template" ;
-        sh:description """
-        A template (format string) to specify how to generate a value for a 
-        subject, predicate, or object, using one or more columns from a logical
-        table row or iterator.
-        """ ;
-        sh:message """
-        rml:template must be a string.
-        """ ;
-        sh:nodeKind sh:Literal ;
-        sh:datatype xsd:string ;
-    ] ;
-
-    # rml:constant
-    sh:property [
-        sh:path rml:constant ;
-        sh:name "constant" ;
-        sh:description """
-        A property for indicating whether a term map is a constant-valued term 
-        map.
-        """ ;
-        sh:message """
-        rml:constant must be an IRI.
-        """ ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
-    # rml:reference
-    sh:property [
-        sh:path rml:reference ;
-        sh:name "reference" ;
-        sh:description """
-        A reference rml:reference is used to refer to a column in case of 
-        databases, a record in case of CSV or TSV data source, an element in 
-        case of XML data source, an object in case of a JSON data source, etc.
-
-        A reference must be a valid identifier, considering the reference 
-        formulation (rml:referenceFormulation) specified. The reference can be
-        an absolute path, or a path relative to the iterator specified at the 
-        logical source. 
-        """ ;
-        sh:message """
-        rml:reference must be a string.
-        """ ;
-        sh:nodeKind sh:Literal ;
-        sh:datatype xsd:string ;
-    ] ;
-
-    # rml:class
-    sh:property [
-        sh:path rml:class ;
-        sh:name "class" ;
-        sh:description """
-        The subject value generated for a logical table row will be asserted 
-        as an instance of this RDFS class.
-        """ ;
-        sh:message """
-        rml:class must be an IRI and may be specified multiple times.
-        """ ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
-    # rml:termType
-    sh:property [
-        sh:path rml:termType ;
-        sh:name "termType" ;
-        sh:description """
-        An IRI indicating whether subject or object generated using the value 
-        from column name specified for rml:column should be an IRI reference, 
-        blank node, or a literal.
-        """ ;
-        sh:message """
-        rml:termType must be either rml:IRI or rml:BlankNode for an rml:SubjectMap.
-        May only be provided once.
-        """ ;
-        sh:maxCount 1 ;
-        sh:in (rml:IRI rml:BlankNode) ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
-    # Either an rml:graph or rml:graphMap may be optionally be provided, but not 
-    # both
-    sh:property [
-        sh:path [sh:alternativePath (rml:graph rml:graphMap)] ;
-        sh:name "graph/graphMap" ;
-        sh:description """
-        Either an rml:graph or rml:graphMap may be optionally be provided, but 
-        not both.
-        """ ;
-        sh:message """
-        Either an rml:graph or rml:graphMap may be optionally be provided, but
-        not both.
-        """ ;
-        sh:minCount 0 ;
-        sh:maxCount 1 ;
-    ] ;
-
-    # rml:graphMap
-    sh:property [
-        sh:path rml:graphMap ;
-        sh:name "graphMap" ;
-        sh:description """
-        Specifies a GraphMap. When used with a SubjectMap element, all the RDF 
-        triples generated from a logical row will be stored in the specified 
-        named graph. Otherwise, the RDF triple generated using the 
-        (predicate, object) pair will be stored in the specified named graph.
-        """ ;
-        sh:message """
-        rml:graphMap must be either an IRI or blank node. 
-        """ ;
-        sh:node schema:RMLGraphMapShape ;
-        sh:nodeKind sh:BlankNodeOrIRI ;
-    ] ;
-
-    # rml:graph
-    sh:property [
-        sh:path rml:graph ;
-        sh:name "graph" ;
-        sh:description """
-        An IRI reference for use as the graph name of all triples generated 
-        with the GraphMap.
-        """ ;
-        sh:message """
-        rml:graphMap must be an IRI. 
-        """ ;
-        sh:node schema:RMLgraphShape ;
-        sh:nodeKind sh:IRI ;
-    ] ;
-
-    # rml:logicalTarget
-    sh:property [
-        sh:path rml:logicalTarget ;
-        sh:name "logicalTarget" ;
-        sh:description """
-        A logical target is any target to where generated RDF triples are
-        exported to.
-        """ ;
-        sh:message """
-        Zero or one rml:logicalTarget is required to export RDF triples.
-        """ ;
-        sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:minCount 0 ;
-        sh:maxCount 1 ;
-    ] ;
+    sh:and (
+        # Inherited shapes
+        schema:RMLTermMapShape
+        schema:RMLGraphMapPropertiesShape
+        schema:RMLLogicalTargetPropertiesShape
+        # Subject Map specific shapes
+        [
+            sh:targetSubjectsOf rml:class ;
+            sh:path rml:class ;
+            sh:name "class" ;
+            sh:description """
+            The subject value generated will be asserted as an instance of this
+            RDFS class.
+            """ ;
+            sh:message """
+            rml:class must be an IRI and may be specified multiple times.
+            """ ;
+            sh:nodeKind sh:IRI ;
+        ]
+        [
+            sh:path rml:termType ;
+            sh:message """
+            rml:termType must be rml:IRI for Subject Map.
+            """ ;
+            sh:in (rml:IRI);
+        ]
+    ) ;
 .
 
-
 schema:RMLsubjectShape
-    a sh:NodeShape ;
-    sh:name "rml:subject" ;
+    a sh:PropertyShape ;
+    sh:path rml:subject ;
+    sh:targetSubjectsOf rml:subject ;
+    sh:name "subject" ;
     sh:description """
-    An IRI reference for use as subject for all the RDF triples.
+    An IRI reference to use as subject for all the RDF triples.
     """ ;
     sh:message """
-    rml:subject shortcut for rml:subjectMap must be an IRI.
+    rml:subject shortcut for rml:SubjectMap must be an IRI.
     """ ;
     sh:nodeKind sh:IRI ;
 .

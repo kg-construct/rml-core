@@ -1,0 +1,96 @@
+###############################################################################
+# RML Expression Map shape                                                    #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLExpressionMapShape
+    a sh:NodeShape ;
+    sh:name "ExpressionMap" ;
+    sh:description """
+    Represents a Expression Map.
+    """ ;
+    sh:message """
+    Expression Map requires one rml:template or one rml:constant or one
+    rml:reference.
+    """ ;
+
+    # Exactly one rml:template, one rml:constant or one rml:reference is 
+    # required.
+    sh:property [
+        sh:targetSubjectsOf rml:template ;
+        sh:targetSubjectsOf rml:constant ;
+        sh:targetSubjectsOf rml:reference ;
+        sh:path [sh:alternativePath (rml:template 
+                                     rml:constant
+                                     rml:reference)] ;
+        sh:name "template/constant/reference" ;
+        sh:description """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+        sh:message """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:template
+    sh:property [
+        sh:path rml:template ;
+        sh:name "template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rml:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:constant
+    sh:property [
+        sh:targetSubjectsOf rml:constant ;
+        sh:path rml:constant ;
+        sh:name "constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rml:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:targetSubjectsOf rml:reference ;
+        sh:path rml:reference ;
+        sh:name "reference" ;
+        sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+.

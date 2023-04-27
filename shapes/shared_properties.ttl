@@ -1,0 +1,74 @@
+###############################################################################
+# RML shared properties among resources shapes                                #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+
+schema:RMLGraphMapPropertiesShape
+    a sh:NodeShape;   
+    sh:targetSubjectsOf rml:graphMap ;
+    sh:targetSubjectsOf rml:graph ;
+
+    sh:property [
+        sh:path [sh:alternativePath (rml:graph rml:graphMap)] ;
+        sh:name "graph/graphMap" ;
+        sh:description """
+        Either an rml:graph or rml:graphMap may be optionally be provided,
+        but not both.
+        """ ;
+        sh:message """
+        Either an rml:graph or rml:graphMap may be optionally be provided,
+        but not both.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path rml:graphMap ;
+        sh:name "graphMap" ;
+        sh:description """
+        Specifies a Graph Map. When used with a Subject Map element, all the
+        RDF triples generated will be stored in the specified named graph.
+        Otherwise, the RDF triple generated using the (predicate, object) 
+        pair will be stored in the specified named graph.
+        """ ;
+        sh:message """
+        rml:graphMap must be either an IRI or blank node. 
+        """ ;
+        sh:node schema:RMLGraphMapShape ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+    sh:property [
+        sh:path rml:graph ;
+        sh:name "graph" ;
+        sh:description """
+        An IRI reference to use as the named graph of all generated triples.
+        """ ;
+        sh:message """
+        rml:graphMap must be an IRI. 
+        """ ;
+        sh:node schema:RMLgraphShape ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.
+
+schema:RMLJoinConditionPropertiesShape
+    a sh:PropertyShape;
+    sh:targetSubjectsOf rml:joinCondition ;
+    sh:path rml:joinCondition ;
+    sh:name "joinCondition" ;
+    sh:description """
+    Specifies the join condition for joining a child data source with 
+    a parent data source of the foreign key constraint.
+    """ ;
+    sh:message """
+    rml:joinCondition must specify an rml:parent and rml:child.
+    """ ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:node sh:RMLJoinShape ;
+.

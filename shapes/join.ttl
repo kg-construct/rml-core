@@ -1,0 +1,95 @@
+###############################################################################
+# RML Join shape                                                              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLJoinShape
+    a sh:NodeShape ;
+    sh:targetClass rml:Join ;
+    sh:targetObjectsOf rml:joinCondition ;
+    sh:name "Join" ;
+    sh:description """
+    Represents a Join.
+    """ ;
+    sh:message """
+    rml:Join must specify exactly one rml:parent/rml:parentMap 
+    and rml:child/rml:childMap.
+    """ ;
+
+    sh:and (
+        # Inherited shapes
+        schema:RMLTermMapShape
+        schema:RMLLogicalTargetPropertiesShape
+        # Object Map specific shapes
+        [
+            sh:path [ sh:alternativePath (rml:parentMap rml:childMap
+                                          rml:parent rml:child) ] ;
+            sh:name "parentMap/childMap/parent/child" ;
+            sh:description """
+            rml:parent/rml:parentMap and rml:child/rml:childMap
+            may only be provided once and not at the same time.
+            """ ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+        ]
+        [
+            sh:targetSubjectsOf rml:parentMap ;
+            sh:path rml:parentMap ;
+            sh:name "parentMap" ;
+            sh:description """
+            Specified the parent map for the object component for the 
+            generated RDF triples.
+            """ ;
+            sh:message """
+            rml:parentMap must point to a rml:LanguageMap specifying the 
+            parent tag of the string Literal.
+            """ ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:node schema:RMLLanguageMapShape;
+        ]
+        [
+            sh:targetSubjectsOf rml:childMap ;
+            sh:path rml:childMap ;
+            sh:name "childMap" ;
+            sh:description """
+            Specifies the child of the object component for the generated 
+            RDF triples.
+            """ ;
+            sh:message """
+            rml:childMap must point to a rml:DatatypeMap specifying the
+            child of the Literal.
+            """ ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:node schema:RMLDatatypeMapShape;
+        ]
+        [
+            sh:targetSubjectsOf rml:parent ;
+            sh:path rml:parent ;
+            sh:name "parent" ;
+            sh:description """
+            Language tag for the object.
+            """ ;
+            sh:nodeKind sh:Literal ;
+            sh:node schema:RMLparentShape ;
+        ]
+        [
+            sh:targetSubjectsOf rml:child ;
+            sh:path rml:child ;
+            sh:name "child" ;
+            sh:description """
+            Datatype for the object.
+            """ ;
+            sh:nodeKind sh:IRI ;
+            sh:node schema:RMLchildShape ;
+        ]
+    ) ;
+.
