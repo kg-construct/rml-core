@@ -1,0 +1,53 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+@base <http://example.com/base/> .
+
+<#CSVW_source> a csvw:Table;
+    csvw:url "tests/assets/csv/has_no_header.csv" ;
+    csvw:dialect [
+        a csvw:Dialect;
+        csvw:header "0"^^xsd:boolean;  # default true
+    ];
+    csvw:tableSchema [
+        a csvw:TableSchema;
+        csvw:columns (
+            [
+                csvw:name "id";
+                csvw:null "-1";
+            ]
+            [
+                csvw:name "name";
+                csvw:null "";
+            ]
+            [
+                csvw:name "age";
+                csvw:null "0";
+            ]
+        );
+    ].
+
+<TriplesMapTSV>
+    a rr:TriplesMap ;
+        
+    rml:logicalSource [ 
+        rml:source <#CSVW_source> ;
+        rml:referenceFormulation ql:CSV ;
+    ];
+	
+    rr:subjectMap [ 
+        rr:template "http://example.com/{id}" ;
+    ]; 
+	
+    rr:predicateObjectMap [ 
+        rr:predicate foaf:name ; 
+        rr:objectMap [ 
+            rml:reference "name" ; 
+        ]
+    ].
