@@ -15,14 +15,21 @@ from rdflib import Graph
 
 from mapping_validator import MappingValidator
 
-TEST_CASES_DIR = os.path.join(os.path.abspath('../../test-cases'), '*/*.ttl')
-SHAPE_FILE = os.path.abspath('core.ttl')
+TEST_CASES_DIR = os.path.join(os.path.abspath('../test-cases'),
+                              '*/mapping.ttl')
+CORE_SHAPE_FILE = os.path.abspath('core.ttl')
+SHACL_SHAPE_FILE = os.path.abspath('shacl.ttl')
 
 
 class MappingValidatorTests(unittest.TestCase):
     def _validate_rules(self, path: str) -> None:
         rules = Graph().parse(path, format='turtle')
-        mapping_validator = MappingValidator(SHAPE_FILE)
+        mapping_validator = MappingValidator(CORE_SHAPE_FILE)
+        mapping_validator.validate(rules)
+
+    def _validate_shapes(self, path: str) -> None:
+        rules = Graph().parse(path, format='turtle')
+        mapping_validator = MappingValidator(SHACL_SHAPE_FILE)
         mapping_validator.validate(rules)
 
     def test_non_existing_mapping_rules(self) -> None:
@@ -38,7 +45,24 @@ class MappingValidatorTests(unittest.TestCase):
         rules test cases.
         """
         print(f'Testing validation with: {path}')
-        self._validate_rules(path)
+        if 'RMLTC0004b' in path or 'RMLTC0007h' in path or \
+                'RMLTC0012c' in path or 'RMLTC0012d' in path:
+            with self.assertRaises(Exception):
+                self._validate_rules(path)
+        else:
+            self._validate_rules(path)
+
+    @parameterized.expand([(p,) for p in sorted(glob(TEST_CASES_DIR))],
+                          skip_on_empty=True)
+    def test_validation_shapes(self, path: str) -> None:
+        """
+        Test if our SHACL shapes are valid according to the W3C Recommdendation
+        of SHACL. Validation with the official SHACL shapes for SHACL.
+
+        See https://www.w3.org/TR/shacl/#shacl-shacl
+        """
+        print(f'Testing shape with: {path}')
+        self._validate_shapes(path)
 
 
 if __name__ == '__main__':
@@ -54,4 +78,4 @@ if __name__ == '__main__':
                         datefmt='%Y-%m-%d %H:%M:%S')
 
     print(TEST_CASES_DIR)
-    unittest.main(failfast=False)
+    unittest.main(failfast=True)

@@ -43,23 +43,22 @@ schema:RMLSubjectMapShape
         [
             sh:path rml:termType ;
             sh:message """
-            rml:termType must be rml:IRI for Subject Map.
+            rml:termType must be a rml:IRI or rml:BlankNode for Subject Map.
             """ ;
-            sh:in (rml:IRI);
+            sh:in (rml:IRI rml:BlankNode);
         ]
     ) ;
 .
 
 schema:RMLsubjectShape
-    a sh:PropertyShape ;
-    sh:path rml:subject ;
-    sh:targetSubjectsOf rml:subject ;
+    a sh:NodeShape ;
+    sh:targetObjectsOf rml:subject ;
     sh:name "subject" ;
     sh:description """
     An IRI reference to use as subject for all the RDF triples.
     """ ;
     sh:message """
-    rml:subject shortcut for rml:SubjectMap must be an IRI.
+    rml:subject shortcut for rml:SubjectMap must be a IRI or BlankNode.
     """ ;
-    sh:nodeKind sh:IRI ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
 .

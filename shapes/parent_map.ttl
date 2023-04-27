@@ -37,8 +37,7 @@ schema:RMLParentMapShape
 .
 
 schema:RMLparentShape
-    a sh:PropertyShape ;
-    sh:path rml:parent ;
+    a sh:NodeShape ;
     sh:targetSubjectsOf rml:parent ;
     sh:name "parent" ;
     sh:description """

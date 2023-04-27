@@ -51,84 +51,22 @@
     sh:targetClass <http://www.w3.org/ns/r2rml#ChildMap> ;
     sh:targetObjectsOf <http://www.w3.org/ns/r2rml#child> .
 
-<http://schema.org/RMLJoinShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
-            rml:parent/rml:parentMap and rml:child/rml:childMap
-            may only be provided once and not at the same time.
-            """ ;
-                sh:maxCount 1 ;
-                sh:minCount 0 ;
-                sh:name "parentMap/childMap/parent/child" ;
-                sh:path [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#parentMap> <http://www.w3.org/ns/r2rml#childMap> <http://www.w3.org/ns/r2rml#parent> <http://www.w3.org/ns/r2rml#child> ) ] ] [ sh:description """
-            Specified the parent map for the object component for the 
-            generated RDF triples.
-            """ ;
-                sh:maxCount 1 ;
+<http://schema.org/RMLDatatypeMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
                 sh:message """
-            rml:parentMap must point to a rml:LanguageMap specifying the 
-            parent tag of the string Literal.
+            rml:termType for Datatype Map can only be a rml:IRI;
             """ ;
-                sh:minCount 0 ;
-                sh:name "parentMap" ;
-                sh:node <http://schema.org/RMLLanguageMapShape> ;
-                sh:nodeKind sh:BlankNodeOrIRI ;
-                sh:path <http://www.w3.org/ns/r2rml#parentMap> ;
-                sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentMap> ] [ sh:description """
-            Specifies the child of the object component for the generated 
-            RDF triples.
-            """ ;
-                sh:maxCount 1 ;
-                sh:message """
-            rml:childMap must point to a rml:DatatypeMap specifying the
-            child of the Literal.
-            """ ;
-                sh:minCount 0 ;
-                sh:name "childMap" ;
-                sh:node <http://schema.org/RMLDatatypeMapShape> ;
-                sh:nodeKind sh:BlankNodeOrIRI ;
-                sh:path <http://www.w3.org/ns/r2rml#childMap> ;
-                sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#childMap> ] [ sh:description """
-            Language tag for the object.
-            """ ;
-                sh:name "parent" ;
-                sh:node <http://schema.org/RMLparentShape> ;
-                sh:nodeKind sh:Literal ;
-                sh:path <http://www.w3.org/ns/r2rml#parent> ;
-                sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> ] [ sh:description """
-            Datatype for the object.
-            """ ;
-                sh:name "child" ;
-                sh:node <http://schema.org/RMLchildShape> ;
-                sh:nodeKind sh:IRI ;
-                sh:path <http://www.w3.org/ns/r2rml#child> ;
-                sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> ] ) ;
+                sh:path rml:termType ] ) ;
     sh:description """
-    Represents a Join.
+    Represents a Datatype Map.
     """ ;
     sh:message """
-    rml:Join must specify exactly one rml:parent/rml:parentMap 
-    and rml:child/rml:childMap.
+    rml:DatatypeMap must specify an rml:template, rml:reference, or rml:constant
+    with the IRI of the datatype.
     """ ;
-    sh:name "Join" ;
-    sh:targetClass <http://www.w3.org/ns/r2rml#Join> ;
-    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#joinCondition> .
-
-<http://schema.org/RMLParentMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
-                sh:message """
-            rml:termType for Language Map can only be a rml:Literal;
-            """ ;
-                sh:path <http://www.w3.org/ns/r2rml#termType> ] ) ;
-    sh:description """
-    Represents a Parent Map.
-    """ ;
-    sh:message """
-    rml:ParentMap must specify a literal referencing data in the parent data
-    source.
-    """ ;
-    sh:name "ParentMap" ;
-    sh:targetClass <http://www.w3.org/ns/r2rml#ParentMap> ;
-    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#parent> .
+    sh:name "DatatypeMap" ;
+    sh:targetClass rml:DatatypeMap ;
+    sh:targetObjectsOf rml:datatypeMap .
 
 <http://schema.org/RMLExpressionMapShape> a sh:NodeShape ;
     sh:description """
@@ -171,10 +109,9 @@
         map.
         """ ;
             sh:message """
-        rml:constant must be an IRI.
+        rml:constant must be an IRI or Literal.
         """ ;
             sh:name "constant" ;
-            sh:nodeKind sh:IRI ;
             sh:path rml:constant ;
             sh:targetSubjectsOf rml:constant ],
         [ sh:datatype xsd:string ;
@@ -222,10 +159,97 @@
     rml:joinCondition must specify an rml:parent and rml:child.
     """ ;
     sh:name "joinCondition" ;
-    sh:node sh:RMLJoinShape ;
+    sh:node <http://schema.org/RMLJoinShape> ;
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:path rml:joinCondition ;
     sh:targetSubjectsOf rml:joinCondition .
+
+<http://schema.org/RMLJoinShape> a sh:NodeShape ;
+    sh:description """
+    Represents a Join.
+    """ ;
+    sh:message """
+    rml:Join must specify exactly one rml:parent/rml:parentMap 
+    and rml:child/rml:childMap.
+    """ ;
+    sh:name "Join" ;
+    sh:property [ sh:description """
+        rml:parent/rml:parentMap may only be provided once and 
+        not at the same time.
+        """ ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:name "parentMap/parent" ;
+            sh:path [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#parentMap> <http://www.w3.org/ns/r2rml#parent> ) ] ],
+        [ sh:description """
+        Specifies the child of the object component for the generated 
+        RDF triples.
+        """ ;
+            sh:message """
+        rml:childMap must point to a rml:ChildMap specifying the
+        child of the Literal.
+        """ ;
+            sh:name "childMap" ;
+            sh:node <http://schema.org/RMLChildMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path <http://www.w3.org/ns/r2rml#childMap> ;
+            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#childMap> ],
+        [ sh:description """
+        Datatype for the object.
+        """ ;
+            sh:name "child" ;
+            sh:node <http://schema.org/RMLchildShape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/r2rml#child> ;
+            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> ],
+        [ sh:description """
+        Specified the parent map for the object component for the 
+        generated RDF triples.
+        """ ;
+            sh:message """
+        rml:parentMap must point to a rml:ParentMap specifying the 
+        parent tag of the string Literal.
+        """ ;
+            sh:name "parentMap" ;
+            sh:node <http://schema.org/RMLParentMapShape> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path <http://www.w3.org/ns/r2rml#parentMap> ;
+            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentMap> ],
+        [ sh:description """
+        Language tag for the object.
+        """ ;
+            sh:name "parent" ;
+            sh:node <http://schema.org/RMLparentShape> ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/r2rml#parent> ;
+            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> ],
+        [ sh:description """
+        rml:child/rml:childMap may only be provided once and 
+        not at the same time.
+        """ ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:name "childMap/child" ;
+            sh:path [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#childMap> <http://www.w3.org/ns/r2rml#child> ) ] ] ;
+    sh:targetClass <http://www.w3.org/ns/r2rml#Join> ;
+    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#joinCondition> .
+
+<http://schema.org/RMLLanguageMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
+                sh:message """
+            rml:termType for Language Map can only be a rml:Literal;
+            """ ;
+                sh:path rml:termType ] ) ;
+    sh:description """
+    Represents a Language Map.
+    """ ;
+    sh:message """
+    rml:LanguageMap must specify an rml:template or rml:constant with the IRI 
+    of the language.
+    """ ;
+    sh:name "LanguageMap" ;
+    sh:targetClass rml:LanguageMap ;
+    sh:targetObjectsOf rml:languageMap .
 
 <http://schema.org/RMLObjectMapShape> a sh:NodeShape ;
     sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
@@ -239,12 +263,10 @@
             Specified the language map for the object component for the 
             generated RDF triples.
             """ ;
-                sh:maxCount 1 ;
                 sh:message """
             rml:languageMap must point to a rml:LanguageMap specifying the 
             language tag of the string Literal.
             """ ;
-                sh:minCount 0 ;
                 sh:name "languageMap" ;
                 sh:node <http://schema.org/RMLLanguageMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
@@ -253,12 +275,10 @@
             Specifies the datatype of the object component for the generated 
             RDF triples.
             """ ;
-                sh:maxCount 1 ;
                 sh:message """
             rml:datatypeMap must point to a rml:DatatypeMap specifying the
             datatype of the Literal.
             """ ;
-                sh:minCount 0 ;
                 sh:name "datatypeMap" ;
                 sh:node <http://schema.org/RMLDatatypeMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
@@ -268,14 +288,12 @@
             """ ;
                 sh:name "language" ;
                 sh:node <http://schema.org/RMLlanguageShape> ;
-                sh:nodeKind sh:Literal ;
                 sh:path rml:language ;
                 sh:targetSubjectsOf rml:language ] [ sh:description """
             Datatype for the object.
             """ ;
                 sh:name "datatype" ;
                 sh:node <http://schema.org/RMLdatatypeShape> ;
-                sh:nodeKind sh:IRI ;
                 sh:path rml:datatype ;
                 sh:targetSubjectsOf rml:datatype ] ) ;
     sh:description """
@@ -287,6 +305,23 @@
     """ ;
     sh:name "ObjectMap" ;
     sh:targetClass rml:ObjectMap .
+
+<http://schema.org/RMLParentMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
+                sh:message """
+            rml:termType for Language Map can only be a rml:Literal;
+            """ ;
+                sh:path <http://www.w3.org/ns/r2rml#termType> ] ) ;
+    sh:description """
+    Represents a Parent Map.
+    """ ;
+    sh:message """
+    rml:ParentMap must specify a literal referencing data in the parent data
+    source.
+    """ ;
+    sh:name "ParentMap" ;
+    sh:targetClass <http://www.w3.org/ns/r2rml#ParentMap> ;
+    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#parent> .
 
 <http://schema.org/RMLPredicateMapShape> a sh:NodeShape ;
     sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
@@ -307,16 +342,6 @@
 
 <http://schema.org/RMLPredicateObjectMapShape> a sh:NodeShape ;
     sh:and ( <http://schema.org/RMLGraphMapPropertiesShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
-            Either an rml:predicate or rml:predicateMap must be provided, not both.
-            """ ;
-                sh:message """
-            Either an rml:predicate or rml:predicateMap must be provided, not both.
-            """ ;
-                sh:minCount 1 ;
-                sh:name "predicate/predicateMap" ;
-                sh:path [ sh:alternativePath ( rml:predicate rml:predicateMap ) ] ;
-                sh:targetSubjectsOf rml:predicate,
-                    rml:predicateMap ] [ sh:description """
             A PredicateMap element to generate the predicate component of the 
             (predicate, object) pair from a logical table row or iterator.
             """ ;
@@ -361,15 +386,13 @@
                 sh:or ( [ sh:node <http://schema.org/RMLObjectMapShape> ] [ sh:node <http://schema.org/RMLRefObjectMapShape> ] [ sh:node <http://schema.org/RMLStarMapShape> ] ) ;
                 sh:path rml:objectMap ;
                 sh:targetSubjectsOf rml:objectMap ] [ sh:description """
-            Specifies the object for the generated triple from the logical table 
-            row or iterator.
+            Specifies the object for the generated RDF triples.
             """ ;
                 sh:message """
             rml:object must be an IRI and be provided once.
             """ ;
                 sh:name "object" ;
                 sh:node <http://schema.org/RMLobjectShape> ;
-                sh:nodeKind sh:IRI ;
                 sh:path rml:object ;
                 sh:targetSubjectsOf rml:object ] ) ;
     sh:description """
@@ -417,9 +440,9 @@
                 sh:name "class" ;
                 sh:nodeKind sh:IRI ;
                 sh:path rml:class ;
-                sh:targetSubjectsOf rml:class ] [ sh:in ( rml:IRI ) ;
+                sh:targetSubjectsOf rml:class ] [ sh:in ( rml:IRI rml:BlankNode ) ;
                 sh:message """
-            rml:termType must be rml:IRI for Subject Map.
+            rml:termType must be a rml:IRI or rml:BlankNode for Subject Map.
             """ ;
                 sh:path rml:termType ] ) ;
     sh:description """
@@ -501,7 +524,7 @@
             sh:targetSubjectsOf rml:subjectMap ] ;
     sh:targetClass rml:TriplesMap .
 
-<http://schema.org/RMLchildShape> a sh:PropertyShape ;
+<http://schema.org/RMLchildShape> a sh:NodeShape ;
     sh:datatype xsd:string ;
     sh:description """
     A Literal reference to use as reference to the child data source.
@@ -511,10 +534,9 @@
     """ ;
     sh:name "child" ;
     sh:nodeKind sh:Literal ;
-    sh:path <http://www.w3.org/ns/r2rml#child> ;
     sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> .
 
-<http://schema.org/RMLdatatypeShape> a sh:PropertyShape ;
+<http://schema.org/RMLdatatypeShape> a sh:NodeShape ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 
     the datatype.
@@ -524,10 +546,9 @@
     """ ;
     sh:name "datatype" ;
     sh:nodeKind sh:IRI ;
-    sh:path rml:datatype ;
-    sh:targetSubjectsOf rml:datatype .
+    sh:targetObjectsOf rml:datatype .
 
-<http://schema.org/RMLgraphShape> a sh:PropertShape ;
+<http://schema.org/RMLgraphShape> a sh:NodeShape ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 
     the Graph Map. 
@@ -536,11 +557,10 @@
     rml:graph must be an IRI.
     """ ;
     sh:name "graph" ;
-    sh:nodeKind sh:IRI ;
-    sh:path rml:path .
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:targetSubjectsOf rml:graph .
 
-<http://schema.org/RMLlanguageShape> a sh:PropertyShape ;
-    sh:datatype xsd:string ;
+<http://schema.org/RMLlanguageShape> a sh:NodeShape ;
     sh:description """
     Specified the language for the generated Literal.
     """ ;
@@ -549,11 +569,10 @@
     only be provided once as string.
     """ ;
     sh:name "language" ;
-    sh:path rml:language ;
-    sh:pattern "^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$" ;
-    sh:targetSubjectsOf rml:language .
+    sh:nodeKind sh:Literal ;
+    sh:targetObjectsOf rml:language .
 
-<http://schema.org/RMLobjectShape> a sh:PropertyShape ;
+<http://schema.org/RMLobjectShape> a sh:NodeShape ;
     sh:description """
     An IRI, Blank Node, or Literal to use as object for all the RDF triples.
     """ ;
@@ -562,10 +581,9 @@
     or Literal.
     """ ;
     sh:name "object" ;
-    sh:path rml:object ;
-    sh:targetSubjectsOf rml:object .
+    sh:targetObjectsOf rml:object .
 
-<http://schema.org/RMLparentShape> a sh:PropertyShape ;
+<http://schema.org/RMLparentShape> a sh:NodeShape ;
     sh:datatype xsd:string ;
     sh:description """
     A Literal reference to use as reference to the parent data source.
@@ -575,10 +593,9 @@
     """ ;
     sh:name "parent" ;
     sh:nodeKind sh:Literal ;
-    sh:path <http://www.w3.org/ns/r2rml#parent> ;
     sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> .
 
-<http://schema.org/RMLpredicateShape> a sh:PropertyShape ;
+<http://schema.org/RMLpredicateShape> a sh:NodeShape ;
     sh:description """
     Specifies the predicate for the generated triple.
     """ ;
@@ -586,38 +603,19 @@
     rml:predicate must be an IRI.
     """ ;
     sh:name "predicate" ;
-    sh:nodeKind sh:IRI ;
-    sh:path rml:predicate ;
-    sh:targetSubjectsOf rml:predicate .
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:targetObjectsOf rml:predicate .
 
-<http://schema.org/RMLsubjectShape> a sh:PropertyShape ;
+<http://schema.org/RMLsubjectShape> a sh:NodeShape ;
     sh:description """
     An IRI reference to use as subject for all the RDF triples.
     """ ;
     sh:message """
-    rml:subject shortcut for rml:SubjectMap must be an IRI.
+    rml:subject shortcut for rml:SubjectMap must be a IRI or BlankNode.
     """ ;
     sh:name "subject" ;
-    sh:nodeKind sh:IRI ;
-    sh:path rml:subject ;
-    sh:targetSubjectsOf rml:subject .
-
-<http://schema.org/RMLDatatypeMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
-                sh:message """
-            rml:termType for Datatype Map can only be a rml:IRI;
-            """ ;
-                sh:path rml:termType ] ) ;
-    sh:description """
-    Represents a Datatype Map.
-    """ ;
-    sh:message """
-    rml:DatatypeMap must specify an rml:template, rml:reference, or rml:constant
-    with the IRI of the datatype.
-    """ ;
-    sh:name "DatatypeMap" ;
-    sh:targetClass rml:DatatypeMap ;
-    sh:targetObjectsOf rml:datatypeMap .
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:targetObjectsOf rml:subject .
 
 <http://schema.org/RMLGraphMapPropertiesShape> a sh:NodeShape ;
     sh:property [ sh:description """
@@ -657,28 +655,6 @@
             sh:path rml:graph ] ;
     sh:targetSubjectsOf rml:graph,
         rml:graphMap .
-
-<http://schema.org/RMLLanguageMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
-                sh:message """
-            rml:termType for Language Map can only be a rml:Literal;
-            """ ;
-                sh:path rml:termType ] [ sh:datatype xsd:string ;
-                sh:message """
-            Language must be a valid language tag according to BCP47.
-            """ ;
-                sh:path rml:constant ;
-                sh:pattern "^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$" ] ) ;
-    sh:description """
-    Represents a Language Map.
-    """ ;
-    sh:message """
-    rml:LanguageMap must specify an rml:template or rml:constant with the IRI 
-    of the language.
-    """ ;
-    sh:name "LanguageMap" ;
-    sh:targetClass rml:LanguageMap ;
-    sh:targetObjectsOf rml:languageMap .
 
 <http://schema.org/RMLStarMapShape> a sh:NodeShape .
 

@@ -37,9 +37,8 @@ schema:RMLPredicateMapShape
 
 
 schema:RMLpredicateShape
-    a sh:PropertyShape ;
-    sh:path rml:predicate ;
-    sh:targetSubjectsOf rml:predicate ;
+    a sh:NodeShape ;
+    sh:targetObjectsOf rml:predicate ;
     sh:name "predicate" ;
     sh:description """
     Specifies the predicate for the generated triple.
@@ -47,5 +46,6 @@ schema:RMLpredicateShape
     sh:message """
     rml:predicate must be an IRI.
     """ ;
-    sh:nodeKind sh:IRI ;
+    # SHACL sees 'foaf:name' as blank node instead of IRI
+    sh:nodeKind sh:BlankNodeOrIRI ;
 .

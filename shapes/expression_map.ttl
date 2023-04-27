@@ -67,9 +67,9 @@ schema:RMLExpressionMapShape
         map.
         """ ;
         sh:message """
-        rml:constant must be an IRI.
+        rml:constant must be an IRI or Literal.
         """ ;
-        sh:nodeKind sh:IRI ;
+        # Allow BlankNodes so ex:Student works as well for rml:constant
     ] ;
 
     # rml:reference

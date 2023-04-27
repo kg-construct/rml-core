@@ -10,6 +10,7 @@
 
 schema:RMLLogicalTargetPropertiesShape
     a sh:PropertyShape ;
+    sh:path rml:logicalTarget ;
     sh:targetSubjectsOf rml:logicalTarget ;
     sh:path rml:logicalTarget ;
     sh:name "logicalTarget" ;

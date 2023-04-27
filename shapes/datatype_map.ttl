@@ -38,9 +38,8 @@ schema:RMLDatatypeMapShape
 
 
 schema:RMLdatatypeShape 
-    a sh:PropertyShape ;
-    sh:path rml:datatype ;
-    sh:targetSubjectsOf rml:datatype ;
+    a sh:NodeShape ;
+    sh:targetObjectsOf rml:datatype ;
     sh:name "datatype" ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 

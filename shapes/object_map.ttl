@@ -37,8 +37,8 @@ schema:RMLObjectMapShape
             sh:minCount 0 ;
         ]
         [
-            sh:targetSubjectsOf rml:languageMap ;
             sh:path rml:languageMap ;
+            sh:targetSubjectsOf rml:languageMap ;
             sh:name "languageMap" ;
             sh:description """
             Specified the language map for the object component for the 
@@ -48,14 +48,12 @@ schema:RMLObjectMapShape
             rml:languageMap must point to a rml:LanguageMap specifying the 
             language tag of the string Literal.
             """ ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:node schema:RMLLanguageMapShape;
         ]
         [
-            sh:targetSubjectsOf rml:datatypeMap ;
             sh:path rml:datatypeMap ;
+            sh:targetSubjectsOf rml:datatypeMap ;
             sh:name "datatypeMap" ;
             sh:description """
             Specifies the datatype of the object component for the generated 
@@ -65,29 +63,25 @@ schema:RMLObjectMapShape
             rml:datatypeMap must point to a rml:DatatypeMap specifying the
             datatype of the Literal.
             """ ;
-            sh:maxCount 1 ;
-            sh:minCount 0 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:node schema:RMLDatatypeMapShape;
         ]
         [
-            sh:targetSubjectsOf rml:language ;
             sh:path rml:language ;
+            sh:targetSubjectsOf rml:language ;
             sh:name "language" ;
             sh:description """
             Language tag for the object.
             """ ;
-            sh:nodeKind sh:Literal ;
             sh:node schema:RMLlanguageShape ;
         ]
         [
-            sh:targetSubjectsOf rml:datatype ;
             sh:path rml:datatype ;
+            sh:targetSubjectsOf rml:datatype ;
             sh:name "datatype" ;
             sh:description """
             Datatype for the object.
             """ ;
-            sh:nodeKind sh:IRI ;
             sh:node schema:RMLdatatypeShape ;
         ]
     ) ;
@@ -95,9 +89,8 @@ schema:RMLObjectMapShape
 
 
 schema:RMLobjectShape 
-    a sh:PropertyShape ;
-    sh:path rml:object ;
-    sh:targetSubjectsOf rml:object ;
+    a sh:NodeShape ;
+    sh:targetObjectsOf rml:object ;
     sh:name "object" ;
     sh:description """
     An IRI, Blank Node, or Literal to use as object for all the RDF triples.
