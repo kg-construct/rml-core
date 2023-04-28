@@ -172,3 +172,16 @@ schema:RMLLogicalTargetPropertiesShape
     sh:minCount 0 ;
     sh:maxCount 1 ;
 .
+
+schema:RMLStrategyAppendShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf rml:strategy ;
+    sh:name "Strategy" ;
+    sh:description """
+    Strategy to follow when generating RDF triples.
+    """ ;
+    sh:message """
+    Strategy must be either rml:append or rml:cartessianProduct.
+    """ ;
+    sh:in (rml:append rml:cartessianProduct) ;
+.
