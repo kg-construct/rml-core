@@ -9,6 +9,88 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
 
+schema:RMLTriplesMapPropertiesShape
+    a sh:NodeShape;   
+    sh:targetClass rml:TriplesMap;
+    sh:targetClass rml:NonAssertedTriplesMap;
+
+    sh:property [
+        sh:targetSubjectsOf rml:logicalSource ;
+        sh:path rml:logicalSource ;
+        sh:name "logicalSource" ;
+        sh:description """
+        A logical source is any source that is mapped to RDF triples.
+        """ ;
+        sh:message """
+        Exactly one rml:logicalSource is required to access the data source.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:targetSubjectsOf rml:subjectMap ;
+        sh:targetSubjectsOf rml:subject ;
+        sh:path [sh:alternativePath (rml:subjectMap rml:subject)] ;
+        sh:name "subjectMap/subject" ;
+        sh:description """
+        Either one rml:subject or one rml:SubjectMap is required, not both.
+        """ ;
+        sh:message """
+        Either one rml:subject or one rml:SubjectMap is required, not both.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:targetSubjectsOf rml:subjectMap ;
+        sh:path rml:subjectMap ;
+        sh:name "subjectMap" ;
+        sh:description """
+        A Subject Map element to generate a subject for generated RDF triples.
+        """ ;
+        sh:message """
+        rml:SubjectMap must be an IRI or blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:or ([sh:node schema:RMLSubjectMapShape]
+               [sh:node schema:RMLStarMapShape]) ;
+    ] ;
+
+    # rml:subject
+    sh:property [
+        sh:targetSubjectsOf rml:subject ;
+        sh:path rml:subject ;
+        sh:name "subject" ;
+        sh:description """
+        An IRI reference for use as subject for all generated RDF triples.
+        """ ;
+        sh:message """
+        rml:subject must be an IRI or blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLsubjectShape;
+    ] ;
+
+    # rml:predicateObjectMap
+    sh:property [
+        sh:targetSubjectsOf rml:predicateObjectMap ;
+        sh:path rml:predicateObjectMap ;
+        sh:name "predicateObjectMap" ;
+        sh:description """
+        A Predicate Object Map element to generate a (predicate, object) pair.
+        """ ;
+        sh:message """
+        rml:PredicateObjectMap must be an IRI or blank node.
+        """ ;
+        sh:minCount 0 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLPredicateObjectMapShape ; 
+    ] ;
+.
+
 schema:RMLGraphMapPropertiesShape
     a sh:NodeShape;   
     sh:targetSubjectsOf rml:graphMap ;
