@@ -25,11 +25,11 @@ schema:RMLParentMapShape
         # Inherited shapes
         schema:RMLTermMapShape
         schema:RMLLogicalTargetPropertiesShape
-        # Language Map specific shapes
+        # Parent Map specific shapes
         [
             sh:path rml:termType;
             sh:message """
-            rml:termType for Language Map can only be a rml:Literal;
+            rml:termType for Parent Map can only be a rml:Literal;
             """;
             sh:in (rml:Literal);
         ]

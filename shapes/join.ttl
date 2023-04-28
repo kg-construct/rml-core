@@ -36,8 +36,7 @@ schema:RMLJoinShape
         sh:path rml:parentMap ;
         sh:name "parentMap" ;
         sh:description """
-        Specified the parent map for the object component for the 
-        generated RDF triples.
+        Specifies the parent of the object component for joining.
         """ ;
         sh:message """
         rml:parentMap must point to a rml:ParentMap specifying the 
@@ -52,7 +51,7 @@ schema:RMLJoinShape
         sh:path rml:parent ;
         sh:name "parent" ;
         sh:description """
-        Language tag for the object.
+        Specifies the parent of the object component for joining.
         """ ;
         sh:nodeKind sh:Literal ;
         sh:node schema:RMLparentShape ;
@@ -74,8 +73,7 @@ schema:RMLJoinShape
         sh:path rml:childMap ;
         sh:name "childMap" ;
         sh:description """
-        Specifies the child of the object component for the generated 
-        RDF triples.
+        Specifies the child of the object component for joining.
         """ ;
         sh:message """
         rml:childMap must point to a rml:ChildMap specifying the
@@ -90,7 +88,7 @@ schema:RMLJoinShape
         sh:path rml:child ;
         sh:name "child" ;
         sh:description """
-        Datatype for the object.
+        Specifies the child of the object component for joining.
         """ ;
         sh:nodeKind sh:IRI ;
         sh:node schema:RMLchildShape ;
