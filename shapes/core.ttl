@@ -29,6 +29,17 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://schema.org/RMLStrategyAppendShape> a sh:NodeShape ;
+    sh:description """
+    Strategy to follow when generating RDF triples.
+    """ ;
+    sh:in ( rml:append rml:cartessianProduct ) ;
+    sh:message """
+    Strategy must be either rml:append or rml:cartessianProduct.
+    """ ;
+    sh:name "Strategy" ;
+    sh:targetObjectsOf rml:strategy .
+
 <http://schema.org/RMLChildMapShape> a sh:NodeShape ;
     sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
                 sh:message """
