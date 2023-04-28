@@ -25,21 +25,13 @@ schema:RMLChildMapShape
         # Inherited shapes
         schema:RMLTermMapShape
         schema:RMLLogicalTargetPropertiesShape
-        # Language Map specific shapes
+        # Child Map specific shapes
         [
             sh:path rml:termType;
             sh:message """
-            rml:termType for Language Map can only be a rml:Literal;
+            rml:termType for Child Map can only be a rml:Literal;
             """;
             sh:in (rml:Literal);
-        ]
-        [
-            sh:alternativePath (rml:reference rml:template rml:constant) ;
-            sh:message """
-            RDF triple's language tag must be a Literal.
-            """ ;
-            sh:nodeKind sh:Literal ;
-            sh:datatype xsd:string ;
         ]
     ) ;
 .

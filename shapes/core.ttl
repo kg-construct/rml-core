@@ -32,14 +32,9 @@
 <http://schema.org/RMLChildMapShape> a sh:NodeShape ;
     sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
                 sh:message """
-            rml:termType for Language Map can only be a rml:Literal;
+            rml:termType for Child Map can only be a rml:Literal;
             """ ;
-                sh:path <http://www.w3.org/ns/r2rml#termType> ] [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#reference> <http://www.w3.org/ns/r2rml#template> <http://www.w3.org/ns/r2rml#constant> ) ;
-                sh:datatype xsd:string ;
-                sh:message """
-            RDF triple's language tag must be a Literal.
-            """ ;
-                sh:nodeKind sh:Literal ] ) ;
+                sh:path <http://www.w3.org/ns/r2rml#termType> ] ) ;
     sh:description """
     Represents a Child Map.
     """ ;
@@ -182,8 +177,7 @@
             sh:name "parentMap/parent" ;
             sh:path [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#parentMap> <http://www.w3.org/ns/r2rml#parent> ) ] ],
         [ sh:description """
-        Specifies the child of the object component for the generated 
-        RDF triples.
+        Specifies the child of the object component for joining.
         """ ;
             sh:message """
         rml:childMap must point to a rml:ChildMap specifying the
@@ -195,7 +189,7 @@
             sh:path <http://www.w3.org/ns/r2rml#childMap> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#childMap> ],
         [ sh:description """
-        Datatype for the object.
+        Specifies the child of the object component for joining.
         """ ;
             sh:name "child" ;
             sh:node <http://schema.org/RMLchildShape> ;
@@ -203,8 +197,7 @@
             sh:path <http://www.w3.org/ns/r2rml#child> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> ],
         [ sh:description """
-        Specified the parent map for the object component for the 
-        generated RDF triples.
+        Specifies the parent of the object component for joining.
         """ ;
             sh:message """
         rml:parentMap must point to a rml:ParentMap specifying the 
@@ -216,7 +209,7 @@
             sh:path <http://www.w3.org/ns/r2rml#parentMap> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentMap> ],
         [ sh:description """
-        Language tag for the object.
+        Specifies the parent of the object component for joining.
         """ ;
             sh:name "parent" ;
             sh:node <http://schema.org/RMLparentShape> ;
@@ -310,7 +303,7 @@
 <http://schema.org/RMLParentMapShape> a sh:NodeShape ;
     sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
                 sh:message """
-            rml:termType for Language Map can only be a rml:Literal;
+            rml:termType for Parent Map can only be a rml:Literal;
             """ ;
                 sh:path <http://www.w3.org/ns/r2rml#termType> ] ) ;
     sh:description """
