@@ -23,7 +23,7 @@ class MappingValidator:
         if not valid and print_report:
             self._print_report(report_text)
             msg = 'RML mapping rules are invalid, a detailed explanation' \
-            ' is available in the report'
+                ' is available in the report'
             critical(msg)
             raise ValueError(msg)
 
