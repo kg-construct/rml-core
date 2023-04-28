@@ -449,15 +449,7 @@
     sh:targetClass rml:SubjectMap ;
     sh:targetObjectsOf rml:subjectMap .
 
-<http://schema.org/RMLTriplesMapShape> a sh:NodeShape ;
-    sh:description """
-    Represents a triples map.
-    """ ;
-    sh:message """
-    rml:TriplesMap requires exactly one rml:subject or one rml:subjectMap and zero
-    or more rml:predicateObjectMaps.
-    """ ;
-    sh:name "TriplesMap" ;
+<http://schema.org/RMLTriplesMapPropertiesShape> a sh:NodeShape ;
     sh:property [ sh:description """
         A logical source is any source that is mapped to RDF triples.
         """ ;
@@ -516,6 +508,19 @@
             sh:or ( [ sh:node <http://schema.org/RMLSubjectMapShape> ] [ sh:node <http://schema.org/RMLStarMapShape> ] ) ;
             sh:path rml:subjectMap ;
             sh:targetSubjectsOf rml:subjectMap ] ;
+    sh:targetClass rml:NonAssertedTriplesMap,
+        rml:TriplesMap .
+
+<http://schema.org/RMLTriplesMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTriplesMapPropertiesShape> [ ] ) ;
+    sh:description """
+    Represents a Triples Map.
+    """ ;
+    sh:message """
+    Triples Map requires exactly one rml:subject or one rml:subjectMap and zero
+    or more rml:predicateObjectMaps.
+    """ ;
+    sh:name "TriplesMap" ;
     sh:targetClass rml:TriplesMap .
 
 <http://schema.org/RMLchildShape> a sh:NodeShape ;
