@@ -3,7 +3,7 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
@@ -11,6 +11,6 @@
 # Shapes are defined in the corresponding repositories of each specification
 # Provide their IRI as stub to allow validation in Core.
 
-schema:RMLStarMapShape
+:RMLStarMapShape
     a sh:NodeShape;   
 .

@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLObjectMapShape
+:RMLObjectMapShape
     a sh:NodeShape ;
     sh:targetClass rml:ObjectMap ;
     sh:name "ObjectMap" ;
@@ -22,8 +22,8 @@ schema:RMLObjectMapShape
 
     sh:and (
         # Inherited shapes
-        schema:RMLTermMapShape
-        schema:RMLLogicalTargetPropertiesShape
+        :RMLTermMapShape
+        :RMLLogicalTargetPropertiesShape
         # Object Map specific shapes
         [
             sh:path [ sh:alternativePath (rml:languageMap rml:datatypeMap
@@ -49,7 +49,7 @@ schema:RMLObjectMapShape
             language tag of the string Literal.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:node schema:RMLLanguageMapShape;
+            sh:node :RMLLanguageMapShape;
         ]
         [
             sh:path rml:datatypeMap ;
@@ -64,7 +64,7 @@ schema:RMLObjectMapShape
             datatype of the Literal.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:node schema:RMLDatatypeMapShape;
+            sh:node :RMLDatatypeMapShape;
         ]
         [
             sh:path rml:language ;
@@ -73,7 +73,7 @@ schema:RMLObjectMapShape
             sh:description """
             Language tag for the object.
             """ ;
-            sh:node schema:RMLlanguageShape ;
+            sh:node :RMLlanguageShape ;
         ]
         [
             sh:path rml:datatype ;
@@ -82,13 +82,13 @@ schema:RMLObjectMapShape
             sh:description """
             Datatype for the object.
             """ ;
-            sh:node schema:RMLdatatypeShape ;
+            sh:node :RMLdatatypeShape ;
         ]
     ) ;
 .
 
 
-schema:RMLobjectShape 
+:RMLobjectShape 
     a sh:NodeShape ;
     sh:targetObjectsOf rml:object ;
     sh:name "object" ;

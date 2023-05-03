@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://www.w3.org/ns/r2rml#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLJoinShape
+:RMLJoinShape
     a sh:NodeShape ;
     sh:targetClass rml:Join ;
     sh:targetObjectsOf rml:joinCondition ;
@@ -43,7 +43,7 @@ schema:RMLJoinShape
         parent tag of the string Literal.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node schema:RMLParentMapShape;
+        sh:node :RMLParentMapShape;
     ] ;
 
     sh:property [
@@ -54,7 +54,7 @@ schema:RMLJoinShape
         Specifies the parent of the object component for joining.
         """ ;
         sh:nodeKind sh:Literal ;
-        sh:node schema:RMLparentShape ;
+        sh:node :RMLparentShape ;
     ] ;
 
     sh:property [
@@ -80,7 +80,7 @@ schema:RMLJoinShape
         child of the Literal.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node schema:RMLChildMapShape;
+        sh:node :RMLChildMapShape;
     ] ;
 
     sh:property [
@@ -91,6 +91,6 @@ schema:RMLJoinShape
         Specifies the child of the object component for joining.
         """ ;
         sh:nodeKind sh:IRI ;
-        sh:node schema:RMLchildShape ;
+        sh:node :RMLchildShape ;
     ] ;
 .
