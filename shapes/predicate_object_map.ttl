@@ -23,6 +23,19 @@
         :RMLLogicalTargetPropertiesShape
         # Predicate Map specific shapes
         [
+            sh:targetSubjectsOf rml:predicate ;
+            sh:targetSubjectsOf rml:predicateMap ;
+            sh:path [sh:alternativePath (rml:predicate rml:predicateMap)] ;
+            sh:name "predicate/predicateMap" ;
+            sh:description """
+            At least one rml:predicate or rml:predicateMap must be provided.
+            """ ;
+            sh:message """
+            At least one rml:predicate or rml:predicateMap must be provided.
+            """ ;
+            sh:minCount 1 ;
+        ]
+        [
             sh:targetSubjectsOf rml:predicateMap ;
             sh:path rml:predicateMap ;
             sh:name "predicateMap" ;
@@ -53,13 +66,14 @@
         [
             sh:targetSubjectsOf rml:object ;
             sh:targetSubjectsOf rml:objectMap ;
-            sh:path [sh:alternativePath (rml:object rml:objectMap)] ;
-            sh:name "object/objectMap" ;
+            sh:targetSubjectsOf rml:quotedTriplesMap ;
+            sh:path [sh:alternativePath (rml:object rml:objectMap rml:quotedTriplesMap)] ;
+            sh:name "object/objectMap/quotedTriplesMap" ;
             sh:description """
-            Either an rml:object or rml:objectMap must be provided, not both.
+            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple.
             """ ;
             sh:message """
-            Either an rml:object or rml:objectMap must be provided, not both.
+            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple
             """ ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

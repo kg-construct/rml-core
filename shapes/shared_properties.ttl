@@ -32,13 +32,14 @@
     sh:property [
         sh:targetSubjectsOf rml:subjectMap ;
         sh:targetSubjectsOf rml:subject ;
-        sh:path [sh:alternativePath (rml:subjectMap rml:subject)] ;
-        sh:name "subjectMap/subject" ;
+        sh:targetSubjectsOf rml:quotedTriplesMap ;
+        sh:path [sh:alternativePath (rml:subjectMap rml:subject rml:quotedTriplesMap)] ;
+        sh:name "subjectMap/subject/quotedTriplesMap" ;
         sh:description """
-        Either one rml:subject or one rml:SubjectMap is required, not both.
+        Either a rml:subject, rml:subjectMap or a rml:quotedTriplesMap is required, not multiple.
         """ ;
         sh:message """
-        Either one rml:subject or one rml:SubjectMap is required, not both.
+        Either a rml:subject, rml:subjectMap or a rml:quotedTriplesMap is required, not multiple.
         """ ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
