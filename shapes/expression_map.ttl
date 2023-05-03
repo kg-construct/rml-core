@@ -19,23 +19,27 @@
     rml:reference.
     """ ;
 
-    # Exactly one rml:template, one rml:constant or one rml:reference is 
-    # required.
+    # Exactly one rml:template, one rml:constant, one rml:reference,
+    # one rml:returnMap, or one rml:functionExecution is required.
     sh:property [
         sh:targetSubjectsOf rml:template ;
         sh:targetSubjectsOf rml:constant ;
         sh:targetSubjectsOf rml:reference ;
+        sh:targetSubjectsOf rml:returnMap ;
+        sh:targetSubjectsOf rml:functionExecution ;
         sh:path [sh:alternativePath (rml:template 
                                      rml:constant
-                                     rml:reference)] ;
-        sh:name "template/constant/reference" ;
+                                     rml:reference
+                                     rml:returnMap
+                                     rml:functionExecution)] ;
+        sh:name "template/constant/reference/returnMap/functionExecution" ;
         sh:description """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
+        Exactly one rml:template, one rml:constant, one rml:reference,
+        one rml:returnMap, or one rml:functionExecution is required.
         """ ;
         sh:message """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
+        Exactly one rml:template, one rml:constant, one rml:reference,
+        one rml:returnMap, or one rml:functionExecution is required.
         """ ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -92,5 +96,41 @@
         """ ;
         sh:nodeKind sh:Literal ;
         sh:datatype xsd:string ;
+    ] ;
+
+    # rml:returnMap
+    sh:property [
+        sh:targetSubjectsOf rml:returnMap ;
+        sh:path rml:returnMap ;
+        sh:name "returnMap" ;
+        sh:description """
+        A Return Map rml:returnMap is used to define the return values of a FnO
+        function from the RML-FNML specification. RML Core only validates if the
+        property is present and has the right node kind. The actual validation
+        happens with RML-FNML SHACL shapes.
+        """ ;
+        sh:message """
+        rml:returnMap must be an IRI;
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        # Allow BlankNodes so nested structurces works as well for rml:returnMap
+    ] ;
+
+    # rml:functionExecution
+    sh:property [
+        sh:targetSubjectsOf rml:functionExecution ;
+        sh:path rml:functionExecution ;
+        sh:name "functionExecution" ;
+        sh:description """
+        A Function Execution rml:functionExecution is used to define the FnO 
+        function to execute from the RML-FNML specification. RML Core only 
+        validates if the property is present and has the right node kind.
+        The actual validation happens with RML-FNML SHACL shapes.
+        """ ;
+        sh:message """
+        rml:functionExecution must be an IRI;
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        # Allow BlankNodes so nested structurces works as well for rml:returnMap
     ] ;
 .
