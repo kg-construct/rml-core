@@ -17,7 +17,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix : <http://w3id.org/rml/shapes/> .
+@prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -347,6 +347,16 @@
 
 <http://w3id.org/rml/shapes/RMLPredicateObjectMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
+            At least one rml:predicate or rml:predicateMap must be provided.
+            """ ;
+                sh:message """
+            At least one rml:predicate or rml:predicateMap must be provided.
+            """ ;
+                sh:minCount 1 ;
+                sh:name "predicate/predicateMap" ;
+                sh:path [ sh:alternativePath ( rml:predicate rml:predicateMap ) ] ;
+                sh:targetSubjectsOf rml:predicate,
+                    rml:predicateMap ] [ sh:description """
             A PredicateMap element to generate the predicate component of the 
             (predicate, object) pair from a logical table row or iterator.
             """ ;
@@ -369,17 +379,18 @@
                 sh:nodeKind sh:IRI ;
                 sh:path rml:predicate ;
                 sh:targetSubjectsOf rml:predicate ] [ sh:description """
-            Either an rml:object or rml:objectMap must be provided, not both.
+            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple.
             """ ;
                 sh:maxCount 1 ;
                 sh:message """
-            Either an rml:object or rml:objectMap must be provided, not both.
+            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple
             """ ;
                 sh:minCount 1 ;
-                sh:name "object/objectMap" ;
-                sh:path [ sh:alternativePath ( rml:object rml:objectMap ) ] ;
+                sh:name "object/objectMap/quotedTriplesMap" ;
+                sh:path [ sh:alternativePath ( rml:object rml:objectMap rml:quotedTriplesMap ) ] ;
                 sh:targetSubjectsOf rml:object,
-                    rml:objectMap ] [ sh:description """
+                    rml:objectMap,
+                    rml:quotedTriplesMap ] [ sh:description """
             An ObjectMap element to generate the object component of the 
             (predicate, object) pair from a logical table row or iterator.
             """ ;
@@ -497,16 +508,17 @@
             sh:path rml:predicateObjectMap ;
             sh:targetSubjectsOf rml:predicateObjectMap ],
         [ sh:description """
-        Either one rml:subject or one rml:SubjectMap is required, not both.
+        Either a rml:subject, rml:subjectMap or a rml:quotedTriplesMap is required, not multiple.
         """ ;
             sh:maxCount 1 ;
             sh:message """
-        Either one rml:subject or one rml:SubjectMap is required, not both.
+        Either a rml:subject, rml:subjectMap or a rml:quotedTriplesMap is required, not multiple.
         """ ;
             sh:minCount 1 ;
-            sh:name "subjectMap/subject" ;
-            sh:path [ sh:alternativePath ( rml:subjectMap rml:subject ) ] ;
-            sh:targetSubjectsOf rml:subject,
+            sh:name "subjectMap/subject/quotedTriplesMap" ;
+            sh:path [ sh:alternativePath ( rml:subjectMap rml:subject rml:quotedTriplesMap ) ] ;
+            sh:targetSubjectsOf rml:quotedTriplesMap,
+                rml:subject,
                 rml:subjectMap ],
         [ sh:description """
         A Subject Map element to generate a subject for generated RDF triples.
