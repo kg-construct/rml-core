@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://www.w3.org/ns/r2rml#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLChildMapShape
+:RMLChildMapShape
     a sh:NodeShape ;
     sh:targetClass rml:ChildMap ;
     sh:targetObjectsOf rml:child ;
@@ -23,8 +23,8 @@ schema:RMLChildMapShape
 
     sh:and (
         # Inherited shapes
-        schema:RMLTermMapShape
-        schema:RMLLogicalTargetPropertiesShape
+        :RMLTermMapShape
+        :RMLLogicalTargetPropertiesShape
         # Child Map specific shapes
         [
             sh:path rml:termType;
@@ -36,7 +36,7 @@ schema:RMLChildMapShape
     ) ;
 .
 
-schema:RMLchildShape
+:RMLchildShape
     a sh:NodeShape ;
     sh:targetSubjectsOf rml:child ;
     sh:name "child" ;

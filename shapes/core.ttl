@@ -17,7 +17,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix schema: <https://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -29,7 +29,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://schema.org/RMLStrategyAppendShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLStrategyAppendShape> a sh:NodeShape ;
     sh:description """
     Strategy to follow when generating RDF triples.
     """ ;
@@ -40,8 +40,8 @@
     sh:name "Strategy" ;
     sh:targetObjectsOf rml:strategy .
 
-<http://schema.org/RMLChildMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
+<http://w3id.org/rml/shapes/RMLChildMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
                 sh:message """
             rml:termType for Child Map can only be a rml:Literal;
             """ ;
@@ -57,8 +57,8 @@
     sh:targetClass <http://www.w3.org/ns/r2rml#ChildMap> ;
     sh:targetObjectsOf <http://www.w3.org/ns/r2rml#child> .
 
-<http://schema.org/RMLDatatypeMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
+<http://w3id.org/rml/shapes/RMLDatatypeMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
                 sh:message """
             rml:termType for Datatype Map can only be a rml:IRI;
             """ ;
@@ -74,7 +74,7 @@
     sh:targetClass rml:DatatypeMap ;
     sh:targetObjectsOf rml:datatypeMap .
 
-<http://schema.org/RMLExpressionMapShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLExpressionMapShape> a sh:NodeShape ;
     sh:description """
     Represents a Expression Map.
     """ ;
@@ -139,8 +139,8 @@
             sh:path rml:reference ;
             sh:targetSubjectsOf rml:reference ] .
 
-<http://schema.org/RMLGraphMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
+<http://w3id.org/rml/shapes/RMLGraphMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
                 sh:message """
             rml:termType must be an IRI for a Graph Map.
             """ ;
@@ -156,7 +156,7 @@
     sh:targetClass sh:GraphMap ;
     sh:targetObjectsOf rml:graphMap .
 
-<http://schema.org/RMLJoinConditionPropertiesShape> a sh:PropertyShape ;
+<http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> a sh:PropertyShape ;
     sh:description """
     Specifies the join condition for joining a child data source with 
     a parent data source of the foreign key constraint.
@@ -165,12 +165,12 @@
     rml:joinCondition must specify an rml:parent and rml:child.
     """ ;
     sh:name "joinCondition" ;
-    sh:node <http://schema.org/RMLJoinShape> ;
+    sh:node <http://w3id.org/rml/shapes/RMLJoinShape> ;
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:path rml:joinCondition ;
     sh:targetSubjectsOf rml:joinCondition .
 
-<http://schema.org/RMLJoinShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLJoinShape> a sh:NodeShape ;
     sh:description """
     Represents a Join.
     """ ;
@@ -195,7 +195,7 @@
         child of the Literal.
         """ ;
             sh:name "childMap" ;
-            sh:node <http://schema.org/RMLChildMapShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLChildMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path <http://www.w3.org/ns/r2rml#childMap> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#childMap> ],
@@ -203,7 +203,7 @@
         Specifies the child of the object component for joining.
         """ ;
             sh:name "child" ;
-            sh:node <http://schema.org/RMLchildShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLchildShape> ;
             sh:nodeKind sh:IRI ;
             sh:path <http://www.w3.org/ns/r2rml#child> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> ],
@@ -215,7 +215,7 @@
         parent tag of the string Literal.
         """ ;
             sh:name "parentMap" ;
-            sh:node <http://schema.org/RMLParentMapShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLParentMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path <http://www.w3.org/ns/r2rml#parentMap> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentMap> ],
@@ -223,7 +223,7 @@
         Specifies the parent of the object component for joining.
         """ ;
             sh:name "parent" ;
-            sh:node <http://schema.org/RMLparentShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLparentShape> ;
             sh:nodeKind sh:Literal ;
             sh:path <http://www.w3.org/ns/r2rml#parent> ;
             sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> ],
@@ -238,8 +238,8 @@
     sh:targetClass <http://www.w3.org/ns/r2rml#Join> ;
     sh:targetObjectsOf <http://www.w3.org/ns/r2rml#joinCondition> .
 
-<http://schema.org/RMLLanguageMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
+<http://w3id.org/rml/shapes/RMLLanguageMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
                 sh:message """
             rml:termType for Language Map can only be a rml:Literal.
             """ ;
@@ -256,8 +256,8 @@
     sh:targetClass rml:LanguageMap ;
     sh:targetObjectsOf rml:languageMap .
 
-<http://schema.org/RMLObjectMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
+<http://w3id.org/rml/shapes/RMLObjectMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
             rml:language/rml:languageMap and rml:datatype/rml:datatypeMap
             may only be provided once and not at the same time.
             """ ;
@@ -273,7 +273,7 @@
             language tag of the string Literal.
             """ ;
                 sh:name "languageMap" ;
-                sh:node <http://schema.org/RMLLanguageMapShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLLanguageMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
                 sh:path rml:languageMap ;
                 sh:targetSubjectsOf rml:languageMap ] [ sh:description """
@@ -285,20 +285,20 @@
             datatype of the Literal.
             """ ;
                 sh:name "datatypeMap" ;
-                sh:node <http://schema.org/RMLDatatypeMapShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLDatatypeMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
                 sh:path rml:datatypeMap ;
                 sh:targetSubjectsOf rml:datatypeMap ] [ sh:description """
             Language tag for the object.
             """ ;
                 sh:name "language" ;
-                sh:node <http://schema.org/RMLlanguageShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLlanguageShape> ;
                 sh:path rml:language ;
                 sh:targetSubjectsOf rml:language ] [ sh:description """
             Datatype for the object.
             """ ;
                 sh:name "datatype" ;
-                sh:node <http://schema.org/RMLdatatypeShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLdatatypeShape> ;
                 sh:path rml:datatype ;
                 sh:targetSubjectsOf rml:datatype ] ) ;
     sh:description """
@@ -311,8 +311,8 @@
     sh:name "ObjectMap" ;
     sh:targetClass rml:ObjectMap .
 
-<http://schema.org/RMLParentMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
+<http://w3id.org/rml/shapes/RMLParentMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
                 sh:message """
             rml:termType for Parent Map can only be a rml:Literal;
             """ ;
@@ -328,8 +328,8 @@
     sh:targetClass <http://www.w3.org/ns/r2rml#ParentMap> ;
     sh:targetObjectsOf <http://www.w3.org/ns/r2rml#parent> .
 
-<http://schema.org/RMLPredicateMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
+<http://w3id.org/rml/shapes/RMLPredicateMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
                 sh:message """
             rml:termType for Predicate Map can only be a rml:IRI;
             """ ;
@@ -345,8 +345,8 @@
     sh:targetClass rml:PredicateMap ;
     sh:targetObjectsOf rml:predicateMap .
 
-<http://schema.org/RMLPredicateObjectMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLGraphMapPropertiesShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
+<http://w3id.org/rml/shapes/RMLPredicateObjectMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
             A PredicateMap element to generate the predicate component of the 
             (predicate, object) pair from a logical table row or iterator.
             """ ;
@@ -354,7 +354,7 @@
             rml:predicateMap must be an IRI or blank node and be provided once.
             """ ;
                 sh:name "predicateMap" ;
-                sh:node <http://schema.org/RMLPredicateMapShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLPredicateMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
                 sh:path rml:predicateMap ;
                 sh:targetSubjectsOf rml:predicateMap ] [ sh:description """
@@ -365,7 +365,7 @@
             rml:predicate must be an IRI and be provided once.
             """ ;
                 sh:name "predicate" ;
-                sh:node <http://schema.org/RMLpredicateShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLpredicateShape> ;
                 sh:nodeKind sh:IRI ;
                 sh:path rml:predicate ;
                 sh:targetSubjectsOf rml:predicate ] [ sh:description """
@@ -388,7 +388,7 @@
             """ ;
                 sh:name "objectMap" ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
-                sh:or ( [ sh:node <http://schema.org/RMLObjectMapShape> ] [ sh:node <http://schema.org/RMLRefObjectMapShape> ] [ sh:node <http://schema.org/RMLStarMapShape> ] ) ;
+                sh:or ( [ sh:node <http://w3id.org/rml/shapes/RMLObjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLRefObjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLStarMapShape> ] ) ;
                 sh:path rml:objectMap ;
                 sh:targetSubjectsOf rml:objectMap ] [ sh:description """
             Specifies the object for the generated RDF triples.
@@ -397,7 +397,7 @@
             rml:object must be an IRI and be provided once.
             """ ;
                 sh:name "object" ;
-                sh:node <http://schema.org/RMLobjectShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLobjectShape> ;
                 sh:path rml:object ;
                 sh:targetSubjectsOf rml:object ] ) ;
     sh:description """
@@ -407,8 +407,8 @@
     sh:targetClass rml:PredicateObjectMap ;
     sh:targetObjectsOf rml:predicateObjectMap .
 
-<http://schema.org/RMLRefObjectMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLJoinConditionPropertiesShape> [ sh:class <http://www.w3.org/ns/r2rml#TriplesMap> ;
+<http://w3id.org/rml/shapes/RMLRefObjectMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> [ sh:class <http://www.w3.org/ns/r2rml#TriplesMap> ;
                 sh:description """
             Specifies the Triples Map element corresponding to the parent data
             source of the foreign key constraint.
@@ -420,7 +420,7 @@
             """ ;
                 sh:minCount 1 ;
                 sh:name "parentTriplesMap" ;
-                sh:node <http://schema.org/RMLTriplesMapShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLTriplesMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
                 sh:path <http://www.w3.org/ns/r2rml#parentTriplesMap> ;
                 sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentTriplesMap> ] ) ;
@@ -434,8 +434,8 @@
     sh:name "RefObjectMap" ;
     sh:targetClass <http://www.w3.org/ns/r2rml#RefObjectMap> .
 
-<http://schema.org/RMLSubjectMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLGraphMapPropertiesShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
+<http://w3id.org/rml/shapes/RMLSubjectMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
             The subject value generated will be asserted as an instance of this
             RDFS class.
             """ ;
@@ -460,7 +460,7 @@
     sh:targetClass rml:SubjectMap ;
     sh:targetObjectsOf rml:subjectMap .
 
-<http://schema.org/RMLTriplesMapPropertiesShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLTriplesMapPropertiesShape> a sh:NodeShape ;
     sh:property [ sh:description """
         A logical source is any source that is mapped to RDF triples.
         """ ;
@@ -480,7 +480,7 @@
         rml:subject must be an IRI or blank node.
         """ ;
             sh:name "subject" ;
-            sh:node <http://schema.org/RMLsubjectShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLsubjectShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:subject ;
             sh:targetSubjectsOf rml:subject ],
@@ -492,7 +492,7 @@
         """ ;
             sh:minCount 0 ;
             sh:name "predicateObjectMap" ;
-            sh:node <http://schema.org/RMLPredicateObjectMapShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLPredicateObjectMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:predicateObjectMap ;
             sh:targetSubjectsOf rml:predicateObjectMap ],
@@ -516,14 +516,14 @@
         """ ;
             sh:name "subjectMap" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:or ( [ sh:node <http://schema.org/RMLSubjectMapShape> ] [ sh:node <http://schema.org/RMLStarMapShape> ] ) ;
+            sh:or ( [ sh:node <http://w3id.org/rml/shapes/RMLSubjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLStarMapShape> ] ) ;
             sh:path rml:subjectMap ;
             sh:targetSubjectsOf rml:subjectMap ] ;
     sh:targetClass rml:NonAssertedTriplesMap,
         rml:TriplesMap .
 
-<http://schema.org/RMLTriplesMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTriplesMapPropertiesShape> [ ] ) ;
+<http://w3id.org/rml/shapes/RMLTriplesMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTriplesMapPropertiesShape> [ ] ) ;
     sh:description """
     Represents a Triples Map.
     """ ;
@@ -534,7 +534,7 @@
     sh:name "TriplesMap" ;
     sh:targetClass rml:TriplesMap .
 
-<http://schema.org/RMLchildShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLchildShape> a sh:NodeShape ;
     sh:datatype xsd:string ;
     sh:description """
     A Literal reference to use as reference to the child data source.
@@ -546,7 +546,7 @@
     sh:nodeKind sh:Literal ;
     sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> .
 
-<http://schema.org/RMLdatatypeShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLdatatypeShape> a sh:NodeShape ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 
     the datatype.
@@ -558,7 +558,7 @@
     sh:nodeKind sh:IRI ;
     sh:targetObjectsOf rml:datatype .
 
-<http://schema.org/RMLgraphShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLgraphShape> a sh:NodeShape ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 
     the Graph Map. 
@@ -570,7 +570,7 @@
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:targetSubjectsOf rml:graph .
 
-<http://schema.org/RMLlanguageShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLlanguageShape> a sh:NodeShape ;
     sh:description """
     Specified the language for the generated Literal.
     """ ;
@@ -583,7 +583,7 @@
     sh:pattern "^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$" ;
     sh:targetObjectsOf rml:language .
 
-<http://schema.org/RMLobjectShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLobjectShape> a sh:NodeShape ;
     sh:description """
     An IRI, Blank Node, or Literal to use as object for all the RDF triples.
     """ ;
@@ -594,7 +594,7 @@
     sh:name "object" ;
     sh:targetObjectsOf rml:object .
 
-<http://schema.org/RMLparentShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLparentShape> a sh:NodeShape ;
     sh:datatype xsd:string ;
     sh:description """
     A Literal reference to use as reference to the parent data source.
@@ -606,7 +606,7 @@
     sh:nodeKind sh:Literal ;
     sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> .
 
-<http://schema.org/RMLpredicateShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLpredicateShape> a sh:NodeShape ;
     sh:description """
     Specifies the predicate for the generated triple.
     """ ;
@@ -617,7 +617,7 @@
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:targetObjectsOf rml:predicate .
 
-<http://schema.org/RMLsubjectShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLsubjectShape> a sh:NodeShape ;
     sh:description """
     An IRI reference to use as subject for all the RDF triples.
     """ ;
@@ -628,7 +628,7 @@
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:targetObjectsOf rml:subject .
 
-<http://schema.org/RMLGraphMapPropertiesShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> a sh:NodeShape ;
     sh:property [ sh:description """
         Either an rml:graph or rml:graphMap may be optionally be provided,
         but not both.
@@ -651,7 +651,7 @@
         rml:graphMap must be either an IRI or blank node. 
         """ ;
             sh:name "graphMap" ;
-            sh:node <http://schema.org/RMLGraphMapShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLGraphMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:graphMap ],
         [ sh:description """
@@ -661,16 +661,16 @@
         rml:graphMap must be an IRI. 
         """ ;
             sh:name "graph" ;
-            sh:node <http://schema.org/RMLgraphShape> ;
+            sh:node <http://w3id.org/rml/shapes/RMLgraphShape> ;
             sh:nodeKind sh:IRI ;
             sh:path rml:graph ] ;
     sh:targetSubjectsOf rml:graph,
         rml:graphMap .
 
-<http://schema.org/RMLStarMapShape> a sh:NodeShape .
+<http://w3id.org/rml/shapes/RMLStarMapShape> a sh:NodeShape .
 
-<http://schema.org/RMLTermMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLExpressionMapShape> [ sh:description """
+<http://w3id.org/rml/shapes/RMLTermMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLExpressionMapShape> [ sh:description """
             An IRI indicating whether a generated term should be an IRI, 
             Blank Node, or a Literal.
             """ ;
@@ -692,7 +692,7 @@
     """ ;
     sh:name "TermMap" .
 
-<http://schema.org/RMLLogicalTargetPropertiesShape> a sh:PropertyShape ;
+<http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> a sh:PropertyShape ;
     sh:description """
     A logical target is any target to where generated RDF triples are
     exported to.

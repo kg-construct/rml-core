@@ -3,13 +3,13 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
 
-schema:RMLTriplesMapPropertiesShape
+:RMLTriplesMapPropertiesShape
     a sh:NodeShape;   
     sh:targetClass rml:TriplesMap;
     sh:targetClass rml:NonAssertedTriplesMap;
@@ -55,8 +55,8 @@ schema:RMLTriplesMapPropertiesShape
         rml:SubjectMap must be an IRI or blank node.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:or ([sh:node schema:RMLSubjectMapShape]
-               [sh:node schema:RMLStarMapShape]) ;
+        sh:or ([sh:node :RMLSubjectMapShape]
+               [sh:node :RMLStarMapShape]) ;
     ] ;
 
     # rml:subject
@@ -71,7 +71,7 @@ schema:RMLTriplesMapPropertiesShape
         rml:subject must be an IRI or blank node.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node schema:RMLsubjectShape;
+        sh:node :RMLsubjectShape;
     ] ;
 
     # rml:predicateObjectMap
@@ -87,11 +87,11 @@ schema:RMLTriplesMapPropertiesShape
         """ ;
         sh:minCount 0 ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node schema:RMLPredicateObjectMapShape ; 
+        sh:node :RMLPredicateObjectMapShape ; 
     ] ;
 .
 
-schema:RMLGraphMapPropertiesShape
+:RMLGraphMapPropertiesShape
     a sh:NodeShape;   
     sh:targetSubjectsOf rml:graphMap ;
     sh:targetSubjectsOf rml:graph ;
@@ -122,7 +122,7 @@ schema:RMLGraphMapPropertiesShape
         sh:message """
         rml:graphMap must be either an IRI or blank node. 
         """ ;
-        sh:node schema:RMLGraphMapShape ;
+        sh:node :RMLGraphMapShape ;
         sh:nodeKind sh:BlankNodeOrIRI ;
     ] ;
     sh:property [
@@ -134,12 +134,12 @@ schema:RMLGraphMapPropertiesShape
         sh:message """
         rml:graphMap must be an IRI. 
         """ ;
-        sh:node schema:RMLgraphShape ;
+        sh:node :RMLgraphShape ;
         sh:nodeKind sh:IRI ;
     ] ;
 .
 
-schema:RMLJoinConditionPropertiesShape
+:RMLJoinConditionPropertiesShape
     a sh:PropertyShape;
     sh:path rml:joinCondition ;
     sh:targetSubjectsOf rml:joinCondition ;
@@ -152,10 +152,10 @@ schema:RMLJoinConditionPropertiesShape
     rml:joinCondition must specify an rml:parent and rml:child.
     """ ;
     sh:nodeKind sh:BlankNodeOrIRI ;
-    sh:node schema:RMLJoinShape ;
+    sh:node :RMLJoinShape ;
 .
 
-schema:RMLLogicalTargetPropertiesShape
+:RMLLogicalTargetPropertiesShape
     a sh:PropertyShape ;
     sh:path rml:logicalTarget ;
     sh:targetSubjectsOf rml:logicalTarget ;
@@ -173,7 +173,7 @@ schema:RMLLogicalTargetPropertiesShape
     sh:maxCount 1 ;
 .
 
-schema:RMLStrategyAppendShape
+:RMLStrategyAppendShape
     a sh:NodeShape ;
     sh:targetObjectsOf rml:strategy ;
     sh:name "Strategy" ;

@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://www.w3.org/ns/r2rml#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLRefObjectMapShape
+:RMLRefObjectMapShape
     a sh:NodeShape ;
     sh:targetClass rml:RefObjectMap ;
     sh:name "RefObjectMap" ;
@@ -22,7 +22,7 @@ schema:RMLRefObjectMapShape
 
     sh:and (
         # Inherited shapes
-        schema:RMLJoinConditionPropertiesShape
+        :RMLJoinConditionPropertiesShape
         # RefObjectMap specific shapes
         [
             sh:targetSubjectsOf rml:parentTriplesMap ;
@@ -37,7 +37,7 @@ schema:RMLRefObjectMapShape
             or Blank Node referring to a Triples Map.
             """ ;
             sh:class rml:TriplesMap ;
-            sh:node schema:RMLTriplesMapShape ;
+            sh:node :RMLTriplesMapShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

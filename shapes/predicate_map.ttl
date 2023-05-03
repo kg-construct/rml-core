@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLPredicateMapShape
+:RMLPredicateMapShape
     a sh:NodeShape ;
     sh:targetClass rml:PredicateMap ;
     sh:targetObjectsOf rml:predicateMap ;
@@ -22,8 +22,8 @@ schema:RMLPredicateMapShape
     """ ;
     sh:and (
         # Inherited shapes
-        schema:RMLTermMapShape
-        schema:RMLLogicalTargetPropertiesShape
+        :RMLTermMapShape
+        :RMLLogicalTargetPropertiesShape
         # Predicate Map specific shapes
         [
             sh:path rml:termType;
@@ -36,7 +36,7 @@ schema:RMLPredicateMapShape
 .
 
 
-schema:RMLpredicateShape
+:RMLpredicateShape
     a sh:NodeShape ;
     sh:targetObjectsOf rml:predicate ;
     sh:name "predicate" ;

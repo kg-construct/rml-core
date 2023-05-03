@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLTermMapShape
+:RMLTermMapShape
     a sh:NodeShape ;
     sh:name "TermMap" ;
     sh:description """
@@ -20,7 +20,7 @@ schema:RMLTermMapShape
 
     # Inherit Expression Map shape and add rml:termType
     sh:and (
-        schema:RMLExpressionMapShape
+        :RMLExpressionMapShape
         [
             sh:targetSubjectsOf rml:termType ;
             sh:path rml:termType ;

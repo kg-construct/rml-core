@@ -3,12 +3,12 @@
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix schema: <http://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLPredicateObjectMapShape
+:RMLPredicateObjectMapShape
     a sh:NodeShape ;
     sh:targetClass rml:PredicateObjectMap ;
     sh:targetObjectsOf rml:predicateObjectMap ;
@@ -19,8 +19,8 @@ schema:RMLPredicateObjectMapShape
 
     sh:and (
         # Inherited shapes
-        schema:RMLGraphMapPropertiesShape
-        schema:RMLLogicalTargetPropertiesShape
+        :RMLGraphMapPropertiesShape
+        :RMLLogicalTargetPropertiesShape
         # Predicate Map specific shapes
         [
             sh:targetSubjectsOf rml:predicateMap ;
@@ -34,7 +34,7 @@ schema:RMLPredicateObjectMapShape
             rml:predicateMap must be an IRI or blank node and be provided once.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:node schema:RMLPredicateMapShape ;
+            sh:node :RMLPredicateMapShape ;
         ]
         [
             sh:targetSubjectsOf rml:predicate ;
@@ -48,7 +48,7 @@ schema:RMLPredicateObjectMapShape
             rml:predicate must be an IRI and be provided once.
             """ ;
             sh:nodeKind sh:IRI ;
-            sh:node schema:RMLpredicateShape ;
+            sh:node :RMLpredicateShape ;
         ]
         [
             sh:targetSubjectsOf rml:object ;
@@ -76,9 +76,9 @@ schema:RMLPredicateObjectMapShape
             rml:objectMap must be an IRI or blank node and be provided once.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:or ([sh:node schema:RMLObjectMapShape] 
-                   [sh:node schema:RMLRefObjectMapShape]
-                   [sh:node schema:RMLStarMapShape]) ;
+            sh:or ([sh:node :RMLObjectMapShape] 
+                   [sh:node :RMLRefObjectMapShape]
+                   [sh:node :RMLStarMapShape]) ;
         ]
         [
             sh:targetSubjectsOf rml:object ;
@@ -90,7 +90,7 @@ schema:RMLPredicateObjectMapShape
             sh:message """
             rml:object must be an IRI and be provided once.
             """ ;
-            sh:node schema:RMLobjectShape ;
+            sh:node :RMLobjectShape ;
         ]
     ) ;
 .
