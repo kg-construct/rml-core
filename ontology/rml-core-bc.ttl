@@ -115,7 +115,7 @@ rr:SubjectMap rdf:type owl:Class ;
                owl:equivalentClass rml:SubjectMap .
 
 rr:IRI rdf:type owl:Class ;
-          rdfs:comment "Denotes an IRI, used with termType."@en
+          rdfs:comment "Denotes an IRI, used with termType."@en ;
           rdfs:label "IRI"@en ;
           rdfs:isDefinedBy <http://www.w3.org/ns/r2rml#> ;
           owl:equivalentClass rml:IRI .
@@ -163,13 +163,13 @@ oldrml:TriplesMap rdf:type owl:Class ;
 #################################################################
 
 rr:logicalTable rdf:type owl:ObjectProperty ;
-                   rdfs:comment "Definition of logical table to be mapped."@en
+                   rdfs:comment "Definition of logical table to be mapped."@en ;
                    rdfs:label "logical table"@en ;
                    rdfs:isDefinedBy <http://www.w3.org/ns/r2rml#> ;
                    owl:equivalentProperty rml:TriplesMap .
 
 rr:class rdf:type owl:ObjectProperty ;
-                   rdfs:comment "The subject value generated for a logical table row will be asserted as an instance of this RDFS class."@en
+                   rdfs:comment "The subject value generated for a logical table row will be asserted as an instance of this RDFS class."@en ;
                    rdfs:label "class"@en ;
                    rdfs:isDefinedBy <http://www.w3.org/ns/r2rml#> ;
                    owl:equivalentProperty rml:class .
