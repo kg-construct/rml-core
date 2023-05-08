@@ -84,20 +84,66 @@
     """ ;
     sh:name "ExpressionMap" ;
     sh:property [ sh:description """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
+        Exactly one rml:template, one rml:constant, one rml:reference,
+        one rml:returnMap, or one rml:functionExecution is required.
         """ ;
             sh:maxCount 1 ;
             sh:message """
-        Exactly one rml:template, one rml:constant or one rml:reference is
-        required.
+        Exactly one rml:template, one rml:constant, one rml:reference,
+        one rml:returnMap, or one rml:functionExecution is required.
         """ ;
             sh:minCount 1 ;
-            sh:name "template/constant/reference" ;
-            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference ) ] ;
+            sh:name "template/constant/reference/returnMap/functionExecution" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference rml:returnMap rml:functionExecution ) ] ;
             sh:targetSubjectsOf rml:constant,
+                rml:functionExecution,
                 rml:reference,
+                rml:returnMap,
                 rml:template ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ;
+            sh:targetSubjectsOf rml:reference ],
+        [ sh:description """
+        A Return Map rml:returnMap is used to define the return values of a FnO
+        function from the RML-FNML specification. RML Core only validates if the
+        property is present and has the right node kind. The actual validation
+        happens with RML-FNML SHACL shapes.
+        """ ;
+            sh:message """
+        rml:returnMap must be an IRI;
+        """ ;
+            sh:name "returnMap" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:returnMap ;
+            sh:targetSubjectsOf rml:returnMap ],
+        [ sh:description """
+        A Function Execution rml:functionExecution is used to define the FnO 
+        function to execute from the RML-FNML specification. RML Core only 
+        validates if the property is present and has the right node kind.
+        The actual validation happens with RML-FNML SHACL shapes.
+        """ ;
+            sh:message """
+        rml:functionExecution must be an IRI;
+        """ ;
+            sh:name "functionExecution" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:functionExecution ;
+            sh:targetSubjectsOf rml:functionExecution ],
         [ sh:datatype xsd:string ;
             sh:description """
         A template (format string) to specify how to generate a value for a 
@@ -119,25 +165,7 @@
         """ ;
             sh:name "constant" ;
             sh:path rml:constant ;
-            sh:targetSubjectsOf rml:constant ],
-        [ sh:datatype xsd:string ;
-            sh:description """
-        A reference rml:reference is used to refer to a column in case of 
-        databases, a record in case of CSV or TSV data source, an element in 
-        case of XML data source, an object in case of a JSON data source, etc.
-
-        A reference must be a valid identifier, considering the reference 
-        formulation (rml:referenceFormulation) specified. The reference can be
-        an absolute path, or a path relative to the iterator specified at the 
-        logical source. 
-        """ ;
-            sh:message """
-        rml:reference must be a string.
-        """ ;
-            sh:name "reference" ;
-            sh:nodeKind sh:Literal ;
-            sh:path rml:reference ;
-            sh:targetSubjectsOf rml:reference ] .
+            sh:targetSubjectsOf rml:constant ] .
 
 <http://w3id.org/rml/shapes/RMLGraphMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
@@ -381,7 +409,6 @@
                 sh:targetSubjectsOf rml:predicate ] [ sh:description """
             Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple.
             """ ;
-                sh:maxCount 1 ;
                 sh:message """
             Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple
             """ ;

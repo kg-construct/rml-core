@@ -76,7 +76,6 @@
             Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple
             """ ;
             sh:minCount 1 ;
-            sh:maxCount 1 ;
         ]
         [
             sh:targetSubjectsOf rml:objectMap ;
