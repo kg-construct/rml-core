@@ -1,0 +1,28 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <> .
+<..\index-en.html> a prov:Entity;
+	 dc:title "RML: Generic Mapping Language for RDF";
+	 prov:wasAttributedTo :agent0;
+	 prov:wasAttributedTo :agent1;
+	 prov:wasAttributedTo :agent2;
+	 prov:wasAttributedTo :agent3;
+	 prov:wasAttributedTo :agent4;
+	 prov:wasAttributedTo :agent5;
+	 prov:wasAttributedTo :agent6;
+	 prov:wasAttributedTo :agent7;
+	 prov:wasAttributedTo :agent8;
+	 prov:wasAttributedTo :agent9;
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+.
+:agent0 a prov:Agent; foaf:name "Ana Iglesias Molina".
+:agent1 a prov:Agent; foaf:name "Anastasia Dimou".
+:agent2 a prov:Agent; foaf:name "Ben de Meester".
+:agent3 a prov:Agent; foaf:name "Christophe Debruyne".
+:agent4 a prov:Agent; foaf:name "David Chaves Fraga".
+:agent5 a prov:Agent; foaf:name "Dylan Van Assche".
+:agent6 a prov:Agent; foaf:name "Franck Michel".
+:agent7 a prov:Agent; foaf:name "Julián Arenas Guerrero".
+:agent8 a prov:Agent; foaf:name "Pano Maria".
+:agent9 a prov:Agent; foaf:name "Samaneh Jozashoori".
