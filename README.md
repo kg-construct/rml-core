@@ -1,8 +1,11 @@
 # RML-Core
 
-RML-Core specification.
+RML-Core specification, SHACL shapes, ontology, and test-cases
 
-For a rendered version, see https://w3id.org/rml/core/spec.
+- Specification: http://w3id.org/rml/core/spec
+- Ontology: http://w3id.org/rml/core
+- Shapes: http://w3id.org/rml/core/shapes
+- Test-cases: [test-cases](./test-cases)
 
 # Quickstart
 
