@@ -74,10 +74,10 @@ To overwrite the default term type, one needs to specify the [Term Type]() of th
 
 | constant-valued Expression Map | Termtype | RDF Term type generated  |
 | :-------------| :-----| :-----|
-| Subject Map | `rr:IRI` (default) | `IRI` (default) | 
-| Predicate Map | `rr:IRI` (default) | `IRI` (default) |
-| Object Map | `rr:IRI` (default) or `rr:Literal` | `IRI` (default) or `Literal` |
-| Graph Map | `rr:IRI` (default) |  	`IRI` (default) |
+| Subject Map | `rml:IRI` (default) | `IRI` (default) | 
+| Predicate Map | `rml:IRI` (default) | `IRI` (default) |
+| Object Map | `rml:IRI` (default) or `rml:Literal` | `IRI` (default) or `Literal` |
+| Graph Map | `rml:IRI` (default) |  	`IRI` (default) |
 
 The [reference]() of a [constant-valued]() is the empty set.
 

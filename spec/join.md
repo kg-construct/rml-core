@@ -133,7 +133,7 @@ if it constructs the graph of an RDF triple.
         rml:predicateMap <#PM1> ;
         rml:objectMap <#OM1> ]. 
 
-<#SM1> rr:graphMap [ rml:referencingTermMap <#GM2> ] .
+<#SM1> rml:graphMap [ rml:referencingTermMap <#GM2> ] .
 
 <#TM2> rml:subjectMap <#SM2> ;
     rml:logicalSource <LS2> ;
@@ -234,7 +234,7 @@ The [Parent Term Map]() (`rml:parentTermMap`) can be
         rml:predicateMap <#PM2> ;
         rml:objectMap <#OM2> ] .
 
-<#SM2> rr:graphMap <#GM2> .
+<#SM2> rml:graphMap <#GM2> .
 ```
 
 ### 8.2.1 Edge cases for Parent Term Maps

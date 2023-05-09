@@ -16,7 +16,7 @@ but also as a formalism for representing the [RML mapping]() itself.
 An [RDF graph]() that represents an [RML mapping]() is called an **_RML mapping graph_**.
 
 The **_RML vocabulary_** is the set of IRIs defined in this specification
-that start with the rr: namespace IRI: +++TODO:ADD IRI+++
+that start with the `rml:` as prefix and uses namespace IRI: <http://w3id.org/rml/>.
 
 An [RML mapping graph]():
 

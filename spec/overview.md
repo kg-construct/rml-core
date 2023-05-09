@@ -46,7 +46,7 @@ but also as a formalism for representing the [RML mapping]() itself.
 An [RDF graph]() that represents an [RML mapping]() is called an **_RML mapping graph_**.
 
 The **_RML vocabulary_** is the set of IRIs defined in this specification
-that start with the rr: namespace IRI: +++TODO:ADD IRI+++
+that start with the `rml:` as prefix and uses namespace IRI: <http://w3id.org/rml/>
 
 An [RML mapping graph]():
 
@@ -127,7 +127,7 @@ or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
 * A [Logical Source]()
-* a base IRI used in resolving relative IRIs produced by the RML mapping.
+* A base IRI used in resolving relative IRIs produced by the RML mapping.
 
 How the [Logical Source]() is accessed,
 or how users are authenticated against the database,
@@ -181,7 +181,7 @@ that would lead to the generation of an invalid [RDF term]().
 The following conditions give rise to data errors:
 
 
-1. A [term map]() with term type `rr:IRI` results in the generation of an invalid [IRI]().
+1. A [term map]() with term type `rml:IRI` results in the generation of an invalid [IRI]().
 2. A [term map]() whose natural RDF datatype is overridden with a specified datatype
 produces an [ill-typed literal]() (see [datatype-override RDF literal]()).
 
