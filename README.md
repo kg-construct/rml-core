@@ -5,6 +5,7 @@ RML-Core specification, SHACL shapes, ontology, and test-cases
 - Specification: http://w3id.org/rml/core/spec
 - Ontology: http://w3id.org/rml/core
 - Shapes: http://w3id.org/rml/core/shapes
+- Backwards compatibility with R2RML: http://w3id.org/rml/core/bc
 - Test-cases: [test-cases](./test-cases)
 
 # Quickstart
