@@ -7,7 +7,7 @@
 @base <http://w3id.org/rml/core#> .
 
 <http://w3id.org/rml/core> rdf:type owl:Ontology ;
-                            <http://purl.org/dc/elements/1.1/contributor> "Ana Iglesias Molina" ,
+                            <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" ,
                                                                           "Anastasia Dimou" ,
                                                                           "Ben de Meester" ,
                                                                           "Christophe Debruyne" ,
@@ -17,10 +17,10 @@
                                                                           "Julián Arenas Guerrero" ,
                                                                           "Pano Maria" ,
                                                                           "Samaneh Jozashoori" ;
-                            <http://purl.org/dc/elements/1.1/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
-                            <http://purl.org/dc/elements/1.1/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
-                            <http://purl.org/dc/elements/1.1/modified> "2023-04-19" ;
-                            <http://purl.org/dc/elements/1.1/title> "RML: Generic Mapping Language for RDF"@en ;
+                            <http://purl.org/dc/terms/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
+                            <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
+                            <http://purl.org/dc/terms/modified> "2023-04-19" ;
+                            <http://purl.org/dc/terms/title> "RML: Generic Mapping Language for RDF"@en ;
                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/core/" .
 
 #################################################################
@@ -31,36 +31,36 @@
 <http://creativecommons.org/ns#license> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/contributor
-<http://purl.org/dc/elements/1.1/contributor> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/creator
-<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/description
-<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/issued
-<http://purl.org/dc/elements/1.1/issued> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/license
-<http://purl.org/dc/elements/1.1/license> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/modified
-<http://purl.org/dc/elements/1.1/modified> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/publisher
-<http://purl.org/dc/elements/1.1/publisher> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/title
-<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix

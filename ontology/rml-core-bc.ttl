@@ -14,13 +14,13 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @base <http://w3id.org/rml/> .
 
-<http://w3id.org/rml/rr-rml-bc> rdf:type owl:Ontology ;
+<http://w3id.org/rml/core/bc> rdf:type owl:Ontology ;
                         dc:description "This module specifies the relationships established by the R2RML and previous RML vocabularies to the new RML specification."@en ;
                         dc:modified "2023-05-02" ;
                         dc:title "R2RML to RML alignment module"@en ;
                         dc:creator "Ana Iglesias Molina" ;
                         dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
-                        vann:preferredNamespaceUri "http://w3id.org/rml/rr-rml-bc" .
+                        vann:preferredNamespaceUri "http://w3id.org/rml/core/bc" .
 
 #################################################################
 #    Annotation properties
@@ -30,31 +30,31 @@
 cc:license rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/contributor
+###  http://purl.org/dc/terms/contributor
 dc:contributor rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/creator
+###  http://purl.org/dc/terms/creator
 dc:creator rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/description
+###  http://purl.org/dc/terms/description
 dc:description rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/issued
+###  http://purl.org/dc/terms/issued
 dc:issued rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/modified
+###  http://purl.org/dc/terms/modified
 dc:modified rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/publisher
+###  http://purl.org/dc/terms/publisher
 dc:publisher rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/title
+###  http://purl.org/dc/terms/title
 dc:title rdf:type owl:AnnotationProperty .
 
 

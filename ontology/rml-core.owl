@@ -1,6 +1,6 @@
 @prefix : <http://w3id.org/rml/> .
 @prefix cc: <http://creativecommons.org/ns#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -36,31 +36,31 @@
 cc:license rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/contributor
+###  http://purl.org/dc/terms/contributor
 dc:contributor rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/creator
+###  http://purl.org/dc/terms/creator
 dc:creator rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/description
+###  http://purl.org/dc/terms/description
 dc:description rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/issued
+###  http://purl.org/dc/terms/issued
 dc:issued rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/modified
+###  http://purl.org/dc/terms/modified
 dc:modified rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/publisher
+###  http://purl.org/dc/terms/publisher
 dc:publisher rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/title
+###  http://purl.org/dc/terms/title
 dc:title rdf:type owl:AnnotationProperty .
 
 
