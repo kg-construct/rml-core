@@ -81,3 +81,9 @@ and the charset parameter on the media type SHOULD always be used:
 A conforming [RML processor]() SHOULD accept [RML mapping documents]() in Turtle syntax.
 It MAY accept [RML mapping graphs]() encoded in other RDF syntaxes.
 
+
+All RML overview is shown in Figure 1:
+<figure>
+  <img src="../resources/diagram.png" alt="Target structure" style="width:45%"/>
+  <figcaption>RML-Core vocabulary.</figcaption>
+</figure>
