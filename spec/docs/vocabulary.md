@@ -1,4 +1,4 @@
-# 4. RML Mapping Documents
+# RML Mapping Documents
 
 ### RML Mapping
 
@@ -7,7 +7,7 @@ It is a structure that consists of one or more [triples maps]().
 
 The input to an RML mapping is called the [input data source]().
 
-## 4.1 Mapping Graphs and the RML Vocabulary
+## Mapping Graphs and the RML Vocabulary
 
 An [RML mapping]() is represented as an [RDF graph]().
 In other words, RDF is used not just as the target data model of the mapping,
@@ -67,7 +67,7 @@ The [default mapping]() SHOULD be such that
 its output is the [Direct Graph]() [[DM]()] corresponding to the [input data source]().
 
 
-## 4.2 RDF-based Turtle Syntax; Media Type
+## RDF-based Turtle Syntax; Media Type
 
 An **_RML mapping document_** is any document written in the [Turtle]() [[TURTLE]]() RDF syntax
 that encodes an [RML mapping graph]().

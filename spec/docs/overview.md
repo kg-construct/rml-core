@@ -20,15 +20,15 @@ place some or all of the triples into [named graphs]() instead.
 
 **TODO: Add updated figure here**
 
-## 2.1 Example Input
+## Example Input
 
-## 2.2 Desired RDF Output
+## Desired RDF Output
 
-## 2.3 - 2.7 Examples
+## Examples
 
-# 3. Conformance
+# Conformance
 
-# 4. RML Mapping Documents
+# RML Mapping Documents
 
 ### RML Mapping
 
@@ -37,7 +37,7 @@ It is a structure that consists of one or more [triples maps]().
 
 The input to an RML mapping is called the [input data source]().
 
-## 4.1 Mapping Graphs and the RML Vocabulary
+## Mapping Graphs and the RML Vocabulary
 
 An [RML mapping]() is represented as an [RDF graph]().
 In other words, RDF is used not just as the target data model of the mapping,
@@ -97,7 +97,7 @@ The [default mapping]() SHOULD be such that
 its output is the [Direct Graph]() [[DM]()] corresponding to the [input data source]().
 
 
-## 4.2 RDF-based Turtle Syntax; Media Type
+## RDF-based Turtle Syntax; Media Type
 
 An **_RML mapping document_** is any document written in the [Turtle]() [[TURTLE]]() RDF syntax
 that encodes an [RML mapping graph]().
@@ -111,7 +111,7 @@ and the charset parameter on the media type SHOULD always be used:
 A conforming [RML processor]() SHOULD accept [RML mapping documents]() in Turtle syntax.
 It MAY accept [RML mapping graphs]() encoded in other RDF syntaxes.
 
-# 5. RML Processors, Validators and Generators
+# RML Processors, Validators and Generators
 
 
 ### RML Processor
@@ -174,7 +174,7 @@ Such a mapping is known as a _**default mapping**_.
 
 
 
-## 5.1 Data Errors
+## Data Errors
 
 A **_data error_** is a condition of the data in the [input data]()
 that would lead to the generation of an invalid [RDF term]().
@@ -207,12 +207,3 @@ and the behavior of such operations is well-defined. For the same reason,
 the conformance of [RML mappings]() is defined without regard for the presence of data errors.
 
 [RML data validators]() can be used to explicitly scan a database for data errors.
-
-
-
-
-
-
-
-
-

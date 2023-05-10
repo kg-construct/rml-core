@@ -1,4 +1,4 @@
-# 5. RML Processors, Validators and Generators
+# RML Processors, Validators and Generators
 
 
 ### RML Processor
@@ -61,7 +61,7 @@ Such a mapping is known as a _**default mapping**_.
 
 
 
-## 5.1 Data Errors
+## Data Errors
 
 A **_data error_** is a condition of the data in the [input data]()
 that would lead to the generation of an invalid [RDF term]().
@@ -94,12 +94,4 @@ and the behavior of such operations is well-defined. For the same reason,
 the conformance of [RML mappings]() is defined without regard for the presence of data errors.
 
 [RML data validators]() can be used to explicitly scan a database for data errors.
-
-
-
-
-
-
-
-
 

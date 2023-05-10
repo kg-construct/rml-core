@@ -1,4 +1,4 @@
-# 7 Term Maps
+# Term Maps
 
 An _**RDF term**_ is either an [IRI](), or a [blank node](), or a [literal]().
 
@@ -34,7 +34,7 @@ A [Term Map]() (`rml:TermMap`) is specified as an [Expression Map]() and MAY hav
 which are also specified as [Expression Maps]() and
 * a [Term Type]().
 
-## 7.1 Expression Map
+## Expression Map
 
 An [Expression Map]() (`rml:ExpressionMap`)
 is an abstract class, that is specialized by other RML classes.
@@ -45,7 +45,7 @@ An [Expression Map]() (`rml:ExpressionMap`) MUST be exactly one of the following
 * a [reference-valued Expression Map](),
 * a [template-valued Expression Map]().
 
-### 7.1.1 Constant Expression Map (rml:constant)
+### Constant Expression Map (rml:constant)
 
 A _**constant-valued Expression Map**_ ignores the logical iteration
 and always generates the same [RDF term]().
@@ -101,7 +101,7 @@ the following triples were present in the mapping graph instead:
 
 +++ ADD example +++
 
-### 7.1.2 Reference (rml:reference)
+### Reference (rml:reference)
 
 A _**reference-valued Expression Map**_ is represented by a resource
 that has exactly one `rml:reference` property.
@@ -129,7 +129,7 @@ then the default [Term Type]() needs to be overwritten.
 
 +++ ADD example +++
 
-### 7.1.3 From a Template (rml:template)
+### From a Template (rml:template)
 
 A [template-valued term map]() is represented by a resource
 that has exactly one `rml:template` property.
@@ -239,7 +239,7 @@ a double backslash is needed to escape each curly brace,
 and to get one literal backslash in the output
 one needs to write four backslashes in the template.
 
-## 7.4 IRIs, Literal, Blank Nodes (rml:termType)
+## IRIs, Literal, Blank Nodes (rml:termType)
 
 The term type of a [column-valued term map] or [template-valued term map]
 determines the kind of [generated RDF term]() ([IRIs](), [blank nodes]() or [literals]()).
@@ -280,7 +280,7 @@ The type of the generated [RDF term]() is determined directly by the value of `r
 If it is an [IRI](), then an [IRI]() will be generated;
 if it is a literal, a literal will be generated.
 
-## 7.5 Language Tags (rml:language)
+## Language Tags (rml:language)
 
 A [term map]() with a term type of `rml:Literal` MAY have a specified language tag.
 It is represented by the `rml:language` property on a [term map]().
@@ -294,7 +294,7 @@ will be generated for the data values in the DNAME column.
 +++ ADD EXAMPLE +++
 
 
-## 7.6 Typed Literals (rml:datatype)
+## Typed Literals (rml:datatype)
 
 A _**datatypeable term map**_ is a term map with a term type of `rml:Literal`
 that does not have a [specified language tag]().
@@ -328,32 +328,3 @@ that explicitly specifies `xsd:positiveInteger` type.
 A [datatype-override RDF literal] of that datatype will be generated.
 
 +++ ADD EXAMPLE +++
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
