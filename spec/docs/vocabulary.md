@@ -84,6 +84,6 @@ It MAY accept [RML mapping graphs]() encoded in other RDF syntaxes.
 
 All RML overview is shown in Figure 1:
 <figure>
-  <img src="../resources/diagram.png" alt="Target structure" style="width:45%"/>
+  <img src="../resources/diagram.png" alt="Target structure" style="width:85%"/>
   <figcaption>RML-Core vocabulary.</figcaption>
 </figure>
