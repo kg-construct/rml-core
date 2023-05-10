@@ -1,0 +1,20 @@
+title: "RML-core: Ontology, specification, shapes and test cases"
+license: CC-BY-4.0
+authors:
+  - family-names: Maria
+    given-names: Pano
+  - family-names: Dimou
+    given-names: Anastasia
+  - family-names: De Meester
+    given-names:  Ben  
+  - family-names: Iglesias-Molina
+    given-names: Ana
+  - family-names: Chaves-Fraga
+    given-names: David
+  - family-names: Van Assche
+    given-names: Dylan
+cff-version: 1.0.0
+version: 0.1.0
+doi: 10.5281/zenodo.7919848
+date-released: 2023-05-10
+url: "https://w3id.org/rml/core"
