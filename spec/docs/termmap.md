@@ -221,7 +221,9 @@ and therefore percent-encoding is applied to the character, yielding “%20”.
 The following example shows the use of backslash escapes in string templates.
 The template will generate a fancy title such as
 
+```
 {{{ \o/ Hello World! \o/ }}}
+```
 
 from a string “Hello World!” in the referernce.
 By default, `rml:template` generates IRIs.
