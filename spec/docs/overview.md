@@ -20,14 +20,6 @@ place some or all of the triples into [named graphs]() instead.
 
 **TODO: Add updated figure here**
 
-## Example Input
-
-## Desired RDF Output
-
-## Examples
-
-# Conformance
-
 # RML Mapping Documents
 
 ### RML Mapping

@@ -54,10 +54,6 @@ but needs to be computed based on the contents of the database,
 can be achieved by defining a [predicate-object map]() with predicate `rdf:type`
 and a non-constant [object map]().
 
-+++ ADD example +++
-
-+++ ADD generated RDF +++
-
 ## Creating Properties and Values with Predicate-Object Maps
 
 A predicate-object map is a function

@@ -59,8 +59,6 @@ that is the value of its `rml:constant` property.
 
 A constant-valued Expression Map generates by default an [RDF Term]() which is an [IRI]().
 
-+++ ADD example +++
-
 If the [constant-valued Expression Map]()
 is a [Subject Map](), [Predicate Map]() or [Graph Map](),
 then its constant value MUST be an [IRI]().
@@ -69,8 +67,6 @@ If the [constant-valued Expression Map]() is an [Object Map](),
 then its constant value MUST be an [IRI]() or [literal]().
 
 To overwrite the default term type, one needs to specify the [Term Type]() of the [Term Map]().
-
-+++ ADD example +++
 
 | constant-valued Expression Map | Termtype | RDF Term type generated  |
 | :-------------| :-----| :-----|
@@ -99,8 +95,6 @@ the following triples were present in the mapping graph instead:
 | `?x rml:datatype ?y.` |  	`?x rml:datatypeMap [ rml:constant ?y ].` |
 | `?x rml:language ?y.` |  	`?x rml:languageMap [ rml:constant ?y ].` |
 
-+++ ADD example +++
-
 ### Reference (rml:reference)
 
 A _**reference-valued Expression Map**_ is represented by a resource
@@ -126,8 +120,6 @@ a [Predicate Map](),
 which should generate an [RDF Term]() which is an [IRI](),
 or to generate an [IRI]() for an [Object Map](),
 then the default [Term Type]() needs to be overwritten.
-
-+++ ADD example +++
 
 ### From a Template (rml:template)
 
@@ -199,21 +191,13 @@ is the set of column names enclosed in unescaped curly braces in the [template s
 The following example defines a [subject map]()
 that generates [IRIs]() from ??? of a logical data source.
 
-+++ ADD EXAMPLE +++
-
 Using the sample iteration from ??? as a logical data source,
 the template value of the [subject map]() would be:
-
-+++ ADD EXAMPLE +++
 
 The following example shows how an [IRI-safe]() template value is created:
 
-+++ ADD EXAMPLE +++
-
 Using the sample iteration from ??? as a logical data source,
 the template value of the [subject map]() would be:
-
-+++ ADD EXAMPLE +++
 
 The space character is not in the iunreserved set,
 and therefore percent-encoding is applied to the character, yielding “%20”.
@@ -229,8 +213,6 @@ from a string “Hello World!” in the referernce.
 By default, `rml:template` generates IRIs.
 Since the intention here is to create a literal instead,
 the [term type]() has to be set.
-
-+++ ADD EXAMPLE +++
 
 
 Note that because
@@ -291,9 +273,6 @@ In the following example,
 plain literals with language tag “en-us” (U.S. English)
 will be generated for the data values in the DNAME column.
 
-+++ ADD EXAMPLE +++
-
-
 ## Typed Literals (rml:datatype)
 
 A _**datatypeable term map**_ is a term map with a term type of `rml:Literal`
@@ -326,5 +305,3 @@ and a term type of `rml:Literal` can be used.
 The following example shows an [object map]()
 that explicitly specifies `xsd:positiveInteger` type.
 A [datatype-override RDF literal] of that datatype will be generated.
-
-+++ ADD EXAMPLE +++
