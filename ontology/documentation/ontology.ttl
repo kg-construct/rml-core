@@ -7,21 +7,27 @@
 @base <http://w3id.org/rml/core#> .
 
 <http://w3id.org/rml/core> rdf:type owl:Ontology ;
+                            owl:versionIRI <http://w3id.org/rml/core> ;
                             <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" ,
-                                                                          "Anastasia Dimou" ,
-                                                                          "Ben de Meester" ,
-                                                                          "Christophe Debruyne" ,
-                                                                          "David Chaves Fraga" ,
-                                                                          "Dylan Van Assche" ,
-                                                                          "Franck Michel" ,
-                                                                          "Julián Arenas Guerrero" ,
-                                                                          "Pano Maria" ,
-                                                                          "Samaneh Jozashoori" ;
+                                                                   "Anastasia Dimou" ,
+                                                                   "Ben de Meester" ,
+                                                                   "Christophe Debruyne" ,
+                                                                   "David Chaves Fraga" ,
+                                                                   "Dylan Van Assche" ,
+                                                                   "Franck Michel" ,
+                                                                   "Julián Arenas Guerrero" ,
+                                                                   "Pano Maria" ,
+                                                                   "Samaneh Jozashoori" ;
+                            <http://purl.org/dc/terms/created> "2023-03-14" ;
                             <http://purl.org/dc/terms/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
                             <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
-                            <http://purl.org/dc/terms/modified> "2023-04-19" ;
+                            <http://purl.org/dc/terms/modified> "2023-06-15" ;
+                            <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> ;
                             <http://purl.org/dc/terms/title> "RML: Generic Mapping Language for RDF"@en ;
-                            <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/core/" .
+                            <http://purl.org/ontology/bibo/status> "draft" ;
+                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" ;
+                            <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" ;
+                            owl:versionInfo "0.1.0" .
 
 #################################################################
 #    Annotation properties
@@ -33,6 +39,10 @@
 
 ###  http://purl.org/dc/terms/contributor
 <http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/creator
@@ -61,6 +71,10 @@
 
 ###  http://purl.org/dc/terms/title
 <http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/ontology/bibo/status
+<http://purl.org/ontology/bibo/status> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
@@ -112,7 +126,6 @@
 ###  http://w3id.org/rml/datatype
 <http://w3id.org/rml/datatype> rdf:type owl:ObjectProperty ;
                                rdfs:domain <http://w3id.org/rml/ObjectMap> ;
-                               rdfs:range rdfs:Datatype ;
                                rdfs:comment "Specifies the datatype of the object component for the generated triple."@en ;
                                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                rdfs:label "datatype" .
@@ -225,7 +238,6 @@
 ###  http://w3id.org/rml/predicate
 <http://w3id.org/rml/predicate> rdf:type owl:ObjectProperty ;
                                 rdfs:domain <http://w3id.org/rml/PredicateObjectMap> ;
-                                rdfs:range rdf:Property ;
                                 rdfs:comment "Specifies the predicate for the generated triple from the logical source record."@en ;
                                 rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                 rdfs:label "predicate" .
@@ -484,16 +496,8 @@
                                  rdfs:label "Triples Map" .
 
 
-###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
-rdf:Property rdf:type owl:Class .
-
-
 ###  http://www.w3.org/2000/01/rdf-schema#Class
 rdfs:Class rdf:type owl:Class .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#Datatype
-rdfs:Datatype rdf:type owl:Class .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#Resource
