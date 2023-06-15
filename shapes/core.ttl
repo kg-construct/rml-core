@@ -214,7 +214,7 @@
             sh:maxCount 1 ;
             sh:minCount 0 ;
             sh:name "parentMap/parent" ;
-            sh:path [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#parentMap> <http://www.w3.org/ns/r2rml#parent> ) ] ],
+            sh:path [ sh:alternativePath ( rml:parentMap rml:parent ) ] ],
         [ sh:description """
         Specifies the child of the object component for joining.
         """ ;
@@ -225,16 +225,16 @@
             sh:name "childMap" ;
             sh:node <http://w3id.org/rml/shapes/RMLChildMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:path <http://www.w3.org/ns/r2rml#childMap> ;
-            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#childMap> ],
+            sh:path rml:childMap ;
+            sh:targetSubjectsOf rml:childMap ],
         [ sh:description """
         Specifies the child of the object component for joining.
         """ ;
             sh:name "child" ;
             sh:node <http://w3id.org/rml/shapes/RMLchildShape> ;
             sh:nodeKind sh:IRI ;
-            sh:path <http://www.w3.org/ns/r2rml#child> ;
-            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> ],
+            sh:path rml:child ;
+            sh:targetSubjectsOf rml:child ],
         [ sh:description """
         Specifies the parent of the object component for joining.
         """ ;
@@ -245,16 +245,16 @@
             sh:name "parentMap" ;
             sh:node <http://w3id.org/rml/shapes/RMLParentMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:path <http://www.w3.org/ns/r2rml#parentMap> ;
-            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentMap> ],
+            sh:path rml:parentMap ;
+            sh:targetSubjectsOf rml:parentMap ],
         [ sh:description """
         Specifies the parent of the object component for joining.
         """ ;
             sh:name "parent" ;
             sh:node <http://w3id.org/rml/shapes/RMLparentShape> ;
             sh:nodeKind sh:Literal ;
-            sh:path <http://www.w3.org/ns/r2rml#parent> ;
-            sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> ],
+            sh:path rml:parent ;
+            sh:targetSubjectsOf rml:parent ],
         [ sh:description """
         rml:child/rml:childMap may only be provided once and 
         not at the same time.
@@ -262,9 +262,9 @@
             sh:maxCount 1 ;
             sh:minCount 0 ;
             sh:name "childMap/child" ;
-            sh:path [ sh:alternativePath ( <http://www.w3.org/ns/r2rml#childMap> <http://www.w3.org/ns/r2rml#child> ) ] ] ;
-    sh:targetClass <http://www.w3.org/ns/r2rml#Join> ;
-    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#joinCondition> .
+            sh:path [ sh:alternativePath ( rml:childMap rml:child ) ] ] ;
+    sh:targetClass rml:Join ;
+    sh:targetObjectsOf rml:joinCondition .
 
 <http://w3id.org/rml/shapes/RMLLanguageMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
@@ -340,11 +340,11 @@
     sh:targetClass rml:ObjectMap .
 
 <http://w3id.org/rml/shapes/RMLParentMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
                 sh:message """
             rml:termType for Parent Map can only be a rml:Literal;
             """ ;
-                sh:path <http://www.w3.org/ns/r2rml#termType> ] ) ;
+                sh:path rml:termType ] ) ;
     sh:description """
     Represents a Parent Map.
     """ ;
@@ -353,8 +353,8 @@
     source.
     """ ;
     sh:name "ParentMap" ;
-    sh:targetClass <http://www.w3.org/ns/r2rml#ParentMap> ;
-    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#parent> .
+    sh:targetClass rml:ParentMap ;
+    sh:targetObjectsOf rml:parent .
 
 <http://w3id.org/rml/shapes/RMLPredicateMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
@@ -446,7 +446,7 @@
     sh:targetObjectsOf rml:predicateObjectMap .
 
 <http://w3id.org/rml/shapes/RMLRefObjectMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> [ sh:class <http://www.w3.org/ns/r2rml#TriplesMap> ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> [ sh:class rml:TriplesMap ;
                 sh:description """
             Specifies the Triples Map element corresponding to the parent data
             source of the foreign key constraint.
@@ -460,8 +460,8 @@
                 sh:name "parentTriplesMap" ;
                 sh:node <http://w3id.org/rml/shapes/RMLTriplesMapShape> ;
                 sh:nodeKind sh:BlankNodeOrIRI ;
-                sh:path <http://www.w3.org/ns/r2rml#parentTriplesMap> ;
-                sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parentTriplesMap> ] ) ;
+                sh:path rml:parentTriplesMap ;
+                sh:targetSubjectsOf rml:parentTriplesMap ] ) ;
     sh:description """
     Represents a Reference Object Map.
     """ ;
@@ -470,7 +470,7 @@
     rml:joinConditions.
     """ ;
     sh:name "RefObjectMap" ;
-    sh:targetClass <http://www.w3.org/ns/r2rml#RefObjectMap> .
+    sh:targetClass rml:RefObjectMap .
 
 <http://w3id.org/rml/shapes/RMLSubjectMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
@@ -643,7 +643,7 @@
     """ ;
     sh:name "parent" ;
     sh:nodeKind sh:Literal ;
-    sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#parent> .
+    sh:targetSubjectsOf rml:parent .
 
 <http://w3id.org/rml/shapes/RMLpredicateShape> a sh:NodeShape ;
     sh:description """
