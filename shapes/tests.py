@@ -50,6 +50,11 @@ class MappingValidatorTests(unittest.TestCase):
                 'RMLTC0015b' in path:
             with self.assertRaises(Exception):
                 self._validate_rules(path)
+        # ShapeRecursionWarning
+        elif 'RMLTC0008b' in path or 'RMLTC0009a' in path or \
+                'RMLTC0009b' in path:
+            with self.assertRaises(Exception):
+                self._validate_rules(path)
         else:
             self._validate_rules(path)
 
