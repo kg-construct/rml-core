@@ -10,7 +10,7 @@
 
 :RMLGraphMapShape
     a sh:NodeShape ;
-    sh:targetClass sh:GraphMap ;
+    sh:targetClass rml:GraphMap ;
     sh:targetObjectsOf rml:graphMap ;
     sh:name "GraphMap" ;
     sh:description """
@@ -29,9 +29,9 @@
         [
             sh:path rml:termType;
             sh:message """
-            rml:termType must be an IRI for a Graph Map.
+            rml:termType must be an IRI or blank node for a Graph Map.
             """;
-            sh:in (rml:IRI);
+            sh:in (rml:IRI rml:BlankNode);
         ]
     ) ;
 .
@@ -46,7 +46,7 @@
     the Graph Map. 
     """ ;
     sh:message """
-    rml:graph must be an IRI.
+    rml:graph must be an IRI or blank node.
     """ ;
     # Allow blank nodes because SHACL sees ex:PersonGraph also as blank node.
     sh:nodeKind sh:BlankNodeOrIRI ;

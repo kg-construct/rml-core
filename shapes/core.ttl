@@ -168,9 +168,9 @@
             sh:targetSubjectsOf rml:constant ] .
 
 <http://w3id.org/rml/shapes/RMLGraphMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI rml:BlankNode ) ;
                 sh:message """
-            rml:termType must be an IRI for a Graph Map.
+            rml:termType must be an IRI or blank node for a Graph Map.
             """ ;
                 sh:path rml:termType ] ) ;
     sh:description """
@@ -603,7 +603,7 @@
     the Graph Map. 
     """ ;
     sh:message """
-    rml:graph must be an IRI.
+    rml:graph must be an IRI or blank node.
     """ ;
     sh:name "graph" ;
     sh:nodeKind sh:BlankNodeOrIRI ;
