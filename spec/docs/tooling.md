@@ -1,4 +1,4 @@
-# 5. RML Processors, Validators and Generators
+# RML Processors, Validators and Generators
 
 
 ### RML Processor
@@ -14,7 +14,7 @@ or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
 * A [Logical Source]()
-* a base IRI used in resolving relative IRIs produced by the RML mapping.
+* A base IRI used in resolving relative IRIs produced by the RML mapping.
 
 How the [Logical Source]() is accessed,
 or how users are authenticated against the database,
@@ -61,14 +61,14 @@ Such a mapping is known as a _**default mapping**_.
 
 
 
-## 5.1 Data Errors
+## Data Errors
 
 A **_data error_** is a condition of the data in the [input data]()
 that would lead to the generation of an invalid [RDF term]().
 The following conditions give rise to data errors:
 
 
-1. A [term map]() with term type `rr:IRI` results in the generation of an invalid [IRI]().
+1. A [term map]() with term type `rml:IRI` results in the generation of an invalid [IRI]().
 2. A [term map]() whose natural RDF datatype is overridden with a specified datatype
 produces an [ill-typed literal]() (see [datatype-override RDF literal]()).
 
@@ -94,12 +94,4 @@ and the behavior of such operations is well-defined. For the same reason,
 the conformance of [RML mappings]() is defined without regard for the presence of data errors.
 
 [RML data validators]() can be used to explicitly scan a database for data errors.
-
-
-
-
-
-
-
-
 

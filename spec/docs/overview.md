@@ -20,15 +20,7 @@ place some or all of the triples into [named graphs]() instead.
 
 **TODO: Add updated figure here**
 
-## 2.1 Example Input
-
-## 2.2 Desired RDF Output
-
-## 2.3 - 2.7 Examples
-
-# 3. Conformance
-
-# 4. RML Mapping Documents
+# RML Mapping Documents
 
 ### RML Mapping
 
@@ -37,7 +29,7 @@ It is a structure that consists of one or more [triples maps]().
 
 The input to an RML mapping is called the [input data source]().
 
-## 4.1 Mapping Graphs and the RML Vocabulary
+## Mapping Graphs and the RML Vocabulary
 
 An [RML mapping]() is represented as an [RDF graph]().
 In other words, RDF is used not just as the target data model of the mapping,
@@ -46,7 +38,7 @@ but also as a formalism for representing the [RML mapping]() itself.
 An [RDF graph]() that represents an [RML mapping]() is called an **_RML mapping graph_**.
 
 The **_RML vocabulary_** is the set of IRIs defined in this specification
-that start with the rr: namespace IRI: +++TODO:ADD IRI+++
+that start with the `rml:` as prefix and uses namespace IRI: <http://w3id.org/rml/>
 
 An [RML mapping graph]():
 
@@ -97,7 +89,7 @@ The [default mapping]() SHOULD be such that
 its output is the [Direct Graph]() [[DM]()] corresponding to the [input data source]().
 
 
-## 4.2 RDF-based Turtle Syntax; Media Type
+## RDF-based Turtle Syntax; Media Type
 
 An **_RML mapping document_** is any document written in the [Turtle]() [[TURTLE]]() RDF syntax
 that encodes an [RML mapping graph]().
@@ -111,7 +103,7 @@ and the charset parameter on the media type SHOULD always be used:
 A conforming [RML processor]() SHOULD accept [RML mapping documents]() in Turtle syntax.
 It MAY accept [RML mapping graphs]() encoded in other RDF syntaxes.
 
-# 5. RML Processors, Validators and Generators
+# RML Processors, Validators and Generators
 
 
 ### RML Processor
@@ -127,7 +119,7 @@ or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
 * A [Logical Source]()
-* a base IRI used in resolving relative IRIs produced by the RML mapping.
+* A base IRI used in resolving relative IRIs produced by the RML mapping.
 
 How the [Logical Source]() is accessed,
 or how users are authenticated against the database,
@@ -174,14 +166,14 @@ Such a mapping is known as a _**default mapping**_.
 
 
 
-## 5.1 Data Errors
+## Data Errors
 
 A **_data error_** is a condition of the data in the [input data]()
 that would lead to the generation of an invalid [RDF term]().
 The following conditions give rise to data errors:
 
 
-1. A [term map]() with term type `rr:IRI` results in the generation of an invalid [IRI]().
+1. A [term map]() with term type `rml:IRI` results in the generation of an invalid [IRI]().
 2. A [term map]() whose natural RDF datatype is overridden with a specified datatype
 produces an [ill-typed literal]() (see [datatype-override RDF literal]()).
 
@@ -207,12 +199,3 @@ and the behavior of such operations is well-defined. For the same reason,
 the conformance of [RML mappings]() is defined without regard for the presence of data errors.
 
 [RML data validators]() can be used to explicitly scan a database for data errors.
-
-
-
-
-
-
-
-
-
