@@ -46,6 +46,5 @@
     sh:message """
     rml:predicate must be an IRI.
     """ ;
-    # SHACL sees 'foaf:name' as blank node instead of IRI
-    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:nodeKind sh:IRI ;
 .

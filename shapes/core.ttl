@@ -41,11 +41,7 @@
     sh:targetObjectsOf rml:strategy .
 
 <http://w3id.org/rml/shapes/RMLChildMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( <http://www.w3.org/ns/r2rml#Literal> ) ;
-                sh:message """
-            rml:termType for Child Map can only be a rml:Literal;
-            """ ;
-                sh:path <http://www.w3.org/ns/r2rml#termType> ] ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLExpressionMapShape> [ ] ) ;
     sh:description """
     Represents a Child Map.
     """ ;
@@ -55,14 +51,10 @@
     """ ;
     sh:name "ChildMap" ;
     sh:targetClass <http://www.w3.org/ns/r2rml#ChildMap> ;
-    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#child> .
+    sh:targetObjectsOf <http://www.w3.org/ns/r2rml#childMap> .
 
 <http://w3id.org/rml/shapes/RMLDatatypeMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
-                sh:message """
-            rml:termType for Datatype Map can only be a rml:IRI;
-            """ ;
-                sh:path rml:termType ] ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLExpressionMapShape> [ ] ) ;
     sh:description """
     Represents a Datatype Map.
     """ ;
@@ -73,99 +65,6 @@
     sh:name "DatatypeMap" ;
     sh:targetClass rml:DatatypeMap ;
     sh:targetObjectsOf rml:datatypeMap .
-
-<http://w3id.org/rml/shapes/RMLExpressionMapShape> a sh:NodeShape ;
-    sh:description """
-    Represents a Expression Map.
-    """ ;
-    sh:message """
-    Expression Map requires one rml:template or one rml:constant or one
-    rml:reference.
-    """ ;
-    sh:name "ExpressionMap" ;
-    sh:property [ sh:description """
-        Exactly one rml:template, one rml:constant, one rml:reference,
-        one rml:returnMap, or one rml:functionExecution is required.
-        """ ;
-            sh:maxCount 1 ;
-            sh:message """
-        Exactly one rml:template, one rml:constant, one rml:reference,
-        one rml:returnMap, or one rml:functionExecution is required.
-        """ ;
-            sh:minCount 1 ;
-            sh:name "template/constant/reference/returnMap/functionExecution" ;
-            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference rml:returnMap rml:functionExecution ) ] ;
-            sh:targetSubjectsOf rml:constant,
-                rml:functionExecution,
-                rml:reference,
-                rml:returnMap,
-                rml:template ],
-        [ sh:datatype xsd:string ;
-            sh:description """
-        A reference rml:reference is used to refer to a column in case of 
-        databases, a record in case of CSV or TSV data source, an element in 
-        case of XML data source, an object in case of a JSON data source, etc.
-
-        A reference must be a valid identifier, considering the reference 
-        formulation (rml:referenceFormulation) specified. The reference can be
-        an absolute path, or a path relative to the iterator specified at the 
-        logical source. 
-        """ ;
-            sh:message """
-        rml:reference must be a string.
-        """ ;
-            sh:name "reference" ;
-            sh:nodeKind sh:Literal ;
-            sh:path rml:reference ;
-            sh:targetSubjectsOf rml:reference ],
-        [ sh:description """
-        A Return Map rml:returnMap is used to define the return values of a FnO
-        function from the RML-FNML specification. RML Core only validates if the
-        property is present and has the right node kind. The actual validation
-        happens with RML-FNML SHACL shapes.
-        """ ;
-            sh:message """
-        rml:returnMap must be an IRI;
-        """ ;
-            sh:name "returnMap" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:path rml:returnMap ;
-            sh:targetSubjectsOf rml:returnMap ],
-        [ sh:description """
-        A Function Execution rml:functionExecution is used to define the FnO 
-        function to execute from the RML-FNML specification. RML Core only 
-        validates if the property is present and has the right node kind.
-        The actual validation happens with RML-FNML SHACL shapes.
-        """ ;
-            sh:message """
-        rml:functionExecution must be an IRI;
-        """ ;
-            sh:name "functionExecution" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:path rml:functionExecution ;
-            sh:targetSubjectsOf rml:functionExecution ],
-        [ sh:datatype xsd:string ;
-            sh:description """
-        A template (format string) to specify how to generate a value for a 
-        subject, predicate, or object, using one or more columns from a logical
-        table row or iterator.
-        """ ;
-            sh:message """
-        rml:template must be a string.
-        """ ;
-            sh:name "template" ;
-            sh:nodeKind sh:Literal ;
-            sh:path rml:template ],
-        [ sh:description """
-        A property for indicating whether a term map is a constant-valued term 
-        map.
-        """ ;
-            sh:message """
-        rml:constant must be an IRI or Literal.
-        """ ;
-            sh:name "constant" ;
-            sh:path rml:constant ;
-            sh:targetSubjectsOf rml:constant ] .
 
 <http://w3id.org/rml/shapes/RMLGraphMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI rml:BlankNode ) ;
@@ -181,7 +80,7 @@
     with the IRI of the Named Graph.
     """ ;
     sh:name "GraphMap" ;
-    sh:targetClass sh:GraphMap ;
+    sh:targetClass rml:GraphMap ;
     sh:targetObjectsOf rml:graphMap .
 
 <http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> a sh:PropertyShape ;
@@ -212,7 +111,7 @@
         not at the same time.
         """ ;
             sh:maxCount 1 ;
-            sh:minCount 0 ;
+            sh:minCount 1 ;
             sh:name "parentMap/parent" ;
             sh:path [ sh:alternativePath ( rml:parentMap rml:parent ) ] ],
         [ sh:description """
@@ -260,18 +159,14 @@
         not at the same time.
         """ ;
             sh:maxCount 1 ;
-            sh:minCount 0 ;
+            sh:minCount 1 ;
             sh:name "childMap/child" ;
             sh:path [ sh:alternativePath ( rml:childMap rml:child ) ] ] ;
     sh:targetClass rml:Join ;
     sh:targetObjectsOf rml:joinCondition .
 
 <http://w3id.org/rml/shapes/RMLLanguageMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
-                sh:message """
-            rml:termType for Language Map can only be a rml:Literal.
-            """ ;
-                sh:path rml:termType ] [ sh:path rml:constant ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLExpressionMapShape> [ sh:path rml:constant ;
                 sh:pattern "^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$" ] ) ;
     sh:description """
     Represents a Language Map.
@@ -340,11 +235,7 @@
     sh:targetClass rml:ObjectMap .
 
 <http://w3id.org/rml/shapes/RMLParentMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:Literal ) ;
-                sh:message """
-            rml:termType for Parent Map can only be a rml:Literal;
-            """ ;
-                sh:path rml:termType ] ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLExpressionMapShape> [ ] ) ;
     sh:description """
     Represents a Parent Map.
     """ ;
@@ -354,7 +245,7 @@
     """ ;
     sh:name "ParentMap" ;
     sh:targetClass rml:ParentMap ;
-    sh:targetObjectsOf rml:parent .
+    sh:targetObjectsOf rml:parentMap .
 
 <http://w3id.org/rml/shapes/RMLPredicateMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
@@ -583,7 +474,7 @@
     """ ;
     sh:name "child" ;
     sh:nodeKind sh:Literal ;
-    sh:targetSubjectsOf <http://www.w3.org/ns/r2rml#child> .
+    sh:targetObjectOf <http://www.w3.org/ns/r2rml#child> .
 
 <http://w3id.org/rml/shapes/RMLdatatypeShape> a sh:NodeShape ;
     sh:description """
@@ -607,7 +498,7 @@
     """ ;
     sh:name "graph" ;
     sh:nodeKind sh:BlankNodeOrIRI ;
-    sh:targetSubjectsOf rml:graph .
+    sh:targetObjectsOf rml:graph .
 
 <http://w3id.org/rml/shapes/RMLlanguageShape> a sh:NodeShape ;
     sh:description """
@@ -643,7 +534,7 @@
     """ ;
     sh:name "parent" ;
     sh:nodeKind sh:Literal ;
-    sh:targetSubjectsOf rml:parent .
+    sh:targetObjectsOf rml:parent .
 
 <http://w3id.org/rml/shapes/RMLpredicateShape> a sh:NodeShape ;
     sh:description """
@@ -653,7 +544,7 @@
     rml:predicate must be an IRI.
     """ ;
     sh:name "predicate" ;
-    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:nodeKind sh:IRI ;
     sh:targetObjectsOf rml:predicate .
 
 <http://w3id.org/rml/shapes/RMLsubjectShape> a sh:NodeShape ;
@@ -730,6 +621,99 @@
     Term Map is an Expression Map with optionally a term type specified.
     """ ;
     sh:name "TermMap" .
+
+<http://w3id.org/rml/shapes/RMLExpressionMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a Expression Map.
+    """ ;
+    sh:message """
+    Expression Map requires one rml:template or one rml:constant or one
+    rml:reference.
+    """ ;
+    sh:name "ExpressionMap" ;
+    sh:property [ sh:description """
+        Exactly one rml:template, one rml:constant, one rml:reference,
+        one rml:returnMap, or one rml:functionExecution is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:template, one rml:constant, one rml:reference,
+        one rml:returnMap, or one rml:functionExecution is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "template/constant/reference/returnMap/functionExecution" ;
+            sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference rml:returnMap rml:functionExecution ) ] ;
+            sh:targetSubjectsOf rml:constant,
+                rml:functionExecution,
+                rml:reference,
+                rml:returnMap,
+                rml:template ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+            sh:message """
+        rml:reference must be a string.
+        """ ;
+            sh:name "reference" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:reference ;
+            sh:targetSubjectsOf rml:reference ],
+        [ sh:description """
+        A Return Map rml:returnMap is used to define the return values of a FnO
+        function from the RML-FNML specification. RML Core only validates if the
+        property is present and has the right node kind. The actual validation
+        happens with RML-FNML SHACL shapes.
+        """ ;
+            sh:message """
+        rml:returnMap must be an IRI;
+        """ ;
+            sh:name "returnMap" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:returnMap ;
+            sh:targetSubjectsOf rml:returnMap ],
+        [ sh:description """
+        A Function Execution rml:functionExecution is used to define the FnO 
+        function to execute from the RML-FNML specification. RML Core only 
+        validates if the property is present and has the right node kind.
+        The actual validation happens with RML-FNML SHACL shapes.
+        """ ;
+            sh:message """
+        rml:functionExecution must be an IRI;
+        """ ;
+            sh:name "functionExecution" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:functionExecution ;
+            sh:targetSubjectsOf rml:functionExecution ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+            sh:message """
+        rml:template must be a string.
+        """ ;
+            sh:name "template" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:template ],
+        [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI or Literal.
+        """ ;
+            sh:name "constant" ;
+            sh:path rml:constant ;
+            sh:targetSubjectsOf rml:constant ] .
 
 <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> a sh:PropertyShape ;
     sh:description """
