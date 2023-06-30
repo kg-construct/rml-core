@@ -29,7 +29,7 @@
         not at the same time.
         """ ;
         sh:maxCount 1 ;
-        sh:minCount 0 ;
+        sh:minCount 1 ;
     ] ;
     sh:property [
         sh:targetSubjectsOf rml:parentMap ;
@@ -65,7 +65,7 @@
         not at the same time.
         """ ;
         sh:maxCount 1 ;
-        sh:minCount 0 ;
+        sh:minCount 1 ;
     ] ;
 
     sh:property [

@@ -39,7 +39,7 @@
 
 :RMLgraphShape 
     a sh:NodeShape ;
-    sh:targetSubjectsOf rml:graph ;
+    sh:targetObjectsOf rml:graph ;
     sh:name "graph" ;
     sh:description """
     An IRI reference for use as the graph name of all triples generated with 

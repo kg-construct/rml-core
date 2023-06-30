@@ -23,15 +23,9 @@
 
     sh:and (
         # Inherited shapes
-        :RMLTermMapShape
-        :RMLLogicalTargetPropertiesShape
+        :RMLExpressionMapShape
         # Datatype Map specific shapes
         [
-            sh:path rml:termType;
-            sh:message """
-            rml:termType for Datatype Map can only be a rml:IRI;
-            """;
-            sh:in (rml:IRI);
         ]
     ) ;
 .

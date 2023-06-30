@@ -11,7 +11,7 @@
 :RMLParentMapShape
     a sh:NodeShape ;
     sh:targetClass rml:ParentMap ;
-    sh:targetObjectsOf rml:parent ;
+    sh:targetObjectsOf rml:parentMap ;
     sh:name "ParentMap" ;
     sh:description """
     Represents a Parent Map.
@@ -23,22 +23,16 @@
 
     sh:and (
         # Inherited shapes
-        :RMLTermMapShape
-        :RMLLogicalTargetPropertiesShape
+        :RMLExpressionMapShape
         # Parent Map specific shapes
         [
-            sh:path rml:termType;
-            sh:message """
-            rml:termType for Parent Map can only be a rml:Literal;
-            """;
-            sh:in (rml:Literal);
         ]
     ) ;
 .
 
 :RMLparentShape
     a sh:NodeShape ;
-    sh:targetSubjectsOf rml:parent ;
+    sh:targetObjectsOf rml:parent ;
     sh:name "parent" ;
     sh:description """
     A Literal reference to use as reference to the parent data source.

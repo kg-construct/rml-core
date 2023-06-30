@@ -11,7 +11,7 @@
 :RMLChildMapShape
     a sh:NodeShape ;
     sh:targetClass rml:ChildMap ;
-    sh:targetObjectsOf rml:child ;
+    sh:targetObjectsOf rml:childMap ;
     sh:name "ChildMap" ;
     sh:description """
     Represents a Child Map.
@@ -23,22 +23,16 @@
 
     sh:and (
         # Inherited shapes
-        :RMLTermMapShape
-        :RMLLogicalTargetPropertiesShape
+        :RMLExpressionMapShape
         # Child Map specific shapes
         [
-            sh:path rml:termType;
-            sh:message """
-            rml:termType for Child Map can only be a rml:Literal;
-            """;
-            sh:in (rml:Literal);
         ]
     ) ;
 .
 
 :RMLchildShape
     a sh:NodeShape ;
-    sh:targetSubjectsOf rml:child ;
+    sh:targetObjectOf rml:child ;
     sh:name "child" ;
     sh:description """
     A Literal reference to use as reference to the child data source.
