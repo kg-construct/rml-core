@@ -4,14 +4,18 @@
 
 ## Expression map (`rml:ExpressionMap`)
 
-An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] MAY have one the following properties:
-* 0 or 1 `rml:constant`, or
-* 0 or 1 `rml:reference`, or
-* 0 or 1 `rml:template`.
+An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] SHOULD have one the following properties:
+* 1 `rml:constant`, or
+* 1 `rml:reference`, or
+* 1 `rml:template`.
 
-Each of these properties specifies an [=expression=] which, upon evaluation, results in a set of values.
+Each of these properties specifies an [=expression=] which, upon evaluation, results in a [=set of values]=.
 
-The <dfn>reference expression set</dfn> of an [=expression map=] ar the set of expressions which are evaluated on a [=logical iteration=].
+The <dfn>set of values</dfn> are the values of the [=references expression set=] which are returned by an [=expression=].
+
+For each value in the [=set of values=], an [=expression value=] is created. If the [=set of values=] is empty, `NULL` is returned and no [=expression value=] is created.
+
+The <dfn>reference expression set</dfn> of an [=expression map=] is the set of expressions which are evaluated on a [=logical iteration=].
 
 ### Constant expression (`rml:constant`)
 
@@ -28,7 +32,7 @@ The [=reference expression=] MUST be a valid [=expression=] according to the def
 
 The [=reference expression set=] of a [reference-valued expression map=] is the singleton set containing the [=reference expression=].
 
-The <dfn>reference value</dfn> is a set of values obtained by evaluating the [=reference expression=] against a given [=logical iteration=].
+The <dfn>reference value set</dfn> is a set of values obtained by evaluating a [=reference expression=] against a given [=logical iteration=]. For each value in the set, an expression 
 
 ### Template (`rml:template`)
 A <dfn>template-valued expression map</dfn> is an [=expression map=] that is represented by a resource that has exactly one `rml:template` property, the value of which is called a <dfn>template expression</dfn>. The [=template expression=] MUST be a valid [=string template=].
@@ -41,6 +45,8 @@ A <dfn>string template</dfn> is a format string that can be used to build string
 * There SHOULD be at least one pair of unescaped curly braces.
 
 The [=reference expression set=] of a [=template expression=] is the set of [=reference expressions=] enclosed in unescaped curly braces in the [=string template=].
+
+For each item in the [=reference expression set=] of a [=template expression=], a <dfn>reference value set</dfn> is returned with a set of values obtained by evaluating the [=reference expression=] against a given [=logical iteration=]. The cartesian product of the reference value sets indicates all possible epressions which may be created by an expression.
 
 Sub classes of [=template-valued expression maps=] MAY define a <dfn>reference value transforming function</dfn> which will be applied to each [=reference value=] when evaluating the template.
 

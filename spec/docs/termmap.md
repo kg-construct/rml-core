@@ -33,8 +33,7 @@ is a rule that should generate an [IRI](), a [Blank Node]() or a [Literal]();
 is a rule that should generate an [IRI]().
 
 A [=term map=] MAY have
-* a [=datatype map=];
-* a [=language map=];
+* a [=datatype map=] or a [=language map=];
 * a [=term type=].
 
 ### Constant RDF Terms (`rml:constant`)
@@ -76,6 +75,10 @@ that has exactly one `rml:reference` property.
 
 A [=reference-valued term map=] generates an [=RDF term=]
 which is by default a [Literal]().
+
+If the [=reference-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [IRI]().
+
+If the [=reference-valued term map=] is an [=object map=], then its [=constant value=] MUST be a [literal]().
 
 To use a [=reference-valued term map=]
 as a [Subject Map]() or [Graph Map](),
