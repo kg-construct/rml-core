@@ -22,4 +22,4 @@ To obtain an absolute IRI from a relative IRI, the term generation rules of RML 
     3. the relative IRI does not start with a slash, and
     4. the relative IRI does not contain any “.” or “..” path segments.
 
-## Base IRI for vocabulary
+
