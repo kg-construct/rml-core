@@ -41,10 +41,10 @@ Both algorithms are equivalent if all of the following are true:
 ### RML Validator
 
 An RML data validator is a system that takes as its input
-an [RML mapping](), a [base IRI](), and a [SQL connection]() to an [input database](),
-and checks for the presence of [data errors]().
+an [=RML mapping=], a [base IRI](), and a [SQL connection]() to an [input database](),
+and checks for the presence of [=data errors=].
 When checking the input database,
-a data validator MUST report any data errors
+a data validator MUST report any [=data errors=]
 that are raised in the process of generating the output dataset.
 
 An [RML processor]() MAY include an [RML data validator](), but this is not required.
@@ -54,27 +54,24 @@ An [RML processor]() MAY include an [RML data validator](), but this is not requ
 
 An [RML processor]() MAY include an **_RML default mapping generator_**.
 This is a facility that introspects the schema of the [input data source]()
-and generates an [RML mapping](), 
+and generates an [=RML mapping=], 
 possibly in the form of an [RML mapping document](),
 intended for further customization by a mapping author.
-Such a mapping is known as a _**default mapping**_.
-
-
+Such a mapping is known as a <dfn>default mapping</dfn>.
 
 ## Data Errors
 
-A **_data error_** is a condition of the data in the [input data]()
-that would lead to the generation of an invalid [RDF term]().
+A <dfn>data error</dfn> is a condition of the data in the [input data]()
+that would lead to the generation of an invalid [=RDF term=].
 The following conditions give rise to data errors:
 
-
-1. A [term map]() with term type `rml:IRI` results in the generation of an invalid [IRI]().
-2. A [term map]() whose natural RDF datatype is overridden with a specified datatype
+1. A [=term map=] with term type `rml:IRI` results in the generation of an invalid [IRI]().
+2. A [=term map=] whose natural RDF datatype is overridden with a specified datatype
 produces an [ill-typed literal]() (see [datatype-override RDF literal]()).
 
 When providing access to the output dataset,
 an [RML processor]() MUST abort any operation
-that requires inspecting or returning an [RDF term]()
+that requires inspecting or returning an [=RDF term=]
 whose generation would give rise to a data error,
 and report an error to the agent invoking the operation.
 A conforming [RML processor]() MAY, however,
@@ -82,7 +79,7 @@ allow other operations that do not require inspecting or returning these [RDF te
 and thus MAY provide partial access to an output dataset that contains data errors.
 Nevertheless, an [RML processor]() SHOULD report data errors as early as possible.
 
-The presence of data errors does not make an [RML mapping]() non-conforming.
+The presence of data errors does not make an [=RML mapping=] non-conforming.
 
 **NOTES**
 Data errors cannot generally be detected by analyzing the schema of the input data,
