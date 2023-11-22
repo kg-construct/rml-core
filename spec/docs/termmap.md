@@ -63,13 +63,18 @@ the following triples were present in the [=mapping graph=] instead:
 
 ### Reference (`rml:reference`)
 
-A <dfn>reference-valued term map</dfn> is a [=reference-valued expression map=], and is thus represented by a resource
-that has exactly one `rml:reference` property.
+A <dfn>reference-valued term map</dfn> is a [=reference-valued expression map=], and is thus represented by a resource that has exactly one `rml:reference` property.
+
+The <dfn>expressions set</dfn> is a set of values returned by an [=reference-valued expression=] against a given [=logical iteration=]. For each value in the set, an RDF term is created. If the expressions set is an empty set, then `NULL` is returned and no RDF term is created.
 
 ### Template (`rml:template`)
 
 A <dfn>template-valued term map</dfn> is a [=template-valued expression map=], and is thus represented by a resource
 that has exactly one `rml:template` property.
+
+The cartesian product of the [=reference value sets=] returned by the [=template-valued expression map=] indicates all possible expressions which may be created by an expression
+based on which an RDF term is created.
+If a [=reference value set=] is empty, no RDF term will be created.
 
 The space character is not in the iunreserved set,
 and therefore percent-encoding is applied to the character, yielding “%20”.
