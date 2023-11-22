@@ -36,17 +36,12 @@ A [=term map=] MAY have
 * a [=datatype map=] or a [=language map=];
 * a [=term type=].
 
+
 ### Constant RDF Terms (`rml:constant`)
 
 A <dfn>constant-valued term map</dfn> is a term map that ignores the [=logical iteration=] and always generates the same [=RDF term=]. A [=constant-valued term map=] is a [=constant-valued expression map=], and is thus represented by a resource that has exactly one `rml:constant` property. The [=constant expression=] MUST be a [valid RDF term](https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-term).
 
 The [=constant value=] of the `rml:constant` property is the [=RDF term=] that is the result of the execution of the [=term map=].
-
-#### Constant-valued term maps and term types
-
-If the [=constant-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [IRI]().
-
-If the [=constant-valued term map=] is an [=object map=], then its [=constant value=] MUST be an [IRI]() or [literal]().
 
 #### Shortcuts for constant-valued term  maps
 
@@ -71,64 +66,10 @@ the following triples were present in the [=mapping graph=] instead:
 A <dfn>reference-valued term map</dfn> is a [=reference-valued expression map=], and is thus represented by a resource
 that has exactly one `rml:reference` property.
 
-#### Reference-valued term maps and term types
-
-A [=reference-valued term map=] generates an [=RDF term=]
-which is by default a [Literal]().
-
-If the [=reference-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [IRI]().
-
-If the [=reference-valued term map=] is an [=object map=], then its [=constant value=] MUST be a [literal]().
-
-To use a [=reference-valued term map=]
-as a [Subject Map]() or [Graph Map](),
-which should generate an [=RDF term=]
-which is either an [IRI]() or [Literal](), or
-a [Predicate Map](),
-which should generate an [=RDF term=] which is an [IRI](),
-or to generate an [IRI]() for an [=object map=],
-the default [Term Type]() needs to be overwritten.
-
-### From a Template (`rml:template`)
+### Template (`rml:template`)
 
 A <dfn>template-valued term map</dfn> is a [=template-valued expression map=], and is thus represented by a resource
 that has exactly one `rml:template` property.
-
-If the [=term type=] of the [=template-valued term map=] is `rml:IRI`, then a [=reference value transforming function=] should be applied during the evaluation of the [=template expression=]. The [=reference value transforming function=] should transform a [=reference value=] into an [=IRI-safe version=] of that value.
-
-The <dfn data-lt="IRI-safe">IRI-safe version</dfn> of a string is obtained by applying the following transformation
-to any character that is not in the iunreserved production in [[RFC3987]]():
-
-1. Convert the character to a sequence of one or more octets using UTF-8 [[RFC3629]]()
-2. Percent-encode each octet [[RFC3986]]()
-
-The following table shows examples of strings and their IRI-safe versions:
-
-
-| String | IRI-safe version  |
-| :-------------| :-----|
-| 42 | 42 | 
-| Hello World! | Hello%20World%21 |
-| 2011-08-23T22:17:00Z | 2011-08-23T22%3A17%3A00Z |
-| ~A_17.1-2 |  ~A_17.1-2 |
-
-<aside class="note">
-RML always performs percent-encoding when IRIs are generated from [=string templates=].
-If IRIs need to be generated without percent-encoding,
-then `rml:reference` should be used instead of `rml:template`,
-with a [=logical source=] that performs the string concatenation.
-</aside>
-
-The following example defines a [=subject map=]
-that generates [IRIs]() from ??? of a logical data source.
-
-Using the sample iteration from ??? as a logical data source,
-the template value of the [=subject map=] would be:
-
-The following example shows how an [=IRI-safe=] [=template value=] is created:
-
-Using the sample iteration from ??? as a logical data source,
-the template value of the [=subject map=] would be:
 
 The space character is not in the iunreserved set,
 and therefore percent-encoding is applied to the character, yielding “%20”.
@@ -165,15 +106,57 @@ The value MUST be an [IRI]() and MUST be one of the following options:
 * If the term map is an [=object map=]: `rml:IRI`, `rml:BlankNode`, or `rml:Literal`
 * If the term map is a [=graph map=]: `rml:IRI`
 
+### Default Term Types
 
 If the [=term map=] does not have a `rml:termType` property, then its [=term type=] is:
 
+* `rml:IRI`, if it is a [=subject map=], [=predicate map=] or [=graph map=]
 * `rml:Literal`, if it is an [=object map=]
 and at least one of the following conditions is true:
 * It is a [=reference-valued term map=].
     * It has a `rml:languageMap` property (and thus a [specified language tag]()).
     * It has a `rml:datatypeMap` property (and thus a [specified datatype]()).
-* rml:IRI, otherwise.
+* `rml:IRI`, otherwise.
+
+### Explicitly Defined Term Types
+
+To change the default [=term type=] of a [=subject map=] or [=graph map=]
+to a blank node, the [=term type=] MUST be explicitly defined to be a `rml:BlankNode`.
+
+To change the default [=term type=] of an [=object map=], the [=term type=] MUST be explicitly defined:
+* If the [=term type=] is `rml:IRI`, an IRI will be generated;
+* If the [=term type=] is `rml:BlankNode`, a Blank Node will be generated.
+
+If the [=term type=] is explicitly defined to be a `rml:BlankNode`,
+a [=term map=] MAY not have an [=expression map=].
+Then an RML Processor MUST generate a random value for the blank node.   
+
+### IRI encoding
+
+If the [=term type=] of the [=template-valued term map=] is `rml:IRI`, then a [=reference value transforming function=] should be applied during the evaluation of the [=template expression=]. The [=reference value transforming function=] should transform a [=reference value=] into an [=IRI-safe version=] of that value.
+
+The <dfn data-lt="IRI-safe">IRI-safe version</dfn> of a string is obtained by applying the following transformation
+to any character that is not in the iunreserved production in [[RFC3987]]():
+
+1. Convert the character to a sequence of one or more octets using UTF-8 [[RFC3629]]()
+2. Percent-encode each octet [[RFC3986]]()
+
+The following table shows examples of strings and their IRI-safe versions:
+
+
+| String | IRI-safe version  |
+| :-------------| :-----|
+| 42 | 42 | 
+| Hello World! | Hello%20World%21 |
+| 2011-08-23T22:17:00Z | 2011-08-23T22%3A17%3A00Z |
+| ~A_17.1-2 |  ~A_17.1-2 |
+
+<aside class="note">
+RML always performs percent-encoding when IRIs are generated from [=string templates=].
+If IRIs need to be generated without percent-encoding,
+then `rml:reference` should be used instead of `rml:template`,
+with a [=logical source=] that performs the string concatenation.
+</aside>
 
 <aside class="note">
 Term maps with [=term type=] `rml:IRI` cause [=data errors=]
@@ -181,14 +164,6 @@ if the value is not a valid IRI (see [=generated RDF term=] for details).
 Data values from the input database may require percent-encoding
 before they can be used in IRIs.
 [=Template-valued term maps=] are a convenient way of percent-encoding data values.
-</aside>
-
-<aside class="note">
-[=Constant-valued term maps=] are not considered as having a term type,
-and specifying `rml:termType` on these [=term maps=] has no effect.
-The type of the [=generated RDF term=] is determined directly by the value of `rml:constant`:
-If it is an [IRI](), then an [IRI]() will be generated;
-if it is a literal, a literal will be generated.
 </aside>
 
 ## Language tags (`rml:languageMap` and `rml:language`)
@@ -265,3 +240,28 @@ or it can be explicitly overridden using `rml:datatype`
 This needs work
 </aside>
 
+### Term types
+
+#### Reference-valued term maps and term types
+
+A [=reference-valued term map=] generates an [=RDF term=]
+which is by default a [Literal]().
+
+If the [=reference-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [IRI]().
+
+If the [=reference-valued term map=] is an [=object map=], then its [=constant value=] MUST be a [literal]().
+
+To use a [=reference-valued term map=]
+as a [Object Map]() or [Graph Map](),
+which should generate an [=RDF term=]
+which is either an [IRI]() or [Literal](), or
+a [Predicate Map](),
+which should generate an [=RDF term=] which is an [IRI](),
+or to generate an [IRI]() for an [=object map=],
+the default [Term Type]() needs to be overwritten.
+
+#### Constant-valued term maps and term types
+
+If the [=constant-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [IRI]().
+
+If the [=constant-valued term map=] is an [=object map=], then its [=constant value=] MUST be an [IRI]() or [literal]().
