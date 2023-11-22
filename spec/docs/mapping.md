@@ -28,6 +28,8 @@ may form one or more [RDF triples]() for each iteration.
   rml:predicateObjectMap <#POM1>, <#POM2>, ..., <#POMn> . 
 ```
 
+Note: A [=triples map=] may not have a [=logical source=] if all its [=term maps=] are [=constant-valued expression maps=] or have a blank node as [=term type=] and no [=expression map=].
+
 # Term Maps
 
 <aside class="issue">
