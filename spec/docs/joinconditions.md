@@ -96,7 +96,7 @@ then the `rml:child` shortcut could be used.
     rml:logicalSource <LS2> ;
     rml:subjectMap <#SM2> .
 ```
-## Join execution
+## Join types
 
 If the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]() 
 and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are not identical, 
@@ -158,13 +158,15 @@ In below examples `<LS1>` and `<LS2>` are identical, but `<LS1>` and `<LS3>` are
 
 If the [Referencing Object Map]() has no join condition 
 (which is only allowed when the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]()
-and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are identical), 
-the [Logical Source]() is used in its original form when generating the related RDF triples.   
+and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are identical), a natural join is executed. 
+In practice this means that the [Logical Source]() is used in its original form when generating the related RDF triples.   
 
-If the [Referencing Object Map]() has one or more join conditions, the related RDF triples are generated 
-using the [=n-ary Cartesian product=] of the logical iteration of the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]()
-and the logical iteration of the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map](),
+If the [Referencing Object Map]() has one or more join conditions, an inner join is executed. 
+The related RDF triples are generated using the [=n-ary Cartesian product=] 
+of the logical iteration of the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]()
+and the logical iteration of the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map](), and
 retaining only the combination of those logical iterations for which the values of the [Child Map]() and [Parent Map]() of each join condition are identical.
+
 
 
 
