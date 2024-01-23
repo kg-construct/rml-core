@@ -43,7 +43,7 @@ has exactly one value for each of the following two properties:
 * a [child map]() (`rml:childMap`),
   whose value is an [Expression Map]() (`rml:ExpressionMap`), which
   MUST include references that exists in the [Logical Source]()
-  of the [Parent Triples Map]() that contains the [Referencing Object Map]()
+  of the [Triples Map]() that contains the [Referencing Object Map]()
   or it should have a constant value.
 
 * a [parent map]() (`rml:parentMap`),
@@ -96,3 +96,76 @@ then the `rml:child` shortcut could be used.
     rml:logicalSource <LS2> ;
     rml:subjectMap <#SM2> .
 ```
+## Join execution
+
+If the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]() 
+and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are not identical, 
+then the referencing object map must have at least one join condition.
+
+A [Logical Source]() is considered as identical to another [Logical Source]() 
+when the set of objects at the end of the property paths starting with `rml:source` and starting with `rml:iterator` are identical. 
+In below examples `<LS1>` and `<LS2>` are identical, but `<LS1>` and `<LS3>` are not identical. 
+```
+<LS1>
+    a rml:LogicalSource; 
+    rml:source <S1>;
+    rml:referenceFormulation rml:JSONPath;
+    rml:iterator "$.jsonpath.expression".
+<S1> 
+    a rml:Source, void:Dataset;
+    void:dataDump <file:///data/dump.nt>. 
+    
+<LS2>
+    a rml:LogicalSource; 
+    rml:source <S2>;
+    rml:referenceFormulation rml:JSONPath;
+    rml:iterator "$.jsonpath.expression".
+<S2> 
+    a rml:Source, void:Dataset;
+    void:dataDump <file:///data/dump.nt>.   
+   
+<LS3>
+    a rml:LogicalSource; 
+    rml:source <S1>;
+    rml:referenceFormulation rml:JSONPath;
+    rml:iterator "$.jsonpath.expression2".   
+```
+
+```
+<LS1>
+    a rml:LogicalSource; 
+    rml:source [ a rml:Source, a csvw:Table
+        csvw:url "/absolute/path/to/data.csv";
+    ];
+    rml:referenceFormulation rml:CSV.
+    
+<LS2>
+    a rml:LogicalSource; 
+    rml:source <S2>;
+    rml:referenceFormulation rml:CSV.
+    
+<S2> 
+   a rml:Source, a csvw:Table
+   csvw:url "/absolute/path/to/data.csv".
+  
+<LS3>
+    a rml:LogicalSource; 
+    rml:source [ a rml:Source, a csvw:Table
+        csvw:url "/relative/path/to/data.csv";
+    ].
+    rml:referenceFormulation rml:CSV.  
+```
+
+If the [Referencing Object Map]() has no join condition 
+(which is only allowed when the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]()
+and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are identical), 
+the [Logical Source]() is used in its original form when generating the related RDF triples.   
+
+If the [Referencing Object Map]() has one or more join conditions, the related RDF triples are generated 
+using the [=n-ary Cartesian product=] of the logical iteration of the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]()
+and the logical iteration of the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map](),
+retaining only the combination of those logical iterations for which the values of the [Child Map]() and [Parent Map]() of each join condition are identical.
+
+
+
+
