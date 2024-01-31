@@ -182,7 +182,7 @@
     Strategy to follow when generating RDF triples.
     """ ;
     sh:message """
-    Strategy must be either rml:append or rml:cartessianProduct.
+    Strategy must be either rml:append or rml:cartesianProduct.
     """ ;
-    sh:in (rml:append rml:cartessianProduct) ;
+    sh:in (rml:append rml:cartesianProduct) ;
 .

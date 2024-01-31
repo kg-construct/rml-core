@@ -33,9 +33,9 @@
     sh:description """
     Strategy to follow when generating RDF triples.
     """ ;
-    sh:in ( rml:append rml:cartessianProduct ) ;
+    sh:in ( rml:append rml:cartesianProduct ) ;
     sh:message """
-    Strategy must be either rml:append or rml:cartessianProduct.
+    Strategy must be either rml:append or rml:cartesianProduct.
     """ ;
     sh:name "Strategy" ;
     sh:targetObjectsOf rml:strategy .
