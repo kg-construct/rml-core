@@ -17,8 +17,8 @@
     Represents a Language Map.
     """ ;
     sh:message """
-    rml:LanguageMap must specify an rml:template or rml:constant with the IRI 
-    of the language.
+    rml:LanguageMap must specify an rml:template, rml:reference, or rml:constant
+    with the BCP47 name of the language as string.
     """ ;
 
     sh:and (
