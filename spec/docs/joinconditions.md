@@ -167,6 +167,7 @@ of the logical iteration of the [Logical Source]() of the [Triples Map]() that c
 and the logical iteration of the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map](), and
 retaining only the combination of those logical iterations for which the values of the [Child Map]() and [Parent Map]() of each join condition are identical.
 
-**NOTE**
+<aside class="note">
 If the [Referencing Object Map]() has no join condition and the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]()
 and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are not identical, the mapping engine MUST report an error.
+</aside>
