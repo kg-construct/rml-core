@@ -100,7 +100,7 @@ then the `rml:child` shortcut could be used.
 
 If the [Logical Source]() of the [Triples Map]() that contains the [Referencing Object Map]() 
 and the [Logical Source]() of the [Referencing Object Map]()'s [Parent Triples Map]() are not identical, 
-then the referencing object map must have at least one join condition.
+then the referencing object map MUST have at least one join condition.
 
 A [Logical Source]() is considered identical to another [Logical Source]() 
 when the set of objects at the end of the property paths starting with `rml:source` and starting with `rml:iterator` are identical. 
