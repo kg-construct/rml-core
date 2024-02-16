@@ -29,6 +29,78 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://w3id.org/rml/shapes/RMLPredicateObjectMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
+            At least one rml:predicate or rml:predicateMap must be provided.
+            """ ;
+                sh:message """
+            At least one rml:predicate or rml:predicateMap must be provided.
+            """ ;
+                sh:minCount 1 ;
+                sh:name "predicate/predicateMap" ;
+                sh:path [ sh:alternativePath ( rml:predicate rml:predicateMap ) ] ;
+                sh:targetSubjectsOf rml:predicate,
+                    rml:predicateMap ] [ sh:description """
+            A PredicateMap element to generate the predicate component of the 
+            (predicate, object) pair from a logical table row or iterator.
+            """ ;
+                sh:message """
+            rml:predicateMap must be an IRI or blank node and be provided once.
+            """ ;
+                sh:name "predicateMap" ;
+                sh:node <http://w3id.org/rml/shapes/RMLPredicateMapShape> ;
+                sh:nodeKind sh:BlankNodeOrIRI ;
+                sh:path rml:predicateMap ;
+                sh:targetSubjectsOf rml:predicateMap ] [ sh:description """
+            Specifies the predicate for the generated triple from the logical table 
+            row or iterator.
+            """ ;
+                sh:message """
+            rml:predicate must be an IRI and be provided once.
+            """ ;
+                sh:name "predicate" ;
+                sh:node <http://w3id.org/rml/shapes/RMLpredicateShape> ;
+                sh:nodeKind sh:IRI ;
+                sh:path rml:predicate ;
+                sh:targetSubjectsOf rml:predicate ] [ sh:description """
+            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple.
+            """ ;
+                sh:message """
+            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple
+            """ ;
+                sh:minCount 1 ;
+                sh:name "object/objectMap/quotedTriplesMap" ;
+                sh:path [ sh:alternativePath ( rml:object rml:objectMap rml:quotedTriplesMap ) ] ;
+                sh:targetSubjectsOf rml:object,
+                    rml:objectMap,
+                    rml:quotedTriplesMap ] [ sh:description """
+            An ObjectMap element to generate the object component of the 
+            (predicate, object) pair from a logical table row or iterator.
+            """ ;
+                sh:message """
+            rml:objectMap must be an IRI or blank node and be provided once.
+            """ ;
+                sh:name "objectMap" ;
+                sh:nodeKind sh:BlankNodeOrIRI ;
+                sh:or ( [ sh:node <http://w3id.org/rml/shapes/RMLObjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLRefObjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLStarMapShape> ] ) ;
+                sh:path rml:objectMap ;
+                sh:targetSubjectsOf rml:objectMap ] [ sh:description """
+            Specifies the object for the generated RDF triples.
+            """ ;
+                sh:message """
+            rml:object must be an IRI and be provided once.
+            """ ;
+                sh:name "object" ;
+                sh:node <http://w3id.org/rml/shapes/RMLobjectShape> ;
+                sh:path rml:object ;
+                sh:targetSubjectsOf rml:object ] ) ;
+    sh:description """
+    Represents a Predicate Object Map.
+    """ ;
+    sh:name "PredicateObjectMap" ;
+    sh:targetClass rml:PredicateObjectMap ;
+    sh:targetObjectsOf rml:predicateObjectMap .
+
 <http://w3id.org/rml/shapes/RMLStrategyAppendShape> a sh:NodeShape ;
     sh:description """
     Strategy to follow when generating RDF triples.
@@ -131,7 +203,7 @@
         """ ;
             sh:name "child" ;
             sh:node <http://w3id.org/rml/shapes/RMLchildShape> ;
-            sh:nodeKind sh:IRI ;
+            sh:nodeKind sh:Literal ;
             sh:path rml:child ;
             sh:targetSubjectsOf rml:child ],
         [ sh:description """
@@ -172,8 +244,8 @@
     Represents a Language Map.
     """ ;
     sh:message """
-    rml:LanguageMap must specify an rml:template or rml:constant with the IRI 
-    of the language.
+    rml:LanguageMap must specify an rml:template, rml:reference, or rml:constant
+    with the BCP47 name of the language as string.
     """ ;
     sh:name "LanguageMap" ;
     sh:targetClass rml:LanguageMap ;
@@ -264,78 +336,6 @@
     sh:targetClass rml:PredicateMap ;
     sh:targetObjectsOf rml:predicateMap .
 
-<http://w3id.org/rml/shapes/RMLPredicateObjectMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLGraphMapPropertiesShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
-            At least one rml:predicate or rml:predicateMap must be provided.
-            """ ;
-                sh:message """
-            At least one rml:predicate or rml:predicateMap must be provided.
-            """ ;
-                sh:minCount 1 ;
-                sh:name "predicate/predicateMap" ;
-                sh:path [ sh:alternativePath ( rml:predicate rml:predicateMap ) ] ;
-                sh:targetSubjectsOf rml:predicate,
-                    rml:predicateMap ] [ sh:description """
-            A PredicateMap element to generate the predicate component of the 
-            (predicate, object) pair from a logical table row or iterator.
-            """ ;
-                sh:message """
-            rml:predicateMap must be an IRI or blank node and be provided once.
-            """ ;
-                sh:name "predicateMap" ;
-                sh:node <http://w3id.org/rml/shapes/RMLPredicateMapShape> ;
-                sh:nodeKind sh:BlankNodeOrIRI ;
-                sh:path rml:predicateMap ;
-                sh:targetSubjectsOf rml:predicateMap ] [ sh:description """
-            Specifies the predicate for the generated triple from the logical table 
-            row or iterator.
-            """ ;
-                sh:message """
-            rml:predicate must be an IRI and be provided once.
-            """ ;
-                sh:name "predicate" ;
-                sh:node <http://w3id.org/rml/shapes/RMLpredicateShape> ;
-                sh:nodeKind sh:IRI ;
-                sh:path rml:predicate ;
-                sh:targetSubjectsOf rml:predicate ] [ sh:description """
-            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple.
-            """ ;
-                sh:message """
-            Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple
-            """ ;
-                sh:minCount 1 ;
-                sh:name "object/objectMap/quotedTriplesMap" ;
-                sh:path [ sh:alternativePath ( rml:object rml:objectMap rml:quotedTriplesMap ) ] ;
-                sh:targetSubjectsOf rml:object,
-                    rml:objectMap,
-                    rml:quotedTriplesMap ] [ sh:description """
-            An ObjectMap element to generate the object component of the 
-            (predicate, object) pair from a logical table row or iterator.
-            """ ;
-                sh:message """
-            rml:objectMap must be an IRI or blank node and be provided once.
-            """ ;
-                sh:name "objectMap" ;
-                sh:nodeKind sh:BlankNodeOrIRI ;
-                sh:or ( [ sh:node <http://w3id.org/rml/shapes/RMLObjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLRefObjectMapShape> ] [ sh:node <http://w3id.org/rml/shapes/RMLStarMapShape> ] ) ;
-                sh:path rml:objectMap ;
-                sh:targetSubjectsOf rml:objectMap ] [ sh:description """
-            Specifies the object for the generated RDF triples.
-            """ ;
-                sh:message """
-            rml:object must be an IRI and be provided once.
-            """ ;
-                sh:name "object" ;
-                sh:node <http://w3id.org/rml/shapes/RMLobjectShape> ;
-                sh:path rml:object ;
-                sh:targetSubjectsOf rml:object ] ) ;
-    sh:description """
-    Represents a Predicate Object Map.
-    """ ;
-    sh:name "PredicateObjectMap" ;
-    sh:targetClass rml:PredicateObjectMap ;
-    sh:targetObjectsOf rml:predicateObjectMap .
-
 <http://w3id.org/rml/shapes/RMLRefObjectMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> [ sh:class rml:TriplesMap ;
                 sh:description """
@@ -421,7 +421,6 @@
         """ ;
             sh:minCount 0 ;
             sh:name "predicateObjectMap" ;
-            sh:node <http://w3id.org/rml/shapes/RMLPredicateObjectMapShape> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:predicateObjectMap ;
             sh:targetSubjectsOf rml:predicateObjectMap ],
