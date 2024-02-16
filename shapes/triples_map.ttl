@@ -12,6 +12,7 @@
 :RMLTriplesMapShape
     a sh:NodeShape ;
     sh:targetClass rml:TriplesMap ;
+    sh:targetObjectsOf rml:parentTriplesMap ;
     sh:name "TriplesMap" ;
     sh:description """
     Represents a Triples Map.
