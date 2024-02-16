@@ -430,8 +430,7 @@
     a language tag or datatype.
     """ ;
     sh:name "ObjectMap" ;
-    sh:targetClass rml:ObjectMap ;
-    sh:targetSubjectsOf rml:objectMap .
+    sh:targetClass rml:ObjectMap .
 
 <http://w3id.org/rml/shapes/RMLRefObjectMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLJoinConditionPropertiesShape> [ sh:class rml:TriplesMap ;
