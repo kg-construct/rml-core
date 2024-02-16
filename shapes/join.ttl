@@ -90,7 +90,7 @@
         sh:description """
         Specifies the child of the object component for joining.
         """ ;
-        sh:nodeKind sh:IRI ;
+        sh:nodeKind sh:Literal ;
         sh:node :RMLchildShape ;
     ] ;
 .
