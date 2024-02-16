@@ -11,6 +11,7 @@
 :RMLObjectMapShape
     a sh:NodeShape ;
     sh:targetClass rml:ObjectMap ;
+    sh:targetSubjectsOf rml:objectMap ;
     sh:name "ObjectMap" ;
     sh:description """
     Represents an Object Map.
@@ -49,7 +50,6 @@
             language tag of the string Literal.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:node :RMLLanguageMapShape;
         ]
         [
             sh:path rml:datatypeMap ;
@@ -64,16 +64,14 @@
             datatype of the Literal.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:node :RMLDatatypeMapShape;
         ]
         [
             sh:path rml:language ;
-            sh:targetSubjectsOf rml:language ;
             sh:name "language" ;
             sh:description """
             Language tag for the object.
             """ ;
-            sh:node :RMLlanguageShape ;
+            sh:nodeKind sh:Literal ;
         ]
         [
             sh:path rml:datatype ;
@@ -82,7 +80,7 @@
             sh:description """
             Datatype for the object.
             """ ;
-            sh:node :RMLdatatypeShape ;
+            sh:nodeKind sh:IRI ;
         ]
     ) ;
 .

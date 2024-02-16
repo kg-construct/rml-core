@@ -32,7 +32,7 @@
 
 :RMLchildShape
     a sh:NodeShape ;
-    sh:targetObjectOf rml:child ;
+    sh:targetObjectsOf rml:child ;
     sh:name "child" ;
     sh:description """
     A Literal reference to use as reference to the child data source.

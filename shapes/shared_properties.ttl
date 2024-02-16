@@ -72,7 +72,6 @@
         rml:subject must be an IRI or blank node.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node :RMLsubjectShape;
     ] ;
 
     # rml:predicateObjectMap
@@ -122,7 +121,6 @@
         sh:message """
         rml:graphMap must be either an IRI or blank node. 
         """ ;
-        sh:node :RMLGraphMapShape ;
         sh:nodeKind sh:BlankNodeOrIRI ;
     ] ;
     sh:property [
@@ -134,7 +132,6 @@
         sh:message """
         rml:graphMap must be an IRI. 
         """ ;
-        sh:node :RMLgraphShape ;
         sh:nodeKind sh:IRI ;
     ] ;
 .
@@ -152,7 +149,6 @@
     rml:joinCondition must specify an rml:parent and rml:child.
     """ ;
     sh:nodeKind sh:BlankNodeOrIRI ;
-    sh:node :RMLJoinShape ;
 .
 
 :RMLLogicalTargetPropertiesShape

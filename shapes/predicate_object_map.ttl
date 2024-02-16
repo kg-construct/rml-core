@@ -47,7 +47,6 @@
             rml:predicateMap must be an IRI or blank node and be provided once.
             """ ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:node :RMLPredicateMapShape ;
         ]
         [
             sh:targetSubjectsOf rml:predicate ;
@@ -61,7 +60,6 @@
             rml:predicate must be an IRI and be provided once.
             """ ;
             sh:nodeKind sh:IRI ;
-            sh:node :RMLpredicateShape ;
         ]
         [
             sh:targetSubjectsOf rml:object ;
@@ -103,7 +101,6 @@
             sh:message """
             rml:object must be an IRI and be provided once.
             """ ;
-            sh:node :RMLobjectShape ;
         ]
     ) ;
 .
