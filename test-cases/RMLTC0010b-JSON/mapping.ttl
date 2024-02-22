@@ -15,7 +15,7 @@
     rml:iterator "$.countries[*]"
   ];
 
-  rml:subjectMap [ rml:template "http://example.com/{Country Code}/{Name}" ];
+  rml:subjectMap [ rml:template "http://example.com/{$.['Country Code']}/{Name}" ];
 
   rml:predicateObjectMap [
     rml:predicate ex:name ;
