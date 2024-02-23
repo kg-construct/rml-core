@@ -37,7 +37,6 @@
             or Blank Node referring to a Triples Map.
             """ ;
             sh:class rml:TriplesMap ;
-            sh:node :RMLTriplesMapShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

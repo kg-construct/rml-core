@@ -43,7 +43,6 @@
         parent tag of the string Literal.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node :RMLParentMapShape;
     ] ;
 
     sh:property [
@@ -54,7 +53,6 @@
         Specifies the parent of the object component for joining.
         """ ;
         sh:nodeKind sh:Literal ;
-        sh:node :RMLparentShape ;
     ] ;
 
     sh:property [
@@ -80,7 +78,6 @@
         child of the Literal.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node :RMLChildMapShape;
     ] ;
 
     sh:property [
@@ -90,7 +87,6 @@
         sh:description """
         Specifies the child of the object component for joining.
         """ ;
-        sh:nodeKind sh:IRI ;
-        sh:node :RMLchildShape ;
+        sh:nodeKind sh:Literal ;
     ] ;
 .
