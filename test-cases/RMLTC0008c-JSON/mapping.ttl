@@ -1,24 +1,18 @@
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ex: <http://example.com/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rml: <http://w3id.org/rml/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ql: <http://w3id.org/rml/ql/> .
-@prefix activity: <http://example.com/activity/> .
-@base <http://example.com/base/> .
+@prefix rml: <http://w3id.org/rml/> .
 
-<TriplesMap1>
-  a rml:TriplesMap;
+<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:iterator "$.students[*]" ;
+            rml:referenceFormulation ql:JSONPath ;
+            rml:source <_:b35551> ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
+            rml:predicate ex:name,
+                foaf:name ] ;
+    rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{Name}" ] .
 
-  rml:logicalSource [ 
-    rml:source "student.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.students[*]"
-  ];
+<_:b35551> a rml:RelativePathSource ;
+    rml:path "student.json" .
 
-  rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{Name}" ];
-	
-  rml:predicateObjectMap [ 
-    rml:predicate foaf:name ;
-    rml:predicate ex:name ;
-    rml:objectMap [ rml:reference "Name" ]
-  ] .

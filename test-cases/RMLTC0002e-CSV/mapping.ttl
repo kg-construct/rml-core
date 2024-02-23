@@ -1,23 +1,15 @@
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ex: <http://example.com/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rml: <http://w3id.org/rml/> .
 @prefix ql: <http://w3id.org/rml/ql/> .
-@base <http://example.com/base/> .
+@prefix rml: <http://w3id.org/rml/> .
 
-<TriplesMap1> a rml:TriplesMap;
-    
-  rml:logicalSource [ 
-    rml:source "student2.csv";
-    rml:referenceFormulation ql:CSV
-  ];
+<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:referenceFormulation ql:CSV ;
+            rml:source <_:b756717> ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "IDs" ] ;
+            rml:predicate ex:id ] ;
+    rml:subjectMap [ rml:template "http://example.com/{ID}/{Name}" ] .
 
-  rml:subjectMap [ 
-    rml:template "http://example.com/{ID}/{Name}"; 
-  ];
-
-  rml:predicateObjectMap [ 
-    rml:predicate ex:id ; 
-    rml:objectMap [ rml:reference "IDs" ]
-  ].
+<_:b756717> a rml:RelativePathSource ;
+    rml:path "student2.csv" .
 

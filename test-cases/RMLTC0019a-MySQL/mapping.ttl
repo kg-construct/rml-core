@@ -1,38 +1,28 @@
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ex: <http://example.com/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rml: <http://w3id.org/rml/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ql: <http://w3id.org/rml/ql/> .
+@prefix rml: <http://w3id.org/rml/> .
 
-@base <http://example.com/base/> .
-
-<TriplesMap1>
-  a rml:TriplesMap;
-
-  rml:logicalSource [
-     rml:source <#DB_source>;
-     rml:sqlVersion rml:SQL2008;
-     rml:query """
+<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:query """
         SELECT ID, FirstName, LastName
         FROM Employee
         WHERE ID < 30
      """ ;
-     rml:referenceFormulation ql:CSV
-  ];
+            rml:referenceFormulation ql:CSV ;
+            rml:source <_:b474699> ;
+            rml:sqlVersion rml:SQL2008 ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
+            rml:predicate foaf:name ] ;
+    rml:subjectMap [ rml:reference "FirstName" ] .
 
-  rml:subjectMap [ rml:reference "FirstName" ];
+<_:b474699> a rml:RelativePathSource ;
+    rml:path <http://example.com/base/#DB_source> .
 
-  rml:predicateObjectMap [
-    rml:predicate foaf:name;
-    rml:objectMap [
-      rml:reference "FirstName"
-    ]
-  ] .
+<http://example.com/base/#DB_source> a d2rq:Database ;
+    d2rq:jdbcDSN "CONNECTIONDSN" ;
+    d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver" ;
+    d2rq:password "" ;
+    d2rq:username "root" .
 
-<#DB_source> a d2rq:Database;
-  d2rq:jdbcDSN "CONNECTIONDSN";
-  d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
-  d2rq:username "root";
-  d2rq:password "" .

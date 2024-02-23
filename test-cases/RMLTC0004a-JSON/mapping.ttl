@@ -1,46 +1,31 @@
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ex: <http://example.com/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rml: <http://w3id.org/rml/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ql: <http://w3id.org/rml/ql/> .
-@base <http://example.com/base/> .
+@prefix rml: <http://w3id.org/rml/> .
 
-<TriplesMap1> a rml:TriplesMap;
-    
-  rml:logicalSource [ 
-    rml:source "student_sport.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.students[*]"
-  ];
+<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:iterator "$.students[*]" ;
+            rml:referenceFormulation ql:JSONPath ;
+            rml:source <_:b364951> ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "Student" ] ;
+            rml:predicate foaf:name ] ;
+    rml:subjectMap [ rml:class ex:Student ;
+            rml:template "http://example.com/{Student}" ] .
 
-  rml:subjectMap [ 
-    rml:template "http://example.com/{Student}";
-    rml:class ex:Student
-  ];
+<http://example.com/base/TriplesMap2> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:iterator "$.students[*]" ;
+            rml:referenceFormulation ql:JSONPath ;
+            rml:source <_:b68150> ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "Sport" ] ;
+            rml:predicate foaf:name ] ;
+    rml:subjectMap [ rml:class ex:Sport ;
+            rml:template "http://example.com/{Sport}" ] .
 
-  rml:predicateObjectMap [ 
-    rml:predicate foaf:name ; 
-    rml:objectMap [ 
-      rml:reference "Student"
-    ]
-  ].
+<_:b364951> a rml:RelativePathSource ;
+    rml:path "student_sport.json" .
 
-<TriplesMap2> a rml:TriplesMap;
-    
-  rml:logicalSource [ 
-    rml:source "student_sport.json";
-    rml:referenceFormulation ql:JSONPath;
-    rml:iterator "$.students[*]"
-  ];
+<_:b68150> a rml:RelativePathSource ;
+    rml:path "student_sport.json" .
 
-  rml:subjectMap [ 
-    rml:template "http://example.com/{Sport}";
-    rml:class ex:Sport
-  ];
-
-  rml:predicateObjectMap [ 
-    rml:predicate foaf:name ; 
-    rml:objectMap [ 
-      rml:reference "Sport"
-    ]
-  ].
