@@ -1,19 +1,10 @@
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ex: <http://example.com/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rml: <http://w3id.org/rml/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix ex: <http://example.com/> .
+@prefix rml: <http://w3id.org/rml/> .
 
-@base <http://example.com/base/> .
-
-<TriplesMap1>
-    a rml:TriplesMap;
-
-    rml:logicalSource [ 
-       rml:source <#DB_source>;
-       rml:sqlVersion rml:SQL2008;
-       rml:query """
+<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:query """
        SELECT Student.ID as ID,
               Student.FirstName as FirstName,
               Student.LastName as LastName,
@@ -23,65 +14,42 @@
        WHERE Student.ID = Student_Sport.ID_Student
        AND Sport.ID = Student_Sport.ID_Sport;
        """ ;
-       rml:referenceFormulation rml:SQL2008;
-   ];
+            rml:referenceFormulation rml:SQL2008 ;
+            rml:source <_:b206898> ;
+            rml:sqlVersion rml:SQL2008 ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;
+            rml:predicate ex:id ],
+        [ rml:objectMap [ rml:reference "FirstName" ] ;
+            rml:predicate ex:firstName ],
+        [ rml:objectMap [ rml:reference "LastName" ] ;
+            rml:predicate ex:lastName ],
+        [ rml:objectMap [ rml:template "http://example.com/{Sport_ID}/{Description}" ] ;
+            rml:predicate ex:plays ] ;
+    rml:subjectMap [ rml:template "http://example.com/{ID}/{FirstName};{LastName}" ] .
 
-    rml:subjectMap [ rml:template "http://example.com/{ID}/{FirstName};{LastName}" ];
-	
-    rml:predicateObjectMap
-    [ 
-      rml:predicate	ex:id ; 
-      rml:objectMap	[ rml:reference "ID"; ]
-    ];
-
-    rml:predicateObjectMap
-    [ 
-      rml:predicate	ex:firstName ; 
-      rml:objectMap	[ rml:reference "FirstName" ]
-    ];
-
-    rml:predicateObjectMap
-    [ 
-      rml:predicate	ex:lastName ; 
-      rml:objectMap	[ rml:reference "LastName" ]
-    ];
-
-    rml:predicateObjectMap
-    [ 
-      rml:predicate	ex:plays ; 
-      rml:objectMap	[ rml:template "http://example.com/{Sport_ID}/{Description}" ]
-    ]
-    .
-
-<TriplesMap2>
-    a rml:TriplesMap;
-
-    rml:logicalSource [ 
-       rml:source <#DB_source>;
-       rml:sqlVersion rml:SQL2008;
-       rml:query """
+<http://example.com/base/TriplesMap2> a rml:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:query """
        SELECT * FROM Sport ;
        """ ;
-       rml:referenceFormulation rml:SQL2008;
-   ];
-	
-    rml:subjectMap [ rml:template "http://example.com/{ID}/{Description}"; ];
+            rml:referenceFormulation rml:SQL2008 ;
+            rml:source <_:b574066> ;
+            rml:sqlVersion rml:SQL2008 ] ;
+    rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;
+            rml:predicate ex:id ],
+        [ rml:objectMap [ rml:reference "Description" ] ;
+            rml:predicate ex:description ] ;
+    rml:subjectMap [ rml:template "http://example.com/{ID}/{Description}" ] .
 
-    rml:predicateObjectMap
-    [ 
-      rml:predicate	ex:id ; 
-      rml:objectMap	[ rml:reference "ID"; ]
-    ];
+<_:b206898> a rml:RelativePathSource ;
+    rml:path <http://example.com/base/#DB_source> .
 
-    rml:predicateObjectMap
-    [ 
-      rml:predicate	ex:description ; 
-      rml:objectMap	[ rml:reference "Description" ]
-    ]
-    .
+<_:b574066> a rml:RelativePathSource ;
+    rml:path <http://example.com/base/#DB_source> .
 
-<#DB_source> a d2rq:Database;
-  d2rq:jdbcDSN "CONNECTIONDSN";
-  d2rq:jdbcDriver "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-  d2rq:username "sa";
-  d2rq:password "YourSTRONG!Passw0rd;" .
+<http://example.com/base/#DB_source> a d2rq:Database ;
+    d2rq:jdbcDSN "CONNECTIONDSN" ;
+    d2rq:jdbcDriver "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
+    d2rq:password "YourSTRONG!Passw0rd;" ;
+    d2rq:username "sa" .
+
