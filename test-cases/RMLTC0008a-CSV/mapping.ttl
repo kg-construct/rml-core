@@ -1,12 +1,11 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
+            rml:referenceFormulation rml:CSV ;
             rml:source <_:b65203> ] ;
     rml:predicateObjectMap [ rml:object foaf:Person ;
             rml:predicate rdf:type ],

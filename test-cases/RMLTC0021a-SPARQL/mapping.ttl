@@ -1,5 +1,4 @@
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 
@@ -23,7 +22,7 @@ ex:TriplesMap1 a rml:TriplesMap ;
                 ?x  foaf:name ?Name ;
                     rdf:ID    ?ID ;
             } """ ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b590761> ] ;
     rml:predicateObjectMap [ rml:objectMap ex:RefObjectMap1 ;
             rml:predicate ex:sameSportAs ] ;
