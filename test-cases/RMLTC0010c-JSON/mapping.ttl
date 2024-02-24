@@ -19,5 +19,5 @@
 
   rml:predicateObjectMap [
     rml:predicate ex:code ;
-    rml:objectMap [ rml:template "\\{\\{\\{ {ISO 3166} \\}\\}\\}"; rml:termType rml:Literal]
+    rml:objectMap [ rml:template "\\{\\{\\{ {$.['ISO 3166']} \\}\\}\\}"; rml:termType rml:Literal]
   ] .
