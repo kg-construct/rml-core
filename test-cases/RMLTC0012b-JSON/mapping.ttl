@@ -1,12 +1,11 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.persons[*]" ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b126371> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "{fname} {lname}" ;
                     rml:termType rml:Literal ] ;
@@ -17,7 +16,7 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.lives[*]" ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b103858> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "city" ] ;
             rml:predicate ex:city ] ;

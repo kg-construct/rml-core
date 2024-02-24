@@ -1,6 +1,5 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 
@@ -16,7 +15,7 @@
                    ?x  foaf:firstName ?fname ;
                        foaf:lastName  ?lname ;
               } """ ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b285236> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "{fname.value} {lname.value}" ;
                     rml:termType rml:Literal ] ;
@@ -37,7 +36,7 @@
                         foaf:lastName  ?lname ;
                         <http://example.com/city> ?city .
                 } """ ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b939937> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "city.value" ] ;
             rml:predicate ex:city ] ;

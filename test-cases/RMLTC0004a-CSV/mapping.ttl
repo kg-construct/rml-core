@@ -1,11 +1,10 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
+            rml:referenceFormulation rml:CSV ;
             rml:source <_:b281455> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Student" ] ;
             rml:predicate foaf:name ] ;
@@ -14,7 +13,7 @@
 
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
+            rml:referenceFormulation rml:CSV ;
             rml:source <_:b710091> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Sport" ] ;
             rml:predicate foaf:name ] ;

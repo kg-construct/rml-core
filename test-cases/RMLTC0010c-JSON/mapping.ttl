@@ -1,15 +1,14 @@
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.countries[*]" ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b559832> ] ;
 
     rml:predicateObjectMap [ rml:predicate ex:code ;
-        rml:objectMap [ rml:template "\\{\\{\\{ {$.['ISO 3166']} \\}\\}\\}"; rml:termType rml:Literal] ] .
+        rml:objectMap [ rml:template "\\{\\{\\{ {$.['ISO 3166']} \\}\\}\\}"; rml:termType rml:Literal] ] ;
     rml:subjectMap [ rml:template "http://example.com/{$.['Country Code']}/{Name}" ] .
 
 <_:b559832> a rml:RelativePathSource ;

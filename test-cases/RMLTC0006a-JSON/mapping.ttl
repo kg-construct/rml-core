@@ -1,11 +1,10 @@
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b401314> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:constant "Bad Student" ] ;
             rml:predicateMap [ rml:constant ex:description ] ] ;

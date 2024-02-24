@@ -1,10 +1,9 @@
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/LinkMap_1_2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
+            rml:referenceFormulation rml:CSV ;
             rml:source <_:b409129> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "http://example.com/sport/{ID_Sport}" ] ;
             rml:predicate ex:plays ] ;
@@ -12,7 +11,7 @@
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
+            rml:referenceFormulation rml:CSV ;
             rml:source <_:b197142> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
             rml:predicate ex:firstName ],
@@ -22,7 +21,7 @@
 
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
+            rml:referenceFormulation rml:CSV ;
             rml:source <_:b81386> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Description" ] ;
             rml:predicate ex:description ],

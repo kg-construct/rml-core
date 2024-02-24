@@ -1,14 +1,13 @@
 @prefix activity: <http://example.com/activity/> .
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b626246> ] ;
     rml:predicateObjectMap [ rml:objectMap <http://example.com/base/RefObjectMap1> ;
             rml:predicate ex:Sport ],
@@ -32,7 +31,7 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
-            rml:referenceFormulation ql:JSONPath ;
+            rml:referenceFormulation rml:JSONPath ;
             rml:source <_:b725756> ] ;
     rml:predicateObjectMap [ rml:object activity:Sport ;
             rml:predicate rdf:type ] ;

@@ -1,11 +1,10 @@
-@prefix ql: <http://w3id.org/rml/ql/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/countries/country" ;
-            rml:referenceFormulation ql:XPath ;
+            rml:referenceFormulation rml:XPath ;
             rml:source <_:b829601> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "en" ;
                     rml:reference "Name" ] ;
@@ -15,7 +14,7 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/countries/country" ;
-            rml:referenceFormulation ql:XPath ;
+            rml:referenceFormulation rml:XPath ;
             rml:source <_:b433369> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "es" ;
                     rml:reference "Name" ] ;
