@@ -9,15 +9,12 @@
         FROM Student
         GROUP BY Name
         """ ;
-            rml:referenceFormulation rml:CSV ;
-            rml:source <_:b420000> ;
-            rml:sqlVersion rml:SQL2008 ] ;
+            rml:source <http://example.com/base/#DB_source> ;
+            rml:sqlVersion rml:SQL2008 ;
+            rml:referenceFormulation rml:SQL2008Query ; ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/resource/student_{Name}" ] .
-
-<_:b420000> a rml:RelativePathSource ;
-    rml:path <http://example.com/base/#DB_source> .
 
 <http://example.com/base/#DB_source> a d2rq:Database ;
     d2rq:jdbcDSN "CONNECTIONDSN" ;
