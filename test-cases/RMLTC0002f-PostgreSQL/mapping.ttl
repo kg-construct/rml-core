@@ -4,7 +4,8 @@
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ rml:source <http://example.com/base/#DB_source> ;
+    rml:logicalSource [ rml:referenceFormulation rml:SQL2008TableName ;
+            rml:source <http://example.com/base/#DB_source> ;
             rml:sqlVersion rml:SQL2008 ;
             rml:tableName "Student" ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;

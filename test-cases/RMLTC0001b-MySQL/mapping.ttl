@@ -5,15 +5,12 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:query "SELECT Name FROM student" ;
-            rml:referenceFormulation rml:CSV ;
-            rml:source <_:b129071> ;
+            rml:referenceFormulation rml:SQL2008Query ;
+            rml:source <http://example.com/base/#DB_source> ;
             rml:sqlVersion rml:SQL2008 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/{Name}" ] .
-
-<_:b129071> a rml:RelativePathSource ;
-    rml:path <http://example.com/base/#DB_source> .
 
 <http://example.com/base/#DB_source> a d2rq:Database ;
     d2rq:jdbcDSN "CONNECTIONDSN" ;
