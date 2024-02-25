@@ -14,8 +14,8 @@
        WHERE Student.ID = Student_Sport.ID_Student
        AND Sport.ID = Student_Sport.ID_Sport;
        """ ;
-            rml:referenceFormulation rml:SQL2008 ;
-            rml:source <_:b890247> ] ;
+            rml:referenceFormulation rml:SQL2008Query ;
+            rml:source <http://example.com/base/#DB_source> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;
             rml:predicate ex:id ],
         [ rml:objectMap [ rml:reference "FirstName" ] ;
@@ -31,19 +31,13 @@
             rml:query """
        SELECT * FROM Sport;
        """ ;
-            rml:referenceFormulation rml:SQL2008 ;
-            rml:source <_:b619094> ] ;
+            rml:referenceFormulation rml:SQL2008Query ;
+            rml:source <http://example.com/base/#DB_source> ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;
             rml:predicate ex:id ],
         [ rml:objectMap [ rml:reference "Description" ] ;
             rml:predicate ex:description ] ;
     rml:subjectMap [ rml:template "http://example.com/{ID}/{Description}" ] .
-
-<_:b619094> a rml:RelativePathSource ;
-    rml:path <http://example.com/base/#DB_source> .
-
-<_:b890247> a rml:RelativePathSource ;
-    rml:path <http://example.com/base/#DB_source> .
 
 <http://example.com/base/#DB_source> a d2rq:Database ;
     d2rq:jdbcDSN "CONNECTIONDSN" ;
