@@ -9,7 +9,8 @@
         WHERE Lan = 'EN';
        """ ;
             rml:source <http://example.com/base/#DB_source> ;
-            rml:sqlVersion rml:SQL2008 ] ;
+            rml:sqlVersion rml:SQL2008 ;
+            rml:referenceFormulation rml:SQL2008Query ; ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "english" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
@@ -22,7 +23,8 @@
             WHERE "Lan" = 'ES';
            """ ;
             rml:source <http://example.com/base/#DB_source> ;
-            rml:sqlVersion rml:SQL2008 ] ;
+            rml:sqlVersion rml:SQL2008 ;
+            rml:referenceFormulation rml:SQL2008Query ; ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "spanish" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
