@@ -6,6 +6,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ rml:source <http://example.com/base/#DB_source> ;
             rml:sqlVersion rml:SQL2008 ;
+            rml:referenceFormulation rml:SQL2008TableName ;
             rml:tableName "student" ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate foaf:name ],
@@ -19,6 +20,7 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ rml:source <http://example.com/base/#DB_source> ;
             rml:sqlVersion rml:SQL2008 ;
+            rml:referenceFormulation rml:SQL2008TableName ;
             rml:tableName "sport" ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
