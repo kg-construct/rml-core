@@ -5,12 +5,12 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b71603> ] ;
+            rml:source _:b71603 ] ;
     rml:predicateObjectMap [ rml:object foaf:Person ;
             rml:predicate rdf:type ] ;
     rml:subjectMap [ rml:template "{Name}" ;
             rml:termType rml:IRI ] .
 
-<_:b71603> a rml:RelativePathSource ;
+_:b71603 a rml:RelativePathSource ;
     rml:path "student.csv" .
 

@@ -19,7 +19,7 @@
                                             rdf:ID ?Sport . }
               } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b881966> ] ;
+            rml:source _:b881966 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name.value" ] ;
             rml:predicate foaf:name ],
         [ rml:objectMap [ a rml:RefObjectMap ;
@@ -29,10 +29,10 @@
             rml:predicate <http://example.com/ontology/practises> ] ;
     rml:subjectMap [ rml:template "http://example.com/resource/student_{ID.value}" ] .
 
-<_:b632602> a rml:RelativePathSource ;
+_:b632602 a rml:RelativePathSource ;
     rml:path <http://example.com/base/#InputSPARQL2> .
 
-<_:b881966> a rml:RelativePathSource ;
+_:b881966 a rml:RelativePathSource ;
     rml:path <http://example.com/base/#InputSPARQL1> .
 
 <http://example.com/base/#InputSPARQL1> a sd:Service ;
@@ -58,7 +58,7 @@
                         rdf:ID    ?ID ;
                 } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b632602> ] ;
+            rml:source _:b632602 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name.value" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:template "http://example.com/resource/sport_{ID.value}" ] .

@@ -6,7 +6,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b594210> ] ;
+            rml:source _:b594210 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;
             rml:predicate ex:id ],
         [ rml:objectMap [ rml:reference "Name" ] ;
@@ -15,6 +15,6 @@
             rml:graph ex:PersonGraph ;
             rml:template "http://example.com/Student/{ID}/{Name}" ] .
 
-<_:b594210> a rml:RelativePathSource ;
+_:b594210 a rml:RelativePathSource ;
     rml:path "student.json" .
 

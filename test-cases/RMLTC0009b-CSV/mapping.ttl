@@ -5,7 +5,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b508711> ] ;
+            rml:source _:b508711 ] ;
     rml:predicateObjectMap [ rml:graph <http://example.com/graph/students> ;
             rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate foaf:name ],
@@ -19,16 +19,16 @@
             rml:graph <http://example.com/graph/students> ;
             rml:template "http://example.com/resource/student_{ID}" ] .
 
-<_:b508711> a rml:RelativePathSource ;
+_:b508711 a rml:RelativePathSource ;
     rml:path "student.csv" .
 
-<_:b847774> a rml:RelativePathSource ;
+_:b847774 a rml:RelativePathSource ;
     rml:path "sport.csv" .
 
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b847774> ] ;
+            rml:source _:b847774 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:class <http://example.com/ontology/Sport> ;

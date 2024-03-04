@@ -14,13 +14,13 @@ ex:TriplesMap1 a rml:TriplesMap ;
 
             } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b906424> ] ;
+            rml:source _:b906424 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:constant "Bad Student" ] ;
             rml:predicateMap [ rml:constant ex:description ] ] ;
     rml:subjectMap [ rml:constant ex:BadStudent ;
             rml:graphMap [ rml:constant <http://example.com/graph/student> ] ] .
 
-<_:b906424> a rml:RelativePathSource ;
+_:b906424 a rml:RelativePathSource ;
     rml:path <http://example.com/base#InputSPARQL> .
 
 <http://example.com/base#InputSPARQL> a sd:Service ;

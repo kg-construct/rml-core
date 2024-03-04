@@ -5,7 +5,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/countries/country" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b937730> ] ;
+            rml:source _:b937730 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "english" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
@@ -15,15 +15,15 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/countries/country" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b71347> ] ;
+            rml:source _:b71347 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "spanish" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:template "http://example.com/{Code}" ] .
 
-<_:b71347> a rml:RelativePathSource ;
+_:b71347 a rml:RelativePathSource ;
     rml:path "country_es.xml" .
 
-<_:b937730> a rml:RelativePathSource ;
+_:b937730 a rml:RelativePathSource ;
     rml:path "country_en.xml" .
 

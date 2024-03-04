@@ -6,12 +6,12 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b946994> ] ;
+            rml:source _:b946994 ] ;
     rml:predicateObjectMap [ rml:object foaf:Person ;
             rml:predicate rdf:type ] ;
     rml:subjectMap [ rml:template "{Name}" ;
             rml:termType rml:IRI ] .
 
-<_:b946994> a rml:RelativePathSource ;
+_:b946994 a rml:RelativePathSource ;
     rml:path "student.json" .
 

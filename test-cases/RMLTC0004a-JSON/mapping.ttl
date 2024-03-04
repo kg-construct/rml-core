@@ -6,7 +6,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b364951> ] ;
+            rml:source _:b364951 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Student" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:class ex:Student ;
@@ -16,15 +16,15 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b68150> ] ;
+            rml:source _:b68150 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Sport" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:class ex:Sport ;
             rml:template "http://example.com/{Sport}" ] .
 
-<_:b364951> a rml:RelativePathSource ;
+_:b364951 a rml:RelativePathSource ;
     rml:path "student_sport.json" .
 
-<_:b68150> a rml:RelativePathSource ;
+_:b68150 a rml:RelativePathSource ;
     rml:path "student_sport.json" .
 

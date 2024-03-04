@@ -16,7 +16,7 @@
                        foaf:lastName  ?lname ;
               } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b285236> ] ;
+            rml:source _:b285236 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "{fname.value} {lname.value}" ;
                     rml:termType rml:Literal ] ;
             rml:predicate foaf:name ] ;
@@ -37,16 +37,16 @@
                         <http://example.com/city> ?city .
                 } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b939937> ] ;
+            rml:source _:b939937 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "city.value" ] ;
             rml:predicate ex:city ] ;
     rml:subjectMap [ rml:template "{fname.value}{lname.value}" ;
             rml:termType rml:BlankNode ] .
 
-<_:b285236> a rml:RelativePathSource ;
+_:b285236 a rml:RelativePathSource ;
     rml:path <http://example.com/base/#InputSPARQL1> .
 
-<_:b939937> a rml:RelativePathSource ;
+_:b939937 a rml:RelativePathSource ;
     rml:path <http://example.com/base/#InputSPARQL2> .
 
 <http://example.com/base/#InputSPARQL1> a sd:Service ;

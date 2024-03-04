@@ -5,7 +5,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.countries[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b723985> ] ;
+            rml:source _:b723985 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "english" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
@@ -15,15 +15,15 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.countries[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b880667> ] ;
+            rml:source _:b880667 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "spanish" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:template "http://example.com/{Code}" ] .
 
-<_:b723985> a rml:RelativePathSource ;
+_:b723985 a rml:RelativePathSource ;
     rml:path "country_en.json" .
 
-<_:b880667> a rml:RelativePathSource ;
+_:b880667 a rml:RelativePathSource ;
     rml:path "country_en.json" .
 

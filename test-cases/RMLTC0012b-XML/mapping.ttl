@@ -6,7 +6,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/Persons/Person" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b602143> ] ;
+            rml:source _:b602143 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "{fname} {lname}" ;
                     rml:termType rml:Literal ] ;
             rml:predicate foaf:name ] ;
@@ -17,15 +17,15 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/Lives/Live" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b871309> ] ;
+            rml:source _:b871309 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "city" ] ;
             rml:predicate ex:city ] ;
     rml:subjectMap [ rml:template "{fname}{lname}" ;
             rml:termType rml:BlankNode ] .
 
-<_:b602143> a rml:RelativePathSource ;
+_:b602143 a rml:RelativePathSource ;
     rml:path "persons.xml" .
 
-<_:b871309> a rml:RelativePathSource ;
+_:b871309 a rml:RelativePathSource ;
     rml:path "lives.xml" .
 

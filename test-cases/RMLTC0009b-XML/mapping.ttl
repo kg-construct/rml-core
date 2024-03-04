@@ -6,7 +6,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/students/student" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b664118> ] ;
+            rml:source _:b664118 ] ;
     rml:predicateObjectMap [ rml:graph <http://example.com/graph/students> ;
             rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate foaf:name ],
@@ -20,17 +20,17 @@
             rml:graph <http://example.com/graph/students> ;
             rml:template "http://example.com/resource/student_{ID}" ] .
 
-<_:b664118> a rml:RelativePathSource ;
+_:b664118 a rml:RelativePathSource ;
     rml:path "student.xml" .
 
-<_:b878218> a rml:RelativePathSource ;
+_:b878218 a rml:RelativePathSource ;
     rml:path "sport.xml" .
 
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/sports/sport" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b878218> ] ;
+            rml:source _:b878218 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:class <http://example.com/ontology/Sport> ;

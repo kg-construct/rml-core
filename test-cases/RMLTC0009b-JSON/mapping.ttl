@@ -6,7 +6,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b464070> ] ;
+            rml:source _:b464070 ] ;
     rml:predicateObjectMap [ rml:graph <http://example.com/graph/students> ;
             rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate foaf:name ],
@@ -20,17 +20,17 @@
             rml:graph <http://example.com/graph/students> ;
             rml:template "http://example.com/resource/student_{ID}" ] .
 
-<_:b111481> a rml:RelativePathSource ;
+_:b111481 a rml:RelativePathSource ;
     rml:path "sport.json" .
 
-<_:b464070> a rml:RelativePathSource ;
+_:b464070 a rml:RelativePathSource ;
     rml:path "student.json" .
 
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.sports[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b111481> ] ;
+            rml:source _:b111481 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:class <http://example.com/ontology/Sport> ;

@@ -4,7 +4,7 @@
 <http://example.com/base/LinkMap_1_2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b409129> ] ;
+            rml:source _:b409129 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "http://example.com/sport/{ID_Sport}" ] ;
             rml:predicate ex:plays ] ;
     rml:subjectMap [ rml:template "http://example.com/student/{ID_Student}" ] .
@@ -12,7 +12,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b197142> ] ;
+            rml:source _:b197142 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
             rml:predicate ex:firstName ],
         [ rml:objectMap [ rml:reference "LastName" ] ;
@@ -22,19 +22,19 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b81386> ] ;
+            rml:source _:b81386 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Description" ] ;
             rml:predicate ex:description ],
         [ rml:objectMap [ rml:reference "ID" ] ;
             rml:predicate ex:id ] ;
     rml:subjectMap [ rml:template "http://example.com/sport/{ID}" ] .
 
-<_:b197142> a rml:RelativePathSource ;
+_:b197142 a rml:RelativePathSource ;
     rml:path "student.csv" .
 
-<_:b409129> a rml:RelativePathSource ;
+_:b409129 a rml:RelativePathSource ;
     rml:path "student_sport.csv" .
 
-<_:b81386> a rml:RelativePathSource ;
+_:b81386 a rml:RelativePathSource ;
     rml:path "sport.csv" .
 

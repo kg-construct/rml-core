@@ -15,13 +15,13 @@ ex:TriplesMap1 a rml:TriplesMap ;
                 ?x foaf:name ?Name .
             } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b178818> ] ;
+            rml:source _:b178818 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name.value" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/{Name.value}" ;
             rml:termType rml:Literal ] .
 
-<_:b178818> a rml:RelativePathSource ;
+_:b178818 a rml:RelativePathSource ;
     rml:path <http://example.com/base#InputSPARQL> .
 
 <http://example.com/base#InputSPARQL> a sd:Service ;

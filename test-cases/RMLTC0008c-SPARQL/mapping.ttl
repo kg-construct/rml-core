@@ -16,13 +16,13 @@
                       rdf:ID    ?ID ;
               } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b836520> ] ;
+            rml:source _:b836520 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name.value" ] ;
             rml:predicate ex:name,
                 foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/Student/{ID.value}/{Name.value}" ] .
 
-<_:b836520> a rml:RelativePathSource ;
+_:b836520 a rml:RelativePathSource ;
     rml:path <http://example.com/base/#InputSPARQL> .
 
 <http://example.com/base/#InputSPARQL> a sd:Service ;
