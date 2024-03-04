@@ -5,11 +5,11 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/persons/person" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b285219> ] ;
+            rml:source _:b285219 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:reference "FirstName" ] .
 
-<_:b285219> a rml:RelativePathSource ;
+_:b285219 a rml:RelativePathSource ;
     rml:path "persons.xml" .
 

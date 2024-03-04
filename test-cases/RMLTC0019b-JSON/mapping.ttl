@@ -5,11 +5,11 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.persons[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b716654> ] ;
+            rml:source _:b716654 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:reference "FirstName" ] .
 
-<_:b716654> a rml:RelativePathSource ;
+_:b716654 a rml:RelativePathSource ;
     rml:path "persons.json" .
 

@@ -8,7 +8,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/students/student" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b448141> ] ;
+            rml:source _:b448141 ] ;
     rml:predicateObjectMap [ rml:objectMap <http://example.com/base/RefObjectMap1> ;
             rml:predicate ex:Sport ],
         [ rml:object foaf:Person ;
@@ -19,10 +19,10 @@
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{Name}" ] .
 
-<_:b448141> a rml:RelativePathSource ;
+_:b448141 a rml:RelativePathSource ;
     rml:path "student.xml" .
 
-<_:b666526> a rml:RelativePathSource ;
+_:b666526 a rml:RelativePathSource ;
     rml:path "student.xml" .
 
 <http://example.com/base/RefObjectMap1> a rml:RefObjectMap ;
@@ -32,7 +32,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/students/student" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b666526> ] ;
+            rml:source _:b666526 ] ;
     rml:predicateObjectMap [ rml:object activity:Sport ;
             rml:predicate rdf:type ] ;
     rml:subjectMap [ rml:template "http://example.com/{Sport}" ] .

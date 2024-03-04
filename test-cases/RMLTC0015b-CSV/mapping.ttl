@@ -4,7 +4,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b911126> ] ;
+            rml:source _:b911126 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "english" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
@@ -13,15 +13,15 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b389844> ] ;
+            rml:source _:b389844 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:language "spanish" ;
                     rml:reference "Name" ] ;
             rml:predicate rdfs:label ] ;
     rml:subjectMap [ rml:template "http://example.com/{Code}" ] .
 
-<_:b389844> a rml:RelativePathSource ;
+_:b389844 a rml:RelativePathSource ;
     rml:path "country_es.csv" .
 
-<_:b911126> a rml:RelativePathSource ;
+_:b911126 a rml:RelativePathSource ;
     rml:path "country_en.csv" .
 

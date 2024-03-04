@@ -6,12 +6,12 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.persons[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b534476> ] ;
+            rml:source _:b534476 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "amount" ] ;
             rml:predicate ex:owes ] ;
     rml:subjectMap [ rml:class foaf:Person ;
             rml:template "http://example.com/{fname};{lname}" ] .
 
-<_:b534476> a rml:RelativePathSource ;
+_:b534476 a rml:RelativePathSource ;
     rml:path "ious.json" .
 

@@ -18,7 +18,7 @@ ex:TriplesMap1 a rml:TriplesMap ;
                     rdf:ID    ?ID ;
             } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b65118> ] ;
+            rml:source _:b65118 ] ;
     rml:predicateObjectMap [ rml:objectMap ex:RefObjectMap1 ;
             rml:predicate ex:Sport ],
         [ rml:object foaf:Person ;
@@ -29,10 +29,10 @@ ex:TriplesMap1 a rml:TriplesMap ;
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/Student/{ID.value}/{Name.value}" ] .
 
-<_:b334452> a rml:RelativePathSource ;
+_:b334452 a rml:RelativePathSource ;
     rml:path <http://example.com/base#InputSPARQL> .
 
-<_:b65118> a rml:RelativePathSource ;
+_:b65118 a rml:RelativePathSource ;
     rml:path <http://example.com/base#InputSPARQL> .
 
 ex:RefObjectMap1 a rml:RefObjectMap ;
@@ -51,7 +51,7 @@ ex:TriplesMap2 a rml:TriplesMap ;
                     ?x foaf:name ?Sport .
                 } """ ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b334452> ] ;
+            rml:source _:b334452 ] ;
     rml:predicateObjectMap [ rml:object activity:Sport ;
             rml:predicate rdf:type ] ;
     rml:subjectMap [ rml:template "http://example.com/{Sport.value}" ] .

@@ -7,7 +7,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "/students/student" ;
             rml:referenceFormulation rml:XPath ;
-            rml:source <_:b483284> ] ;
+            rml:source _:b483284 ] ;
     rml:predicateObjectMap [ rml:object foaf:Person ;
             rml:predicate rdf:type ],
         [ rml:object ex:Student ;
@@ -18,6 +18,6 @@
             rml:predicate foaf:name ] ;
     rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{FirstName}" ] .
 
-<_:b483284> a rml:RelativePathSource ;
+_:b483284 a rml:RelativePathSource ;
     rml:path "student.xml" .
 

@@ -6,7 +6,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b65203> ] ;
+            rml:source _:b65203 ] ;
     rml:predicateObjectMap [ rml:object foaf:Person ;
             rml:predicate rdf:type ],
         [ rml:objectMap [ rml:reference "ID" ] ;
@@ -18,6 +18,6 @@
     rml:subjectMap [ rml:graphMap [ rml:template "http://example.com/graph/Student/{ID}/{Name}" ] ;
             rml:template "http://example.com/Student/{ID}/{Name}" ] .
 
-<_:b65203> a rml:RelativePathSource ;
+_:b65203 a rml:RelativePathSource ;
     rml:path "student.csv" .
 

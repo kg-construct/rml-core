@@ -5,11 +5,11 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.persons[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b363028> ] ;
+            rml:source _:b363028 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "DateOfBirth" ] ;
             rml:predicate ex:BirthDay ] ;
     rml:subjectMap [ rml:template "http://example.com/Person/{ID}/{Name}/{DateOfBirth}" ] .
 
-<_:b363028> a rml:RelativePathSource ;
+_:b363028 a rml:RelativePathSource ;
     rml:path "persons.json" .
 

@@ -5,7 +5,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.links[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b563157> ] ;
+            rml:source _:b563157 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:template "http://example.com/sport/{ID_Sport}" ] ;
             rml:predicate ex:plays ] ;
     rml:subjectMap [ rml:template "http://example.com/student/{ID_Student}" ] .
@@ -14,7 +14,7 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.students[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b116231> ] ;
+            rml:source _:b116231 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
             rml:predicate ex:firstName ],
         [ rml:objectMap [ rml:reference "LastName" ] ;
@@ -25,19 +25,19 @@
     rml:logicalSource [ a rml:LogicalSource ;
             rml:iterator "$.sports[*]" ;
             rml:referenceFormulation rml:JSONPath ;
-            rml:source <_:b127558> ] ;
+            rml:source _:b127558 ] ;
     rml:predicateObjectMap [ rml:objectMap [ rml:reference "Description" ] ;
             rml:predicate ex:description ],
         [ rml:objectMap [ rml:reference "ID" ] ;
             rml:predicate ex:id ] ;
     rml:subjectMap [ rml:template "http://example.com/sport/{ID}" ] .
 
-<_:b116231> a rml:RelativePathSource ;
+_:b116231 a rml:RelativePathSource ;
     rml:path "student.json" .
 
-<_:b127558> a rml:RelativePathSource ;
+_:b127558 a rml:RelativePathSource ;
     rml:path "sport.json" .
 
-<_:b563157> a rml:RelativePathSource ;
+_:b563157 a rml:RelativePathSource ;
     rml:path "student_sport.json" .
 

@@ -1,7 +1,7 @@
 @prefix ex: <http://example.com/> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<_:b273446> a rml:RelativePathSource ;
+_:b273446 a rml:RelativePathSource ;
     rml:path "student.csv" .
 
 <http://example.com/base/RefObjectMap1> a rml:RefObjectMap ;
@@ -12,7 +12,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation rml:CSV ;
-            rml:source <_:b273446> ] ;
+            rml:source _:b273446 ] ;
     rml:predicateObjectMap [ rml:objectMap <http://example.com/base/RefObjectMap1> ;
             rml:predicate ex:sameSportAs ] ;
     rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{Name}" ] .
