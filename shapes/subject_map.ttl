@@ -18,7 +18,8 @@
     Represents a Subject Map.
     """ ;
     sh:message """
-    Subject Map must generate an IRI representing the subject of an RDF triple.
+    Subject Map must generate a resource representing the subject of
+    an RDF triple.
     """ ;
 
     sh:and (
