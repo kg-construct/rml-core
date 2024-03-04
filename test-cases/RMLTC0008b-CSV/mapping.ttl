@@ -4,34 +4,48 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation rml:CSV ;
-            rml:source _:b637337 ] ;
-    rml:predicateObjectMap [ rml:objectMap <http://example.com/base/RefObjectMap1> ;
-            rml:predicate ex:Sport ],
-        [ rml:object foaf:Person ;
-            rml:predicate rdf:type ],
-        [ rml:objectMap [ rml:reference "ID" ] ;
-            rml:predicate ex:id ],
-        [ rml:objectMap [ rml:reference "Name" ] ;
-            rml:predicate foaf:name ] ;
-    rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{Name}" ] .
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:referenceFormulation rml:CSV;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student.csv"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap <http://example.com/base/RefObjectMap1>;
+      rml:predicate ex:Sport
+    ], [
+      rml:object foaf:Person;
+      rml:predicate rdf:type
+    ], [
+      rml:objectMap [
+          rml:reference "ID"
+        ];
+      rml:predicate ex:id
+    ], [
+      rml:objectMap [
+          rml:reference "Name"
+        ];
+      rml:predicate foaf:name
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/Student/{ID}/{Name}"
+    ] .
 
-_:b192913 a rml:RelativePathSource ;
-    rml:path "student.csv" .
+<http://example.com/base/RefObjectMap1> a rml:RefObjectMap;
+  rml:parentTriplesMap <http://example.com/base/TriplesMap2> .
 
-_:b637337 a rml:RelativePathSource ;
-    rml:path "student.csv" .
-
-<http://example.com/base/RefObjectMap1> a rml:RefObjectMap ;
-    rml:parentTriplesMap <http://example.com/base/TriplesMap2> .
-
-<http://example.com/base/TriplesMap2> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation rml:CSV ;
-            rml:source _:b192913 ] ;
-    rml:predicateObjectMap [ rml:object activity:Sport ;
-            rml:predicate rdf:type ] ;
-    rml:subjectMap [ rml:template "http://example.com/{Sport}" ] .
-
+<http://example.com/base/TriplesMap2> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:referenceFormulation rml:CSV;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student.csv"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:object activity:Sport;
+      rml:predicate rdf:type
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/{Sport}"
+    ] .

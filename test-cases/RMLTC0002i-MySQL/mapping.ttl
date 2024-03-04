@@ -2,18 +2,25 @@
 @prefix ex: <http://example.com/> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ rml:query "SELECT Name FROM student" ;
-            rml:referenceFormulation rml:SQL2008Query ;
-            rml:source <http://example.com/base/#DB_source> ;
-            rml:tableName "student" ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "IDs" ] ;
-            rml:predicate ex:id ] ;
-    rml:subjectMap [ rml:template "http://example.com/{ID}/{Name}" ] .
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [
+      rml:query "SELECT Name FROM student";
+      rml:referenceFormulation rml:SQL2008Query;
+      rml:source <http://example.com/base/#DB_source>;
+      rml:iterator "student"
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "IDs"
+        ];
+      rml:predicate ex:id
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/{ID}/{Name}"
+    ] .
 
-<http://example.com/base/#DB_source> a d2rq:Database ;
-    d2rq:jdbcDSN "CONNECTIONDSN" ;
-    d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver" ;
-    d2rq:password "" ;
-    d2rq:username "root" .
-
+<http://example.com/base/#DB_source> a d2rq:Database;
+  d2rq:jdbcDSN "CONNECTIONDSN";
+  d2rq:jdbcDriver "com.mysql.cj.jdbc.Driver";
+  d2rq:password "";
+  d2rq:username "root" .

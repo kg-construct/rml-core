@@ -3,18 +3,26 @@
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation rml:CSV ;
-            rml:source _:b865802 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:datatype xsd:string ;
-                    rml:reference "Name" ] ;
-            rml:predicate foaf:name ],
-        [ rml:objectMap [ rml:datatype xsd:int ;
-                    rml:reference "Age" ] ;
-            rml:predicate ex:age ] ;
-    rml:subjectMap [ rml:template "http://example.com/{Name}" ] .
-
-_:b865802 a rml:RelativePathSource ;
-    rml:path "student.csv" .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:referenceFormulation rml:CSV;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student.csv"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:datatype xsd:string;
+          rml:reference "Name"
+        ];
+      rml:predicate foaf:name
+    ], [
+      rml:objectMap [
+          rml:datatype xsd:int;
+          rml:reference "Age"
+        ];
+      rml:predicate ex:age
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/{Name}"
+    ] .
