@@ -7,22 +7,22 @@
   rml:logicalSource [
       rml:referenceFormulation rml:SQL2008Table;
       rml:source <http://example.com/base/#DB_source>;
-      rml:iterator "Student"
+      rml:iterator "\"Student\""
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "ID"
+          rml:reference "\"ID\""
         ];
       rml:predicate ex:id
     ], [
       rml:objectMap [
-          rml:reference "Name"
+          rml:reference "\"Name\""
         ];
       rml:predicate foaf:name
     ];
   rml:subjectMap [
       rml:class foaf:Person;
-      rml:template "http://example.com/{ID}/{Name}"
+      rml:template "http://example.com/{\"ID\"}/{\"Name\"}"
     ] .
 
 <http://example.com/base/#DB_source> a d2rq:Database;
