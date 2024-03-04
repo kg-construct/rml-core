@@ -5,7 +5,7 @@
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
-      rml:query """
+      rml:iterator """
         SELECT Name, COUNT(Sport) as SPORTCOUNT
         FROM Student
         GROUP BY Name
