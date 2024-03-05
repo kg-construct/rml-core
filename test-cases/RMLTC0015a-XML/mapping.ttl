@@ -6,6 +6,7 @@
       rml:iterator "/countries/country";
       rml:referenceFormulation rml:XPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "country_en.xml"
         ]
     ];
@@ -25,6 +26,7 @@
       rml:iterator "/countries/country";
       rml:referenceFormulation rml:XPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "country_es.xml"
         ]
     ];

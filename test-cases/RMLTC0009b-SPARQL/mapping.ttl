@@ -19,6 +19,7 @@
               } """;
       rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path <http://example.com/base/#InputSPARQL1>
         ]
     ];
@@ -66,6 +67,7 @@
                 } """;
       rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path <http://example.com/base/#InputSPARQL2>
         ]
     ];

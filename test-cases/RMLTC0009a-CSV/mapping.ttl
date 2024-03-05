@@ -6,6 +6,7 @@
   rml:logicalSource [ a rml:LogicalSource;
       rml:referenceFormulation rml:CSV;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "student.csv"
         ]
     ];
@@ -32,6 +33,7 @@
   rml:logicalSource [ a rml:LogicalSource;
       rml:referenceFormulation rml:CSV;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "sport.csv"
         ]
     ];
