@@ -6,6 +6,7 @@
       rml:iterator "$.links[*]";
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "student_sport.json"
         ]
     ];
@@ -24,6 +25,7 @@
       rml:iterator "$.students[*]";
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "student.json"
         ]
     ];
@@ -47,6 +49,7 @@
       rml:iterator "$.sports[*]";
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "sport.json"
         ]
     ];

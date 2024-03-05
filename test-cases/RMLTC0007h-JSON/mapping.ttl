@@ -6,6 +6,7 @@
       rml:iterator "$.students[*]";
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "student.json"
         ]
     ];

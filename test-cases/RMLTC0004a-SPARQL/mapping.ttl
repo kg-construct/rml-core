@@ -16,6 +16,7 @@ ex:TriplesMap1 a rml:TriplesMap;
             } """;
       rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path <http://example.com/base#InputSPARQL>
         ]
     ];
@@ -44,6 +45,7 @@ ex:TriplesMap2 a rml:TriplesMap;
                 } """;
       rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path <http://example.com/base#InputSPARQL>
         ]
     ];

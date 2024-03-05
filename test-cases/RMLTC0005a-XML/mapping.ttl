@@ -7,6 +7,7 @@
       rml:iterator "/persons/person";
       rml:referenceFormulation rml:XPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "ious.xml"
         ]
     ];

@@ -9,6 +9,7 @@
       rml:iterator "/students/student";
       rml:referenceFormulation rml:XPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "student.xml"
         ]
     ];
@@ -41,6 +42,7 @@
       rml:iterator "/students/student";
       rml:referenceFormulation rml:XPath;
       rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
           rml:path "student.xml"
         ]
     ];
