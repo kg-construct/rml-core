@@ -1,4 +1,5 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 
@@ -10,7 +11,7 @@
             WHERE {
                 ?x foaf:name ?name .
             } """;
-      rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
+      rml:referenceFormulation formats:SPARQL_Results_JSON;
       rml:source <http://example.com/base#InputSPARQL>
     ];
   rml:predicateObjectMap [
