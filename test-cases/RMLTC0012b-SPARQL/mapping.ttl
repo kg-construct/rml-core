@@ -1,5 +1,6 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 
@@ -14,7 +15,7 @@
                    ?x  foaf:firstName ?fname ;
                        foaf:lastName  ?lname ;
               } """;
-      rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
+      rml:referenceFormulation formats:SPARQL_Results_JSON;
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
           rml:path <http://example.com/base/#InputSPARQL1>
@@ -44,7 +45,7 @@
                         foaf:lastName  ?lname ;
                         <http://example.com/city> ?city .
                 } """;
-      rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
+      rml:referenceFormulation formats:SPARQL_Results_JSON;
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
           rml:path <http://example.com/base/#InputSPARQL2>
