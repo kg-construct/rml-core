@@ -7,7 +7,7 @@
       rml:iterator "/Persons/Person";
       rml:referenceFormulation rml:XPath;
       rml:source [ a rml:RelativePathSource;
-          rml:path "persons.json"
+          rml:path "persons.xml"
         ]
     ];
   rml:predicateObjectMap [
