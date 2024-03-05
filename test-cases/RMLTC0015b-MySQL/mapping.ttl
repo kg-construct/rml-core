@@ -14,7 +14,7 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:language "english";
+          rml:language "a-english";
           rml:reference "Name"
         ];
       rml:predicate rdfs:label
@@ -26,16 +26,16 @@
 <http://example.com/base/TriplesMap2> a rml:TriplesMap;
   rml:logicalSource [
       rml:iterator """
-            SELECT \"Code\", \"Name\", \"Lan\"
-            FROM \"Country\"
-            WHERE \"Lan\" = 'ES';
-           """;
+        SELECT Code, Name, Lan
+        FROM Country
+        WHERE Lan = 'EN';
+       """;
       rml:source <http://example.com/base/#DB_source>;
       rml:referenceFormulation rml:SQL2008Query
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:language "spanish";
+          rml:language "a-spanish";
           rml:reference "Name"
         ];
       rml:predicate rdfs:label
