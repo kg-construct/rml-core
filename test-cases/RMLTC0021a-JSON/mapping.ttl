@@ -3,20 +3,25 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
-_:b754459 a rml:RelativePathSource ;
-    rml:path "student.json" .
+<http://example.com/base/RefObjectMap1> a rml:RefObjectMap;
+  rml:joinCondition [
+      rml:child "Sport";
+      rml:parent "Sport"
+    ];
+  rml:parentTriplesMap <http://example.com/base/TriplesMap1> .
 
-<http://example.com/base/RefObjectMap1> a rml:RefObjectMap ;
-    rml:joinCondition [ rml:child "Sport" ;
-            rml:parent "Sport" ] ;
-    rml:parentTriplesMap <http://example.com/base/TriplesMap1> .
-
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "$.students[*]" ;
-            rml:referenceFormulation rml:JSONPath ;
-            rml:source _:b754459 ] ;
-    rml:predicateObjectMap [ rml:objectMap <http://example.com/base/RefObjectMap1> ;
-            rml:predicate ex:sameSportAs ] ;
-    rml:subjectMap [ rml:template "http://example.com/Student/{ID}/{Name}" ] .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.students[*]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap <http://example.com/base/RefObjectMap1>;
+      rml:predicate ex:sameSportAs
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/Student/{ID}/{Name}"
+    ] .

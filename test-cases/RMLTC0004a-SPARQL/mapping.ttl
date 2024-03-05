@@ -3,10 +3,10 @@
 @prefix rml: <http://w3id.org/rml/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 
-ex:TriplesMap1 a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "$.results.bindings[*]" ;
-            rml:query """
+ex:TriplesMap1 a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.results.bindings[*]";
+      rml:iterator """
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -14,18 +14,27 @@ ex:TriplesMap1 a rml:TriplesMap ;
             WHERE {
                 ?x  a <http://example.com/Student> ;
                     foaf:name  ?Student .
-            } """ ;
-            rml:referenceFormulation rml:JSONPath ;
-            rml:source _:b92731 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "Student.value" ] ;
-            rml:predicate foaf:name ] ;
-    rml:subjectMap [ rml:class ex:Student ;
-            rml:template "http://example.com/{Student.value}" ] .
+            } """;
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path <http://example.com/base#InputSPARQL>
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "Student.value"
+        ];
+      rml:predicate foaf:name
+    ];
+  rml:subjectMap [
+      rml:class ex:Student;
+      rml:template "http://example.com/{Student.value}"
+    ] .
 
-ex:TriplesMap2 a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "$.results.bindings[*]" ;
-            rml:query """
+ex:TriplesMap2 a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.results.bindings[*]";
+      rml:iterator """
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -34,22 +43,24 @@ ex:TriplesMap2 a rml:TriplesMap ;
                     ?x  a <http://example.com/Student> ;
                         <http://example.com/plays> ?sportObject .
                     ?sportObject foaf:name ?Sport .
-                } """ ;
-            rml:referenceFormulation rml:JSONPath ;
-            rml:source _:b621321 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "Sport.value" ] ;
-            rml:predicate foaf:name ] ;
-    rml:subjectMap [ rml:class ex:Sport ;
-            rml:template "http://example.com/{Sport.value}" ] .
+                } """;
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path <http://example.com/base#InputSPARQL>
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "Sport.value"
+        ];
+      rml:predicate foaf:name
+    ];
+  rml:subjectMap [
+      rml:class ex:Sport;
+      rml:template "http://example.com/{Sport.value}"
+    ] .
 
-_:b621321 a rml:RelativePathSource ;
-    rml:path <http://example.com/base#InputSPARQL> .
-
-_:b92731 a rml:RelativePathSource ;
-    rml:path <http://example.com/base#InputSPARQL> .
-
-<http://example.com/base#InputSPARQL> a sd:Service ;
-    sd:endpoint <http://localhost:PORT/ds1/sparql> ;
-    sd:resultFormat <http://www.w3.org/ns/formats/SPARQL_Results_JSON> ;
-    sd:supportedLanguage sd:SPARQL11Query .
-
+<http://example.com/base#InputSPARQL> a sd:Service;
+  sd:endpoint <http://HOST:PORT/ds1/sparql>;
+  sd:resultFormat <http://www.w3.org/ns/formats/SPARQL_Results_JSON>;
+  sd:supportedLanguage sd:SPARQL11Query .

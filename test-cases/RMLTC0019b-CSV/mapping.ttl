@@ -1,14 +1,19 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation rml:CSV ;
-            rml:source _:b326730 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "FirstName" ] ;
-            rml:predicate foaf:name ] ;
-    rml:subjectMap [ rml:reference "FirstName" ] .
-
-_:b326730 a rml:RelativePathSource ;
-    rml:path "persons.csv" .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:referenceFormulation rml:CSV;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "persons.csv"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "FirstName"
+        ];
+      rml:predicate foaf:name
+    ];
+  rml:subjectMap [
+      rml:reference "FirstName"
+    ] .

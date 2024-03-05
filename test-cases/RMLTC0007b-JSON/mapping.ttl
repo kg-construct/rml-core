@@ -3,18 +3,24 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "$.students[*]" ;
-            rml:referenceFormulation rml:JSONPath ;
-            rml:source _:b849100 ] ;
-    rml:predicateObjectMap [ rml:object foaf:Person ;
-            rml:predicate rdf:type ],
-        [ rml:objectMap [ rml:reference "FirstName" ] ;
-            rml:predicate foaf:name ] ;
-    rml:subjectMap [ rml:graph ex:PersonGraph ;
-            rml:template "http://example.com/Student/{ID}/{FirstName}" ] .
-
-_:b849100 a rml:RelativePathSource ;
-    rml:path "student.json" .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.students[*]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:object foaf:Person;
+      rml:predicate rdf:type
+    ], [
+      rml:objectMap [
+          rml:reference "FirstName"
+        ];
+      rml:predicate foaf:name
+    ];
+  rml:subjectMap [
+      rml:graph ex:PersonGraph;
+      rml:template "http://example.com/Student/{ID}/{FirstName}"
+    ] .

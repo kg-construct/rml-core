@@ -2,19 +2,27 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "$.students[*]" ;
-            rml:referenceFormulation rml:JSONPath ;
-            rml:source _:b594210 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "ID" ] ;
-            rml:predicate ex:id ],
-        [ rml:objectMap [ rml:reference "Name" ] ;
-            rml:predicate foaf:name ] ;
-    rml:subjectMap [ rml:class foaf:Person ;
-            rml:graph ex:PersonGraph ;
-            rml:template "http://example.com/Student/{ID}/{Name}" ] .
-
-_:b594210 a rml:RelativePathSource ;
-    rml:path "student.json" .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.students[*]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "ID"
+        ];
+      rml:predicate ex:id
+    ], [
+      rml:objectMap [
+          rml:reference "Name"
+        ];
+      rml:predicate foaf:name
+    ];
+  rml:subjectMap [
+      rml:class foaf:Person;
+      rml:graph ex:PersonGraph;
+      rml:template "http://example.com/Student/{ID}/{Name}"
+    ] .

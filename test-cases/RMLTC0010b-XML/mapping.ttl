@@ -1,15 +1,20 @@
 @prefix ex: <http://example.com/> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "/countries/country" ;
-            rml:referenceFormulation rml:XPath ;
-            rml:source _:b165391 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "Name" ] ;
-            rml:predicate ex:name ] ;
-    rml:subjectMap [ rml:template "http://example.com/{CountryCode}/{Name}" ] .
-
-_:b165391 a rml:RelativePathSource ;
-    rml:path "country_info.xml" .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "/countries/country";
+      rml:referenceFormulation rml:XPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "country_info.xml"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "Name"
+        ];
+      rml:predicate ex:name
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/{CountryCode}/{Name}"
+    ] .

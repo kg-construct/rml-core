@@ -1,15 +1,20 @@
 @prefix ex: <http://example.com/> .
 @prefix rml: <http://w3id.org/rml/> .
 
-<http://example.com/base/TriplesMap1> a rml:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:iterator "$.students[*]]" ;
-            rml:referenceFormulation rml:JSONPath ;
-            rml:source _:b660259 ] ;
-    rml:predicateObjectMap [ rml:objectMap [ rml:reference "IDs" ] ;
-            rml:predicate ex:id ] ;
-    rml:subjectMap [ rml:template "http://example.com/{ID}/{Name}" ] .
-
-_:b660259 a rml:RelativePathSource ;
-    rml:path "student2.json" .
-
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.students[*]]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:path "student2.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "IDs"
+        ];
+      rml:predicate ex:id
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/{ID}/{Name}"
+    ] .
