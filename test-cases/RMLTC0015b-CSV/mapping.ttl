@@ -10,7 +10,7 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:language "english";
+          rml:language "a-english";
           rml:reference "Name"
         ];
       rml:predicate rdfs:label
@@ -28,7 +28,7 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:language "spanish";
+          rml:language "a-spanish";
           rml:reference "Name"
         ];
       rml:predicate rdfs:label
