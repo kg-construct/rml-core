@@ -7,7 +7,6 @@
 
 ex:TriplesMap1 a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
-      rml:iterator "$.results.bindings[*]";
       rml:iterator """
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -17,7 +16,7 @@ ex:TriplesMap1 a rml:TriplesMap;
                 ?x  foaf:name ?Name ;
                     rdf:ID    ?ID ;
             } """;
-      rml:referenceFormulation rml:JSONPath;
+      rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source [ a rml:RelativePathSource;
           rml:path <http://example.com/base#InputSPARQL>
         ]
@@ -48,7 +47,6 @@ ex:RefObjectMap1 a rml:RefObjectMap;
 
 ex:TriplesMap2 a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
-      rml:iterator "$.results.bindings[*]";
       rml:iterator """
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -58,7 +56,7 @@ ex:TriplesMap2 a rml:TriplesMap;
                     ?x a <http://example.com/Sport> .
                     ?x foaf:name ?Sport .
                 } """;
-      rml:referenceFormulation rml:JSONPath;
+      rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source [ a rml:RelativePathSource;
           rml:path <http://example.com/base#InputSPARQL>
         ]
@@ -73,5 +71,4 @@ ex:TriplesMap2 a rml:TriplesMap;
 
 <http://example.com/base#InputSPARQL> a sd:Service;
   sd:endpoint <http://HOST:PORT/ds1/sparql>;
-  sd:resultFormat <http://www.w3.org/ns/formats/SPARQL_Results_JSON>;
   sd:supportedLanguage sd:SPARQL11Query .

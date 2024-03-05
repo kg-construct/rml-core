@@ -4,7 +4,6 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 
 <http://example.com/base#Country> rml:logicalSource [
-      rml:iterator "$.results.bindings[*]";
       rml:iterator """
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -14,7 +13,7 @@
                 ?x foaf:name ?Name ;
                    rdf:ID ?ID .
             } """;
-      rml:referenceFormulation rml:JSONPath;
+      rml:referenceFormulation <https://www.w3.org/ns/formats/SPARQL_Results_JSON>;
       rml:source <http://example.com/base#InputSPARQL>
     ];
   rml:predicateObjectMap [
@@ -35,5 +34,4 @@
 
 <http://example.com/base#InputSPARQL> a sd:Service;
   sd:endpoint <http://HOST:PORT/ds1/sparql>;
-  sd:resultFormat <http://www.w3.org/ns/formats/SPARQL_Results_JSON>;
   sd:supportedLanguage sd:SPARQL11Query .
