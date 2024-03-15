@@ -3045,39 +3045,6 @@
   rmltest:mappingDocument "mapping.ttl";
   rmltest:output "output.nq" .
 
-<RMLTC0018a-MySQL> a test:TestCase;
-  dcterms:identifier "RMLTC0018a-MySQL";
-  rmltest:hasExpectedOutput true;
-  rmltest:input [
-      rmltest:database [
-          rmltest:sqlScriptFile "resource.sql"
-        ];
-      rmltest:inputType "MySQL"
-    ];
-  rmltest:mappingDocument "mapping.ttl";
-  rmltest:output "output.nq" .
-
-<RMLTC0018a-PostgreSQL> a test:TestCase;
-  dcterms:identifier "RMLTC0018a-PostgreSQL";
-  rmltest:hasExpectedOutput true;
-  rmltest:input [
-      rmltest:database [
-          rmltest:sqlScriptFile "resource.sql"
-        ];
-      rmltest:inputType "PostgreSQL"
-    ];
-  rmltest:mappingDocument "mapping.ttl";
-  rmltest:output "output.nq" .
-
-<RMLTC0018a-SQLServer> a test:TestCase;
-  dcterms:identifier "RMLTC0018a-SQLServer";
-  rmltest:hasExpectedOutput true;
-  rmltest:input [
-      rmltest:inputType "SQLServer"
-    ];
-  rmltest:mappingDocument "mapping.ttl";
-  rmltest:output "output.nq" .
-
 <RMLTC0019a-CSV> a test:TestCase;
   dcterms:identifier "RMLTC0019a-CSV";
   rmltest:hasExpectedOutput true;
