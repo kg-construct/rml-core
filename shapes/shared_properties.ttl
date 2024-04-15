@@ -162,11 +162,10 @@
     exported to.
     """ ;
     sh:message """
-    Zero or one rml:logicalTarget is required to export RDF triples.
+    Zero or more rml:logicalTarget is required to export RDF triples.
     """ ;
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:minCount 0 ;
-    sh:maxCount 1 ;
 .
 
 :RMLStrategyAppendShape
