@@ -9,31 +9,32 @@ An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is
 * 1 `rml:reference`, or
 * 1 `rml:template`.
 
-Each of these properties specifies an [=expression=] which, upon evaluation, results in a [=set of values]=.
+Each of these properties specifies an [=expression=] which, upon evaluation, results in an ordered list of values.
 
 The <dfn>set of values</dfn> are the values of the [=references expression set=] which are returned by an [=expression=].
 
-For each value in the [=set of values=], an [=expression value=] is created. If the [=set of values=] is empty, `NULL` is returned and no [=expression value=] is created.
+For each value in the ordered list of values, an [=expression value=] is created. If the ordered list of values is empty, `NULL` is returned and no [=expression value=] is created.
 
 The <dfn>reference expression set</dfn> of an [=expression map=] is the set of expressions which are evaluated on a [=logical iteration=].
 
 ### Constant expression (`rml:constant`)
 
-A <dfn>constant-valued expression map</dfn> is an [=expression map=] that always generates the same expression value. A constant-valued expression map is represented by a resource that has exactly one `rml:constant` property, the value of which is called a <dfn>constant expression</dfn>.
+A <dfn>constant-valued expression map</dfn> is an [=expression map=] that always generates the same value. A constant-valued expression map is represented by a resource that has exactly one `rml:constant` property, the value of which is called a <dfn>constant expression</dfn>.
 
-The <dfn>constant value</dfn> is a singleton set containing the [=constant expression=].
+The <dfn>constant value</dfn> is a singleton list containing the [=constant expression=].
 
-The [=reference expressions=] of a [constant-valued expression map=] is the empty set.
+The [=reference expressions=] of a [constant-valued expression map=] is an empty list.
 
 ### Reference (`rml:reference`)
 A <dfn>reference-valued expression map</dfn> is an [=expression map=] that is represented by a resource that has exactly one `rml:reference` property, the value of which is called a <dfn>reference expression</dfn>.
 
 The [=reference expression=] MUST be a valid [=expression=] according to the defined [=reference formulation=] in the [=logical source=].
 
-The [=reference expression set=] of a [reference-valued expression map=] is the singleton set containing the [=reference expression=].
+The [=reference expression set=] of a [=reference-valued expression map=] is the singleton set containing the [=reference expression=].
 
-The <dfn>reference value set</dfn> is a set of values obtained by evaluating a [=reference expression=] against a given [=logical iteration=]. For each value in the set, an expression is created. 
-If the reference value set is an empty set, then the processor SHOULD return `NULL` and no expression should be created but a processor COULD allow users to adjust the strategy.
+The <dfn>reference value</dfn> is an ordered list of values obtained by evaluating the [=reference expression=] against a given [=logical iteration=].
+For each value in the ordered list, an expression is created. 
+If the reference value set is an empty ordered list, then the processor SHOULD return `NULL` and no expression should be created but a processor COULD allow users to adjust the strategy.
 
 ### Template (`rml:template`)
 A <dfn>template-valued expression map</dfn> is an [=expression map=] that is represented by a resource that has exactly one `rml:template` property, the value of which is called a <dfn>template expression</dfn>. The [=template expression=] MUST be a valid [=string template=].
@@ -57,7 +58,7 @@ The <dfn>template value</dfn> when evaluating a [=string template=] for a given 
 1. Let `result` be the [=reference expression set=] of the [=string template=]
 2. For each [=reference expression=] in `result`:
     1. Let `values` be the [=reference value=] of the [=reference expression=] that is enclosed in the curly braces
-    2. If `values` is an empty set, then return `NULL`
+    2. If `values` is an empty list, then return `NULL`
     3. For each `value` in `values`:
         1. Let `value` be the [=natural RDF lexical form=] corresponding to `value`
 3. Let `result` be the [=n-ary Cartesian product=] of `result`
