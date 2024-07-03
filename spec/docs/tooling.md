@@ -50,15 +50,6 @@ that are raised in the process of generating the output dataset.
 An [RML processor]() MAY include an [RML data validator](), but this is not required.
 
 
-### Generators
-
-An [RML processor]() MAY include an **_RML default mapping generator_**.
-This is a facility that introspects the schema of the [input data source]()
-and generates an [=RML mapping=], 
-possibly in the form of an [RML mapping document](),
-intended for further customization by a mapping author.
-Such a mapping is known as a <dfn>default mapping</dfn>.
-
 ## Data Errors
 
 A <dfn>data error</dfn> is a condition of the data in the [input data]()
