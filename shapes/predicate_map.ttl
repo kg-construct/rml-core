@@ -29,9 +29,9 @@
             sh:path rml:termType;
             sh:message """
             rml:termType for Predicate Map can only be a rml:IRI, rml:UnsafeIRI,
-            or rml:URI;
+            rml:URI, or rml:UnsafeURI;
             """;
-            sh:in (rml:IRI rml:UnsafeIRI rml:URI);
+            sh:in (rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI);
         ]
     ) ;
 .
