@@ -44,10 +44,10 @@
         [
             sh:path rml:termType ;
             sh:message """
-            rml:termType must be a rml:IRI, rml:URI, or rml:BlankNode
-            for a Subject Map.
+            rml:termType must be a rml:IRI, rml:UnsafeIRI, rml:URI,
+            or rml:BlankNode for a Subject Map.
             """ ;
-            sh:in (rml:IRI rml:URI rml:BlankNode);
+            sh:in (rml:IRI rml:UnsafeIRI rml:URI rml:BlankNode);
         ]
     ) ;
 .
