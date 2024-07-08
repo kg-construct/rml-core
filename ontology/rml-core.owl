@@ -93,7 +93,6 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/baseIRI
 :baseIRI rdf:type owl:ObjectProperty ;
        rdfs:domain :TriplesMap ;
-       rdfs:range rdfs:Class ;
        rdfs:comment "Indicates the base IRI of the RDF graph to be created."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "base IRI" .
@@ -186,7 +185,12 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/logicalTarget
 :logicalTarget rdf:type owl:ObjectProperty ;
-               rdfs:domain :TermMap ;
+       rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :TermMap
+                                   :DatatypeMap
+                                   :LanguageMap
+                                 )
+                   ] ;
                rdfs:range :LogicalTarget ;
                rdfs:comment "Represents the logical target to where triples are exported to." ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -274,7 +278,7 @@ foaf:name rdf:type owl:AnnotationProperty .
                                      :UnsafeURI
                                    )
                      ] ;
-          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."@en ;
+          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI/URI (safe or unsafe) reference, blank node, or a literal."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "term type" .
 
