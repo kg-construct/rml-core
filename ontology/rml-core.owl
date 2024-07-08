@@ -351,7 +351,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/DatatypeMap
 :DatatypeMap rdf:type owl:Class ;
-             rdfs:subClassOf :ExpressionMap ;
+             rdfs:subClassOf :TermMap ;
              rdfs:comment "Represents a datatype map"@en ;
              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
              rdfs:label "Datatype Map" .
