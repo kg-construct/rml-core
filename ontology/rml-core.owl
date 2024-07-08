@@ -23,7 +23,6 @@
                         dc:contributor "Christophe Debruyne" ;
                         dc:contributor "Samaneh Jozashoori" ;
                         dc:contributor "Dylan Van Assche" ;
-                        dc:contributor "Julián Arenas Guerrero" ;
                         dc:contributor "Ana Iglesias Molina" ;
                         dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
                         vann:preferredNamespaceUri "http://w3id.org/rml/" ;
@@ -237,14 +236,6 @@ foaf:name rdf:type owl:AnnotationProperty .
                     rdfs:label "predicate object map" .
 
 
-###  http://w3id.org/rml/strategy
-:strategy rdf:type owl:ObjectProperty ;
-          rdfs:range :Strategy ;
-          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "strategy" .
-
-
 ###  http://w3id.org/rml/subject
 :subject rdf:type owl:ObjectProperty ;
          rdfs:domain :TriplesMap ;
@@ -451,13 +442,6 @@ foaf:name rdf:type owl:AnnotationProperty .
               rdfs:comment "Denotes a reference to an object map."@en ;
               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
               rdfs:label "Reference Object Map" .
-
-
-###  http://w3id.org/rml/Strategy
-:Strategy rdf:type owl:Class ;
-          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "Strategy" .
 
 
 ###  http://w3id.org/rml/SubjectMap
