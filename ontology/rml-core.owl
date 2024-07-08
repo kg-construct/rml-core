@@ -90,6 +90,15 @@ foaf:name rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/rml/baseIRI
+:baseIRI rdf:type owl:ObjectProperty ;
+       rdfs:domain :TriplesMap ;
+       rdfs:range rdfs:Class ;
+       rdfs:comment "Indicates the base IRI of the RDF graph to be created."@en ;
+       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+       rdfs:label "base IRI" .
+
+
 ###  http://w3id.org/rml/class
 :class rdf:type owl:ObjectProperty ;
        rdfs:domain :SubjectMap ;
