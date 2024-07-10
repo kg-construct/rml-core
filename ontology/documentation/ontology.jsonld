@@ -9,7 +9,7 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid11",
+  "@id" : "_:genid10",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
@@ -41,8 +41,6 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
-      "@id" : "http://w3id.org/rml/DatatypeMap"
-    }, {
       "@id" : "http://w3id.org/rml/LanguageMap"
     }, {
       "@id" : "http://w3id.org/rml/TermMap"
@@ -346,7 +344,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Denotes an URI, used with termType."
+    "@value" : "Denotes a URI, used with termType."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "http://w3id.org/rml/core/"
@@ -385,7 +383,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Indicates the base IRI of the RDF graph to be created."
+    "@value" : "Indicates the base IRI of the RDF graph to be created within a triples map."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "http://w3id.org/rml/TriplesMap"
@@ -922,7 +920,7 @@
     "@value" : "term type"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "_:genid11"
+    "@id" : "_:genid10"
   } ]
 }, {
   "@id" : "http://www.linkedmodel.org/schema/vaem#acronym",
