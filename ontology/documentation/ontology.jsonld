@@ -383,7 +383,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Indicates the base IRI of the RDF graph to be created within a triples map."
+    "@value" : "Indicates the base IRI of the RDF graph to be created with a triples map."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "http://w3id.org/rml/TriplesMap"

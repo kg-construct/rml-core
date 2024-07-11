@@ -92,7 +92,7 @@
 # http://w3id.org/rml/baseIRI
 <http://w3id.org/rml/baseIRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TriplesMap> .
-<http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates the base IRI of the RDF graph to be created within a triples map."@en .
+<http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates the base IRI of the RDF graph to be created with a triples map."@en .
 <http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#label> "base IRI" .
 # 

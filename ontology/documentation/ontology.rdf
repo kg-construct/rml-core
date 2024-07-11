@@ -184,7 +184,7 @@
 
     <owl:ObjectProperty rdf:about="http://w3id.org/rml/baseIRI">
         <rdfs:domain rdf:resource="http://w3id.org/rml/TriplesMap"/>
-        <rdfs:comment xml:lang="en">Indicates the base IRI of the RDF graph to be created within a triples map.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Indicates the base IRI of the RDF graph to be created with a triples map.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
         <rdfs:label>base IRI</rdfs:label>
     </owl:ObjectProperty>

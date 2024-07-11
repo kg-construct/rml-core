@@ -93,7 +93,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/baseIRI
 :baseIRI rdf:type owl:ObjectProperty ;
        rdfs:domain :TriplesMap ;
-       rdfs:comment "Indicates the base IRI of the RDF graph to be created within a triples map."@en ;
+       rdfs:comment "Indicates the base IRI of the RDF graph to be created with a triples map."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "base IRI" .
 
