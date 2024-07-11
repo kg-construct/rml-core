@@ -9,6 +9,24 @@
     } ]
   } ]
 }, {
+  "@id" : "_:genid10",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://w3id.org/rml/BlankNode"
+    }, {
+      "@id" : "http://w3id.org/rml/IRI"
+    }, {
+      "@id" : "http://w3id.org/rml/Literal"
+    }, {
+      "@id" : "http://w3id.org/rml/URI"
+    }, {
+      "@id" : "http://w3id.org/rml/UnsafeIRI"
+    }, {
+      "@id" : "http://w3id.org/rml/UnsafeURI"
+    } ]
+  } ]
+}, {
   "@id" : "_:genid4",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
@@ -23,11 +41,9 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
-      "@id" : "http://w3id.org/rml/BlankNode"
+      "@id" : "http://w3id.org/rml/LanguageMap"
     }, {
-      "@id" : "http://w3id.org/rml/IRI"
-    }, {
-      "@id" : "http://w3id.org/rml/Literal"
+      "@id" : "http://w3id.org/rml/TermMap"
     } ]
   } ]
 }, {
@@ -112,7 +128,7 @@
     "@value" : "Datatype Map"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://w3id.org/rml/ExpressionMap"
+    "@id" : "http://w3id.org/rml/TermMap"
   } ]
 }, {
   "@id" : "http://w3id.org/rml/ExpressionMap",
@@ -148,7 +164,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Denotes an IRI, used with termpType."
+    "@value" : "Denotes an IRI, used with termType."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "http://w3id.org/rml/core/"
@@ -278,19 +294,6 @@
     "@value" : "Reference Object Map"
   } ]
 }, {
-  "@id" : "http://w3id.org/rml/Strategy",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@language" : "en",
-    "@value" : "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
-    "@id" : "http://w3id.org/rml/core/"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@value" : "Strategy"
-  } ]
-}, {
   "@id" : "http://w3id.org/rml/SubjectMap",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -335,6 +338,61 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Triples Map"
+  } ]
+}, {
+  "@id" : "http://w3id.org/rml/URI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Denotes a URI, used with termType."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "URI"
+  } ]
+}, {
+  "@id" : "http://w3id.org/rml/UnsafeIRI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Denotes an unsafe IRI, used with termType."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Unsafe IRI"
+  } ]
+}, {
+  "@id" : "http://w3id.org/rml/UnsafeURI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Denotes an unsafe URI, used with termType."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Unsafe URI"
+  } ]
+}, {
+  "@id" : "http://w3id.org/rml/baseIRI",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Indicates the base IRI of the RDF graph to be created with a triples map."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://w3id.org/rml/TriplesMap"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "base IRI"
   } ]
 }, {
   "@id" : "http://w3id.org/rml/child",
@@ -410,7 +468,7 @@
     "@value" : "constant"
   } ]
 }, {
-  "@id" : "http://w3id.org/rml/core",
+  "@id" : "http://w3id.org/rml/core/",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/terms/contributor" : [ {
     "@value" : "Ana Iglesias Molina"
@@ -426,8 +484,6 @@
     "@value" : "Dylan Van Assche"
   }, {
     "@value" : "Franck Michel"
-  }, {
-    "@value" : "Julián Arenas Guerrero"
   }, {
     "@value" : "Pano Maria"
   }, {
@@ -463,7 +519,7 @@
     "@value" : "http://w3id.org/rml/"
   } ],
   "http://www.w3.org/2002/07/owl#versionIRI" : [ {
-    "@id" : "http://w3id.org/rml/core"
+    "@id" : "http://w3id.org/rml/core/"
   } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
     "@value" : "0.1.0"
@@ -618,7 +674,7 @@
     "@value" : "Represents the logical target to where triples are exported to."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://w3id.org/rml/TermMap"
+    "@id" : "_:genid7"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "http://w3id.org/rml/core/"
@@ -794,22 +850,6 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
-  "@id" : "http://w3id.org/rml/strategy",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@language" : "en",
-    "@value" : "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
-    "@id" : "http://w3id.org/rml/core/"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@value" : "strategy"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://w3id.org/rml/Strategy"
-  } ]
-}, {
   "@id" : "http://w3id.org/rml/subject",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -868,7 +908,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."
+    "@value" : "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI/URI (safe or unsafe) reference, blank node, or a literal."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "http://w3id.org/rml/TermMap"
@@ -880,7 +920,7 @@
     "@value" : "term type"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "_:genid7"
+    "@id" : "_:genid10"
   } ]
 }, {
   "@id" : "http://www.linkedmodel.org/schema/vaem#acronym",

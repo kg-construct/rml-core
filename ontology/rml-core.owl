@@ -23,7 +23,6 @@
                         dc:contributor "Christophe Debruyne" ;
                         dc:contributor "Samaneh Jozashoori" ;
                         dc:contributor "Dylan Van Assche" ;
-                        dc:contributor "Julián Arenas Guerrero" ;
                         dc:contributor "Ana Iglesias Molina" ;
                         dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
                         vann:preferredNamespaceUri "http://w3id.org/rml/" ;
@@ -90,6 +89,14 @@ foaf:name rdf:type owl:AnnotationProperty .
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://w3id.org/rml/baseIRI
+:baseIRI rdf:type owl:ObjectProperty ;
+       rdfs:domain :TriplesMap ;
+       rdfs:comment "Indicates the base IRI of the RDF graph to be created with a triples map."@en ;
+       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+       rdfs:label "base IRI" .
+
 
 ###  http://w3id.org/rml/class
 :class rdf:type owl:ObjectProperty ;
@@ -178,7 +185,11 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/logicalTarget
 :logicalTarget rdf:type owl:ObjectProperty ;
-               rdfs:domain :TermMap ;
+       rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :TermMap
+                                   :LanguageMap
+                                 )
+                   ] ;
                rdfs:range :LogicalTarget ;
                rdfs:comment "Represents the logical target to where triples are exported to." ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -237,14 +248,6 @@ foaf:name rdf:type owl:AnnotationProperty .
                     rdfs:label "predicate object map" .
 
 
-###  http://w3id.org/rml/strategy
-:strategy rdf:type owl:ObjectProperty ;
-          rdfs:range :Strategy ;
-          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "strategy" .
-
-
 ###  http://w3id.org/rml/subject
 :subject rdf:type owl:ObjectProperty ;
          rdfs:domain :TriplesMap ;
@@ -267,11 +270,14 @@ foaf:name rdf:type owl:AnnotationProperty .
           rdfs:domain :TermMap ;
           rdfs:range [ rdf:type owl:Class ;
                        owl:unionOf ( :BlankNode
-                                     :IRI
                                      :Literal
+                                     :IRI
+                                     :UnsafeIRI
+                                     :URI
+                                     :UnsafeURI
                                    )
                      ] ;
-          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."@en ;
+          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI/URI (safe or unsafe) reference, blank node, or a literal."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "term type" .
 
@@ -357,7 +363,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/DatatypeMap
 :DatatypeMap rdf:type owl:Class ;
-             rdfs:subClassOf :ExpressionMap ;
+             rdfs:subClassOf :TermMap ;
              rdfs:comment "Represents a datatype map"@en ;
              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
              rdfs:label "Datatype Map" .
@@ -388,7 +394,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/IRI
 :IRI rdf:type owl:Class ;
-     rdfs:comment "Denotes an IRI, used with termpType."@en ;
+     rdfs:comment "Denotes an IRI, used with termType."@en ;
      rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
      rdfs:label "IRI" .
 
@@ -453,13 +459,6 @@ foaf:name rdf:type owl:AnnotationProperty .
               rdfs:label "Reference Object Map" .
 
 
-###  http://w3id.org/rml/Strategy
-:Strategy rdf:type owl:Class ;
-          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "Strategy" .
-
-
 ###  http://w3id.org/rml/SubjectMap
 :SubjectMap rdf:type owl:Class ;
             rdfs:subClassOf :TermMap ;
@@ -481,5 +480,26 @@ foaf:name rdf:type owl:AnnotationProperty .
             rdfs:comment "Represents a triples map."@en ;
             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
             rdfs:label "Triples Map" .
+
+
+###  http://w3id.org/rml/UnsafeIRI
+:UnsafeIRI rdf:type owl:Class ;
+     rdfs:comment "Denotes an unsafe IRI, used with termType."@en ;
+     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+     rdfs:label "Unsafe IRI" .
+
+
+###  http://w3id.org/rml/UnsafeURI
+:UnsafeURI rdf:type owl:Class ;
+     rdfs:comment "Denotes an unsafe URI, used with termType."@en ;
+     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+     rdfs:label "Unsafe URI" .
+
+
+###  http://w3id.org/rml/URI
+:URI rdf:type owl:Class ;
+     rdfs:comment "Denotes a URI, used with termType."@en ;
+     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+     rdfs:label "URI" .
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
