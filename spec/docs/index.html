@@ -5,74 +5,78 @@
     <title>RML-Core</title>
     <meta charset="utf-8">
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
-    <script class="remove">
-    var respecConfig = {
-      // check https://respec.org/docs/ for the meaning of these keys
-      authors: [
-        {
-          name: "Pano Maria",
-          company: "Skemu",
-          url: "https://panomaria.com",
-          companyURL: "https://skemu.com"
-        },
-        {
-          name: "Anastasia Dimou",
-          mailto: "anastasia.dimou@kuleuven.be",
-          company: "KU Leuven",
-          orcid: "0000-0003-2138-7972",
-          companyURL: "https://dtai.cs.kuleuven.be/"
-        },
-      ],
-      edDraftURI: "https://w3id.org/rml/spec",
-      editors: [
-        {
-          name: "Pano Maria",
-          company: "Skemu",
-          url: "https://panomaria.com",
-          companyURL: "https://skemu.com"
-        },
-        {
-          name: "Anastasia Dimou",
-          mailto: "anastasia.dimou@kuleuven.be",
-          company: "KU Leuven",
-          orcid: "0000-0003-2138-7972",
-          companyURL: "https://dtai.cs.kuleuven.be/"
-        },
-      ],
-      formerEditors: [
-      ],
-      github: "https://github.com/kg-construct/rml-core",
-      license: "w3c-software-doc",
-      localBiblio: {
-        RML: {
-            title: "RDF Mapping Language (RML)",
-            href: "https://rml.io/specs/rml/",
-            status: "Unofficial Draft",
-            publisher: "",
-            date: "",
-          },
-      },
-      otherLinks: [
-        {
-          key: "Website",
-          data: [{
-            value: "https://rml.io",
-            href: "https://rml.io"
-          },
-          {
-            value: "https://fno.io",
-            href: "https://fno.io"
-          }]
-        },
-      ],
-      shortName: "RML-Core",
-      specStatus: "CG-DRAFT",
-      // W3C config
-      copyrightStart: "2021",
-      doJsonLd: true,
-      group: "kg-construct",
-    };
-  </script>
+    <style type="text/css">
+        /* Adapted from R2RML */
+        aside.ex-input,
+        aside.ex-mapping,
+        aside.ex-output {
+            word-wrap:normal;
+            margin-top: 1.5em;
+            padding: 1em;
+            font-size: 80%;
+        }
+        aside.ex-input:before,
+        aside.ex-mapping:before,
+        aside.ex-output:before {
+            background: white;
+            display: block;
+            font-family: sans-serif;
+            font-size: 90%;
+            margin: -1.5em 0 0.5em 0;
+            padding: 0.4em 0.4em;
+            width: 18em;
+        }
+        /* Input data example */
+        aside.ex-input {
+            background: #cee;
+        }
+        aside.ex-input,
+        aside.ex-input:before {
+            border: 1px solid #acc;
+            overflow: auto;
+        }
+        aside.ex-input:before {
+            content: "Example input data";
+        }
+        /* RML mapping example */
+        aside.ex-mapping {
+            background: #eeb;
+        }
+        aside.ex-mapping,
+        aside.ex-mapping:before {
+            border: 1px solid #cc9;
+            overflow: auto;
+        }
+        aside.ex-mapping:before {
+            content: "Example RML mapping";
+        }
+        /* Output RDF example */
+        aside.ex-output {
+            background: #cfc;
+        }
+        aside.ex-output,
+        aside.ex-output:before {
+            border: 1px solid #aca;
+            overflow: auto;
+        }
+        aside.ex-output:before {
+            content: "Example output data";
+        }
+        table, th, td {
+          background: white;
+          border-collapse: collapse;
+          border: 1px solid;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        th {
+          font-weight: bold;
+        }
+    </style>
+    <script src = config.js class="remove">
+    </script>
 </head>
 
 <body>

@@ -4,31 +4,33 @@
 
 ## Expression map (`rml:ExpressionMap`)
 
-An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] MAY have one the following properties:
+An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is specialized by other RML classes. An [=expression map=] MUST have one the following properties:
 * 0 or 1 `rml:constant`, or
 * 0 or 1 `rml:reference`, or
-* 0 or 1 `rml:template`.
+* 0 or 1 `rml:template`, or
+* another property, or properties, defined by a subclass of `rml:ExpressionMap`.
 
-Each of these properties specifies an [=expression=] which, upon evaluation, results in a set of values.
+Each of these properties specifies an [=expression=] which, upon evaluation, results in an ordered list of values.
 
-The <dfn>reference expression set</dfn> of an [=expression map=] ar the set of expressions which are evaluated on a [=logical iteration=].
+The <dfn>reference expression set</dfn> of an [=expression map=] is the set of expressions which are evaluated on a [=logical iteration=].
 
 ### Constant expression (`rml:constant`)
 
-A <dfn>constant-valued expression map</dfn> is an [=expression map=] that always generates the same expression value. A constant-valued expression map is represented by a resource that has exactly one `rml:constant` property, the value of which is called a <dfn>constant expression</dfn>.
+A <dfn>constant-valued expression map</dfn> is an [=expression map=] that always generates the same value. A constant-valued expression map is represented by a resource that has exactly one `rml:constant` property, the value of which is called a <dfn>constant expression</dfn>.
 
-The <dfn>constant value</dfn> is a singleton set containing the [=constant expression=].
+The <dfn>constant value</dfn> is a singleton list containing the [=constant expression=].
 
-The [=reference expressions=] of a [constant-valued expression map=] is the empty set.
+The [=reference expressions=] of a [constant-valued expression map=] is an empty list.
 
 ### Reference (`rml:reference`)
 A <dfn>reference-valued expression map</dfn> is an [=expression map=] that is represented by a resource that has exactly one `rml:reference` property, the value of which is called a <dfn>reference expression</dfn>.
 
 The [=reference expression=] MUST be a valid [=expression=] according to the defined [=reference formulation=] in the [=logical source=].
 
-The [=reference expression set=] of a [reference-valued expression map=] is the singleton set containing the [=reference expression=].
+The [=reference expression set=] of a [=reference-valued expression map=] is the singleton set containing the [=reference expression=].
 
-The <dfn>reference value</dfn> is a set of values obtained by evaluating the [=reference expression=] against a given [=logical iteration=].
+The <dfn>reference value</dfn> is an ordered list of values obtained by evaluating the [=reference expression=] against a given [=logical iteration=].
+For each value in the ordered list, an expression is created.
 
 ### Template (`rml:template`)
 A <dfn>template-valued expression map</dfn> is an [=expression map=] that is represented by a resource that has exactly one `rml:template` property, the value of which is called a <dfn>template expression</dfn>. The [=template expression=] MUST be a valid [=string template=].
@@ -48,7 +50,7 @@ The <dfn>template value</dfn> when evaluating a [=string template=] for a given 
 1. Let `result` be the [=reference expression set=] of the [=string template=]
 2. For each [=reference expression=] in `result`:
     1. Let `values` be the [=reference value=] of the [=reference expression=] that is enclosed in the curly braces
-    2. If `values` is an empty set, then return `NULL`
+    2. If `values` is an empty list, then return `NULL`
     3. For each `value` in `values`:
         1. Let `value` be the [=natural RDF lexical form=] corresponding to `value`
 3. Let `result` be the [=n-ary Cartesian product=] of `result`
