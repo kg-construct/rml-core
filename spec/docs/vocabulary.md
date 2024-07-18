@@ -1,6 +1,6 @@
 # RML Mapping Documents
 
-### RML Mapping
+## RML Mapping
 
 An <dfn>RML mapping</dfn> defines a mapping from a data source to RDF.
 It is a structure that consists of one or more [=triples maps=].
@@ -69,7 +69,7 @@ its output is the [Direct Graph]() [[DM]()] corresponding to the [input data sou
 
 ## RDF-based Turtle Syntax; Media Type
 
-An **_RML mapping document_** is any document written in the [Turtle]() [[TURTLE]]() RDF syntax
+An <dfn data-lt="mapping document">RML mapping document</dfn> is any document written in the [Turtle]() [[TURTLE]]() RDF syntax
 that encodes an [=RML mapping graph=].
 
 The media type for [RML mapping documents]() is the same as for Turtle documents in general:

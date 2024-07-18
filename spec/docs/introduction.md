@@ -1,16 +1,16 @@
 # Base IRIs
-The base IRI of the document is used to resolve relative IRIs in the RML document following the specification of the Turtle serialisaiton.
+The base IRI of the [=mapping document=] is used to resolve relative IRIs in the RML document following the specification of the Turtle serialisaiton.
 
 ## Base IRI for mapping rules
 
-The [=base IRI=] of the [=Triples Map=] is used in resolving relative IRIs produced by the R2RML mapping.
+The [=base IRI=] of the [=Triples Map=] is used in resolving relative IRIs produced by the [=RML mapping=].
 
 
 <pre class="ex-mapping nohighlight">
-# Triples Map that generates "type" triples
+# Triples Map that has a declared base IRI
 <#TriplesMap>
     a rml:TriplesMap;
-    rml:baseIri "http://example.com/" .
+    rml:baseIri <http://example.com/> .
 </pre>
 
 The [=base IRI=] MUST be a valid IRI. It SHOULD NOT contain question mark (“?”) or hash (“#”) characters and SHOULD end in a slash (“/”) character.
