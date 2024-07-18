@@ -103,10 +103,10 @@ If the [=template value=] returned by the [=template-valued expression map=] is 
 If the [=term type=] of the [=template-valued term map=] is `rml:IRI`, then a [=reference value transforming function=] should be applied during the evaluation of the [=template expression=]. The [=reference value transforming function=] should transform a [=reference value=] into an [=IRI-safe version=] of that value.
 
 The <dfn data-lt="IRI-safe">IRI-safe version</dfn> of a string is obtained by applying the following transformation
-to any character that is not in the iunreserved production in [[RFC3987]]:
+to any character that is not in the [`iunreserved` production](http://tools.ietf.org/html/rfc3987#section-2.2) in [[RFC3987]]:
 
-1. Convert the character to a sequence of one or more octets using UTF-8 [[RFC3629]]
-2. Percent-encode each octet [[RFC3986]]
+1. Convert the character to a sequence of one or more octets using [UTF-8](http://tools.ietf.org/html/rfc3629) [[RFC3629]]
+2. [Percent-encode](http://tools.ietf.org/html/rfc3986#section-2.1) each octet [[RFC3986]]
 
 The following table shows examples of strings and their IRI-safe versions:
 
@@ -129,28 +129,112 @@ Data values from the input database may require percent-encoding before they can
 [=Template-valued term maps=] are a convenient way of percent-encoding data values.
 </aside>
 
+#### Examples
 
+<aside class="example" id="example-template">
 
-The space character is not in the iunreserved set,
-and therefore percent-encoding is applied to the character, yielding “%20”.
+The following example defines a [=subject map=] that generates [=IRIs=] from the `DEPTNO` reference of the a logical source.
 
-The following example shows the use of backslash escapes in string templates.
-The template will generate a fancy title such as
+<aside class="ex-input">
 
+```csv
+DEPTNO, DNAME, LOC
+10, APPSERVER, NEW YORK
 ```
-{{{ \o/ Hello World! \o/ }}}
+
+</aside>
+
+<aside class="ex-mapping">
+
+```turtle
+<#TriplesMap>
+  rml:subjectMap [
+    rml:template "http://data.example.com/department/{DEPTNO}" 
+  ] .
 ```
 
-from a string “Hello World!” in the referernce.
-By default, `rml:template` generates IRIs.
-Since the intention here is to create a literal instead,
-the [=term type=] has to be set.
+</aside>
+
+Using the sample row from the input data source as a [=logical iteration=], the [=template value=] of the [=subject map=] would be:
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/department/10>
+```
+
+</aside>
+
+</aside>
+
+<aside class="example" id="example-template-iri-safe">
+
+The following example shows how an [=IRI-safe=] template value is created.
+
+<aside class="ex-input">
+
+```csv
+DEPTNO, DNAME, LOC
+10, APPSERVER, NEW YORK
+```
+
+</aside>
+
+<aside class="ex-mapping">
+
+```turtle
+<#TriplesMap>
+  rml:subjectMap [
+    rml:template "http://data.example.com/site/{LOC}" 
+  ] .
+```
+
+</aside>
+
+Using the sample row from the input data source as a [=logical iteration=], the [=template value=] of the [=subject map=] would be:
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/site/NEW%20YORK>
+```
+
+</aside>
+
+The space character is not in the [`iunreserved` production](http://tools.ietf.org/html/rfc3987#section-2.2), and therefore percent-encoding is applied to the character, yielding "`%20`".
+
+</aside>
+
+<aside class="example">
+
+The following example shows the use of backslash escapes in string templates. The template will generate a fancy title such as
+
+<aside class="ex-output">
+
+```turtle
+"{{{ \o/ Hello World! \o/ }}}"
+```
+
+</aside>
+
+from a string "Hello World!" in the `TITLE` reference. By default, `rml:template` generates IRIs. Since the intention here is to create a literal instead, the [=term type=] has to be set.
+
+<aside class="ex-mapping">
+
+```turtle
+<#TriplesMap>
+  rml:objectMap [
+    rml:template "\\{\\{\\{ \\\\o/ {TITLE} \\\\o/ \\}\\}\\}" ;
+    rml:termType rml:Literal ;
+  ] .
+```
+
+</aside>
 
 Note that because
-[backslashes need to be escaped by a second backslash in the Turtle syntax]() [[TURTLE]],
-a double backslash is needed to escape each curly brace,
-and to get one literal backslash in the output
-one needs to write four backslashes in the template.
+[backslashes need to be escaped by a second backslash in the Turtle syntax](https://www.w3.org/TR/turtle/#string) [[TURTLE]], a double backslash is needed to escape each curly brace, and to get one literal backslash in the output one needs to write four backslashes in the template.
+
+</aside>
 
 ## IRIs, Literal, Blank Nodes (rml:termType)
 
