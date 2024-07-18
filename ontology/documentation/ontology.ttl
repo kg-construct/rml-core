@@ -1,33 +1,32 @@
-@prefix : <http://w3id.org/rml/> .
+@prefix : <http://w3id.org/rml/core/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://w3id.org/rml/> .
+@base <http://w3id.org/rml/core/> .
 
-<http://w3id.org/rml/core> rdf:type owl:Ontology ;
-                            owl:versionIRI <http://w3id.org/rml/core> ;
-                            <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" ,
-                                                                   "Anastasia Dimou" ,
-                                                                   "Ben de Meester" ,
-                                                                   "Christophe Debruyne" ,
-                                                                   "David Chaves Fraga" ,
-                                                                   "Dylan Van Assche" ,
-                                                                   "Franck Michel" ,
-                                                                   "Julián Arenas Guerrero" ,
-                                                                   "Pano Maria" ,
-                                                                   "Samaneh Jozashoori" ;
-                            <http://purl.org/dc/terms/created> "2023-03-14" ;
-                            <http://purl.org/dc/terms/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
-                            <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
-                            <http://purl.org/dc/terms/modified> "2023-06-15" ;
-                            <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> ;
-                            <http://purl.org/dc/terms/title> "RML: Generic Mapping Language for RDF"@en ;
-                            <http://purl.org/ontology/bibo/status> "draft" ;
-                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" ;
-                            <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" ;
-                            owl:versionInfo "0.1.0" .
+<http://w3id.org/rml/core/> rdf:type owl:Ontology ;
+                             owl:versionIRI <http://w3id.org/rml/core/> ;
+                             <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" ,
+                                                                    "Anastasia Dimou" ,
+                                                                    "Ben de Meester" ,
+                                                                    "Christophe Debruyne" ,
+                                                                    "David Chaves Fraga" ,
+                                                                    "Dylan Van Assche" ,
+                                                                    "Franck Michel" ,
+                                                                    "Pano Maria" ,
+                                                                    "Samaneh Jozashoori" ;
+                             <http://purl.org/dc/terms/created> "2023-03-14" ;
+                             <http://purl.org/dc/terms/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
+                             <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
+                             <http://purl.org/dc/terms/modified> "2023-06-15" ;
+                             <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> ;
+                             <http://purl.org/dc/terms/title> "RML: Generic Mapping Language for RDF"@en ;
+                             <http://purl.org/ontology/bibo/status> "draft" ;
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" ;
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" ;
+                             owl:versionInfo "0.1.0" .
 
 #################################################################
 #    Annotation properties
@@ -104,6 +103,14 @@
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://w3id.org/rml/baseIRI
+<http://w3id.org/rml/baseIRI> rdf:type owl:ObjectProperty ;
+                              rdfs:domain <http://w3id.org/rml/TriplesMap> ;
+                              rdfs:comment "Indicates the base IRI of the RDF graph to be created with a triples map."@en ;
+                              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                              rdfs:label "base IRI" .
+
 
 ###  http://w3id.org/rml/childMap
 <http://w3id.org/rml/childMap> rdf:type owl:ObjectProperty ;
@@ -193,7 +200,11 @@
 
 ###  http://w3id.org/rml/logicalTarget
 <http://w3id.org/rml/logicalTarget> rdf:type owl:ObjectProperty ;
-                                    rdfs:domain <http://w3id.org/rml/TermMap> ;
+                                    rdfs:domain [ rdf:type owl:Class ;
+                                                  owl:unionOf ( <http://w3id.org/rml/LanguageMap>
+                                                                <http://w3id.org/rml/TermMap>
+                                                              )
+                                                ] ;
                                     rdfs:range <http://w3id.org/rml/LogicalTarget> ;
                                     rdfs:comment "Represents the logical target to where triples are exported to." ;
                                     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
@@ -261,14 +272,6 @@
                                          rdfs:label "predicate object map" .
 
 
-###  http://w3id.org/rml/strategy
-<http://w3id.org/rml/strategy> rdf:type owl:ObjectProperty ;
-                               rdfs:range <http://w3id.org/rml/Strategy> ;
-                               rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
-                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-                               rdfs:label "strategy" .
-
-
 ###  http://w3id.org/rml/subject
 <http://w3id.org/rml/subject> rdf:type owl:ObjectProperty ;
                               rdfs:domain <http://w3id.org/rml/TriplesMap> ;
@@ -293,9 +296,12 @@
                                             owl:unionOf ( <http://w3id.org/rml/BlankNode>
                                                           <http://w3id.org/rml/IRI>
                                                           <http://w3id.org/rml/Literal>
+                                                          <http://w3id.org/rml/URI>
+                                                          <http://w3id.org/rml/UnsafeIRI>
+                                                          <http://w3id.org/rml/UnsafeURI>
                                                         )
                                           ] ;
-                               rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."@en ;
+                               rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI/URI (safe or unsafe) reference, blank node, or a literal."@en ;
                                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                rdfs:label "term type" .
 
@@ -370,7 +376,7 @@
 
 ###  http://w3id.org/rml/DatatypeMap
 <http://w3id.org/rml/DatatypeMap> rdf:type owl:Class ;
-                                  rdfs:subClassOf <http://w3id.org/rml/ExpressionMap> ;
+                                  rdfs:subClassOf <http://w3id.org/rml/TermMap> ;
                                   rdfs:comment "Represents a datatype map"@en ;
                                   rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                   rdfs:label "Datatype Map" .
@@ -393,7 +399,7 @@
 
 ###  http://w3id.org/rml/IRI
 <http://w3id.org/rml/IRI> rdf:type owl:Class ;
-                          rdfs:comment "Denotes an IRI, used with termpType."@en ;
+                          rdfs:comment "Denotes an IRI, used with termType."@en ;
                           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                           rdfs:label "IRI" .
 
@@ -466,13 +472,6 @@
                                    rdfs:label "Reference Object Map" .
 
 
-###  http://w3id.org/rml/Strategy
-<http://w3id.org/rml/Strategy> rdf:type owl:Class ;
-                               rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
-                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-                               rdfs:label "Strategy" .
-
-
 ###  http://w3id.org/rml/SubjectMap
 <http://w3id.org/rml/SubjectMap> rdf:type owl:Class ;
                                  rdfs:subClassOf <http://w3id.org/rml/TermMap> ;
@@ -494,6 +493,27 @@
                                  rdfs:comment "Represents a triples map."@en ;
                                  rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                  rdfs:label "Triples Map" .
+
+
+###  http://w3id.org/rml/URI
+<http://w3id.org/rml/URI> rdf:type owl:Class ;
+                          rdfs:comment "Denotes a URI, used with termType."@en ;
+                          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                          rdfs:label "URI" .
+
+
+###  http://w3id.org/rml/UnsafeIRI
+<http://w3id.org/rml/UnsafeIRI> rdf:type owl:Class ;
+                                rdfs:comment "Denotes an unsafe IRI, used with termType."@en ;
+                                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                                rdfs:label "Unsafe IRI" .
+
+
+###  http://w3id.org/rml/UnsafeURI
+<http://w3id.org/rml/UnsafeURI> rdf:type owl:Class ;
+                                rdfs:comment "Denotes an unsafe URI, used with termType."@en ;
+                                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                                rdfs:label "Unsafe URI" .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#Class

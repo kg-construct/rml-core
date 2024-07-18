@@ -85,9 +85,6 @@ as defined throughout this specification.
 A resource SHOULD NOT be typed as an RML class
 if it does not meet the definition of that class.
 
-The [default mapping]() SHOULD be such that
-its output is the [Direct Graph]() [[DM]()] corresponding to the [input data source]().
-
 
 ## RDF-based Turtle Syntax; Media Type
 

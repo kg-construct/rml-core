@@ -1,25 +1,24 @@
-<http://w3id.org/rml/core> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
-<http://w3id.org/rml/core> <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/rml/core> .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Anastasia Dimou" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Ben de Meester" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Christophe Debruyne" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "David Chaves Fraga" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Dylan Van Assche" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Franck Michel" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Julián Arenas Guerrero" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Pano Maria" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/contributor> "Samaneh Jozashoori" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/created> "2023-03-14" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/modified> "2023-06-15" .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> .
-<http://w3id.org/rml/core> <http://purl.org/dc/terms/title> "RML: Generic Mapping Language for RDF"@en .
-<http://w3id.org/rml/core> <http://purl.org/ontology/bibo/status> "draft" .
-<http://w3id.org/rml/core> <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" .
-<http://w3id.org/rml/core> <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" .
-<http://w3id.org/rml/core> <http://www.w3.org/2002/07/owl#versionInfo> "0.1.0" .
+<http://w3id.org/rml/core/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://w3id.org/rml/core/> <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Anastasia Dimou" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Ben de Meester" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Christophe Debruyne" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "David Chaves Fraga" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Dylan Van Assche" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Franck Michel" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Pano Maria" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/contributor> "Samaneh Jozashoori" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/created> "2023-03-14" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/description> "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/modified> "2023-06-15" .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> .
+<http://w3id.org/rml/core/> <http://purl.org/dc/terms/title> "RML: Generic Mapping Language for RDF"@en .
+<http://w3id.org/rml/core/> <http://purl.org/ontology/bibo/status> "draft" .
+<http://w3id.org/rml/core/> <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" .
+<http://w3id.org/rml/core/> <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" .
+<http://w3id.org/rml/core/> <http://www.w3.org/2002/07/owl#versionInfo> "0.1.0" .
 # 
 # 
 # #################################################################
@@ -89,6 +88,13 @@
 # #
 # #################################################################
 # 
+# 
+# http://w3id.org/rml/baseIRI
+<http://w3id.org/rml/baseIRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TriplesMap> .
+<http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates the base IRI of the RDF graph to be created with a triples map."@en .
+<http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/baseIRI> <http://www.w3.org/2000/01/rdf-schema#label> "base IRI" .
 # 
 # http://w3id.org/rml/childMap
 <http://w3id.org/rml/childMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
@@ -179,7 +185,15 @@ _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 # 
 # http://w3id.org/rml/logicalTarget
 <http://w3id.org/rml/logicalTarget> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/logicalTarget> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TermMap> .
+<http://w3id.org/rml/logicalTarget> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid7 .
+_:genid7 <http://www.w3.org/2002/07/owl#unionOf> _:genid9 .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid8 .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/TermMap> .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/LanguageMap> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/rml/logicalTarget> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/LogicalTarget> .
 <http://w3id.org/rml/LogicalTarget> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/rml/logicalTarget> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents the logical target to where triples are exported to." .
@@ -241,13 +255,6 @@ _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/predicateObjectMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/predicateObjectMap> <http://www.w3.org/2000/01/rdf-schema#label> "predicate object map" .
 # 
-# http://w3id.org/rml/strategy
-<http://w3id.org/rml/strategy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/Strategy> .
-<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#comment> "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en .
-<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
-<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#label> "strategy" .
-# 
 # http://w3id.org/rml/subject
 <http://w3id.org/rml/subject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/rml/subject> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TriplesMap> .
@@ -266,19 +273,28 @@ _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 # http://w3id.org/rml/termType
 <http://w3id.org/rml/termType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TermMap> .
-<http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#range> _:genid7 .
-_:genid7 <http://www.w3.org/2002/07/owl#unionOf> _:genid10 .
-_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid9 .
-_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid8 .
-_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/Literal> .
-_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/IRI> .
-_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/BlankNode> .
-_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#comment> "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."@en .
+<http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#range> _:genid10 .
+_:genid10 <http://www.w3.org/2002/07/owl#unionOf> _:genid16 .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid15 .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid14 .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid13 .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid12 .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid11 .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/UnsafeURI> .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/UnsafeIRI> .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/URI> .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/Literal> .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/IRI> .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/rml/BlankNode> .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#comment> "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI/URI (safe or unsafe) reference, blank node, or a literal."@en .
 <http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/termType> <http://www.w3.org/2000/01/rdf-schema#label> "term type" .
 # 
@@ -355,7 +371,7 @@ _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 # 
 # http://w3id.org/rml/DatatypeMap
 <http://w3id.org/rml/DatatypeMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/rml/DatatypeMap> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/rml/ExpressionMap> .
+<http://w3id.org/rml/DatatypeMap> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/rml/TermMap> .
 <http://w3id.org/rml/DatatypeMap> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents a datatype map"@en .
 <http://w3id.org/rml/DatatypeMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/DatatypeMap> <http://www.w3.org/2000/01/rdf-schema#label> "Datatype Map" .
@@ -375,7 +391,7 @@ _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 # 
 # http://w3id.org/rml/IRI
 <http://w3id.org/rml/IRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/rml/IRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes an IRI, used with termpType."@en .
+<http://w3id.org/rml/IRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes an IRI, used with termType."@en .
 <http://w3id.org/rml/IRI> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/IRI> <http://www.w3.org/2000/01/rdf-schema#label> "IRI" .
 # 
@@ -435,12 +451,6 @@ _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/RefObjectMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/RefObjectMap> <http://www.w3.org/2000/01/rdf-schema#label> "Reference Object Map" .
 # 
-# http://w3id.org/rml/Strategy
-<http://w3id.org/rml/Strategy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/rml/Strategy> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en .
-<http://w3id.org/rml/Strategy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
-<http://w3id.org/rml/Strategy> <http://www.w3.org/2000/01/rdf-schema#label> "Strategy" .
-# 
 # http://w3id.org/rml/SubjectMap
 <http://w3id.org/rml/SubjectMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/rml/SubjectMap> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/rml/TermMap> .
@@ -460,6 +470,24 @@ _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/TriplesMap> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents a triples map."@en .
 <http://w3id.org/rml/TriplesMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/TriplesMap> <http://www.w3.org/2000/01/rdf-schema#label> "Triples Map" .
+# 
+# http://w3id.org/rml/URI
+<http://w3id.org/rml/URI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/URI> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes a URI, used with termType."@en .
+<http://w3id.org/rml/URI> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/URI> <http://www.w3.org/2000/01/rdf-schema#label> "URI" .
+# 
+# http://w3id.org/rml/UnsafeIRI
+<http://w3id.org/rml/UnsafeIRI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/UnsafeIRI> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes an unsafe IRI, used with termType."@en .
+<http://w3id.org/rml/UnsafeIRI> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/UnsafeIRI> <http://www.w3.org/2000/01/rdf-schema#label> "Unsafe IRI" .
+# 
+# http://w3id.org/rml/UnsafeURI
+<http://w3id.org/rml/UnsafeURI> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/UnsafeURI> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes an unsafe URI, used with termType."@en .
+<http://w3id.org/rml/UnsafeURI> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/UnsafeURI> <http://www.w3.org/2000/01/rdf-schema#label> "Unsafe URI" .
 # 
 # http://www.w3.org/2000/01/rdf-schema#Class
 # 
