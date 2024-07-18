@@ -39,7 +39,7 @@ var respecConfig = {
       companyURL: "https://dtai.cs.kuleuven.be/"
     },
   ],
-  edDraftURI: "https://w3id.org/rml/spec/docs",
+  edDraftURI: "https://w3id.org/rml/core/spec",
   editors: [
     {
       name: "Pano Maria",
