@@ -45,9 +45,9 @@ The [=referencing object map=] caused the generation of new [=object=] which is 
 
 A <dfn>Join Condition</dfn> is represented by a resource that has exactly one value for each of the following two properties:
 
-* a child map (`rml:childMap`) property, whose value is a [=child map=]. A <dfn>child map</dfn> (`rml:ChildMap`) is an [=expression map=], which MUST include [=references=] that exists in the [=logical source=] of the [=parent triples map=] that contains the [=referencing object map=], or it should have a [=constant value=].
+* a child map (`rml:childMap`) property, whose value is a [=child map=]. A <dfn>child map</dfn> (`rml:ChildMap`) is an [=expression map=], which MUST include [=references=] that exist in the [=logical source=] of the [=parent triples map=] that contains the [=referencing object map=], or it should have a [=constant value=].
 
-* a parent map (`rml:parentMap`) property, whose value is a [=parent map=]. A <dfn>parent map</dfn> (`rml:ParentMap`) is an [=expression map=], which MUST include references that exists in the [=logical source=] of the [=referencing object map=]'s [=parent triples map=], or it should have a [=constant value=].
+* a parent map (`rml:parentMap`) property, whose value is a [=parent map=]. A <dfn>parent map</dfn> (`rml:ParentMap`) is an [=expression map=], which MUST include references that exist in the [=logical source=] of the [=referencing object map=]'s [=parent triples map=], or it should have a [=constant value=].
 
 <aside class="example" id="example-join-condition" title="usage of join condition">
 
