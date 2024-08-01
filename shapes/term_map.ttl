@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Expression Map shape                                                    #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -10,8 +11,8 @@
 
 :RMLTermMapShape
     a sh:NodeShape ;
-    sh:name "TermMap" ;
-    sh:description """
+    rdfs:label "TermMap" ;
+    rdfs:comment """
     Represents a Term Map.
     """ ;
     sh:message """
@@ -24,8 +25,8 @@
         [
             sh:targetSubjectsOf rml:termType ;
             sh:path rml:termType ;
-            sh:name "termType" ;
-            sh:description """
+            rdfs:label "termType" ;
+            rdfs:comment """
             An IRI indicating whether a generated term should be an IRI, 
             Blank Node, or a Literal.
             """ ;

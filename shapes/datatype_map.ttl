@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Datatype Map and datatype shortcut shape                                #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -12,8 +13,8 @@
     a sh:NodeShape ;
     sh:targetClass rml:DatatypeMap ;
     sh:targetObjectsOf rml:datatypeMap ;
-    sh:name "DatatypeMap" ;
-    sh:description """
+    rdfs:label "DatatypeMap" ;
+    rdfs:comment """
     Represents a Datatype Map.
     """ ;
     sh:message """
@@ -34,8 +35,8 @@
 :RMLdatatypeShape 
     a sh:NodeShape ;
     sh:targetObjectsOf rml:datatype ;
-    sh:name "datatype" ;
-    sh:description """
+    rdfs:label "datatype" ;
+    rdfs:comment """
     An IRI reference for use as the graph name of all triples generated with 
     the datatype.
     """ ;
