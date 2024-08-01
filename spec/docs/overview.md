@@ -3,20 +3,20 @@
 
 Each [logical source]() is mapped to RDF using a [triples map]().
 The [triples map]() is a rule that maps each iteration in the [logical source]()
-to a number of RDF triples.
+to a number of [=RDF triples=].
 The rule has two main parts:
 
 
- 1. A [subject map]() that generates the subject of all [RDF triples]()
+ 1. A [subject map]() that generates the subject of all [=RDF triples=]
  that will be generated from a logical source iteration.
- The subjects often are [IRIs]().
+ The subjects often are [=IRIs=].
  2. Multiple [predicate-object maps]() that
  in turn consist of [predicate maps]() and [object maps]()
  (or [referencing object maps]()).
  
-By default, all [RDF triples]() are in the [default graph]() of the [output dataset]().
+By default, all [=RDF triples=] are in the [=default graph=] of the [output dataset]().
 A [triples map]() can contain [graph maps]() that
-place some or all of the triples into [named graphs]() instead. 
+place some or all of the triples into [=named graphs=] instead. 
 
 **TODO: Add updated figure here**
 
@@ -31,20 +31,20 @@ The input to an RML mapping is called the [input data source]().
 
 ## Mapping Graphs and the RML Vocabulary
 
-An [RML mapping]() is represented as an [RDF graph]().
+An [RML mapping]() is represented as an [=RDF graph=].
 In other words, RDF is used not just as the target data model of the mapping,
 but also as a formalism for representing the [RML mapping]() itself.
 
-An [RDF graph]() that represents an [RML mapping]() is called an **_RML mapping graph_**.
+An [=RDF graph=] that represents an [RML mapping]() is called an **_RML mapping graph_**.
 
-The **_RML vocabulary_** is the set of IRIs defined in this specification
-that start with the `rml:` as prefix and uses namespace IRI: <http://w3id.org/rml/>
+The **_RML vocabulary_** is the set of [=IRIs=] defined in this specification
+that start with the `rml:` as prefix and uses namespace [=IRI=]: <http://w3id.org/rml/>
 
 An [RML mapping graph]():
 
-1. SHOULD NOT include any [IRIs]() that start with the `rml:` namespace [IRI](),
+1. SHOULD NOT include any [=IRIs=] that start with the `rml:` namespace [=IRI=],
 but are not defined in the RML vocabulary.
-2. SHOULD NOT include [IRIs]() from the [RML vocabulary]()
+2. SHOULD NOT include [=IRIs=] from the [RML vocabulary]()
 where such use is not explicitly allowed or required by a clause in this specification.
 3. SHOULD contain only [mapping components]()
 that are referenced by some triples map
@@ -52,9 +52,9 @@ that are referenced by some triples map
 4. MAY contain arbitrary additional [triples]() whose terms are not from the [RML vocabulary]().
 In particular, a valid mapping graph MAY contain documentation
 in the form of `rdfs:label`, `rdfs:comment` and similar properties.
-5. MAY assign [IRIs]() or [blank node identifiers]() to any [mapping component]()
+5. MAY assign [=IRIs=] or [=blank node identifiers=] to any [mapping component]()
 in order to enable reuse of [mapping components]() within the [mapping graph]().
-For example, an [IRI]() that represents a [subject map]()
+For example, an [=IRI=] that represents a [subject map]()
 may be used as the [subject map]() of multiple [triples maps]();
 and may even be used as an object map of another [triples map]()
 if it has the right properties.
@@ -116,29 +116,29 @@ or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
 * A [Logical Source]()
-* A base IRI used in resolving relative IRIs produced by the RML mapping.
+* A base [=IRI=] used in resolving relative [=IRIs=] produced by the RML mapping.
 
 How the [Logical Source]() is accessed,
 or how users are authenticated against the database,
 is outside of the scope of this document.
 
-The [base IRI]() MUST be a valid [IRI]().
+The [base IRI]() MUST be a valid [=IRI=].
 It SHOULD NOT contain question mark (“?”) or hash (“#”) characters and
 SHOULD end in a slash (“/”) character.
 
 **NOTE**
-To obtain an absolute IRI from a relative IRI,
+To obtain an absolute [=IRI=] from a relative [=IRI=],
 the [term generation rules]() of RML use simple string concatenation,
 rather than the more complex algorithm for resolution of relative URIs
 defined in [Section 5.2]() of [RFC3986]().
-This ensures that the original database value can be reconstructed from the generated absolute IRI.
+This ensures that the original database value can be reconstructed from the generated absolute [=IRI=].
 Both algorithms are equivalent if all of the following are true:
 
 
 1. The base IRI does not contain question marks or hashes,
 2. the base IRI ends in a slash,
-3. the relative IRI does not start with a slash, and
-4. the relative IRI does not contain any “.” or “..” path segments.
+3. the relative [=IRI=] does not start with a slash, and
+4. the relative [=IRI=] does not contain any “.” or “..” path segments.
 
 ### RML Validator
 
@@ -170,8 +170,8 @@ that would lead to the generation of an invalid [RDF term]().
 The following conditions give rise to data errors:
 
 
-1. A [term map]() with term type `rml:IRI` results in the generation of an invalid [IRI]().
-2. A [term map]() whose natural RDF datatype is overridden with a specified datatype
+1. A [term map]() with term type `rml:IRI` results in the generation of an invalid [=IRI=].
+2. A [term map]() whose [=natural RDF datatype=] is overridden with a specified [=datatype=]
 produces an [ill-typed literal]() (see [datatype-override RDF literal]()).
 
 When providing access to the output dataset,

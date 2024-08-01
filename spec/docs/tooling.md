@@ -14,29 +14,29 @@ or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
 * A [Logical Source]()
-* A base IRI used in resolving relative IRIs produced by the RML mapping.
+* A base IRI used in resolving relative [=IRIs=] produced by the RML mapping.
 
 How the [Logical Source]() is accessed,
 or how users are authenticated against the database,
 is outside of the scope of this document.
 
-The [base IRI]() MUST be a valid [IRI]().
+The [base IRI]() MUST be a valid [=IRI=].
 It SHOULD NOT contain question mark (“?”) or hash (“#”) characters and
 SHOULD end in a slash (“/”) character.
 
 **NOTE**
-To obtain an absolute IRI from a relative IRI,
+To obtain an absolute [=IRI=] from a relative [=IRI=],
 the [term generation rules]() of RML use simple string concatenation,
 rather than the more complex algorithm for resolution of relative URIs
 defined in [Section 5.2]() of [RFC3986]().
-This ensures that the original database value can be reconstructed from the generated absolute IRI.
+This ensures that the original database value can be reconstructed from the generated absolute [=IRI=].
 Both algorithms are equivalent if all of the following are true:
 
 
 1. The base IRI does not contain question marks or hashes,
 2. the base IRI ends in a slash,
-3. the relative IRI does not start with a slash, and
-4. the relative IRI does not contain any “.” or “..” path segments.
+3. the relative [=IRI=] does not start with a slash, and
+4. the relative [=IRI=] does not contain any “.” or “..” path segments.
 
 ### RML Validator
 
@@ -56,8 +56,8 @@ A <dfn>data error</dfn> is a condition of the data in the [input data]()
 that would lead to the generation of an invalid [=RDF term=].
 The following conditions give rise to data errors:
 
-1. A [=term map=] with term type `rml:IRI` results in the generation of an invalid [IRI]().
-2. A [=term map=] whose natural RDF datatype is overridden with a specified datatype
+1. A [=term map=] with term type `rml:IRI` results in the generation of an invalid [=IRI=].
+2. A [=term map=] whose [=natural RDF datatype=] is overridden with a specified [=datatype=]
 produces an [ill-typed literal]() (see [datatype-override RDF literal]()).
 
 When providing access to the output dataset,

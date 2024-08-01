@@ -9,20 +9,20 @@ The input to an RML mapping is called the </dfn>input data source</dfn>.
 
 ## Mapping Graphs and the RML Vocabulary
 
-An [=RML mapping=] is represented as an [RDF graph]().
+An [=RML mapping=] is represented as an [=RDF graph=].
 In other words, RDF is used not just as the target data model of the mapping,
 but also as a formalism for representing the [=RML mapping=] itself.
 
-An [RDF graph]() that represents an [=RML mapping=] is called an <dfn data-lt="mapping graph">RML mapping graph</dfn>.
+An [=RDF graph=] that represents an [=RML mapping=] is called an <dfn data-lt="mapping graph">RML mapping graph</dfn>.
 
-The <dfn>RML vocabulary</dfn> is the set of IRIs defined in this specification
-that start with the `rml:` as prefix and uses namespace IRI: <http://w3id.org/rml/>.
+The <dfn>RML vocabulary</dfn> is the set of [=IRIs=] defined in this specification
+that start with the `rml:` as prefix and uses namespace [=IRI=]: <http://w3id.org/rml/>.
 
 An [=RML mapping graph=]:
 
-1. SHOULD NOT include any [IRIs]() that start with the `rml:` namespace [IRI](),
+1. SHOULD NOT include any [=IRIs=] that start with the `rml:` namespace [=IRI=],
 but are not defined in the RML vocabulary.
-2. SHOULD NOT include [IRIs]() from the [=RML vocabulary=]
+2. SHOULD NOT include [=IRIs=] from the [=RML vocabulary=]
 where such use is not explicitly allowed or required by a clause in this specification.
 3. SHOULD contain only [mapping components]()
 that are referenced by some triples map
@@ -30,9 +30,9 @@ that are referenced by some triples map
 4. MAY contain arbitrary additional [triples]() whose terms are not from the [=RML vocabulary=].
 In particular, a valid mapping graph MAY contain documentation
 in the form of `rdfs:label`, `rdfs:comment` and similar properties.
-5. MAY assign [IRIs]() or [blank node identifiers]() to any [mapping component]()
+5. MAY assign [=IRIs=] or [=blank node identifiers=] to any [mapping component]()
 in order to enable reuse of [mapping components]() within the [mapping graph]().
-For example, an [IRI]() that represents a [subject map]()
+For example, an [=IRI=] that represents a [subject map]()
 may be used as the [subject map]() of multiple [=triples maps=];
 and may even be used as an object map of another [triples map]()
 if it has the right properties.
