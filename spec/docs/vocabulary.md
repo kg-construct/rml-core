@@ -40,7 +40,7 @@ if it has the right properties.
 The [=RML vocabulary=] also includes the following [RML classes]():
 
 * `rml:TriplesMap` is the class of [=triples maps=].
-* `rml:LogicalSource` is the class of [logical sources](). 
+* `rml:LogicalSource` is the class of [=logical sources=].
 * `rml:TermMap` is the class of [term maps](). It has four subclasses:
     * `rml:SubjectMap` is the class of [subject maps]().
     * `rml:PredicateMap` is the class of [predicate maps]().

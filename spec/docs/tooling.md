@@ -13,10 +13,10 @@ or offer virtual access through an interface,
 or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
-* A [Logical Source]()
+* A [=logical source=]
 * A base IRI used in resolving relative [=IRIs=] produced by the RML mapping.
 
-How the [Logical Source]() is accessed,
+How the [=logical source=] is accessed,
 or how users are authenticated against the database,
 is outside of the scope of this document.
 

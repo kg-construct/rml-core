@@ -1,8 +1,8 @@
 # [R2]RML Overview and Example (Informative)
 
 
-Each [logical source]() is mapped to RDF using a [triples map]().
-The [triples map]() is a rule that maps each iteration in the [logical source]()
+Each [=logical source=] is mapped to RDF using a [triples map]().
+The [triples map]() is a rule that maps each iteration in the [=logical source=]
 to a number of [=RDF triples=].
 The rule has two main parts:
 
@@ -62,7 +62,7 @@ if it has the right properties.
 The [RML vocabulary]() also includes the following [RML classes]():
 
 * `rml:TriplesMap` is the class of [triples maps]().
-* `rml:LogicalSource` is the class of [logical sources](). 
+* `rml:LogicalSource` is the class of [=logical sources=]. 
 * `rml:TermMap` is the class of [term maps](). It has four subclasses:
     * `rml:SubjectMap` is the class of [subject maps]().
     * `rml:PredicateMap` is the class of [predicate maps]().
@@ -115,10 +115,10 @@ or offer virtual access through an interface,
 or offer any other means of providing access to the output dataset.
 
 An [RML processor]() also has access to an execution environment consisting of:
-* A [Logical Source]()
+* A [=logical source=]
 * A base [=IRI=] used in resolving relative [=IRIs=] produced by the RML mapping.
 
-How the [Logical Source]() is accessed,
+How the [=logical source=] is accessed,
 or how users are authenticated against the database,
 is outside of the scope of this document.
 

@@ -18,3 +18,7 @@ The following terms are defined in [[RDF11-CONCEPTS]] and usedin RML:
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-named-graph">named graph</a></dfn>
+- <dfn><a data-cite="RDF11-CONCEPTS#dfn-object">object</a></dfn>
+- <dfn><a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a></dfn>
+- <dfn><a data-cite="RDF11-CONCEPTS#dfn-resource">resource</a></dfn>
+- <dfn><a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a></dfn>

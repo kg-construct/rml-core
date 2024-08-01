@@ -46,7 +46,7 @@ The [=reference expression set=] of a [=template expression=] is the set of [=re
 
 Sub classes of [=template-valued expression maps=] MAY define a <dfn>reference value transforming function</dfn> which will be applied to each [=reference value=] when evaluating the template.
 
-The <dfn>template value</dfn> when evaluating a [=string template=] for a given [=logical source iteration=] is determined as follows:
+The <dfn>template value</dfn> when evaluating a [=string template=] for a given [=logical iteration=] is determined as follows:
 1. Let `result` be the [=reference expression set=] of the [=string template=]
 2. For each [=reference expression=] in `result`:
     1. Let `values` be the [=reference value=] of the [=reference expression=] that is enclosed in the curly braces

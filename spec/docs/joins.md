@@ -296,14 +296,14 @@ has exactly one value for each of the following two properties:
 
 * a [child map]() (`rml:childMap`),
 whose value is an [Expression Map]() (`rml:ExpressionMap'), which
-MUST include references that exists in the [Logical Source]()
+MUST include references that exists in the [=logical source=]
 of the [Triples Map]() that contains the [Referencing Object Map]()
 or it should have a constant value.
 
 * a [parent map]() (`rml:parentMap`),
 whose value is an [Expression Map]() (`rml:ExpressionMap'), which,
 as the join condition's parent map, 
-MUST include references that exists in the [Logical Source]()
+MUST include references that exists in the [=logical source=]
 of the [Referencing Object Map]()'s [Parent Triples Map]()
 or it should have a constant value.
 
