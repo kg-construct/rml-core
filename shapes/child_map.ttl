@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Child Map shape                                                        #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)             #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://www.w3.org/ns/r2rml#> .
@@ -12,8 +13,8 @@
     a sh:NodeShape ;
     sh:targetClass rml:ChildMap ;
     sh:targetObjectsOf rml:childMap ;
-    sh:name "ChildMap" ;
-    sh:description """
+    rdfs:label "ChildMap" ;
+    rdfs:comment """
     Represents a Child Map.
     """ ;
     sh:message """
@@ -33,8 +34,8 @@
 :RMLchildShape
     a sh:NodeShape ;
     sh:targetObjectsOf rml:child ;
-    sh:name "child" ;
-    sh:description """
+    rdfs:label "child" ;
+    rdfs:comment """
     A Literal reference to use as reference to the child data source.
     """ ;
     sh:message """

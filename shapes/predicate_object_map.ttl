@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Predicate Object Map shape                                              #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -12,8 +13,8 @@
     a sh:NodeShape ;
     sh:targetClass rml:PredicateObjectMap ;
     sh:targetObjectsOf rml:predicateObjectMap ;
-    sh:name "PredicateObjectMap" ;
-    sh:description """
+    rdfs:label "PredicateObjectMap" ;
+    rdfs:comment """
     Represents a Predicate Object Map.
     """;
 
@@ -26,8 +27,8 @@
             sh:targetSubjectsOf rml:predicate ;
             sh:targetSubjectsOf rml:predicateMap ;
             sh:path [sh:alternativePath (rml:predicate rml:predicateMap)] ;
-            sh:name "predicate/predicateMap" ;
-            sh:description """
+            rdfs:label "predicate/predicateMap" ;
+            rdfs:comment """
             At least one rml:predicate or rml:predicateMap must be provided.
             """ ;
             sh:message """
@@ -38,8 +39,8 @@
         [
             sh:targetSubjectsOf rml:predicateMap ;
             sh:path rml:predicateMap ;
-            sh:name "predicateMap" ;
-            sh:description """
+            rdfs:label "predicateMap" ;
+            rdfs:comment """
             A PredicateMap element to generate the predicate component of the 
             (predicate, object) pair from a logical table row or iterator.
             """ ;
@@ -51,8 +52,8 @@
         [
             sh:targetSubjectsOf rml:predicate ;
             sh:path rml:predicate ;
-            sh:name "predicate" ;
-            sh:description """
+            rdfs:label "predicate" ;
+            rdfs:comment """
             Specifies the predicate for the generated triple from the logical table 
             row or iterator.
             """ ;
@@ -66,8 +67,8 @@
             sh:targetSubjectsOf rml:objectMap ;
             sh:targetSubjectsOf rml:quotedTriplesMap ;
             sh:path [sh:alternativePath (rml:object rml:objectMap rml:quotedTriplesMap)] ;
-            sh:name "object/objectMap/quotedTriplesMap" ;
-            sh:description """
+            rdfs:label "object/objectMap/quotedTriplesMap" ;
+            rdfs:comment """
             Either an rml:object, rml:objectMap, or rml:quotedTriplesMap must be provided, not multiple.
             """ ;
             sh:message """
@@ -78,8 +79,8 @@
         [
             sh:targetSubjectsOf rml:objectMap ;
             sh:path rml:objectMap ;
-            sh:name "objectMap" ;
-            sh:description """
+            rdfs:label "objectMap" ;
+            rdfs:comment """
             An ObjectMap element to generate the object component of the 
             (predicate, object) pair from a logical table row or iterator.
             """ ;
@@ -94,8 +95,8 @@
         [
             sh:targetSubjectsOf rml:object ;
             sh:path rml:object ;
-            sh:name "object" ;
-            sh:description """
+            rdfs:label "object" ;
+            rdfs:comment """
             Specifies the object for the generated RDF triples.
             """ ;
             sh:message """

@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Predicate Map and predicate shortcut shape                              #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -12,8 +13,8 @@
     a sh:NodeShape ;
     sh:targetClass rml:PredicateMap ;
     sh:targetObjectsOf rml:predicateMap ;
-    sh:name "PredicateMap" ;
-    sh:description """
+    rdfs:label "PredicateMap" ;
+    rdfs:comment """
     Represents a Predicate Map.
     """ ;
     sh:message """
@@ -39,8 +40,8 @@
 :RMLpredicateShape
     a sh:NodeShape ;
     sh:targetObjectsOf rml:predicate ;
-    sh:name "predicate" ;
-    sh:description """
+    rdfs:label "predicate" ;
+    rdfs:comment """
     Specifies the predicate for the generated triple.
     """ ;
     sh:message """
