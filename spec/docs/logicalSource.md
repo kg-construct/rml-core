@@ -9,3 +9,7 @@ A [=logical source=] (`rml:LogicalSource`) MUST have:
 A <dfn data-lt="iteration">logical iteration</dfn> is an item in the sequence produced by the [=logical source=], on which [=expressions=] can be evaluated.
 
 A <dfn>data source</dfn> is an abstract concept that represents a source of data that can be accessed via a [=logical source=]. A [=data source=] can be a file, a database, a web service, or any other source of data.
+
+<aside class="note">
+There can be many different types of [=reference formulation=]. The known types, and the details of how a reference formulation is handled and implemented for each data format, are specified in [[RML-IO-Registry]].
+</aside>

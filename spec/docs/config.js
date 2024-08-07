@@ -62,12 +62,16 @@ var respecConfig = {
   license: "w3c-software-doc",
   localBiblio: {
     RML: {
-        title: "RDF Mapping Language (RML)",
-        href: "https://rml.io/specs/rml/",
-        status: "Unofficial Draft",
-        publisher: "",
-        date: "",
-      },
+      title: "RDF Mapping Language (RML)",
+      href: "https://rml.io/specs/rml/",
+      status: "Unofficial Draft",
+      publisher: "",
+      date: "",
+    },
+    // TODO: update once RML-IO-Registry is published
+    "RML-IO-Registry": {
+      title: "RML-IO Registry",
+    }
   },
   otherLinks: [
     {
