@@ -1,6 +1,6 @@
 # Term Maps
 
-An <dfn>RDF term</dfn> is either an [=IRI=], or a [=Blank Node=], or a [=Literal=].
+An <dfn>RDF term</dfn> is either an [=IRI=], or a [=blank node=], or a [=literal=].
 
 A <dfn>term map</dfn> (`rml:TermMap`) is a rule that defines how to generate an [=RDF term=] from a logical iteration. 
 The result of the execution of that rule is the [=RDF term=].
@@ -19,15 +19,15 @@ if it is a rule that specifies how the [=RDF triple=]'s predicate is generated;
 * an [=object map=] (`rml:ObjectMap`),
 if it is a rule that specifies how the [=RDF triple=]'s object is generated; and
 * a [=graph map=] (`rml:GraphMap`),
-if it is a rule that specifies how the [=RDF triple=]'s named graph is generated.
+if it is a rule that specifies how the [=RDF triple=]'s [=named graph=] is generated.
 
 A [=term map=] generates different RDF terms depending on the position of the [=term map=] in the [=RDF triple=]:
 * a [=subject map=] (`rml:SubjectMap`)
-is a rule that MUST generate either an [=IRI=] or a [=Blank Node=];
+is a rule that MUST generate either an [=IRI=] or a [=blank node=];
 * a [=predicate map=] (`rml:PredicateMap`)
 is a rule that MUST generate an [=IRI=];
 * an [=object map=] (`rml:ObjectMap`)
-is a rule that MUST generate an [=IRI=], a [=Blank Node=] or a [=Literal=];
+is a rule that MUST generate an [=IRI=], a [=blank node=] or a [=literal=];
 * a [=graph map=] (`rml:GraphMap`)
 is a rule that should generate an [=IRI=].
 
@@ -46,7 +46,7 @@ The [=constant value=] of the `rml:constant` property is the [=RDF term=] that i
 
 If the [=constant-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [=IRI=].
 
-If the [=constant-valued term map=] is an [=object map=], then its [=constant value=] MUST be an [=IRI=] or [=Literal=].
+If the [=constant-valued term map=] is an [=object map=], then its [=constant value=] MUST be an [=IRI=] or [=literal=].
 
 #### Shortcuts for constant-valued term  maps
 
@@ -75,16 +75,16 @@ The <dfn>expressions set</dfn> is a set of values returned by an [=reference-val
 #### Reference-valued term maps and term types
 
 A [=reference-valued term map=] generates an [=RDF term=]
-which is by default a [=Literal=].
+which is by default a [=literal=].
 
 If the [=reference-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [=IRI=].
 
-If the [=reference-valued term map=] is an [=object map=], then its [=constant value=] MUST be a [=Literal=].
+If the [=reference-valued term map=] is an [=object map=], then its [=constant value=] MUST be a [=literal=].
 
 To use a [=reference-valued term map=]
 as a [Object Map]() or [Graph Map](),
 which should generate an [=RDF term=]
-which is either an [=IRI=] or [=Literal=], or
+which is either an [=IRI=] or [=literal=], or
 a [Predicate Map](),
 which should generate an [=RDF term=] which is an [=IRI=],
 or to generate an [=IRI=] for an [=object map=],
@@ -119,13 +119,13 @@ The following table shows examples of strings and their IRI-safe versions:
 | ~A_17.1-2 |  ~A_17.1-2 |
 
 <aside class="note">
-RML always performs percent-encoding when IRIs are generated from [=string templates=].
-If IRIs need to be generated without percent-encoding, then `rml:reference` should be used instead of `rml:template`, with a [=logical source=] that performs the string concatenation.
+RML always performs percent-encoding when [=IRIs=] are generated from [=string templates=].
+If [=IRIs=] need to be generated without percent-encoding, then `rml:reference` should be used instead of `rml:template`, with a [=logical source=] that performs the string concatenation.
 </aside>
 
 <aside class="note">
-Term maps with [=term type=] `rml:IRI` cause [=data errors=] if the value is not a valid IRI (see [=generated RDF term=] for details).
-Data values from the input database may require percent-encoding before they can be used in IRIs.
+Term maps with [=term type=] `rml:IRI` cause [=data errors=] if the value is not a valid [=IRI=] (see [=generated RDF term=] for details).
+Data values from the input database may require percent-encoding before they can be used in [=IRIs=].
 [=Template-valued term maps=] are a convenient way of percent-encoding data values.
 </aside>
 
@@ -217,7 +217,7 @@ The following example shows the use of backslash escapes in string templates. Th
 
 </aside>
 
-from a string "Hello World!" in the `TITLE` reference. By default, `rml:template` generates IRIs. Since the intention here is to create a literal instead, the [=term type=] has to be set.
+from a string "Hello World!" in the `TITLE` reference. By default, `rml:template` generates [=IRIs=]. Since the intention here is to create a [=literal=] instead, the [=term type=] has to be set.
 
 <aside class="ex-mapping">
 
@@ -265,40 +265,40 @@ and at least one of the following conditions is true:
 ### Explicitly Defined Term Types
 
 To change the default [=term type=] of a [=subject map=] or [=graph map=]
-to a blank node, the [=term type=] MUST be explicitly defined to be a `rml:BlankNode`.
+to a [=blank node=], the [=term type=] MUST be explicitly defined to be a `rml:BlankNode`.
 
 To change the default [=term type=] of an [=object map=], the [=term type=] MUST be explicitly defined:
-* If the [=term type=] is `rml:IRI`, an IRI will be generated;
-* If the [=term type=] is `rml:BlankNode`, a Blank Node will be generated.
+* If the [=term type=] is `rml:IRI`, an [=IRI=] will be generated;
+* If the [=term type=] is `rml:BlankNode`, a [=blank node=] will be generated.
 
 If the [=term type=] is explicitly defined to be a `rml:BlankNode`,
 a [=term map=] MAY not have an [=expression map=].
-Then an RML Processor MUST generate a random value for the blank node.
+Then an RML Processor MUST generate a random value for the [=blank node=].
 
 <aside class="note">
-[=Term maps=] with [=term type=] `rml:IRI` cause [=data errors=] if the value is not a valid IRI (see [=generated RDF term=] for details).
-Data values from the logical source may require percent-encoding before they can be used in IRIs.
+[=Term maps=] with [=term type=] `rml:IRI` cause [=data errors=] if the value is not a valid [=IRI=] (see [=generated RDF term=] for details).
+Data values from the logical source may require percent-encoding before they can be used in [=IRIs=].
 [=Template-valued term maps=] are a convenient way of percent-encoding data values.
 </aside>
 
 <aside class="note">
 [=Constant-valued term maps=] are not considered as having a term type, and specifying `rml:termType` on these [=term maps=] has no effect.
-The type of the [=generated RDF term=] is determined directly by the value of `rml:constant`: If it is an [=IRI=], then an [=IRI=] will be generated; if it is a literal, a literal will be generated.
+The type of the [=generated RDF term=] is determined directly by the value of `rml:constant`: If it is an [=IRI=], then an [=IRI=] will be generated; if it is a [=literal=], a [=literal=] will be generated.
 </aside>
 
 ## Language tags (`rml:languageMap` and `rml:language`)
 
-A <dfn>language-taggable term map</dfn> is a [=term map=] with a [=term type=] of `rml:Literal` that does not have a specified [datatype map](#typed-literals-rml-datatypemap-and-rml-datatype).
+A <dfn>language-taggable term map</dfn> is a [=term map=] with a [=term type=] of `rml:Literal` that does not have a specified [=datatype map=].
 
 A [=language-taggable term map=] MAY be associated with a [=language map=].
 
-A <dfn>language map</dfn> (`rml:LanguageMap`) is an [=expression map=]. It specifies a rule for generating one or more [language tags](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag) for a [=language-taggable term map=]. Following [[rdf11-concepts-20140225]], the generated language tags MUST be well-formed according to [[BCP47]].
+A <dfn>language map</dfn> (`rml:LanguageMap`) is an [=expression map=]. It specifies a rule for generating one or more [=language tags=] for a [=language-taggable term map=]. Following [[rdf11-concepts-20140225]], the generated [=language tags=] MUST be well-formed according to [[BCP47]].
 
-Given the list of values resulting from a [=language-taggable term map=] `T`, and the list of values resulting from its [=language map=] `L`, the resulting terms are generated by the [=n-ary Cartesian product=] combination of `T × L`, where the values in `T` are the [lexical forms](https://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form), and the values in `L` are the non-empty language tags.
+Given the list of values resulting from a [=language-taggable term map=] `T`, and the list of values resulting from its [=language map=] `L`, the resulting terms are generated by the [=n-ary Cartesian product=] combination of `T × L`, where the values in `T` are the [=lexical forms=], and the values in `L` are the non-empty [=language tags=].
 
-Each combination of `T × L` causes the generation of a language-tagged plain literal.
+Each combination of `T × L` causes the generation of a [=language-tagged string=].
 
-In the following example the lexical form values generated by reference `"Localization"` are combined with the well-formed language tag values from reference `"Localization[@Culture]"` to generate a list of language tagged literals.
+In the following example the [=lexical form=] values generated by reference `"Localization"` are combined with the well-formed [=language tag=] values from reference `"Localization[@Culture]"` to generate a list of [=language-tagged strings=].
 
 <aside class="example" id="example-language-map" title="usage of language map">
 
@@ -322,11 +322,11 @@ In the following example the lexical form values generated by reference `"Locali
 
 A <dfn>datatypeable term map</dfn> is a [=term map=] with a [=term type=] of `rml:Literal` that does not have a [specified language map](#language-tags-rml-languagemap-and-rml-language).
 
-[=Datatypeable term maps=] MAY generate typed literals. The datatype of these literals MAY be [automatically determined](#automatically-deriving-datatypes), or it MAY be explicitly specified using a [=datatype map=].
+[=Datatypeable term maps=] MUST generate zero or more [=literals=]. The [=datatype=] of these [=literals=] MAY be [automatically determined](#automatically-deriving-datatypes), or it MAY be explicitly specified using a [=datatype map=].
 
-A <dfn>datatype map</dfn> (`rml:DatatypeMap`) is an [=expression map=]. It specifies a rule for generating one or more datatypes of a [=datatypeable term map=]. A [=datatype map=] MUST generate a list of IRI values, in which the IRIs are the datatypes of the [=datatypeable term map=].
+A <dfn>datatype map</dfn> (`rml:DatatypeMap`) is an [=expression map=]. It specifies a rule for generating one or more [=datatypes=] of a [=datatypeable term map=]. A [=datatype map=] MUST generate a list of [=IRI=] values, in which the [=IRIs=] are the [=datatype IRIs=] of the [=datatypeable term map=].
 
-Given the list of values resulting from a [=datatypeable term map=] `T`, and the list of values resulting from its [=datatype map=] `D`, the resulting terms are generated by the [=n-ary Cartesian product=] combination of `T × D`, where the values in `T` are the literal values, and the values in `D` are the datatype IRIs.
+Given the list of values resulting from a [=datatypeable term map=] `T`, and the list of values resulting from its [=datatype map=] `D`, the resulting terms are generated by the [=n-ary Cartesian product=] combination of `T × D`, where the values in `T` are the [=literal=] values, and the values in `D` are the [=datatype IRIs=].
 
 <aside class="example" id="example-datatype-map" title="usage of datatype map">
 
@@ -352,10 +352,10 @@ A [=datatypeable term map=] MUST have zero or one [=datatype maps=], which can b
 
 A [=term map=] that is not a [=datatypeable term map=] MUST NOT have an `rml:datatypeMap` or `rml:datatype` property.
 
-See [=generated RDF term=] for further details on generating literals from [=term maps=].
+See [=generated RDF term=] for further details on generating [=literals=] from [=term maps=].
 
 <aside class="note">
-One cannot explicitly state that a [=plain literal=] without language tag should be generated.
+One cannot explicitly state that a [=literal=] without [=language tag=] should be generated.
 To generate one from a non-string [=reference value=],
 a [=template-valued term map=] with a template such as `"{MY_REFERENCE}"`
 and a term type of `rml:Literal` can be used.
@@ -363,11 +363,11 @@ and a term type of `rml:Literal` can be used.
 
 The following example shows an [=object map=]
 that explicitly specifies `xsd:positiveInteger` type.
-A [datatype-override RDF literal] of that datatype will be generated.
+A [datatype-override RDF literal] of that [=datatype=] will be generated.
 
 ### Automatically deriving datatypes
 
-The datatype of these literals can be automatically determined
+The [=datatype=] of these [=literals=] can be automatically determined
 based on the SQL datatype of the underlying logical table column
 (producing a [natural RDF literal]()),
 or it can be explicitly overridden using `rml:datatype`
