@@ -1,6 +1,6 @@
 # Defining Logical Sources
 
-A <dfn>logical source</dfn> is a function on a [=data source=] that provides data to be mapped to [=RDF triples=].
+A <dfn>logical source</dfn> is an abstract construct to describe data access and iteration for a [=data source=] such that it can be mapped to [=RDF triples=].
 
 A [=logical source=] (`rml:LogicalSource`) MUST have:
 * exactly one `rml:referenceFormulation` property, whose value is a <dfn>reference formulation</dfn> which defines how the underlying [=data source=] is to be accessed, and which [=expressions=] can be evaluated on [=logical iterations=],
