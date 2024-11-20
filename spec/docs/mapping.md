@@ -6,7 +6,7 @@ All [=RDF triples=] generated from one [=logical iteration=] in the [=logical so
 
 A [=triples map=] is represented by a [=resource=] that references the following other [=resources=]:
 
-* It MUST have zero or one [=logical source=] (`rml:logicalSource`) property.
+* It MUST have zero or one [=logical source=] (`rml:logicalSource`) property whose value MUST be a [=logical source=] (`rml:LogicalSource`).
 * It MUST have exactly one [=subject map=] (`rml:SubjectMap`) that specifies how to generate a subject for each [=iteration=] of the [=logical source=].
 It may be specified in two ways:
     1. using the subject map `rml:subjectMap` property,  whose value MUST be the [=subject map=], or
