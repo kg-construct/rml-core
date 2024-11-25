@@ -142,7 +142,7 @@ A general approach that may be used for implementing the natural mappings is as 
     <td><code><a href="https://www.w3.org/TR/xmlschema11-2/#dateTime">xsd:dateTime</a></code></td>
     <td><code>2011-08-23T22:17:00.000+00:00</code></td>
     <td><code>2011-08-23T22:17:00Z</code></td>
-    <td>May or may not have timezone offset.<br>Convert from SQL by replacing space wiht "<code>T</code>".</td>
+    <td>May or may not have timezone offset.<br>Convert from SQL by replacing space with "<code>T</code>".</td>
   </tr>
 </tbody>
 </table>
