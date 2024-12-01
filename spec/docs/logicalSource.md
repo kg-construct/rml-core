@@ -3,7 +3,7 @@
 A <dfn>logical iterable</dfn> is an abstract construct to describe data access and iteration for a [=data source=].
 
 A [=logical iterable=] (`rml:LogicalIterable`) MUST have:
-* exactly one `rml:referenceFormulation` property, whose value is a <dfn>reference formulation</dfn> which defines how the underlying [=data source=] is to be accessed, and which [=expressions=] can be evaluated on [=logical iterations=],
+* zero or one `rml:referenceFormulation` property, whose value is a <dfn>reference formulation</dfn> which defines how the underlying [=data source=] is to be accessed, and which [=expressions=] can be evaluated on [=logical iterations=],
 * zero or one `rml:iterator` property, whose value is a <dfn data-lt="iterator">logical iterator</dfn> that defines a sequence of [=logical iterations=] on the [=data source=]. If no [=iterator=] is provided, a <dfn class="lint-ignore">default iterator</dfn> MUST be associated with the [=reference formulation=].
 
 A <dfn data-lt="iteration">logical iteration</dfn> is an item in the sequence produced by the [=logical iterable=], on which [=expressions=] can be evaluated.
