@@ -3,3 +3,5 @@
 *__pycache__
 .DS_Store
 ontology/widoco-1.4.25-jar-with-dependencies_JDK-17.jar
+/ontology/tmp
+ontology/widoco.jar
