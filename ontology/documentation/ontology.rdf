@@ -428,6 +428,18 @@
     
 
 
+    <!-- http://w3id.org/rml/strategy -->
+
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/rml/strategy">
+        <rdfs:range rdf:resource="http://w3id.org/rml/Strategy"/>
+        <rdfs:comment xml:lang="en">A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
+        <rdfs:label>strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://w3id.org/rml/subject -->
 
 
@@ -737,6 +749,17 @@
         <rdfs:comment xml:lang="en">Denotes a reference to an object map.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
         <rdfs:label>Reference Object Map</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/rml/Strategy -->
+
+
+    <owl:Class rdf:about="http://w3id.org/rml/Strategy">
+        <rdfs:comment xml:lang="en">Denotes a strategy to perform a action (e.g. gather for collections and containers, joins).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
+        <rdfs:label>Strategy</rdfs:label>
     </owl:Class>
     
 
