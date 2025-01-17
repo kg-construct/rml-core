@@ -14,4 +14,4 @@ A <dfn>data source</dfn> is an abstract concept that represents a source of data
 There can be many different types of [=reference formulation=]. The known types, and the details of how a reference formulation is handled and implemented for each data format, are specified in [[RML-IO-Registry]].
 </aside>
 
-An <dfn data-lt="logical source">abstract logical source</dfn> (`rml:AbstractLogicalSource`) is a sub-class of [=iterable=] that can be associated with a [=triples map=] such that a [=data source=] can be mapped to [=RDF triples=].
+An <dfn data-lt="abstract logical source|logical source">abstract logical source</dfn> (`rml:AbstractLogicalSource`) is a sub-class of [=iterable=] that can be associated with a [=triples map=] such that a [=data source=] can be mapped to [=RDF triples=].
