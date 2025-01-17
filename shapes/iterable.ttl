@@ -1,0 +1,66 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://w3id.org/rml/shapes/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+:RMLIterableShape
+    a sh:NodeShape ;
+    sh:targetClass rml:Iterable ;
+    rdfs:label "Iterable" ;
+    rdfs:comment """
+    An abstract construct to describe data access and iteration for a data source.
+    """ ;
+    sh:message """
+    Iterable must specify how to generate logical iterations on a data source.
+    """ ;
+
+    # rml:referenceFormulation
+    sh:property [
+        sh:path rml:referenceFormulation ;
+        rdfs:label "rml:referenceFormulation" ;
+        rdfs:comment """
+        The reference formulation (rml:referenceFormulation) defines how to 
+        reference to elements of the data of the input source.
+        """ ;
+        sh:message """
+        rml:referenceFormulation must be a blank node or IRI specifying the 
+        reference formulation on how to reference elements of a data source,
+        and may be provided at most once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+
+    # rml:iterator
+    sh:property [
+        sh:path rml:iterator ;
+        rdfs:label "rml:iterator" ;
+        rdfs:comment """
+        The logical iterator (rml:iterator) defines the iteration loop used to 
+        map the data of the input source. Depends on the reference formulation
+        if an iterator is necessary.  
+        """ ;
+        sh:message """
+        rml:iterator must be a Literal specifying the iterator to iterate over 
+        the data source, and may be provided at most once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+.
+
+:RMLAbstractLogicalSourceShape
+    a sh:NodeShape ;
+    sh:targetClass rml:AbstractLogicalSource ;
+    rdfs:label "Abstract Logical Source" ;
+    rdfs:comment """
+    A sub-class of iterable that can be associated with a triples map such that a data source can be mapped to RDF triples.
+    """ ;
+    sh:message """
+    rml:AbstractLogicalSource must specify how to generate logical iterations on a data source for a triples map.
+    """ ;
+    sh:node :RMLIterableShape ;
+.
