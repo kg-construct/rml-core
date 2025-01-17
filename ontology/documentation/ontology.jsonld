@@ -9,24 +9,6 @@
     } ]
   } ]
 }, {
-  "@id" : "_:genid10",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2002/07/owl#unionOf" : [ {
-    "@list" : [ {
-      "@id" : "http://w3id.org/rml/BlankNode"
-    }, {
-      "@id" : "http://w3id.org/rml/IRI"
-    }, {
-      "@id" : "http://w3id.org/rml/Literal"
-    }, {
-      "@id" : "http://w3id.org/rml/URI"
-    }, {
-      "@id" : "http://w3id.org/rml/UnsafeIRI"
-    }, {
-      "@id" : "http://w3id.org/rml/UnsafeURI"
-    } ]
-  } ]
-}, {
   "@id" : "_:genid4",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
@@ -41,9 +23,17 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
-      "@id" : "http://w3id.org/rml/LanguageMap"
+      "@id" : "http://w3id.org/rml/BlankNode"
     }, {
-      "@id" : "http://w3id.org/rml/TermMap"
+      "@id" : "http://w3id.org/rml/IRI"
+    }, {
+      "@id" : "http://w3id.org/rml/Literal"
+    }, {
+      "@id" : "http://w3id.org/rml/URI"
+    }, {
+      "@id" : "http://w3id.org/rml/UnsafeIRI"
+    }, {
+      "@id" : "http://w3id.org/rml/UnsafeURI"
     } ]
   } ]
 }, {
@@ -85,6 +75,22 @@
 }, {
   "@id" : "http://purl.org/vocab/vann/preferredNamespaceUri",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://w3id.org/rml/AbstractLogicalSource",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An iterable that can be associated with a triples map such that a data source can be mapped to RDF triples."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Abstract Logical Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://w3id.org/rml/Iterable"
+  } ]
 }, {
   "@id" : "http://w3id.org/rml/BlankNode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
@@ -173,6 +179,19 @@
     "@value" : "IRI"
   } ]
 }, {
+  "@id" : "http://w3id.org/rml/Iterable",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An abstract construct to describe data access and iteration for a data source."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Iterable"
+  } ]
+}, {
   "@id" : "http://w3id.org/rml/Join",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -213,12 +232,6 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Literal"
   } ]
-}, {
-  "@id" : "http://w3id.org/rml/LogicalSource",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
-}, {
-  "@id" : "http://w3id.org/rml/LogicalTarget",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "http://w3id.org/rml/ObjectMap",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
@@ -292,6 +305,19 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Reference Object Map"
+  } ]
+}, {
+  "@id" : "http://w3id.org/rml/ReferenceFormulation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Denotes a Reference Formulation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Reference Formulation"
   } ]
 }, {
   "@id" : "http://w3id.org/rml/SubjectMap",
@@ -595,6 +621,25 @@
     "@id" : "http://w3id.org/rml/GraphMap"
   } ]
 }, {
+  "@id" : "http://w3id.org/rml/iterator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An expression qualified according to the reference formulation that defines a sequence of logical iterations on the data source."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://w3id.org/rml/Iterable"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "iterator"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
   "@id" : "http://w3id.org/rml/joinCondition",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -665,25 +710,7 @@
     "@value" : "logical source"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://w3id.org/rml/LogicalSource"
-  } ]
-}, {
-  "@id" : "http://w3id.org/rml/logicalTarget",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Represents the logical target to where triples are exported to."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "_:genid7"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
-    "@id" : "http://w3id.org/rml/core/"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@value" : "logical target"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://w3id.org/rml/LogicalTarget"
+    "@id" : "http://w3id.org/rml/AbstractLogicalSource"
   } ]
 }, {
   "@id" : "http://w3id.org/rml/object",
@@ -700,9 +727,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "object"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://www.w3.org/2000/01/rdf-schema#Resource"
   } ]
 }, {
   "@id" : "http://w3id.org/rml/objectMap",
@@ -850,6 +874,25 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
+  "@id" : "http://w3id.org/rml/referenceFormulation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The reference formulation used to refer to extracts of the source data. "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://w3id.org/rml/Iterable"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://w3id.org/rml/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "reference formulation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://w3id.org/rml/ReferenceFormulation"
+  } ]
+}, {
   "@id" : "http://w3id.org/rml/subject",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -920,16 +963,13 @@
     "@value" : "term type"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "_:genid10"
+    "@id" : "_:genid7"
   } ]
 }, {
   "@id" : "http://www.linkedmodel.org/schema/vaem#acronym",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
   "@id" : "http://www.w3.org/2000/01/rdf-schema#Class",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
-}, {
-  "@id" : "http://www.w3.org/2000/01/rdf-schema#Resource",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "http://xmlns.com/foaf/0.1/name",
