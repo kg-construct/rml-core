@@ -4,7 +4,7 @@ For each [=reference formulation=] there may be a set of defined <dfn data-lt="n
 
 ## Natural mapping of source values
 
-The <dfn>natural RDF literal</dfn> is a [=literal=] that is the result of applying a [=natural mapping=] on a value of a [=data source=], which produces a [=literal=] that is the most appropriate representation of the value in RDF. The [=natural RDF literal=] has a [=natural RDF lexical form=].
+The <dfn>natural RDF literal</dfn> is a [=literal=] obtained by applying a [=natural mapping=] on a value from a [=data source=], resulting in the most appropriate representation of that value in RDF. The [=natural RDF literal=] has a [=natural RDF lexical form=].
 
 The <dfn>natural RDF lexical form</dfn> produces only the [=lexical form=] of the [=literal=] and recommends that implementations SHOULD apply the [=XSD canonical mapping=], making it a [=canonical RDF lexical form=]. It is used in RML when non-string [=expression evaluation results=] are used in a string context, for example when a timestamp is used in an [=template-valued term map=] with [=term type=] [=IRI=].
 
