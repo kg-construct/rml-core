@@ -6,9 +6,9 @@ For each [=reference formulation=] there may be a set of defined <dfn data-lt="n
 
 The <dfn>natural RDF literal</dfn> is a [=literal=] obtained by applying a [=natural mapping=] on a value from a [=data source=], resulting in the most appropriate representation of that value in RDF. The [=natural RDF literal=] has a [=natural RDF lexical form=].
 
-The <dfn>natural RDF lexical form</dfn> produces only the [=lexical form=] of the [=literal=] and recommends that implementations SHOULD apply the [=XSD canonical mapping=], making it a [=canonical RDF lexical form=]. It is used in RML when non-string [=expression evaluation results=] are used in a string context, for example when a timestamp is used in an [=template-valued term map=] with [=term type=] [=IRI=].
+The <dfn>natural RDF lexical form</dfn> is the [=lexical form=] of the [=literal=] on which implementations SHOULD apply the [=XSD canonical mapping=], making it a [=canonical RDF lexical form=]. It is used in RML when non-string [=expression evaluation results=] are used in a string context, for example when a timestamp is used in an [=template-valued term map=] with [=term type=] [=IRI=].
 
-The <dfn>canonical RDF lexical form</dfn> produces only the [=lexical form=] of the [=literal=] and requires that the [=XSD canonical mapping=] MUST be applied. 
+The <dfn>canonical RDF lexical form</dfn> is the [=lexical form=] of the [=literal=] on which the [=XSD canonical mapping=] MUST be applied.
 
 <dfn>Cast to string</dfn> is an implementation-dependent function that maps values from [=expression evaluation results=] to equivalent Unicode strings. The specifics of [=cast to string=] per [=reference formulation=] are defined in the [[RML-IO-Registry]].
 
