@@ -2,8 +2,8 @@
 
 An <dfn>RDF term</dfn> is either an [=IRI=], or a [=blank node=], or a [=literal=].
 
-A <dfn>term map</dfn> (`rml:TermMap`) is a rule that defines how to generate an [=RDF term=] from a logical iteration. 
-The result of the execution of that rule is the [=RDF term=].
+A <dfn>term map</dfn> (`rml:TermMap`) is a rule that defines how to generate an [=RDF term=] from a [=logical iteration=]. 
+The result of the execution of that rule is the <dfn>generated RDF term</dfn>.
 
 A [=term map=] is a sub-class of an [=expression map=].
 
@@ -21,7 +21,7 @@ if it is a rule that specifies how the [=RDF triple=]'s object is generated; and
 * a [=graph map=] (`rml:GraphMap`),
 if it is a rule that specifies how the [=RDF triple=]'s [=named graph=] is generated.
 
-A [=term map=] generates different RDF terms depending on the position of the [=term map=] in the [=RDF triple=]:
+A [=term map=] generates different types of [=RDF terms=] depending on the position of the [=term map=] in the [=RDF triple=]:
 * a [=subject map=] (`rml:SubjectMap`)
 is a rule that MUST generate either an [=IRI=] or a [=blank node=];
 * a [=predicate map=] (`rml:PredicateMap`)
@@ -29,7 +29,7 @@ is a rule that MUST generate an [=IRI=];
 * an [=object map=] (`rml:ObjectMap`)
 is a rule that MUST generate an [=IRI=], a [=blank node=] or a [=literal=];
 * a [=graph map=] (`rml:GraphMap`)
-is a rule that should generate an [=IRI=].
+is a rule that SHOULD generate an [=IRI=].
 
 A [=term map=] MUST have
 * 0 or 1 [=datatype map=] or 0 or 1 [=language map=];
@@ -38,19 +38,13 @@ A [=term map=] MUST have
 
 ### Constant RDF Terms (`rml:constant`)
 
-A <dfn>constant-valued term map</dfn> is a term map that ignores the [=logical iteration=] and always generates the same [=RDF term=]. A [=constant-valued term map=] is a [=constant-valued expression map=], and is thus represented by a resource that has exactly one `rml:constant` property. The [=constant expression=] MUST be a [valid RDF term](https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-term).
+A <dfn>constant-valued term map</dfn> is a term map that ignores the [=logical iteration=] and always generates the same [=RDF term=]. A [=constant-valued term map=] is a [=constant-valued expression map=], and is thus represented by a resource that has exactly one `rml:constant` property. The [=constant expression=] MUST be a valid [=RDF term=].
 
-The [=constant value=] of the `rml:constant` property is the [=RDF term=] that is the result of the execution of the [=term map=].
-
-#### Constant-valued term maps and term types
-
-If the [=constant-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [=IRI=].
-
-If the [=constant-valued term map=] is an [=object map=], then its [=constant value=] MUST be an [=IRI=] or [=literal=].
+The [=constant value=] of the `rml:constant` property is the [=generated RDF Term=].
 
 #### Shortcuts for constant-valued term  maps
 
-[=constant-valued term maps=] can be expressed more concisely
+[=Constant-valued term maps=] can be expressed more concisely
 using the <dfn>constant shortcut properties</dfn>
 `rml:subject`, `rml:predicate`, `rml:object`, and `rml:graph` for the [=term maps=], and
 `rml:datatype` and `rml:language` for the [=datatype map=] and [=language map=] respectively.
@@ -70,37 +64,18 @@ the following triples were present in the [=mapping graph=] instead:
 
 A <dfn>reference-valued term map</dfn> is a [=reference-valued expression map=], and is thus represented by a resource that has exactly one `rml:reference` property.
 
-The <dfn>expressions set</dfn> is a set of values returned by an [=reference-valued expression=] against a given [=logical iteration=]. For each value in the set, an RDF term is created. If the expressions set is an empty set, then `NULL` is returned and no RDF term is created.
-
-#### Reference-valued term maps and term types
-
-A [=reference-valued term map=] generates an [=RDF term=]
-which is by default a [=literal=].
-
-If the [=reference-valued term map=] is a [=subject map=], [=predicate map=], or [=graph map=], then its [=constant value=] MUST be an [=IRI=].
-
-If the [=reference-valued term map=] is an [=object map=], then its [=constant value=] MUST be a [=literal=].
-
-To use a [=reference-valued term map=]
-as a [Object Map]() or [Graph Map](),
-which should generate an [=RDF term=]
-which is either an [=IRI=] or [=literal=], or
-a [Predicate Map](),
-which should generate an [=RDF term=] which is an [=IRI=],
-or to generate an [=IRI=] for an [=object map=],
-the default [Term Type]() needs to be overwritten.
-
+The evaluation of a [=reference-valued expression map=] against a given [=logical iteration=] produces a [=reference value=]. For each value in the list, an [=RDF term=] is created. If the [=reference value=] is an empty list, then there will be no [=generated RDF term=].
 
 ### Template (`rml:template`)
 
 A <dfn>template-valued term map</dfn> is a [=template-valued expression map=], and is thus represented by a resource
 that has exactly one `rml:template` property.
 
-If the [=template value=] returned by the [=template-valued expression map=] is an empty listt, no RDF term will be created.
+If the [=template value=] returned by the [=template-valued expression map=] is an empty list, no RDF term will be created.
 
 #### IRI encoding
 
-If the [=term type=] of the [=template-valued term map=] is `rml:IRI`, then a [=reference value transforming function=] should be applied during the evaluation of the [=template expression=]. The [=reference value transforming function=] should transform a [=reference value=] into an [=IRI-safe version=] of that value.
+If the [=term type=] of the [=template-valued term map=] is `rml:IRI`, then a [=reference value transforming function=] MUST be applied during the evaluation of the [=template expression=]. The [=reference value transforming function=] MUST transform a [=reference value=] into an [=IRI-safe version=] of that value.
 
 The <dfn data-lt="IRI-safe">IRI-safe version</dfn> of a string is obtained by applying the following transformation
 to any character that is not in the [`iunreserved` production](http://tools.ietf.org/html/rfc3987#section-2.2) in [[RFC3987]]:
@@ -318,11 +293,11 @@ In the following example the [=lexical form=] values generated by reference `"Lo
 
 </aside>
 
-## Typed Literals (`rml:datatypeMap` and `rml:datatype`)
+## Datatypes of Literals (`rml:datatypeMap` and `rml:datatype`)
 
 A <dfn>datatypeable term map</dfn> is a [=term map=] with a [=term type=] of `rml:Literal` that does not have a [specified language map](#language-tags-rml-languagemap-and-rml-language).
 
-[=Datatypeable term maps=] MUST generate zero or more [=literals=]. The [=datatype=] of these [=literals=] MAY be [automatically determined](#automatically-deriving-datatypes), or it MAY be explicitly specified using a [=datatype map=].
+[=Datatypeable term maps=] MUST generate zero or more [=literals=]. The [=datatype=] of these [=literals=] can be automatically determined with a [=natural mapping=] (producing a [=natural RDF literal=]), or it can be explicitly specified using a [=datatype map=] (producing a [=datatype-override RDF literal=]).
 
 A <dfn>datatype map</dfn> (`rml:DatatypeMap`) is an [=expression map=]. It specifies a rule for generating one or more [=datatypes=] of a [=datatypeable term map=]. A [=datatype map=] MUST generate a list of [=IRI=] values, in which the [=IRIs=] are the [=datatype IRIs=] of the [=datatypeable term map=].
 
@@ -363,16 +338,6 @@ and a term type of `rml:Literal` can be used.
 
 The following example shows an [=object map=]
 that explicitly specifies `xsd:positiveInteger` type.
-A [datatype-override RDF literal] of that [=datatype=] will be generated.
+A [=datatype-override RDF literal=] of that [=datatype=] will be generated.
 
-### Automatically deriving datatypes
-
-The [=datatype=] of these [=literals=] can be automatically determined
-based on the SQL datatype of the underlying logical table column
-(producing a [natural RDF literal]()),
-or it can be explicitly overridden using `rml:datatype`
-(producing a [datatype-override RDF literal]()).
-
-<aside class="issue">
-This needs work
-</aside>
+<aside class="issue">TODO example</aside>

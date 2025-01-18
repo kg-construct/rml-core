@@ -3,12 +3,14 @@ This section provides details for each class and property defined by RML: Generi
 <div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
  <h3 id="classes-headline" class="list">Classes</h3>
  <ul class="hlist">
+  <li><a href="#AbstractLogicalSource" title="http://w3id.org/rml/AbstractLogicalSource">Abstract Logical Source</a></li>
   <li><a href="#BlankNode" title="http://w3id.org/rml/BlankNode">Blank Node</a></li>
   <li><a href="#ChildMap" title="http://w3id.org/rml/ChildMap">Child Map</a></li>
   <li><a href="#DatatypeMap" title="http://w3id.org/rml/DatatypeMap">Datatype Map</a></li>
   <li><a href="#ExpressionMap" title="http://w3id.org/rml/ExpressionMap">Expression Map</a></li>
   <li><a href="#GraphMap" title="http://w3id.org/rml/GraphMap">Graph Map</a></li>
   <li><a href="#IRI" title="http://w3id.org/rml/IRI">IRI</a></li>
+  <li><a href="#Iterable" title="http://w3id.org/rml/Iterable">Iterable</a></li>
   <li><a href="#Join" title="http://w3id.org/rml/Join">Join</a></li>
   <li><a href="#LanguageMap" title="http://w3id.org/rml/LanguageMap">Language Map</a></li>
   <li><a href="#Literal" title="http://w3id.org/rml/Literal">Literal</a></li>
@@ -16,6 +18,7 @@ This section provides details for each class and property defined by RML: Generi
   <li><a href="#ParentMap" title="http://w3id.org/rml/ParentMap">Parent Map</a></li>
   <li><a href="#PredicateMap" title="http://w3id.org/rml/PredicateMap">Predicate Map</a></li>
   <li><a href="#PredicateObjectMap" title="http://w3id.org/rml/PredicateObjectMap">Predicate Object Map</a></li>
+  <li><a href="#ReferenceFormulation" title="http://w3id.org/rml/ReferenceFormulation">Reference Formulation</a></li>
   <li><a href="#RefObjectMap" title="http://w3id.org/rml/RefObjectMap">Reference Object Map</a></li>
   <li><a href="#SubjectMap" title="http://w3id.org/rml/SubjectMap">Subject Map</a></li>
   <li><a href="#TermMap" title="http://w3id.org/rml/TermMap">Term Map</a></li>
@@ -24,6 +27,35 @@ This section provides details for each class and property defined by RML: Generi
   <li><a href="#UnsafeURI" title="http://w3id.org/rml/UnsafeURI">Unsafe URI</a></li>
   <li><a href="#URI" title="http://w3id.org/rml/URI">URI</a></li>
  </ul>
+ <div class="entity" id="AbstractLogicalSource">
+  <h3>Abstract Logical Source<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://w3id.org/rml/AbstractLogicalSource</p>
+  <div class="comment">
+   <span class="markdown">An iterable that can be associated with a triples map such that a data source can be mapped to RDF triples.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://w3id.org/rml/core/">http://w3id.org/rml/core/</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Iterable" title="http://w3id.org/rml/Iterable">Iterable</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#logicalSource" title="http://w3id.org/rml/logicalSource">logical source</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="BlankNode">
   <h3>Blank Node<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://w3id.org/rml/BlankNode</p>
@@ -170,6 +202,35 @@ This section provides details for each class and property defined by RML: Generi
    </dd>
   </dl>
  </div>
+ <div class="entity" id="Iterable">
+  <h3>Iterable<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://w3id.org/rml/Iterable</p>
+  <div class="comment">
+   <span class="markdown">An abstract construct to describe data access and iteration for a data source.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://w3id.org/rml/core/">http://w3id.org/rml/core/</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#AbstractLogicalSource" title="http://w3id.org/rml/AbstractLogicalSource">Abstract Logical Source</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#iterator" title="http://w3id.org/rml/iterator">iterator</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#referenceFormulation" title="http://w3id.org/rml/referenceFormulation">reference formulation</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="Join">
   <h3>Join<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://w3id.org/rml/Join</p>
@@ -219,12 +280,6 @@ This section provides details for each class and property defined by RML: Generi
    </dt>
    <dd>
     <a href="#ExpressionMap" title="http://w3id.org/rml/ExpressionMap">Expression Map</a> <sup class="type-c" title="class">c</sup>
-   </dd>
-   <dt>
-    is in domain of
-   </dt>
-   <dd>
-    <a href="#logicalTarget" title="http://w3id.org/rml/logicalTarget">logical target</a> <sup class="type-op" title="object property">op</sup>
    </dd>
    <dt>
     is in range of
@@ -365,6 +420,29 @@ This section provides details for each class and property defined by RML: Generi
    </dd>
   </dl>
  </div>
+ <div class="entity" id="ReferenceFormulation">
+  <h3>Reference Formulation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://w3id.org/rml/ReferenceFormulation</p>
+  <div class="comment">
+   <span class="markdown">Denotes a Reference Formulation.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://w3id.org/rml/core/">http://w3id.org/rml/core/</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#referenceFormulation" title="http://w3id.org/rml/referenceFormulation">reference formulation</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
  <div class="entity" id="RefObjectMap">
   <h3>Reference Object Map<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://w3id.org/rml/RefObjectMap</p>
@@ -454,7 +532,7 @@ This section provides details for each class and property defined by RML: Generi
     is in domain of
    </dt>
    <dd>
-    <a href="#logicalTarget" title="http://w3id.org/rml/logicalTarget">logical target</a> <sup class="type-op" title="object property">op</sup>, <a href="#termType" title="http://w3id.org/rml/termType">term type</a> <sup class="type-op" title="object property">op</sup>
+    <a href="#termType" title="http://w3id.org/rml/termType">term type</a> <sup class="type-op" title="object property">op</sup>
    </dd>
   </dl>
  </div>
@@ -545,7 +623,6 @@ This section provides details for each class and property defined by RML: Generi
   <li><a href="#joinCondition" title="http://w3id.org/rml/joinCondition">join condition</a></li>
   <li><a href="#languageMap" title="http://w3id.org/rml/languageMap">language map</a></li>
   <li><a href="#logicalSource" title="http://w3id.org/rml/logicalSource">logical source</a></li>
-  <li><a href="#logicalTarget" title="http://w3id.org/rml/logicalTarget">logical target</a></li>
   <li><a href="#object" title="http://w3id.org/rml/object">object</a></li>
   <li><a href="#objectMap" title="http://w3id.org/rml/objectMap">object map</a></li>
   <li><a href="#parentMap" title="http://w3id.org/rml/parentMap">parent map</a></li>
@@ -553,6 +630,7 @@ This section provides details for each class and property defined by RML: Generi
   <li><a href="#predicate" title="http://w3id.org/rml/predicate">predicate</a></li>
   <li><a href="#predicateMap" title="http://w3id.org/rml/predicateMap">predicate map</a></li>
   <li><a href="#predicateObjectMap" title="http://w3id.org/rml/predicateObjectMap">predicate object map</a></li>
+  <li><a href="#referenceFormulation" title="http://w3id.org/rml/referenceFormulation">reference formulation</a></li>
   <li><a href="#subject" title="http://w3id.org/rml/subject">subject</a></li>
   <li><a href="#subjectMap" title="http://w3id.org/rml/subjectMap">subject map</a></li>
   <li><a href="#termType" title="http://w3id.org/rml/termType">term type</a></li>
@@ -838,38 +916,7 @@ This section provides details for each class and property defined by RML: Generi
      has range
     </dt>
     <dd>
-     <a href="http://w3id.org/rml/LogicalSource" target="_blank" title="http://w3id.org/rml/LogicalSource">Logical Source</a> <sup class="type-c" title="class">c</sup>
-    </dd>
-   </dl>
-  </div>
- </div>
- <div class="entity" id="logicalTarget">
-  <h3>logical target<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
-  <p><strong>IRI:</strong> http://w3id.org/rml/logicalTarget</p>
-  <div class="comment">
-   <span class="markdown">Represents the logical target to where triples are exported to.</span>
-  </div>
-  <dl class="definedBy">
-   <dt>
-    Is defined by
-   </dt>
-   <dd>
-    <a href="http://w3id.org/rml/core/">http://w3id.org/rml/core/</a>
-   </dd>
-  </dl>
-  <div class="description">
-   <dl>
-    <dt>
-     has domain
-    </dt>
-    <dd>
-     <a href="#LanguageMap" title="http://w3id.org/rml/LanguageMap">Language Map</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#TermMap" title="http://w3id.org/rml/TermMap">Term Map</a> <sup class="type-c" title="class">c</sup>
-    </dd>
-    <dt>
-     has range
-    </dt>
-    <dd>
-     <a href="http://w3id.org/rml/LogicalTarget" target="_blank" title="http://w3id.org/rml/LogicalTarget">Logical Target</a> <sup class="type-c" title="class">c</sup>
+     <a href="#AbstractLogicalSource" title="http://w3id.org/rml/AbstractLogicalSource">Abstract Logical Source</a> <sup class="type-c" title="class">c</sup>
     </dd>
    </dl>
   </div>
@@ -895,12 +942,6 @@ This section provides details for each class and property defined by RML: Generi
     </dt>
     <dd>
      <a href="#PredicateObjectMap" title="http://w3id.org/rml/PredicateObjectMap">Predicate Object Map</a> <sup class="type-c" title="class">c</sup>
-    </dd>
-    <dt>
-     has range
-    </dt>
-    <dd>
-     <a href="http://www.w3.org/2000/01/rdf-schema#Resource" target="_blank" title="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a> <sup class="type-c" title="class">c</sup>
     </dd>
    </dl>
   </div>
@@ -1079,6 +1120,37 @@ This section provides details for each class and property defined by RML: Generi
    </dl>
   </div>
  </div>
+ <div class="entity" id="referenceFormulation">
+  <h3>reference formulation<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://w3id.org/rml/referenceFormulation</p>
+  <div class="comment">
+   <span class="markdown">The reference formulation used to refer to extracts of the source data. </span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://w3id.org/rml/core/">http://w3id.org/rml/core/</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Iterable" title="http://w3id.org/rml/Iterable">Iterable</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ReferenceFormulation" title="http://w3id.org/rml/ReferenceFormulation">Reference Formulation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
  <div class="entity" id="subject">
   <h3>subject<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> http://w3id.org/rml/subject</p>
@@ -1170,6 +1242,7 @@ This section provides details for each class and property defined by RML: Generi
  <h3 id="dataproperties-headline" class="list">Data Properties</h3>
  <ul class="hlist">
   <li><a href="#child" title="http://w3id.org/rml/child">child</a></li>
+  <li><a href="#iterator" title="http://w3id.org/rml/iterator">iterator</a></li>
   <li><a href="#language" title="http://w3id.org/rml/language">language</a></li>
   <li><a href="#parent" title="http://w3id.org/rml/parent">parent</a></li>
   <li><a href="#reference" title="http://w3id.org/rml/reference">reference</a></li>
@@ -1196,6 +1269,37 @@ This section provides details for each class and property defined by RML: Generi
     </dt>
     <dd>
      <a href="#Join" title="http://w3id.org/rml/Join">Join</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="iterator">
+  <h3>iterator<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://w3id.org/rml/iterator</p>
+  <div class="comment">
+   <span class="markdown">An expression qualified according to the reference formulation that defines a sequence of logical iterations on the data source.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://w3id.org/rml/core/">http://w3id.org/rml/core/</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Iterable" title="http://w3id.org/rml/Iterable">Iterable</a> <sup class="type-c" title="class">c</sup>
     </dd>
     <dt>
      has range

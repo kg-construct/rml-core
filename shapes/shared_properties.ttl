@@ -26,6 +26,7 @@
         Exactly one rml:logicalSource is required to access the data source.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node :RMLAbstractLogicalSourceShape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

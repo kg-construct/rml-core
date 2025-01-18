@@ -85,10 +85,10 @@
 
 
 ###  http://w3id.org/rml/constant
-<http://w3id.org/rml/constant> rdfs:comment "A property for indicating whether a expression map is a constant-valued expression map."@en ;
+<http://w3id.org/rml/constant> rdf:type owl:AnnotationProperty ;
+                               rdfs:comment "A property for indicating whether a expression map is a constant-valued expression map."@en ;
                                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                rdfs:label "constant" ;
-                               rdf:type owl:AnnotationProperty ;
                                rdfs:domain <http://w3id.org/rml/ExpressionMap> .
 
 
@@ -192,29 +192,15 @@
 ###  http://w3id.org/rml/logicalSource
 <http://w3id.org/rml/logicalSource> rdf:type owl:ObjectProperty ;
                                     rdfs:domain <http://w3id.org/rml/TriplesMap> ;
-                                    rdfs:range <http://w3id.org/rml/LogicalSource> ;
+                                    rdfs:range <http://w3id.org/rml/AbstractLogicalSource> ;
                                     rdfs:comment "Represents the logical source to be mapped."@en ;
                                     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                     rdfs:label "logical source" .
 
 
-###  http://w3id.org/rml/logicalTarget
-<http://w3id.org/rml/logicalTarget> rdf:type owl:ObjectProperty ;
-                                    rdfs:domain [ rdf:type owl:Class ;
-                                                  owl:unionOf ( <http://w3id.org/rml/LanguageMap>
-                                                                <http://w3id.org/rml/TermMap>
-                                                              )
-                                                ] ;
-                                    rdfs:range <http://w3id.org/rml/LogicalTarget> ;
-                                    rdfs:comment "Represents the logical target to where triples are exported to." ;
-                                    rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-                                    rdfs:label "logical target" .
-
-
 ###  http://w3id.org/rml/object
 <http://w3id.org/rml/object> rdf:type owl:ObjectProperty ;
                              rdfs:domain <http://w3id.org/rml/PredicateObjectMap> ;
-                             rdfs:range rdfs:Resource ;
                              rdfs:comment "Specifies the object for the generated triple from the logical source record."@en ;
                              rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                              rdfs:label "object" .
@@ -272,6 +258,15 @@
                                          rdfs:label "predicate object map" .
 
 
+###  http://w3id.org/rml/referenceFormulation
+<http://w3id.org/rml/referenceFormulation> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain <http://w3id.org/rml/Iterable> ;
+                                           rdfs:range <http://w3id.org/rml/ReferenceFormulation> ;
+                                           rdfs:comment "The reference formulation used to refer to extracts of the source data. "@en ;
+                                           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                                           rdfs:label "reference formulation" .
+
+
 ###  http://w3id.org/rml/subject
 <http://w3id.org/rml/subject> rdf:type owl:ObjectProperty ;
                               rdfs:domain <http://w3id.org/rml/TriplesMap> ;
@@ -319,6 +314,15 @@
                             rdfs:label "child" .
 
 
+###  http://w3id.org/rml/iterator
+<http://w3id.org/rml/iterator> rdf:type owl:DatatypeProperty ;
+                               rdfs:domain <http://w3id.org/rml/Iterable> ;
+                               rdfs:range xsd:string ;
+                               rdfs:comment "An expression qualified according to the reference formulation that defines a sequence of logical iterations on the data source."@en ;
+                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                               rdfs:label "iterator" .
+
+
 ###  http://w3id.org/rml/language
 <http://w3id.org/rml/language> rdf:type owl:DatatypeProperty ;
                                rdfs:domain <http://w3id.org/rml/ObjectMap> ;
@@ -358,6 +362,14 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://w3id.org/rml/AbstractLogicalSource
+<http://w3id.org/rml/AbstractLogicalSource> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://w3id.org/rml/Iterable> ;
+                                            rdfs:comment "An iterable that can be associated with a triples map such that a data source can be mapped to RDF triples."@en ;
+                                            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                                            rdfs:label "Abstract Logical Source" .
+
 
 ###  http://w3id.org/rml/BlankNode
 <http://w3id.org/rml/BlankNode> rdf:type owl:Class ;
@@ -404,6 +416,13 @@
                           rdfs:label "IRI" .
 
 
+###  http://w3id.org/rml/Iterable
+<http://w3id.org/rml/Iterable> rdf:type owl:Class ;
+                               rdfs:comment "An abstract construct to describe data access and iteration for a data source."@en ;
+                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                               rdfs:label "Iterable" .
+
+
 ###  http://w3id.org/rml/Join
 <http://w3id.org/rml/Join> rdf:type owl:Class ;
                            rdfs:comment "Represents a join condition."@en ;
@@ -424,14 +443,6 @@
                               rdfs:comment "Denotes a Literal, used with termType."@en ;
                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                               rdfs:label "Literal" .
-
-
-###  http://w3id.org/rml/LogicalSource
-<http://w3id.org/rml/LogicalSource> rdf:type owl:Class .
-
-
-###  http://w3id.org/rml/LogicalTarget
-<http://w3id.org/rml/LogicalTarget> rdf:type owl:Class .
 
 
 ###  http://w3id.org/rml/ObjectMap
@@ -470,6 +481,13 @@
                                    rdfs:comment "Denotes a reference to an object map."@en ;
                                    rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                    rdfs:label "Reference Object Map" .
+
+
+###  http://w3id.org/rml/ReferenceFormulation
+<http://w3id.org/rml/ReferenceFormulation> rdf:type owl:Class ;
+                                           rdfs:comment "Denotes a Reference Formulation."@en ;
+                                           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                                           rdfs:label "Reference Formulation" .
 
 
 ###  http://w3id.org/rml/SubjectMap
@@ -518,10 +536,6 @@
 
 ###  http://www.w3.org/2000/01/rdf-schema#Class
 rdfs:Class rdf:type owl:Class .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#Resource
-rdfs:Resource rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
