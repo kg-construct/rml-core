@@ -90,6 +90,20 @@
         sh:minCount 0 ;
         sh:nodeKind sh:BlankNodeOrIRI ;
     ] ;
+
+    # rml:baseIRI
+    sh:property [
+        sh:path rml:baseIRI ;
+        sh:description """
+        Base IRI to use for generating RDF triples or quads.
+        """ ;
+        sh:message """
+        rml:baseIRI must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
 .
 
 :RMLGraphMapPropertiesShape
