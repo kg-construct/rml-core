@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Language Map and language shortcut shape                                #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023i - 2024)             #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -12,8 +13,8 @@
     a sh:NodeShape ;
     sh:targetClass rml:LanguageMap ;
     sh:targetObjectsOf rml:languageMap ;
-    sh:name "LanguageMap" ;
-    sh:description """
+    rdfs:label "LanguageMap" ;
+    rdfs:comment """
     Represents a Language Map.
     """ ;
     sh:message """
@@ -36,8 +37,8 @@
 :RMLlanguageShape 
     a sh:NodeShape ;
     sh:targetObjectsOf rml:language ;
-    sh:name "language" ;
-    sh:description """
+    rdfs:label "language" ;
+    rdfs:comment """
     Specified the language for the generated Literal.
     """ ;
     sh:message """

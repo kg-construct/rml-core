@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Expression Map shape                                                    #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -10,8 +11,8 @@
 
 :RMLExpressionMapShape
     a sh:NodeShape ;
-    sh:name "ExpressionMap" ;
-    sh:description """
+    rdfs:label "ExpressionMap" ;
+    rdfs:comment """
     Represents a Expression Map.
     """ ;
     sh:message """
@@ -32,8 +33,8 @@
                                      rml:reference
                                      rml:returnMap
                                      rml:functionExecution)] ;
-        sh:name "template/constant/reference/returnMap/functionExecution" ;
-        sh:description """
+        rdfs:label "template/constant/reference/returnMap/functionExecution" ;
+        rdfs:comment """
         Exactly one rml:template, one rml:constant, one rml:reference,
         one rml:returnMap, or one rml:functionExecution is required.
         """ ;
@@ -48,8 +49,8 @@
     # rml:template
     sh:property [
         sh:path rml:template ;
-        sh:name "template" ;
-        sh:description """
+        rdfs:label "template" ;
+        rdfs:comment """
         A template (format string) to specify how to generate a value for a 
         subject, predicate, or object, using one or more columns from a logical
         table row or iterator.
@@ -65,8 +66,8 @@
     sh:property [
         sh:targetSubjectsOf rml:constant ;
         sh:path rml:constant ;
-        sh:name "constant" ;
-        sh:description """
+        rdfs:label "constant" ;
+        rdfs:comment """
         A property for indicating whether a term map is a constant-valued term 
         map.
         """ ;
@@ -80,8 +81,8 @@
     sh:property [
         sh:targetSubjectsOf rml:reference ;
         sh:path rml:reference ;
-        sh:name "reference" ;
-        sh:description """
+        rdfs:label "reference" ;
+        rdfs:comment """
         A reference rml:reference is used to refer to a column in case of 
         databases, a record in case of CSV or TSV data source, an element in 
         case of XML data source, an object in case of a JSON data source, etc.
@@ -102,8 +103,8 @@
     sh:property [
         sh:targetSubjectsOf rml:returnMap ;
         sh:path rml:returnMap ;
-        sh:name "returnMap" ;
-        sh:description """
+        rdfs:label "returnMap" ;
+        rdfs:comment """
         A Return Map rml:returnMap is used to define the return values of a FnO
         function from the RML-FNML specification. RML Core only validates if the
         property is present and has the right node kind. The actual validation
@@ -120,8 +121,8 @@
     sh:property [
         sh:targetSubjectsOf rml:functionExecution ;
         sh:path rml:functionExecution ;
-        sh:name "functionExecution" ;
-        sh:description """
+        rdfs:label "functionExecution" ;
+        rdfs:comment """
         A Function Execution rml:functionExecution is used to define the FnO 
         function to execute from the RML-FNML specification. RML Core only 
         validates if the property is present and has the right node kind.

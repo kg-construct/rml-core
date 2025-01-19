@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Object Map and object shortcut shape                                    #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -11,8 +12,8 @@
 :RMLObjectMapShape
     a sh:NodeShape ;
     sh:targetClass rml:ObjectMap ;
-    sh:name "ObjectMap" ;
-    sh:description """
+    rdfs:label "ObjectMap" ;
+    rdfs:comment """
     Represents an Object Map.
     """ ;
     sh:message """
@@ -28,8 +29,8 @@
         [
             sh:path [ sh:alternativePath (rml:languageMap rml:datatypeMap
                                           rml:language rml:datatype) ] ;
-            sh:name "languageMap/datatypeMap/language/datatype" ;
-            sh:description """
+            rdfs:label "languageMap/datatypeMap/language/datatype" ;
+            rdfs:comment """
             rml:language/rml:languageMap and rml:datatype/rml:datatypeMap
             may only be provided once and not at the same time.
             """ ;
@@ -39,8 +40,8 @@
         [
             sh:path rml:languageMap ;
             sh:targetSubjectsOf rml:languageMap ;
-            sh:name "languageMap" ;
-            sh:description """
+            rdfs:label "languageMap" ;
+            rdfs:comment """
             Specified the language map for the object component for the 
             generated RDF triples.
             """ ;
@@ -53,8 +54,8 @@
         [
             sh:path rml:datatypeMap ;
             sh:targetSubjectsOf rml:datatypeMap ;
-            sh:name "datatypeMap" ;
-            sh:description """
+            rdfs:label "datatypeMap" ;
+            rdfs:comment """
             Specifies the datatype of the object component for the generated 
             RDF triples.
             """ ;
@@ -66,8 +67,8 @@
         ]
         [
             sh:path rml:language ;
-            sh:name "language" ;
-            sh:description """
+            rdfs:label "language" ;
+            rdfs:comment """
             Language tag for the object.
             """ ;
             sh:nodeKind sh:Literal ;
@@ -75,8 +76,8 @@
         [
             sh:path rml:datatype ;
             sh:targetSubjectsOf rml:datatype ;
-            sh:name "datatype" ;
-            sh:description """
+            rdfs:label "datatype" ;
+            rdfs:comment """
             Datatype for the object.
             """ ;
             sh:nodeKind sh:IRI ;
@@ -88,8 +89,8 @@
 :RMLobjectShape 
     a sh:NodeShape ;
     sh:targetObjectsOf rml:object ;
-    sh:name "object" ;
-    sh:description """
+    rdfs:label "object" ;
+    rdfs:comment """
     An IRI, Blank Node, or Literal to use as object for all the RDF triples.
     """ ;
     sh:message """
