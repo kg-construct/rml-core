@@ -571,6 +571,16 @@
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:predicateObjectMap ;
             sh:targetSubjectsOf rml:predicateObjectMap ],
+        [ sh:description """
+        Base IRI to use for generating RDF triples or quads.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:baseIRI must be an IRI.
+        """ ;
+            sh:minCount 0 ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:baseIRI ],
         [ rdfs:label "subjectMap/subject/quotedTriplesMap" ;
             rdfs:comment """
         Either a rml:subject, rml:subjectMap or a rml:quotedTriplesMap is required, not multiple.
