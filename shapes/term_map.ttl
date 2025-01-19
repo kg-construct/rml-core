@@ -31,11 +31,12 @@
             Blank Node, or a Literal.
             """ ;
             sh:message """
-            rml:termType must be either rml:IRI, rml:Literal, or rml:BlankNode 
-            for a Term Map. May only be provided once.
+            rml:termType must be either rml:IRI, rml:UnsafeIRI,
+            rml:URI, rml:UnsafeURI, rml:Literal, or rml:BlankNode for a Term Map.
+            May only be provided once.
             """ ;
             sh:maxCount 1 ;
-            sh:in (rml:IRI rml:Literal rml:BlankNode) ;
+            sh:in (rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI rml:Literal rml:BlankNode) ;
             sh:nodeKind sh:IRI ;
         ] 
     ) ;

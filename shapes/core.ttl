@@ -60,9 +60,10 @@
     rdfs:comment """
     Represents a Graph Map.
     """ ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI rml:BlankNode ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI rml:BlankNode ) ;
                 sh:message """
-            rml:termType must be an IRI or blank node for a Graph Map.
+            rml:termType must be an rml:IRI, rml:UnsafeIRI, rml:URI,
+            rml:UnsafeURI, or rml:BlankNode for a Graph Map.
             """ ;
                 sh:path rml:termType ] ) ;
     sh:message """
@@ -168,9 +169,10 @@
     rdfs:comment """
     Represents a Predicate Map.
     """ ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI ) ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:in ( rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI ) ;
                 sh:message """
-            rml:termType for Predicate Map can only be a rml:IRI;
+            rml:termType for Predicate Map can only be a rml:IRI, rml:UnsafeIRI,
+            rml:URI, or rml:UnsafeURI;
             """ ;
                 sh:path rml:termType ] ) ;
     sh:message """
@@ -373,7 +375,7 @@
     A sub-class of iterable that can be associated with a triples map such that a data source can be mapped to RDF triples.
     """ ;
     sh:message """
-    Abstract Logical Source must specify how to generate logical iterations on a data source for a triples map.
+    rml:AbstractLogicalSource must specify how to generate logical iterations on a data source for a triples map.
     """ ;
     sh:node <http://w3id.org/rml/shapes/RMLIterableShape> ;
     sh:targetClass rml:AbstractLogicalSource .
@@ -521,9 +523,10 @@
             """ ;
                 sh:nodeKind sh:IRI ;
                 sh:path rml:class ;
-                sh:targetSubjectsOf rml:class ] [ sh:in ( rml:IRI rml:BlankNode ) ;
+                sh:targetSubjectsOf rml:class ] [ sh:in ( rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI rml:BlankNode ) ;
                 sh:message """
-            rml:termType must be a rml:IRI or rml:BlankNode for Subject Map.
+            rml:termType must be a rml:IRI, rml:UnsafeIRI, rml:URI,
+            rml:UnsafeURI, or rml:BlankNode for a Subject Map.
             """ ;
                 sh:path rml:termType ] ) ;
     sh:message """
@@ -644,11 +647,12 @@
             An IRI indicating whether a generated term should be an IRI, 
             Blank Node, or a Literal.
             """ ;
-                sh:in ( rml:IRI rml:Literal rml:BlankNode ) ;
+                sh:in ( rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI rml:Literal rml:BlankNode ) ;
                 sh:maxCount 1 ;
                 sh:message """
-            rml:termType must be either rml:IRI, rml:Literal, or rml:BlankNode 
-            for a Term Map. May only be provided once.
+            rml:termType must be either rml:IRI, rml:UnsafeIRI,
+            rml:URI, rml:UnsafeURI, rml:Literal, or rml:BlankNode for a Term Map.
+            May only be provided once.
             """ ;
                 sh:nodeKind sh:IRI ;
                 sh:path rml:termType ;
