@@ -5,35 +5,34 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix bibo: <http://purl.org/ontology/bibo/> .
 @base <http://w3id.org/rml/> .
 
 <http://w3id.org/rml/core/> rdf:type owl:Ontology ;
-                        dc:description "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
-                        dc:title "RML: Generic Mapping Language for RDF"@en ;
-                        dc:contributor "Anastasia Dimou" ;
-                        dc:contributor "Pano Maria" ;
-                        dc:contributor "Ben de Meester" ;
-                        dc:contributor "Franck Michel" ;
-                        dc:contributor "David Chaves Fraga" ;
-                        dc:contributor "Christophe Debruyne" ;
-                        dc:contributor "Samaneh Jozashoori" ;
-                        dc:contributor "Dylan Van Assche" ;
-                        dc:contributor "Julián Arenas Guerrero" ;
-                        dc:contributor "Ana Iglesias Molina" ;
-                        dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
-                        vann:preferredNamespaceUri "http://w3id.org/rml/" ;
-                        vann:preferredNamespacePrefix "rml" ;
-                        dc:publisher <https://www.w3.org/community/kg-construct/> ;
-                        bibo:status "draft" ;
-                        owl:versionIRI <http://w3id.org/rml/core/> ;
-                        owl:versionInfo "0.1.0" ;
-                        dc:created "2023-03-14" ;
-                        dc:modified "2023-06-15" .
+                             owl:versionIRI <http://w3id.org/rml/core/> ;
+                             dc:contributor "Ana Iglesias Molina" ,
+                                            "Anastasia Dimou" ,
+                                            "Ben de Meester" ,
+                                            "Christophe Debruyne" ,
+                                            "David Chaves Fraga" ,
+                                            "Dylan Van Assche" ,
+                                            "Franck Michel" ,
+                                            "Pano Maria" ,
+                                            "Samaneh Jozashoori" ;
+                             dc:created "2023-03-14" ;
+                             dc:description "Generic Mapping Language for RDF (RDB/CSV/TSV/XML/JSON/... to RDF) - Vocabulary description"@en ;
+                             dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
+                             dc:modified "2023-06-15" ;
+                             dc:publisher <https://www.w3.org/community/kg-construct/> ;
+                             dc:title "RML: Generic Mapping Language for RDF"@en ;
+                             bibo:status "draft" ;
+                             vann:preferredNamespacePrefix "rml" ;
+                             vann:preferredNamespaceUri "http://w3id.org/rml/" ;
+                             owl:versionInfo "0.1.0" .
 
 #################################################################
 #    Annotation properties
@@ -45,6 +44,10 @@ cc:license rdf:type owl:AnnotationProperty .
 
 ###  http://purl.org/dc/terms/contributor
 dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dc:created rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/creator
@@ -59,6 +62,10 @@ dc:description rdf:type owl:AnnotationProperty .
 dc:issued rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/license
+dc:license rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/modified
 dc:modified rdf:type owl:AnnotationProperty .
 
@@ -71,12 +78,24 @@ dc:publisher rdf:type owl:AnnotationProperty .
 dc:title rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/ontology/bibo/status
+bibo:status rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
 vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespaceUri
 vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/rml/constant
+:constant rdf:type owl:AnnotationProperty ;
+          rdfs:comment "A property for indicating whether a expression map is a constant-valued expression map."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "constant" ;
+          rdfs:domain :ExpressionMap .
 
 
 ###  http://www.linkedmodel.org/schema/vaem#acronym
@@ -91,6 +110,23 @@ foaf:name rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/rml/baseIRI
+:baseIRI rdf:type owl:ObjectProperty ;
+         rdfs:domain :TriplesMap ;
+         rdfs:comment "Indicates the base IRI of the RDF graph to be created with a triples map."@en ;
+         rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+         rdfs:label "base IRI" .
+
+
+###  http://w3id.org/rml/childMap
+:childMap rdf:type owl:ObjectProperty ;
+          rdfs:domain :Join ;
+          rdfs:range :ChildMap ;
+          rdfs:comment "Names a child map in the child source of a join."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "child map" .
+
+
 ###  http://w3id.org/rml/class
 :class rdf:type owl:ObjectProperty ;
        rdfs:domain :SubjectMap ;
@@ -98,14 +134,6 @@ foaf:name rdf:type owl:AnnotationProperty .
        rdfs:comment "The subject value generated for a logical source record will be asserted as an instance of this RDFS class."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "class" .
-
-
-###  http://w3id.org/rml/constant
-:constant rdf:type rdf:Property ;
-          rdfs:domain :ExpressionMap ;
-          rdfs:comment "A property for indicating whether a expression map is a constant-valued expression map."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "constant" .
 
 
 ###  http://w3id.org/rml/datatype
@@ -150,6 +178,15 @@ foaf:name rdf:type owl:AnnotationProperty .
           rdfs:label "graph map" .
 
 
+###  http://w3id.org/rml/iterator
+:iterator rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Iterable ;
+          rdfs:range xsd:string ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:comment "An expression qualified according to the reference formulation that defines a sequence of logical iterations on the data source."@en ;
+          rdfs:label "iterator" .
+
+
 ###  http://w3id.org/rml/joinCondition
 :joinCondition rdf:type owl:ObjectProperty ;
                rdfs:range :Join ;
@@ -170,25 +207,15 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/rml/logicalSource
 :logicalSource rdf:type owl:ObjectProperty ;
                rdfs:domain :TriplesMap ;
-               rdfs:range :LogicalSource ;
+               rdfs:range :AbstractLogicalSource ;
                rdfs:comment "Represents the logical source to be mapped."@en ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                rdfs:label "logical source" .
 
 
-###  http://w3id.org/rml/logicalTarget
-:logicalTarget rdf:type owl:ObjectProperty ;
-               rdfs:domain :TermMap ;
-               rdfs:range :LogicalTarget ;
-               rdfs:comment "Represents the logical target to where triples are exported to." ;
-               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-               rdfs:label "logical target" .
-
-
 ###  http://w3id.org/rml/object
-:object rdf:type rdf:Property ;
+:object rdf:type owl:ObjectProperty ;
         rdfs:domain :PredicateObjectMap ;
-        rdfs:range rdfs:Resource ;
         rdfs:comment "Specifies the object for the generated triple from the logical source record."@en ;
         rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
         rdfs:label "object" .
@@ -200,6 +227,15 @@ foaf:name rdf:type owl:AnnotationProperty .
            rdfs:comment "An ObjectMap element to generate the object component of the (predicate, object) pair from a logical source record."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "object map" .
+
+
+###  http://w3id.org/rml/parentMap
+:parentMap rdf:type owl:ObjectProperty ;
+           rdfs:domain :Join ;
+           rdfs:range :ParentMap ;
+           rdfs:comment "Names a parent map in the parent source of a join."@en ;
+           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+           rdfs:label "parent map" .
 
 
 ###  http://w3id.org/rml/parentTriplesMap
@@ -237,12 +273,13 @@ foaf:name rdf:type owl:AnnotationProperty .
                     rdfs:label "predicate object map" .
 
 
-###  http://w3id.org/rml/strategy
-:strategy rdf:type owl:ObjectProperty ;
-          rdfs:range :Strategy ;
-          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "strategy" .
+###  http://w3id.org/rml/referenceFormulation
+:referenceFormulation rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Iterable ;
+                      rdfs:range :ReferenceFormulation ;
+                      rdfs:comment "The reference formulation used to refer to extracts of the source data. "@en ;
+                      rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                      rdfs:label "reference formulation" .
 
 
 ###  http://w3id.org/rml/subject
@@ -269,30 +306,14 @@ foaf:name rdf:type owl:AnnotationProperty .
                        owl:unionOf ( :BlankNode
                                      :IRI
                                      :Literal
+                                     :URI
+                                     :UnsafeIRI
+                                     :UnsafeURI
                                    )
                      ] ;
-          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI reference, blank node, or a literal."@en ;
+          rdfs:comment "A string indicating whether subject or object generated using the value from a source record name specified should be an IRI/URI (safe or unsafe) reference, blank node, or a literal."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
           rdfs:label "term type" .
-
-
-### http://w3id.org/rml/childMap
-:childMap rdf:type owl:ObjectProperty ;
-       rdfs:domain :Join ;
-       rdfs:range :ChildMap ;
-       rdfs:comment "Names a child map in the child source of a join."@en ;
-       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-       rdfs:label "child map" .
-
-
-
-### http://w3id.org/rml/parentMap
-:parentMap rdf:type owl:ObjectProperty ;
-       rdfs:domain :Join ;
-       rdfs:range :ParentMap ;
-       rdfs:comment "Names a parent map in the parent source of a join."@en ;
-       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-       rdfs:label "parent map" .
 
 
 #################################################################
@@ -332,7 +353,7 @@ foaf:name rdf:type owl:AnnotationProperty .
            rdfs:range xsd:string ;
            rdfs:comment "A valid expression that selects values from the source data. The reference should conform to the syntax rules/grammar of the specified Reference Formulation." ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-           rdfs:label "reference"^^xsd:string .
+           rdfs:label "reference" .
 
 
 ###  http://w3id.org/rml/template
@@ -348,19 +369,20 @@ foaf:name rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
+###  http://w3id.org/rml/AbstractLogicalSource
+:AbstractLogicalSource rdf:type owl:Class ;
+                       rdfs:subClassOf :Iterable ;
+                       rdfs:comment "An iterable that can be associated with a triples map such that a data source can be mapped to RDF triples."@en ;
+                       rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                       rdfs:label "Abstract Logical Source" .
+
+
 ###  http://w3id.org/rml/BlankNode
 :BlankNode rdf:type owl:Class ;
            rdfs:comment "Denotes a blank node, used with termType"@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
            rdfs:label "Blank Node" .
 
-
-###  http://w3id.org/rml/DatatypeMap
-:DatatypeMap rdf:type owl:Class ;
-             rdfs:subClassOf :ExpressionMap ;
-             rdfs:comment "Represents a datatype map"@en ;
-             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-             rdfs:label "Datatype Map" .
 
 ###  http://w3id.org/rml/ChildMap
 :ChildMap rdf:type owl:Class ;
@@ -370,10 +392,17 @@ foaf:name rdf:type owl:AnnotationProperty .
           rdfs:label "Child Map" .
 
 
+###  http://w3id.org/rml/DatatypeMap
+:DatatypeMap rdf:type owl:Class ;
+             rdfs:subClassOf :TermMap ;
+             rdfs:comment "Represents a datatype map"@en ;
+             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+             rdfs:label "Datatype Map" .
+
 
 ###  http://w3id.org/rml/ExpressionMap
 :ExpressionMap rdf:type owl:Class ;
-             rdfs:comment "Represents an expression map"@en ;
+               rdfs:comment "Represents an expression map"@en ;
                rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                rdfs:label "Expression Map" .
 
@@ -388,9 +417,16 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/IRI
 :IRI rdf:type owl:Class ;
-     rdfs:comment "Denotes an IRI, used with termpType."@en ;
+     rdfs:comment "Denotes an IRI, used with termType."@en ;
      rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
      rdfs:label "IRI" .
+
+
+###  http://w3id.org/rml/Iterable
+:Iterable rdf:type owl:Class ;
+          rdfs:comment "An abstract construct to describe data access and iteration for a data source."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "Iterable" .
 
 
 ###  http://w3id.org/rml/Join
@@ -414,7 +450,6 @@ foaf:name rdf:type owl:AnnotationProperty .
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "Literal" .
 
-
 ###  http://w3id.org/rml/ObjectMap
 :ObjectMap rdf:type owl:Class ;
            rdfs:subClassOf :TermMap ;
@@ -423,12 +458,12 @@ foaf:name rdf:type owl:AnnotationProperty .
            rdfs:label "Object Map" .
 
 
-###  http://w3id.org/rml/ChildMap
+###  http://w3id.org/rml/ParentMap
 :ParentMap rdf:type owl:Class ;
-          rdfs:subClassOf :ExpressionMap ;
-          rdfs:comment "Represents a parent map"@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "Parent Map" .
+           rdfs:subClassOf :ExpressionMap ;
+           rdfs:comment "Represents a parent map"@en ;
+           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+           rdfs:label "Parent Map" .
 
 
 ###  http://w3id.org/rml/PredicateMap
@@ -453,11 +488,11 @@ foaf:name rdf:type owl:AnnotationProperty .
               rdfs:label "Reference Object Map" .
 
 
-###  http://w3id.org/rml/Strategy
-:Strategy rdf:type owl:Class ;
-          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
-          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
-          rdfs:label "Strategy" .
+###  http://w3id.org/rml/ReferenceFormulation
+:ReferenceFormulation rdf:type owl:Class ;
+                      rdfs:comment "Denotes a Reference Formulation."@en ;
+                      rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                      rdfs:label "Reference Formulation" .
 
 
 ###  http://w3id.org/rml/SubjectMap
@@ -482,4 +517,26 @@ foaf:name rdf:type owl:AnnotationProperty .
             rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
             rdfs:label "Triples Map" .
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+
+###  http://w3id.org/rml/URI
+:URI rdf:type owl:Class ;
+     rdfs:comment "Denotes a URI, used with termType."@en ;
+     rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+     rdfs:label "URI" .
+
+
+###  http://w3id.org/rml/UnsafeIRI
+:UnsafeIRI rdf:type owl:Class ;
+           rdfs:comment "Denotes an unsafe IRI, used with termType."@en ;
+           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+           rdfs:label "Unsafe IRI" .
+
+
+###  http://w3id.org/rml/UnsafeURI
+:UnsafeURI rdf:type owl:Class ;
+           rdfs:comment "Denotes an unsafe URI, used with termType."@en ;
+           rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+           rdfs:label "Unsafe URI" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

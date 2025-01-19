@@ -1,8 +1,9 @@
 ###############################################################################
 # RML Subject Map and subject shortcut shape                                  #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -13,8 +14,8 @@
     a sh:NodeShape ;
     sh:targetClass rml:SubjectMap ;
     sh:targetObjectsOf rml:subjectMap ;
-    sh:name "SubjectMap" ;
-    sh:description """
+    rdfs:label "SubjectMap" ;
+    rdfs:comment """
     Represents a Subject Map.
     """ ;
     sh:message """
@@ -31,8 +32,8 @@
         [
             sh:targetSubjectsOf rml:class ;
             sh:path rml:class ;
-            sh:name "class" ;
-            sh:description """
+            rdfs:label "class" ;
+            rdfs:comment """
             The subject value generated will be asserted as an instance of this
             RDFS class.
             """ ;
@@ -44,9 +45,10 @@
         [
             sh:path rml:termType ;
             sh:message """
-            rml:termType must be a rml:IRI or rml:BlankNode for Subject Map.
+            rml:termType must be a rml:IRI, rml:UnsafeIRI, rml:URI,
+            rml:UnsafeURI, or rml:BlankNode for a Subject Map.
             """ ;
-            sh:in (rml:IRI rml:BlankNode);
+            sh:in (rml:IRI rml:UnsafeIRI rml:URI rml:UnsafeURI rml:BlankNode);
         ]
     ) ;
 .
@@ -54,8 +56,8 @@
 :RMLsubjectShape
     a sh:NodeShape ;
     sh:targetObjectsOf rml:subject ;
-    sh:name "subject" ;
-    sh:description """
+    rdfs:label "subject" ;
+    rdfs:comment """
     An IRI reference to use as subject for all the RDF triples.
     """ ;
     sh:message """

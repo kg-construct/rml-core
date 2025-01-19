@@ -19,7 +19,7 @@ as the [Referencing Term Map]()'s [Triples Map]() is known.
 
 The [Referencing Term Map]() (`rml:ReferencingTermMap`) can be
 * a [Referencing Subject Map]() (`rml:ReferencingSubjectMap`)
-if it constructs the subject of an RDF triple.
+if it constructs the subject of an [=RDF triple=].
 
 ```
 <#TM1> 
@@ -33,7 +33,7 @@ if it constructs the subject of an RDF triple.
 If the [Referencing Term Map]() (`rml:ReferencingTermMap`) is
 a [Referencing Subject Map]() (`rml:ReferencingSubjectMap`), then
 the [Parent Term Map]() (`rml:ParentTermMap`)
-should construct an IRI or Blank Node.
+should construct an [=IRI=] or [=blank node=].
 
 The aforementioned could be shortcutted by using the [parent subject map]() (`rml:parentSubjectMap`) property as follows:
 
@@ -48,7 +48,7 @@ The aforementioned could be shortcutted by using the [parent subject map]() (`rm
 ```
 
 * a [Referencing Predicate Map]() (`rml:ReferencingPredicateMap`)
-if it constructs the predicate of an RDF triple.
+if it constructs the predicate of an [=RDF triple=].
 
 ```
 <#TM1> 
@@ -67,7 +67,7 @@ if it constructs the predicate of an RDF triple.
 
 If the [Referencing Term Map]() (`rml:ReferencingTermMap`) is
 a [Referencing Predicate Map]() (`rml:ReferencingPredicateMap`) then
-the [Parent Term Map] should construct an IRI.
+the [Parent Term Map] should construct an [=IRI=].
 
 The aforementioned could be shortcutted using the [parent predicate map]() (`rml:parentPredicateMap`) property as follows:
 
@@ -87,7 +87,7 @@ The aforementioned could be shortcutted using the [parent predicate map]() (`rml
 ```
 
 * a [Referencing Object Map]() (`rml:ReferencingObjectMap`)
-if it constructs the object of an RDF triple.
+if it constructs the object of an [=RDF triple=].
 
 ```
 <#TM1> 
@@ -123,7 +123,7 @@ The aforementioned could be shortcutted using the [parent object map]() (`rml:pa
 ```
 
 * a [Referencing Graph Map]() (`rml:ReferencingGraphMap`)
-if it constructs the graph of an RDF triple.
+if it constructs the graph of an [=RDF triple=].
 
 ```
 <#TM1> 
@@ -240,7 +240,7 @@ The [Parent Term Map]() (`rml:parentTermMap`) can be
 ### Edge cases for Parent Term Maps
 
 **Alternative 1**:
-If the Referencing Term Map of the Parent Tiples Map could/should not construct any RDF triples, 
+If the Referencing Term Map of the Parent Tiples Map could/should not construct any [=RDF triples=], 
 the Triples Map should not have a Subject Map and/or the Predicate Object Map should not have a Predicate or an Object Map. 
 ```
 <#TM1> 
@@ -257,7 +257,7 @@ the Triples Map should not have a Subject Map and/or the Predicate Object Map sh
 ```
 
 **Alternative 2**:
-If the Referencing Term Map of the Parent Tiples Map could/should not construct any RDF triples, 
+If the Referencing Term Map of the Parent Tiples Map could/should not construct any [=RDF triple=], 
 the Triples Map should not have a Subject Map and the Predicate Object Map should only have a Term Map. 
 ```
 <#TM1> 
@@ -274,7 +274,7 @@ the Triples Map should not have a Subject Map and the Predicate Object Map shoul
 ```
 
 **Alternative 3**:
-If the Referencing Term Map of the Parent Tiples Map should not construct any RDF triples, 
+If the Referencing Term Map of the Parent Tiples Map should not construct any [=RDF triple=], 
 the Triples Map should only have a Logical Source and a Term Map. 
 ```
 <#TM1> 
@@ -296,14 +296,14 @@ has exactly one value for each of the following two properties:
 
 * a [child map]() (`rml:childMap`),
 whose value is an [Expression Map]() (`rml:ExpressionMap'), which
-MUST include references that exists in the [Logical Source]()
+MUST include references that exists in the [=logical source=]
 of the [Triples Map]() that contains the [Referencing Object Map]()
 or it should have a constant value.
 
 * a [parent map]() (`rml:parentMap`),
 whose value is an [Expression Map]() (`rml:ExpressionMap'), which,
 as the join condition's parent map, 
-MUST include references that exists in the [Logical Source]()
+MUST include references that exists in the [=logical source=]
 of the [Referencing Object Map]()'s [Parent Triples Map]()
 or it should have a constant value.
 

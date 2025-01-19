@@ -1,8 +1,9 @@
 ###############################################################################
 # RML RefObjectMap shape                                                      #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2023)              #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2020 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -11,8 +12,8 @@
 :RMLRefObjectMapShape
     a sh:NodeShape ;
     sh:targetClass rml:RefObjectMap ;
-    sh:name "RefObjectMap" ;
-    sh:description """
+    rdfs:label "RefObjectMap" ;
+    rdfs:comment """
     Represents a Reference Object Map.
     """ ;
     sh:message """
@@ -27,8 +28,8 @@
         [
             sh:targetSubjectsOf rml:parentTriplesMap ;
             sh:path rml:parentTriplesMap ;
-            sh:name "parentTriplesMap" ;
-            sh:description """
+            rdfs:label "parentTriplesMap" ;
+            rdfs:comment """
             Specifies the Triples Map element corresponding to the parent data
             source of the foreign key constraint.
             """ ;
