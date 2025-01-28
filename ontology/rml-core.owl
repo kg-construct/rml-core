@@ -134,6 +134,14 @@ foaf:name rdf:type owl:AnnotationProperty .
        rdfs:comment "The subject value generated for a logical source record will be asserted as an instance of this RDFS class."@en ;
        rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
        rdfs:label "class" .
+       
+
+###  http://w3id.org/rml/strategy
+:strategy rdf:type owl:ObjectProperty ;
+          rdfs:range :Strategy ;
+          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "strategy" .
 
 
 ###  http://w3id.org/rml/datatype
@@ -288,6 +296,13 @@ foaf:name rdf:type owl:AnnotationProperty .
          rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical source record."@en ;
          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
          rdfs:label "subject" .
+
+
+###  http://w3id.org/rml/Strategy
+:Strategy rdf:type owl:Class ;
+          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+          rdfs:label "Strategy" .
 
 
 ###  http://w3id.org/rml/subjectMap
