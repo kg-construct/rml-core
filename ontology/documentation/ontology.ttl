@@ -267,6 +267,14 @@
                                            rdfs:label "reference formulation" .
 
 
+###  http://w3id.org/rml/strategy
+<http://w3id.org/rml/strategy> rdf:type owl:ObjectProperty ;
+                               rdfs:range <http://w3id.org/rml/Strategy> ;
+                               rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
+                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                               rdfs:label "strategy" .
+
+
 ###  http://w3id.org/rml/subject
 <http://w3id.org/rml/subject> rdf:type owl:ObjectProperty ;
                               rdfs:domain <http://w3id.org/rml/TriplesMap> ;
@@ -488,6 +496,13 @@
                                            rdfs:comment "Denotes a Reference Formulation."@en ;
                                            rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
                                            rdfs:label "Reference Formulation" .
+
+
+###  http://w3id.org/rml/Strategy
+<http://w3id.org/rml/Strategy> rdf:type owl:Class ;
+                               rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
+                               rdfs:isDefinedBy <http://w3id.org/rml/core/> ;
+                               rdfs:label "Strategy" .
 
 
 ###  http://w3id.org/rml/SubjectMap

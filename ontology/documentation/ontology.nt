@@ -243,6 +243,13 @@ _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/referenceFormulation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/referenceFormulation> <http://www.w3.org/2000/01/rdf-schema#label> "reference formulation" .
 # 
+# http://w3id.org/rml/strategy
+<http://w3id.org/rml/strategy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/Strategy> .
+<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#comment> "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en .
+<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/strategy> <http://www.w3.org/2000/01/rdf-schema#label> "strategy" .
+# 
 # http://w3id.org/rml/subject
 <http://w3id.org/rml/subject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/rml/subject> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TriplesMap> .
@@ -461,6 +468,12 @@ _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/ReferenceFormulation> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes a Reference Formulation."@en .
 <http://w3id.org/rml/ReferenceFormulation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/ReferenceFormulation> <http://www.w3.org/2000/01/rdf-schema#label> "Reference Formulation" .
+# 
+# http://w3id.org/rml/Strategy
+<http://w3id.org/rml/Strategy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/Strategy> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en .
+<http://w3id.org/rml/Strategy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
+<http://w3id.org/rml/Strategy> <http://www.w3.org/2000/01/rdf-schema#label> "Strategy" .
 # 
 # http://w3id.org/rml/SubjectMap
 <http://w3id.org/rml/SubjectMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
