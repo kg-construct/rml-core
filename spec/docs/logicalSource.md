@@ -11,7 +11,7 @@ A <dfn data-lt="iteration">logical iteration</dfn> is an item in the sequence pr
 A <dfn>data source</dfn> is an abstract concept that represents a source of data that can be accessed via a [=iterable=]. A [=data source=] can be a file, a database, a web service, or any other source of data, depending on the type of [=iterable=].
 
 <aside class="note">
-There can be many different types of [=reference formulation=]. The known types, and the details of how a reference formulation is handled and implemented for each data format, are specified in [[RML-IO-Registry]].
+There can be many different types of [=reference formulation=]. The known types, and the details of how a reference formulation is handled and implemented for each data format, are specified in [[RML-IO-Registry]]. Test cases are provided in as JSON files with JSONPath as reference formulation and `rml:FilePath` as access description, but it is not required to support these within this specification, any access description and reference formulation MAY be used in the test cases as long as the test case and expected output remains unchanged. 
 </aside>
 
 An <dfn data-lt="abstract logical source|logical source">abstract logical source</dfn> (`rml:AbstractLogicalSource`) is a sub-class of [=iterable=] that can be associated with a [=triples map=] such that a [=data source=] can be mapped to [=RDF triples=].
