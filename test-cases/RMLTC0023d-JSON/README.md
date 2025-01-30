@@ -32,7 +32,7 @@
         ]
     ];
   rml:subjectMap [
-      rml:template "http://example.com/{Name\}"
+      rml:template "http://example.com/{Name\}";
       rml:class foaf:Person;
     ] .
 
