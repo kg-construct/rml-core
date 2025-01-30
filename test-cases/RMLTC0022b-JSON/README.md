@@ -25,7 +25,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
       rml:referenceFormulation rml:JSONPath;
-      rml:iterator "$.[*]"
+      rml:iterator "$.[*]";
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
           rml:path "data.json"

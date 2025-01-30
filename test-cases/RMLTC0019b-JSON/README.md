@@ -4,7 +4,7 @@
 
 **Description**: "Test the generation of triples by using IRI value in attributes, conforming RML mapping with data error (and limited results)"
 
-**Error expected?** Yes
+**Error expected?** No
 
 **Input**
 ```
@@ -53,6 +53,11 @@
   rml:subjectMap [
       rml:reference "$.FirstName"
     ] .
+
+```
+
+**Output**
+```
 
 ```
 
