@@ -1,0 +1,50 @@
+## RMLTC0022c-CSV
+
+**Title**: "Generating of triples with datatypeMap with custom datatype"
+
+**Description**: "Test triples with a custom datype from the data"
+
+**Error expected?** No
+
+**Input**
+```
+FOO,BAR
+1,string
+2,int
+
+```
+
+**Mapping**
+```
+@prefix ex: <http://example.com/> .
+@prefix rml: <http://w3id.org/rml/> .
+
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:referenceFormulation rml:CSV;
+      rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
+          rml:path "data.csv"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:datatypeMap [
+              rml:template "datatype#{BAR}"
+            ];
+          rml:reference "FOO"
+        ];
+      rml:predicate ex:x
+    ];
+  rml:subjectMap [
+      rml:template "http://example.com/{FOO}"
+    ] .
+
+```
+
+**Output**
+```
+<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/base/datatype#string> .
+<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/base/datatype#int> .
+```
+
