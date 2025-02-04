@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RML-Core: Test Cases</title>
+    <meta charset="utf-8">
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <style type="text/css">
+        /* Adapted from R2RML */
+        aside.ex-input,
+        aside.ex-mapping,
+        aside.ex-output {
+            word-wrap:normal;
+            margin-top: 1.5em;
+            padding: 1em;
+            font-size: 80%;
+        }
+        aside.ex-input:before,
+        aside.ex-mapping:before,
+        aside.ex-output:before {
+            background: white;
+            display: block;
+            font-family: sans-serif;
+            font-size: 90%;
+            margin: -1.5em 0 0.5em 0;
+            padding: 0.4em 0.4em;
+            width: 18em;
+        }
+        /* Input data example */
+        aside.ex-input {
+            background: #cee;
+        }
+        aside.ex-input,
+        aside.ex-input:before {
+            border: 1px solid #acc;
+            overflow: auto;
+        }
+        aside.ex-input:before {
+            content: "Example input data";
+        }
+        /* RML mapping example */
+        aside.ex-mapping {
+            background: #eeb;
+        }
+        aside.ex-mapping,
+        aside.ex-mapping:before {
+            border: 1px solid #cc9;
+            overflow: auto;
+        }
+        aside.ex-mapping:before {
+            content: "Example RML mapping";
+        }
+        /* Output RDF example */
+        aside.ex-output {
+            background: #cfc;
+        }
+        aside.ex-output,
+        aside.ex-output:before {
+            border: 1px solid #aca;
+            overflow: auto;
+        }
+        aside.ex-output:before {
+            content: "Example output data";
+        }
+        table, th, td {
+          background: white;
+          border-collapse: collapse;
+          border: 1px solid;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        th {
+          font-weight: bold;
+        }
+    </style>
+    <script src = config.js class="remove">
+    </script>
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+<section id="abstract" data-include="section/abstract.md" data-include-format="markdown"></section>
+
+<section id="sotd"></section>
+
+<section id="introduction" data-include="section/introduction.md" data-include-format="markdown"></section>
+
+<section id="data-model" data-include="section/data-model.md" data-include-format="markdown"></section>
+
+<section id="test-cases" data-include="section/test-cases.md" data-include-format="markdown"></section>
+
+<!-- Generated with list.sh -->
+<section id="RMLTC0000-CSV" data-include="RMLTC0000-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0000-JSON" data-include="RMLTC0000-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0000-MySQL" data-include="RMLTC0000-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0000-PostgreSQL" data-include="RMLTC0000-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0000-SPARQL" data-include="RMLTC0000-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0000-SQLServer" data-include="RMLTC0000-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0000-XML" data-include="RMLTC0000-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-CSV" data-include="RMLTC0001a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-JSON" data-include="RMLTC0001a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-MySQL" data-include="RMLTC0001a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-PostgreSQL" data-include="RMLTC0001a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-SPARQL" data-include="RMLTC0001a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-SQLServer" data-include="RMLTC0001a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001a-XML" data-include="RMLTC0001a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-CSV" data-include="RMLTC0001b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-JSON" data-include="RMLTC0001b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-MySQL" data-include="RMLTC0001b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-PostgreSQL" data-include="RMLTC0001b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-SPARQL" data-include="RMLTC0001b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-SQLServer" data-include="RMLTC0001b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0001b-XML" data-include="RMLTC0001b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-CSV" data-include="RMLTC0002a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-JSON" data-include="RMLTC0002a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-MySQL" data-include="RMLTC0002a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-PostgreSQL" data-include="RMLTC0002a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-SPARQL" data-include="RMLTC0002a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-SQLServer" data-include="RMLTC0002a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002a-XML" data-include="RMLTC0002a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-CSV" data-include="RMLTC0002b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-JSON" data-include="RMLTC0002b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-MySQL" data-include="RMLTC0002b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-PostgreSQL" data-include="RMLTC0002b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-SPARQL" data-include="RMLTC0002b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-SQLServer" data-include="RMLTC0002b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002b-XML" data-include="RMLTC0002b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002c-CSV" data-include="RMLTC0002c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002c-MySQL" data-include="RMLTC0002c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002c-PostgreSQL" data-include="RMLTC0002c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002c-SQLServer" data-include="RMLTC0002c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002d-MySQL" data-include="RMLTC0002d-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002d-PostgreSQL" data-include="RMLTC0002d-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002d-SQLServer" data-include="RMLTC0002d-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002e-CSV" data-include="RMLTC0002e-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002e-JSON" data-include="RMLTC0002e-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002e-MySQL" data-include="RMLTC0002e-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002e-PostgreSQL" data-include="RMLTC0002e-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002e-SQLServer" data-include="RMLTC0002e-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002e-XML" data-include="RMLTC0002e-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002f-MySQL" data-include="RMLTC0002f-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002f-PostgreSQL" data-include="RMLTC0002f-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002f-SQLServer" data-include="RMLTC0002f-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002g-JSON" data-include="RMLTC0002g-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002g-MySQL" data-include="RMLTC0002g-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002g-PostgreSQL" data-include="RMLTC0002g-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002g-SPARQL" data-include="RMLTC0002g-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002g-SQLServer" data-include="RMLTC0002g-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002h-MySQL" data-include="RMLTC0002h-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002h-PostgreSQL" data-include="RMLTC0002h-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002h-SPARQL" data-include="RMLTC0002h-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002h-SQLServer" data-include="RMLTC0002h-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002i-MySQL" data-include="RMLTC0002i-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002i-PostgreSQL" data-include="RMLTC0002i-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002i-SQLServer" data-include="RMLTC0002i-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002j-MySQL" data-include="RMLTC0002j-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002j-PostgreSQL" data-include="RMLTC0002j-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0002j-SQLServer" data-include="RMLTC0002j-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003a-MySQL" data-include="RMLTC0003a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003a-PostgreSQL" data-include="RMLTC0003a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003a-SQLServer" data-include="RMLTC0003a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003b-MySQL" data-include="RMLTC0003b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003b-PostgreSQL" data-include="RMLTC0003b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003b-SQLServer" data-include="RMLTC0003b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-CSV" data-include="RMLTC0003c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-JSON" data-include="RMLTC0003c-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-MySQL" data-include="RMLTC0003c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-PostgreSQL" data-include="RMLTC0003c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-SPARQL" data-include="RMLTC0003c-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-SQLServer" data-include="RMLTC0003c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0003c-XML" data-include="RMLTC0003c-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-CSV" data-include="RMLTC0004a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-JSON" data-include="RMLTC0004a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-MySQL" data-include="RMLTC0004a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-PostgreSQL" data-include="RMLTC0004a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-SPARQL" data-include="RMLTC0004a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-SQLServer" data-include="RMLTC0004a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004a-XML" data-include="RMLTC0004a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-CSV" data-include="RMLTC0004b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-JSON" data-include="RMLTC0004b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-MySQL" data-include="RMLTC0004b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-PostgreSQL" data-include="RMLTC0004b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-SPARQL" data-include="RMLTC0004b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-SQLServer" data-include="RMLTC0004b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0004b-XML" data-include="RMLTC0004b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005a-CSV" data-include="RMLTC0005a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005a-JSON" data-include="RMLTC0005a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005a-MySQL" data-include="RMLTC0005a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005a-PostgreSQL" data-include="RMLTC0005a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005a-SQLServer" data-include="RMLTC0005a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005a-XML" data-include="RMLTC0005a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005b-MySQL" data-include="RMLTC0005b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005b-PostgreSQL" data-include="RMLTC0005b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0005b-SQLServer" data-include="RMLTC0005b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-CSV" data-include="RMLTC0006a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-JSON" data-include="RMLTC0006a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-MySQL" data-include="RMLTC0006a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-PostgreSQL" data-include="RMLTC0006a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-SPARQL" data-include="RMLTC0006a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-SQLServer" data-include="RMLTC0006a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0006a-XML" data-include="RMLTC0006a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-CSV" data-include="RMLTC0007a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-JSON" data-include="RMLTC0007a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-MySQL" data-include="RMLTC0007a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-PostgreSQL" data-include="RMLTC0007a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-SPARQL" data-include="RMLTC0007a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-SQLServer" data-include="RMLTC0007a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007a-XML" data-include="RMLTC0007a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-CSV" data-include="RMLTC0007b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-JSON" data-include="RMLTC0007b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-MySQL" data-include="RMLTC0007b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-PostgreSQL" data-include="RMLTC0007b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-SPARQL" data-include="RMLTC0007b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-SQLServer" data-include="RMLTC0007b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007b-XML" data-include="RMLTC0007b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-CSV" data-include="RMLTC0007c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-JSON" data-include="RMLTC0007c-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-MySQL" data-include="RMLTC0007c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-PostgreSQL" data-include="RMLTC0007c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-SPARQL" data-include="RMLTC0007c-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-SQLServer" data-include="RMLTC0007c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007c-XML" data-include="RMLTC0007c-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-CSV" data-include="RMLTC0007d-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-JSON" data-include="RMLTC0007d-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-MySQL" data-include="RMLTC0007d-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-PostgreSQL" data-include="RMLTC0007d-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-SPARQL" data-include="RMLTC0007d-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-SQLServer" data-include="RMLTC0007d-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007d-XML" data-include="RMLTC0007d-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-CSV" data-include="RMLTC0007e-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-JSON" data-include="RMLTC0007e-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-MySQL" data-include="RMLTC0007e-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-PostgreSQL" data-include="RMLTC0007e-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-SPARQL" data-include="RMLTC0007e-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-SQLServer" data-include="RMLTC0007e-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007e-XML" data-include="RMLTC0007e-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-CSV" data-include="RMLTC0007f-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-JSON" data-include="RMLTC0007f-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-MySQL" data-include="RMLTC0007f-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-PostgreSQL" data-include="RMLTC0007f-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-SPARQL" data-include="RMLTC0007f-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-SQLServer" data-include="RMLTC0007f-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007f-XML" data-include="RMLTC0007f-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-CSV" data-include="RMLTC0007g-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-JSON" data-include="RMLTC0007g-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-MySQL" data-include="RMLTC0007g-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-PostgreSQL" data-include="RMLTC0007g-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-SPARQL" data-include="RMLTC0007g-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-SQLServer" data-include="RMLTC0007g-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007g-XML" data-include="RMLTC0007g-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-CSV" data-include="RMLTC0007h-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-JSON" data-include="RMLTC0007h-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-MySQL" data-include="RMLTC0007h-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-PostgreSQL" data-include="RMLTC0007h-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-SPARQL" data-include="RMLTC0007h-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-SQLServer" data-include="RMLTC0007h-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0007h-XML" data-include="RMLTC0007h-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-CSV" data-include="RMLTC0008a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-JSON" data-include="RMLTC0008a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-MySQL" data-include="RMLTC0008a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-PostgreSQL" data-include="RMLTC0008a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-SPARQL" data-include="RMLTC0008a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-SQLServer" data-include="RMLTC0008a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008a-XML" data-include="RMLTC0008a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-CSV" data-include="RMLTC0008b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-JSON" data-include="RMLTC0008b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-MySQL" data-include="RMLTC0008b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-PostgreSQL" data-include="RMLTC0008b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-SPARQL" data-include="RMLTC0008b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-SQLServer" data-include="RMLTC0008b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008b-XML" data-include="RMLTC0008b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-CSV" data-include="RMLTC0008c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-JSON" data-include="RMLTC0008c-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-MySQL" data-include="RMLTC0008c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-PostgreSQL" data-include="RMLTC0008c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-SPARQL" data-include="RMLTC0008c-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-SQLServer" data-include="RMLTC0008c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0008c-XML" data-include="RMLTC0008c-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-CSV" data-include="RMLTC0009a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-JSON" data-include="RMLTC0009a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-MySQL" data-include="RMLTC0009a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-PostgreSQL" data-include="RMLTC0009a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-SPARQL" data-include="RMLTC0009a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-SQLServer" data-include="RMLTC0009a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009a-XML" data-include="RMLTC0009a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-CSV" data-include="RMLTC0009b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-JSON" data-include="RMLTC0009b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-MySQL" data-include="RMLTC0009b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-PostgreSQL" data-include="RMLTC0009b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-SPARQL" data-include="RMLTC0009b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-SQLServer" data-include="RMLTC0009b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009b-XML" data-include="RMLTC0009b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009c-MySQL" data-include="RMLTC0009c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009c-PostgreSQL" data-include="RMLTC0009c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009c-SQLServer" data-include="RMLTC0009c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009d-MySQL" data-include="RMLTC0009d-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009d-PostgreSQL" data-include="RMLTC0009d-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0009d-SQLServer" data-include="RMLTC0009d-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010a-CSV" data-include="RMLTC0010a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010a-JSON" data-include="RMLTC0010a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010a-MySQL" data-include="RMLTC0010a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010a-PostgreSQL" data-include="RMLTC0010a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010a-SQLServer" data-include="RMLTC0010a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010b-CSV" data-include="RMLTC0010b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010b-JSON" data-include="RMLTC0010b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010b-MySQL" data-include="RMLTC0010b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010b-PostgreSQL" data-include="RMLTC0010b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010b-SQLServer" data-include="RMLTC0010b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010b-XML" data-include="RMLTC0010b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010c-CSV" data-include="RMLTC0010c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010c-JSON" data-include="RMLTC0010c-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010c-MySQL" data-include="RMLTC0010c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010c-PostgreSQL" data-include="RMLTC0010c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010c-SQLServer" data-include="RMLTC0010c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0010c-XML" data-include="RMLTC0010c-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011a-MySQL" data-include="RMLTC0011a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011a-PostgreSQL" data-include="RMLTC0011a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011a-SQLServer" data-include="RMLTC0011a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011b-CSV" data-include="RMLTC0011b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011b-JSON" data-include="RMLTC0011b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011b-MySQL" data-include="RMLTC0011b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011b-PostgreSQL" data-include="RMLTC0011b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011b-SQLServer" data-include="RMLTC0011b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0011b-XML" data-include="RMLTC0011b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-CSV" data-include="RMLTC0012a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-JSON" data-include="RMLTC0012a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-MySQL" data-include="RMLTC0012a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-PostgreSQL" data-include="RMLTC0012a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-SPARQL" data-include="RMLTC0012a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-SQLServer" data-include="RMLTC0012a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012a-XML" data-include="RMLTC0012a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-CSV" data-include="RMLTC0012b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-JSON" data-include="RMLTC0012b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-MySQL" data-include="RMLTC0012b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-PostgreSQL" data-include="RMLTC0012b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-SPARQL" data-include="RMLTC0012b-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-SQLServer" data-include="RMLTC0012b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012b-XML" data-include="RMLTC0012b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012c-CSV" data-include="RMLTC0012c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012c-JSON" data-include="RMLTC0012c-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012c-MySQL" data-include="RMLTC0012c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012c-PostgreSQL" data-include="RMLTC0012c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012c-SQLServer" data-include="RMLTC0012c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012c-XML" data-include="RMLTC0012c-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012d-CSV" data-include="RMLTC0012d-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012d-JSON" data-include="RMLTC0012d-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012d-MySQL" data-include="RMLTC0012d-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012d-PostgreSQL" data-include="RMLTC0012d-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012d-SQLServer" data-include="RMLTC0012d-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012d-XML" data-include="RMLTC0012d-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012e-MySQL" data-include="RMLTC0012e-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012e-PostgreSQL" data-include="RMLTC0012e-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0012e-SQLServer" data-include="RMLTC0012e-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0013a-JSON" data-include="RMLTC0013a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0013a-MySQL" data-include="RMLTC0013a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0013a-PostgreSQL" data-include="RMLTC0013a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0013a-SQLServer" data-include="RMLTC0013a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0014d-MySQL" data-include="RMLTC0014d-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0014d-PostgreSQL" data-include="RMLTC0014d-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0014d-SQLServer" data-include="RMLTC0014d-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015a-CSV" data-include="RMLTC0015a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015a-JSON" data-include="RMLTC0015a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015a-MySQL" data-include="RMLTC0015a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015a-PostgreSQL" data-include="RMLTC0015a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015a-SQLServer" data-include="RMLTC0015a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015a-XML" data-include="RMLTC0015a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015b-CSV" data-include="RMLTC0015b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015b-JSON" data-include="RMLTC0015b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015b-MySQL" data-include="RMLTC0015b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015b-PostgreSQL" data-include="RMLTC0015b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015b-SQLServer" data-include="RMLTC0015b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0015b-XML" data-include="RMLTC0015b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016a-MySQL" data-include="RMLTC0016a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016a-PostgreSQL" data-include="RMLTC0016a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016a-SQLServer" data-include="RMLTC0016a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016b-MySQL" data-include="RMLTC0016b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016b-PostgreSQL" data-include="RMLTC0016b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016b-SQLServer" data-include="RMLTC0016b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016c-MySQL" data-include="RMLTC0016c-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016c-PostgreSQL" data-include="RMLTC0016c-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016c-SQLServer" data-include="RMLTC0016c-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016d-MySQL" data-include="RMLTC0016d-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016d-PostgreSQL" data-include="RMLTC0016d-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016d-SQLServer" data-include="RMLTC0016d-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016e-MySQL" data-include="RMLTC0016e-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016e-PostgreSQL" data-include="RMLTC0016e-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0016e-SQLServer" data-include="RMLTC0016e-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019a-CSV" data-include="RMLTC0019a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019a-JSON" data-include="RMLTC0019a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019a-MySQL" data-include="RMLTC0019a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019a-PostgreSQL" data-include="RMLTC0019a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019a-SQLServer" data-include="RMLTC0019a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019a-XML" data-include="RMLTC0019a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019b-CSV" data-include="RMLTC0019b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019b-JSON" data-include="RMLTC0019b-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019b-MySQL" data-include="RMLTC0019b-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019b-PostgreSQL" data-include="RMLTC0019b-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019b-SQLServer" data-include="RMLTC0019b-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0019b-XML" data-include="RMLTC0019b-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0020a-CSV" data-include="RMLTC0020a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0020a-JSON" data-include="RMLTC0020a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0020a-MySQL" data-include="RMLTC0020a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0020a-PostgreSQL" data-include="RMLTC0020a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0020a-SQLServer" data-include="RMLTC0020a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0020a-XML" data-include="RMLTC0020a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-CSV" data-include="RMLTC0021a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-JSON" data-include="RMLTC0021a-JSON/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-MySQL" data-include="RMLTC0021a-MySQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-PostgreSQL" data-include="RMLTC0021a-PostgreSQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-SPARQL" data-include="RMLTC0021a-SPARQL/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-SQLServer" data-include="RMLTC0021a-SQLServer/README.md" data-include-format=markdown></section>
+<section id="RMLTC0021a-XML" data-include="RMLTC0021a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0022a-CSV" data-include="RMLTC0022a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0022b-CSV" data-include="RMLTC0022b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0022c-CSV" data-include="RMLTC0022c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0023a-XML" data-include="RMLTC0023a-XML/README.md" data-include-format=markdown></section>
+<section id="RMLTC0024a-CSV" data-include="RMLTC0024a-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0024b-CSV" data-include="RMLTC0024b-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0024c-CSV" data-include="RMLTC0024c-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0024d-CSV" data-include="RMLTC0024d-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0024e-CSV" data-include="RMLTC0024e-CSV/README.md" data-include-format=markdown></section>
+<section id="RMLTC0024f-CSV" data-include="RMLTC0024f-CSV/README.md" data-include-format=markdown></section>
+
+</body>
+
+</html>
