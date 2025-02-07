@@ -9,5 +9,5 @@ RDF syntaxes and RDF APIs generally represent [=blank nodes=] with [=blank node 
 </aside>
 
 <aside class="note">
-[=RDF datasets=] may contain [=empty named graphs=]. RML cannot generate such [=output datasets=].
+[=RDF datasets=] may contain empty [=named graphs=]. RML cannot generate such [=output datasets=].
 </aside>
