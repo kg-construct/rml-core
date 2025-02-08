@@ -55,6 +55,7 @@
 :RMLAbstractLogicalSourceShape
     a sh:NodeShape ;
     sh:targetClass rml:AbstractLogicalSource ;
+    sh:targetObjectsOf rml:logicalSource ;
     rdfs:label "Abstract Logical Source" ;
     rdfs:comment """
     A sub-class of iterable that can be associated with a triples map such that a data source can be mapped to RDF triples.
