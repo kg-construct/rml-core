@@ -12,30 +12,34 @@ Graph maps are themselves [=term maps=](). When [=RDF triples are generated=](),
 If a [=graph map=]() generates the special IRI rml:defaultGraph, then the target graph is the [=default graph=]() of the [=output dataset=]().
 
 In the following [=subject map=]() example, all generated RDF triples will be stored in the named graph ex:DepartmentGraph.
-
+<aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
       rml:template "http://data.example.com/department/{DEPTNO}";
       rml:graphMap [ rml:constant ex:DepartmentGraph ];
 ].
 ```
+</aside>
 This is equivalent to the following example, which uses a [=constant shortcut property=]():
-
+<aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
       rml:template "http://data.example.com/department/{DEPTNO}";
       rml:graph ex:DepartmentGraph;
 ].
 ```
+</aside>
 In the following example, RDF triples are placed into [=IRI=]()-named [=named graphs=]() according to the job title of employees:
+<aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
       rml:template "http://data.example.com/employee/{EMPNO}";
       rml:graphMap [ rml:template "http://data.example.com/jobgraph/{JOB}" ];
 ].
 ```
-
+</aside>
 However, in this example, RDF triples of the [=predicate-object=]() `ex:name` are placed into a [=blank node=]() named [=named graphs=]() according to the job title of employees:
+<aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
       rml:template "http://data.example.com/employee/{EMPNO}";
@@ -49,4 +53,5 @@ However, in this example, RDF triples of the [=predicate-object=]() `ex:name` ar
       ];
     ].
 ```
+</aside>
 
