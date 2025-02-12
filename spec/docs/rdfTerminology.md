@@ -16,9 +16,10 @@ This section lists some terms normatively defined in [[RDF11-CONCEPTS]] and used
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-language-tagged-string">language-tagged string</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-lexical-form">lexical form</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-lexical-space">lexical space</a></dfn>
-- <dfn><a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a></dfn>
+- <dfn data-lt="RDF literal"><a data-cite="RDF11-CONCEPTS#dfn-literal">literal</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-named-graph">named graph</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-object">object</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-predicate">predicate</a></dfn>
+- <dfn><a data-cite="RDF11-CONCEPTS#dfn-property">property</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-resource">resource</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a></dfn>

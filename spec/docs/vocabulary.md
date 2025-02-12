@@ -16,7 +16,7 @@ but also as a formalism for representing the [=RML mapping=] itself.
 An [=RDF graph=] that represents an [=RML mapping=] is called an <dfn data-lt="mapping graph">RML mapping graph</dfn>.
 
 The <dfn>RML vocabulary</dfn> is the set of [=IRIs=] defined in this specification
-that start with the `rml:` as prefix and uses namespace [=IRI=]: <http://w3id.org/rml/>.
+that start with the `rml:` as prefix and uses namespace [=IRI=]: `http://w3id.org/rml/`
 
 An [=RML mapping graph=]:
 
@@ -76,10 +76,3 @@ and the charset parameter on the media type SHOULD always be used:
 
 A conforming [=RML processor=] SHOULD accept [=RML mapping documents=] in Turtle syntax.
 It MAY accept [=RML mapping graphs=] encoded in other RDF syntaxes.
-
-
-An overview of [=RML classes=] is shown in Figure 1:
-<figure>
-  <img src="../resources/diagram.png" alt="Target structure" style="width:85%"/>
-  <figcaption>RML-Core vocabulary.</figcaption>
-</figure>
