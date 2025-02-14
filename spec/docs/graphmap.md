@@ -29,7 +29,7 @@ This is equivalent to the following example, which uses a [=constant shortcut pr
 ].
 ```
 </aside>
-In the following example, RDF triples are placed into [=IRI=]()-named [=named graphs=]() according to the job title of employees:
+In the following example, [=RDF triples=] are placed into [=IRI=]-named [=named graphs=] according to the job title of employees:
 <aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
