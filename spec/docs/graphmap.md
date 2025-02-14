@@ -7,7 +7,7 @@ Any [=subject map=] or [=predicate-object=] map MUST have zero or more associate
 1. using the rml:graphMap property, whose value MUST be a [=graph map=](),
 2. using the [=constant shortcut property=]() rml:graph.
 
-Graph maps are themselves [=term maps=](). When [=RDF triples are generated=](), the set of target graphs is determined by taking into account any graph maps associated with the subject map or predicate-object map.
+[=Graph maps=] are themselves [=term maps=]. When [=RDF triples are generated=], the set of target graphs is determined by taking into account any [=graph maps=] associated with the [=subject map=] or [=predicate-object map=].
 
 If a [=graph map=]() generates the special IRI rml:defaultGraph, then the target graph is the [=default graph=]() of the [=output dataset=]().
 
