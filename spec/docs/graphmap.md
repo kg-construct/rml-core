@@ -20,7 +20,7 @@ In the following [=subject map=]() example, all generated RDF triples will be st
 ].
 ```
 </aside>
-This is equivalent to the following example, which uses a [=constant shortcut property=]():
+This is equivalent to the following example, which uses a [=constant shortcut property=]:
 <aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
