@@ -2,7 +2,7 @@
 
 Each triple generated from an [=RML mapping=] is placed into one or more graphs of the [=output dataset=]. Possible target graphs are the unnamed [=default graph=], the [=IRI=]-named [=named graphs=], and [=blank node=] named [=named graphs=]
 
-Any [=subject map=]() or [=predicate-object=]() map MUST have zero or more associated graph maps. They are specified in one of two ways:
+Any [=subject map=] or [=predicate-object=] map MUST have zero or more associated <dfn>graph maps</dfn>. They are specified in one of two ways:
 
 1. using the rml:graphMap property, whose value MUST be a [=graph map=](),
 2. using the [=constant shortcut property=]() rml:graph.
