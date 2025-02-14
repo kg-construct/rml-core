@@ -11,7 +11,9 @@ Any [=subject map=] or [=predicate-object=] map MUST have zero or more associate
 
 If a [=graph map=]() generates the special IRI rml:defaultGraph, then the target graph is the [=default graph=]() of the [=output dataset=]().
 
-In the following [=subject map=]() example, all generated RDF triples will be stored in the named graph ex:DepartmentGraph.
+<aside class="example"  id="example-graph-map" title="Usage of graph map">
+
+In the following [=subject map=] example, all generated [=RDF triples=] will be stored in the [=named graph=] `ex:DepartmentGraph`.
 <aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
