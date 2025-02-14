@@ -5,7 +5,7 @@ Each triple generated from an [=RML mapping=] is placed into one or more graphs 
 Any [=subject map=] or [=predicate-object=] map MUST have zero or more associated <dfn>graph maps</dfn>. They are specified in one of two ways:
 
 1. using the rml:graphMap property, whose value MUST be a [=graph map=](),
-2. using the [=constant shortcut property=]() rml:graph.
+2. using the [=constant shortcut property=] `rml:graph`.
 
 [=Graph maps=] are themselves [=term maps=]. When [=RDF triples are generated=], the set of target graphs is determined by taking into account any [=graph maps=] associated with the [=subject map=] or [=predicate-object map=].
 
