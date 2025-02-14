@@ -38,7 +38,7 @@ In the following example, [=RDF triples=] are placed into [=IRI=]-named [=named 
 ].
 ```
 </aside>
-However, in this example, RDF triples of the [=predicate-object=]() `ex:name` are placed into a [=blank node=]() named [=named graphs=]() according to the job title of employees:
+However, in this example, RDF triples of the [=predicate-object=] `ex:name` are placed into a [=blank node=] named [=named graphs=] according to the job title of employees:
 <aside class="ex-mapping">
 ```turtle
 []  rml:subjectMap [
