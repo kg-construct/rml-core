@@ -9,7 +9,7 @@ Any [=subject map=] or [=predicate-object=] map MUST have zero or more associate
 
 [=Graph maps=] are themselves [=term maps=]. When [=RDF triples are generated=], the set of target graphs is determined by taking into account any [=graph maps=] associated with the [=subject map=] or [=predicate-object map=].
 
-If a [=graph map=]() generates the special IRI rml:defaultGraph, then the target graph is the [=default graph=]() of the [=output dataset=]().
+If a [=graph map=] generates the special IRI `rml:defaultGraph`, then the target graph is the [=default graph=] of the [=output dataset=].
 
 <aside class="example"  id="example-graph-map" title="Usage of graph map">
 
