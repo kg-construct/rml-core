@@ -1,6 +1,6 @@
 # Assigning Triples to Named Graphs
 
-Each triple generated from an [=RML mapping=]() is placed into one or more graphs of the [=output dataset=](). Possible target graphs are the unnamed [=default graph=](), the [=IRI=]()-named [=named graphs=](), and [=blank node=]() named [=named graphs=]()
+Each triple generated from an [=RML mapping=] is placed into one or more graphs of the [=output dataset=]. Possible target graphs are the unnamed [=default graph=], the [=IRI=]-named [=named graphs=], and [=blank node=] named [=named graphs=]
 
 Any [=subject map=]() or [=predicate-object=]() map MUST have zero or more associated graph maps. They are specified in one of two ways:
 
