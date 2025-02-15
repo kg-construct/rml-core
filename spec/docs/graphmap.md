@@ -18,7 +18,7 @@ In the following [=subject map=] example, all generated [=RDF triples=] will be 
 <aside class="ex-mapping">
 
 ```turtle
-<#TriplesMap1>
+<#ImageTriplesMap>
   rml:subjectMap [
     rml:template "http://data.example.com/image/{$.ID}" ;
     rml:graphMap [ rml:constant ex:AlbumGraph ] ;
@@ -32,7 +32,7 @@ This is equivalent to the following example, which uses a [=constant shortcut pr
 <aside class="ex-mapping">
 
 ```turtle
-<#TriplesMap1>
+<#ImageTriplesMap>
   rml:subjectMap [
     rml:template "http://data.example.com/image/{$.ID}" ;
     rml:graph ex:AlbumGraph ;
@@ -46,7 +46,7 @@ In the following example, [=RDF triples=] are placed into a [=IRI=]-named [=name
 <aside class="ex-mapping">
 
 ```turtle
-<#TriplesMap1>
+<#ImageTriplesMap>
   rml:subjectMap [
     rml:template "http://data.example.com/image/{$.ID}" ;
     rml:graphMap [
@@ -62,7 +62,7 @@ However, in this example, RDF triples of the [=predicate=] `ex:title` are placed
 <aside class="ex-mapping">
 
 ```turtle
-<#TriplesMap1>
+<#ImageTriplesMap>
   rml:subjectMap [
     rml:template "http://data.example.com/image/{$.ID}" ;
   ] ;
