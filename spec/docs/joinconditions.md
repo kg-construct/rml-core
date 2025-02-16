@@ -74,7 +74,7 @@ The effective properties of a mapping component are the properties that are used
 
 <aside class="example" id="example-join-condition" title="Usage of join condition">
 
-This example shows a [=referencing object map=] as part of a [=predicate-object map=], where the [=logical sources=] of the two [=triples maps=] are [=effectively equal=]. Therefore, a [=join condition=] is needed to join the two [=logical iterations=].
+This example shows a [=referencing object map=] as part of a [=predicate-object map=], where the [=logical sources=] of the two [=triples maps=] are not [=effectively equal=]. Therefore, a [=join condition=] is needed to join the two [=logical iterations=].
 
 <aside class="ex-mapping">
 
