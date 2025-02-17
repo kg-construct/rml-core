@@ -1,8 +1,8 @@
 ## RMLTC0001b-JSON
 
-**Title**: "One column mapping, generation of a BlankNode subject by using rr:termType"
+**Title**: "One column mapping, generation of a BlankNode subject by using rml:termType"
 
-**Description**: "Tests: (1) one column mapping; (2) generation of a BlankNode subject by using rr:termType; (3) one column to one property"
+**Description**: "Tests: (1) one column mapping; (2) generation of a BlankNode subject by using rml:termType; (3) one column to one property"
 
 **Error expected?** No
 

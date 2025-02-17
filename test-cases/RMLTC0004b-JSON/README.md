@@ -1,8 +1,8 @@
 ## RMLTC0004b-JSON
 
-**Title**: "One column mapping, presence of rr:termType rr:Literal on rr:subjectMap"
+**Title**: "One column mapping, presence of rml:termType rml:Literal on rml:subjectMap"
 
-**Description**: "Tests: (1) one column mapping (2) the presence of rr:termType rr:Literal on rr:subjectMap, which is invalid"
+**Description**: "Tests: (1) one column mapping (2) the presence of rml:termType rml:Literal on rml:subjectMap, which is invalid"
 
 **Error expected?** Yes
 

@@ -1,8 +1,8 @@
 ## RMLTC0003c-JSON
 
-**Title**: "Three columns mapping, by using a rr:template to produce literal"
+**Title**: "Three columns mapping, by using a rml:template to produce literal"
 
-**Description**: "Tests: (1) three column mapping; and (2) the use of rr:template to produce literal"
+**Description**: "Tests: (1) three column mapping; and (2) the use of rml:template to produce literal"
 
 **Error expected?** No
 

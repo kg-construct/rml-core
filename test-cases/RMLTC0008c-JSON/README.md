@@ -1,8 +1,8 @@
 ## RMLTC0008c-JSON
 
-**Title**: "Generation of triples by using multiple predicateMaps within a rr:predicateObjectMap"
+**Title**: "Generation of triples by using multiple predicateMaps within a rml:predicateObjectMap"
 
-**Description**: "Tests the generation of triples by using multiple predicateMaps within a rr:predicateObjectMap"
+**Description**: "Tests the generation of triples by using multiple predicateMaps within a rml:predicateObjectMap"
 
 **Error expected?** No
 

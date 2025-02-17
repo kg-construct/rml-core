@@ -1,8 +1,8 @@
 ## RMLTC0007e-JSON
 
-**Title**: "One column mapping, using rr:graphMap and rr:class"
+**Title**: "One column mapping, using rml:graphMap and rml:class"
 
-**Description**: "Tests subjectmap with rr:graphMap and rr:class"
+**Description**: "Tests subjectmap with rml:graphMap and rml:class"
 
 **Error expected?** No
 

@@ -23,6 +23,7 @@ def main(spec: str):
                          'output_format3', 'input1', 'input2', 'input3',
                          'output1', 'output2', 'output3', 'error'])
         for testcase in glob.glob('RML*'):
+            print(testcase)
             title, description = get_title_description(testcase)
             title = '"' + title + '"'
             description = '"' + description + '"'

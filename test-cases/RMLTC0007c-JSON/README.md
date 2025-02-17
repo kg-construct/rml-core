@@ -1,8 +1,8 @@
 ## RMLTC0007c-JSON
 
-**Title**: "One row mapping, using rr:class"
+**Title**: "One row mapping, using rml:class"
 
-**Description**: "Tests subjectmap with more than one class IRIs, rr:class"
+**Description**: "Tests subjectmap with more than one class IRIs, rml:class"
 
 **Error expected?** No
 

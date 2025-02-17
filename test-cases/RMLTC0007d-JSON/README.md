@@ -1,8 +1,8 @@
 ## RMLTC0007d-JSON
 
-**Title**: "One column mapping, specifying an rr:predicateObjectMap with rdf:type"
+**Title**: "One column mapping, specifying an rml:predicateObjectMap with rdf:type"
 
-**Description**: "Tests subjectmap with an alternative of having rr:class, i.e., by specifying an rr:predicateObjectMap with predicate rdf:type"
+**Description**: "Tests subjectmap with an alternative of having rml:class, i.e., by specifying an rml:predicateObjectMap with predicate rdf:type"
 
 **Error expected?** No
 

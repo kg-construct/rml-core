@@ -1,8 +1,8 @@
 ## RMLTC0002b-JSON
 
-**Title**: "Two columns mapping, generation of a BlankNode subject by using rr:template and rr:termType"
+**Title**: "Two columns mapping, generation of a BlankNode subject by using rml:template and rml:termType"
 
-**Description**: "Tests: (1) two column mapping, no primary key; (2) generation of a BlankNode subject by using rr:template; (3) one column to one property"
+**Description**: "Tests: (1) two column mapping, no primary key; (2) generation of a BlankNode subject by using rml:template; (3) one column to one property"
 
 **Error expected?** No
 
