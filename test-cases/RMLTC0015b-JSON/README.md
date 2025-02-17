@@ -1,8 +1,8 @@
 ## RMLTC0015b-JSON
 
-**Title**: "Generation of language tags from a table with language information, and a term map with invalid rr:language value"
+**Title**: "Generation of language tags from a table with language information, and a term map with invalid rml:language value"
 
-**Description**: "Tests a term map with an invalid rr:language value, which is an error"
+**Description**: "Tests a term map with an invalid rml:language value, which is an error"
 
 **Error expected?** Yes
 

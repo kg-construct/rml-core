@@ -1,6 +1,6 @@
 ## RMLTC0010a-JSON
 
-**Title**: "Template with table column with special chars"
+**Title**: "Template with table column with blank space"
 
 **Description**: "Tests a template with blank space in column value"
 

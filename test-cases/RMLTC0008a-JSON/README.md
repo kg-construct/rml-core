@@ -1,8 +1,8 @@
 ## RMLTC0008a-JSON
 
-**Title**: "Generation of triples to a target graph by using rr:graphMap and rr:template"
+**Title**: "Generation of triples to a target graph by using rml:graphMap and rml:template"
 
-**Description**: "Test that results of the mapping can be directed to a target graph by using rr:graphMap and rr:template"
+**Description**: "Test that results of the mapping can be directed to a target graph by using rml:graphMap and rml:template"
 
 **Error expected?** No
 

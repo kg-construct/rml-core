@@ -563,3 +563,118 @@
 <http://w3id.org/rml/core/test/RMLTC0021a-JSON/output/output.nq/> a rmltest:Output;
   rmltest:output "output.nq";
   rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0022a-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0022a-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0022a-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0022a-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0022a-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0022a-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0022b-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0022b-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0022b-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0022b-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0022b-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0022b-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0022c-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0022c-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0022c-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0022c-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0022c-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0022c-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0023a-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0023a-JSON";
+  rmltest:hasError true;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0023a-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl" .
+
+<http://w3id.org/rml/core/test/RMLTC0023a-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0023b-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0023b-JSON";
+  rmltest:hasError true;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0023b-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl" .
+
+<http://w3id.org/rml/core/test/RMLTC0023b-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0023c-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0023c-JSON";
+  rmltest:hasError true;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0023c-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl" .
+
+<http://w3id.org/rml/core/test/RMLTC0023c-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0023d-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0023d-JSON";
+  rmltest:hasError true;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0023d-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl" .
+
+<http://w3id.org/rml/core/test/RMLTC0023d-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0023e-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0023e-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0023e-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0023e-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0023e-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0023e-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0023f-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0023f-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0023f-JSON/input/student.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0023f-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0023f-JSON/input/student.json/> a rmltest:Input;
+  rmltest:input "student.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0023f-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .

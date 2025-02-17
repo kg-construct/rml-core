@@ -1,8 +1,8 @@
 ## RMLTC0001a-JSON
 
-**Title**: "One column mapping, subject URI generation by using rr:template"
+**Title**: "One column mapping, subject URI generation by using rml:template"
 
-**Description**: "Tests: (1) one column mapping; (2) subject URI generation by using rr:tmplate; (3) one column to one property"
+**Description**: "Tests: (1) one column mapping; (2) subject URI generation by using rml:template; (3) one column to one property"
 
 **Error expected?** No
 

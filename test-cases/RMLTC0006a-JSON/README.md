@@ -1,8 +1,8 @@
 ## RMLTC0006a-JSON
 
-**Title**: "Long form of R2RML by using rr:constant in rr:subjectMap, rr:predicateMap, rr:objectMap and rr:graphMap"
+**Title**: "Use of rml:constant in rml:subjectMap, rml:predicateMap, rml:objectMap and rml:graphMap"
 
-**Description**: "Tests the use of rr:constant in rr:subjectMap, rr:predicateMap, rr:objectMap and rr:graphMap"
+**Description**: "Tests the use of rml:constant in rml:subjectMap, rml:predicateMap, rml:objectMap and rml:graphMap"
 
 **Error expected?** No
 

@@ -1,8 +1,8 @@
 ## RMLTC0002e-JSON
 
-**Title**: "Two columns mapping, an undefined rr:tableName"
+**Title**: "Two columns mapping, an undefined rml:path"
 
-**Description**: "Tests the presence of an undefined rr:tableName"
+**Description**: "Tests the presence of an undefined rml:path"
 
 **Error expected?** Yes
 
