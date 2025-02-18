@@ -18,15 +18,38 @@ They specify pairs of [=predicate maps=] and [=object maps=] that, together with
 The [=logical source=] on a [=triples map=] can be omitted if all its [=term maps=] produce values irrespective of a [=logical source=]. This is the case if all its [=term maps=] are [=constant-valued expression maps=], or have `rml:BlankNode` as [=term type=] and no declared [=expression=].
 </aside>
 
-<aside class="example" id="example-triples-map" title="usage of triples map">
+<aside class="example" id="example-triples-map" title="Usage of triples map">
+
+The following example shows a [=triples map=] including its [=logical source=], [=subject map=] and two [=predicate-object maps=].
 
 <aside class="ex-mapping">
 
 ```turtle
 <#TM>
-  rml:logicalSource <#LS> ;
-  rml:subjectMap <#SM> ;
-  rml:predicateObjectMap <#POM1>, <#POM2>, ..., <#POMn> .
+  rml:logicalSource [
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:root rml:MappingDirectory ;
+      rml:path "images.json" ;
+    ] ;
+    rml:iterator "$.Images[*]" ;
+    rml:referenceFormulation rml:JSONPath ;
+  ] ;
+  rml:subjectMap [
+    rml:template "http://data.example.com/image/{$.ID}" ;
+  ] ;
+  rml:predicateObjectMap [
+    rml:predicate ex:height ;
+    rml:objectMap [
+      rml:reference "$.Height" ;
+    ] ;
+  ] ;
+  rml:predicateObjectMap [
+    rml:predicate ex:width ;
+    rml:objectMap [
+      rml:reference "$.Width" ;
+    ] ;
+  ] .
 ```
 
 </aside>

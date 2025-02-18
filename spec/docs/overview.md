@@ -1,21 +1,238 @@
-# [R2]RML Overview and Example (Informative)
+# RML Overview and Example
 
+This section gives a brief overview of the RML mapping language, followed by a simple example of JSON documents with an RML mapping document and its output RDF. Further RML examples can be found in the [RML-core test-cases](http://w3id.org/rml/core/test-cases).
 
-Each [=logical source=] is mapped to RDF using a [triples map]().
-The [triples map]() is a rule that maps each iteration in the [=logical source=]
+An [=RML mapping=] refers to [=logical sources=] to retrieve data from the [=input data source=].
+
+Each [=logical source=] is mapped to RDF using a [=triples map=].
+The [=triples map=] is a rule that maps each iteration in the [=logical source=]
 to a number of [=RDF triples=].
 The rule has two main parts:
 
-
- 1. A [subject map]() that generates the subject of all [=RDF triples=]
+ 1. A [=subject map=] that generates the subject of all [=RDF triples=]
  that will be generated from a logical source iteration.
  The subjects often are [=IRIs=].
- 2. Multiple [predicate-object maps]() that
- in turn consist of [predicate maps]() and [object maps]()
- (or [referencing object maps]()).
- 
-By default, all [=RDF triples=] are in the [=default graph=] of the [output dataset]().
-A [triples map]() can contain [graph maps]() that
-place some or all of the triples into [=named graphs=] instead. 
+ 2. Multiple [=predicate-object maps=] that
+ in turn consist of [=predicate maps=] and [=object maps=]
+ (or [=referencing object maps=]).
 
-**TODO: Add updated figure here**
+[=Triples=] are produced by combining the [=subject map=] with a [=predicate map=] and [=object map=], and applying these three to each [=logical iteration=]. For example, the complete rule for generating a set of [=triples=] might be:
+
+Subjects: A template `http://data.example.com/image/{ID}` is used to generate subject [=IRIs=] from the `ID` name.
+Predicates: The constant vocabulary [=IRI=] `ex:title` is used.
+Objects: The value of the `Title` name is used to produce an [=RDF literal=].
+
+By default, all [=RDF triples=] are in the [=default graph=] of the [=output dataset=].
+A [=triples map=] can contain [=graph maps=] that
+place some or all of the triples into [=named graphs=] instead.
+
+An overview of the [=RML vocabulary=] is shown in [[[#fig-rml-core-vocabulary]]]:
+
+![RML-Core vocabulary](../resources/diagram.png "RML-Core vocabulary")
+
+## Example input data sources
+
+<aside class="example" id="example-input-data-sources" title="Example input data sources">
+
+Input source: images.json
+<aside class="ex-input">
+
+```json
+{
+  "Images": [
+    {
+      "Width":  800,
+      "Height": 600,
+      "Title": {
+          "Lang": "en",
+          "Value": "View from 15th Floor"
+      },
+      "Keywords": ["building", "city", "view"],
+      "Thumbnail": {
+          "Url":    "http://www.example.com/image/481989943",
+          "Height": 125,
+          "Width":  100
+      },
+      "Animated" : false,
+      "ID": 116
+    }
+  ]
+}
+```
+</aside>
+
+Input source: album.json
+<aside class="ex-input">
+
+```json
+{
+  "Album": {
+    "ID": 43,
+    "Title": "City Views",
+    "Description": "A collection of stunning cityscape images.",
+    "CreatedDate": "2023-10-01",
+    "DateFormat": "date",
+    "Author": "John Doe",
+    "Images": [
+      {
+        "ID": 116,
+        "Reference": "http://www.example.com/image/481989943"
+      },
+      {
+        "ID": 117,
+        "Reference": "http://www.example.com/image/481989944"
+      }
+    ]
+  }
+}
+```
+
+</aside>
+
+</aside>
+
+<aside class="note">
+The mapping constructs for the concrete [=logical source=] in the following examples are defined in [[RML-IO]], but are used here to provide a complete example.
+</aside>
+
+<aside class="example" id="example-desired-rdf-output" title="Desired RDF output">
+
+The desired [=RDF triples=] to be produced from these [=input data sources=] are as follows:
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/image/116> a ex:Image .
+<http://data.example.com/image/116> ex:height 600 .
+
+<http://data.example.com/album/43> a ex:Album .
+<http://data.example.com/album/43> ex:title "City Views" .
+<http://data.example.com/album/43> ex:hasImage <http://data.example.com/image/116> .
+```
+
+
+</aside>
+
+<aside class="example" id="example-simple-mappings" title="Simple mappings">
+
+The following partial [=RML mapping document=] maps the `images.json` input source to [=RDF triples=].
+
+<aside class="ex-mapping">
+
+```turtle
+@prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/ns#> .
+
+<#ImageLogicalSource>
+  rml:source [
+    a rml:RelativePathSource ;
+    rml:root rml:MappingDirectory ;
+    rml:path "images.json" ;
+  ] ;
+  rml:iterator "$.Images[*]" ;
+  rml:referenceFormulation rml:JSONPath .
+
+<#ImageTriplesMap>
+  rml:logicalSource <#ImageLogicalSource> ;
+  rml:subjectMap [
+    rml:template "http://data.example.com/image/{$.ID}" ;
+    rml:class ex:Image ;
+  ] ;
+  rml:predicateObjectMap [
+    rml:predicate ex:height ;
+    rml:objectMap [
+      rml:reference "$.Height" ;
+    ] ;
+  ] .
+```
+
+</aside>
+
+The following RDF triples are generated by the [=RML mapping=] above.
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/image/116> a ex:Image .
+<http://data.example.com/image/116> ex:height 600 .
+```
+
+</aside>
+
+The following partial [=RML mapping document=] maps the `album.json` input source to [=RDF triples=].
+
+<aside class="ex-mapping">
+
+```turtle
+<#AlbumTriplesMap>
+  rml:logicalSource [
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:root rml:MappingDirectory ;
+      rml:path "album.json" ;
+    ] ;
+    rml:iterator "$.Album" ;
+    rml:referenceFormulation rml:JSONPath ;
+  ] ;
+  rml:subjectMap [
+    rml:template "http://data.example.com/album/{$.ID}" ;
+    rml:class ex:Album ;
+  ] ;
+  rml:predicateObjectMap [
+    rml:predicate ex:title ;
+    rml:objectMap [
+      rml:reference "$.Title" ;
+    ] ;
+  ] .
+```
+
+</aside>
+
+The following RDF triples are generated by the [=RML mapping=] above.
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/album/43> a ex:Album .
+<http://data.example.com/album/43> ex:title "City Views" .
+```
+
+</aside>
+
+</aside>
+
+<aside class = "example" id="example-joining-two-input-data-sources" title="Joining two input data sources">
+
+To complete the [=mapping document=], `ex:hasImage` [=triples=] need to be generated. Their [=subjects=] come from the second [=triples map=] (`<#AlbumTriplesMap>`) and their [=objects=] come from the first [=triples map=] (`<#ImageTriplesMap>`).
+
+This can be achieved by adding another `rml:predicateObjectMap` to `<#AlbumTriplesMap>`. This one used the other [=triples map=], `<#ImageTriplesMap>`, as the [=parent triples map=].
+
+<aside class="ex-mapping">
+
+```turtle
+<#AlbumTriplesMap>
+  rml:predicateObjectMap [
+    rml:predicate ex:hasImage ;
+    rml:objectMap [
+      rml:parentTriplesMap <#ImageTriplesMap> ;
+      rml:joinCondition [
+        rml:child "$.Images[*].ID" ;
+        rml:parent "$.ID" ;
+      ] ;
+    ] ;
+  ] .
+```
+
+</aside>
+
+This performs a join between the `ID` field in the `Images` array of the `album.json` input source and the `ID` field in the `images.json` input source. The [=objects=] will be generated from the [=subject map=] of the [=parent triples map=], yielding the desired triple.
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/album/43> ex:hasImage <http://data.example.com/image/116> .
+```
+
+</aside>
+
+</aside>
