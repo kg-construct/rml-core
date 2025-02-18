@@ -68,6 +68,13 @@ var respecConfig = {
       publisher: "",
       date: "",
     },
+    "RML-IO": {
+      title: "RML-IO",
+      href: "https://w3id.org/rml/io/spec",
+      status: "Draft Community Group Report",
+      publisher: "W3C",
+      date: "12 February 2025",
+    },
     // TODO: update once RML-IO-Registry is published
     "RML-IO-Registry": {
       title: "RML-IO Registry",

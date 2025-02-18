@@ -91,6 +91,10 @@ Input source: album.json
 
 </aside>
 
+<aside class="note">
+The mapping constructs for the concrete [=logical source=] in the following examples are defined in [[RML-IO]], but are used here to provide a complete example.
+</aside>
+
 <aside class="example" id="example-desired-rdf-output" title="Desired RDF output">
 
 The desired [=RDF triples=] to be produced from these [=input data sources=] are as follows:
@@ -119,16 +123,17 @@ The following partial [=RML mapping document=] maps the `images.json` input sour
 @prefix rml: <http://w3id.org/rml/> .
 @prefix ex: <http://example.com/ns#> .
 
-<#ImageTriplesMap>
-  rml:logicalSource [
-    rml:source [
-      a rml:RelativePathSource ;
-      rml:root rml:MappingDirectory ;
-      rml:path "images.json" ;
-    ] ;
-    rml:iterator "$.Images[*]" ;
-    rml:referenceFormulation rml:JSONPath ;
+<#ImageLogicalSource>
+  rml:source [
+    a rml:RelativePathSource ;
+    rml:root rml:MappingDirectory ;
+    rml:path "images.json" ;
   ] ;
+  rml:iterator "$.Images[*]" ;
+  rml:referenceFormulation rml:JSONPath .
+
+<#ImageTriplesMap>
+  rml:logicalSource <#ImageLogicalSource> ;
   rml:subjectMap [
     rml:template "http://data.example.com/image/{$.ID}" ;
     rml:class ex:Image ;
