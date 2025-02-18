@@ -155,7 +155,7 @@ The rml:logicalSource of `<#ThumbnailTriplesMap2>` is different from the rml:log
 
 The `rdfs:label` is not an `effective property` and is not considered in the comparison.
 
-Note also that the [=logical source=] [=node=] from [[[#example-simple-mappings]]] is named with an IRI `<#ImageLogicalSource>`, and the [=logical source=] for `<#ThumbnailTriplesMap2>` is named with a [=blank node=]. The name of a [=resource=] has no effect on the [=mapping process=] and is not considered in the comparison.
+Note also that the [=logical source=] [=node=] from [[[#example-simple-mappings]]] is named with an [=IRI=] `<#ImageLogicalSource>`, and the [=logical source=] for `<#ThumbnailTriplesMap2>` is named with a [=blank node=]. The name of a [=resource=] has no effect on the [=mapping process=] and is not considered in the comparison.
 
 </aside>
 
