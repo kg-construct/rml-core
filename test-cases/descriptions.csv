@@ -431,4 +431,4 @@ RMLTC0026a-JSON,Generation of triples from arrays,Tests the generation of triple
 RMLTC0027a-JSON,"Two triples maps, one with rml:baseIRI and one without and generating absolute IRIs",Tests the generation of triples from relative IRIs using base IRI,no,,,,,,
 RMLTC0027b-JSON,"Two triples maps, one with rml:baseIRI one one without and generating relative IRIs using baseIRI parameter",Tests the generation of triples from relative IRI using base IRI parameter,no,,,,,,
 RMLTC0027c-JSON,"Two triples maps, both with rml:baseIRI defined","Tests the generation of triples using relative IRIs with base IRIs defined only in triples maps, without base IRI parameter",no,,,,,,
-RMLTC0027b-JSON,"Two triples maps,both with rml:bseIRI defined overwritten by baseIRI parameter",Tests the generation of triples by overwritting defined base IRIs in triples maps using the base IRI parameter,no,,,,,,
+RMLTC0027d-JSON,"Two triples maps,both with rml:bseIRI defined overwritten by baseIRI parameter",Tests the generation of triples by with base IRIs different than the base IRI parameter,no,,,,,,

@@ -723,3 +723,63 @@
 <http://w3id.org/rml/core/test/RMLTC0026a-JSON/output/output.nq/> a rmltest:Output;
   rmltest:output "output.nq";
   rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0027a-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0027a-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0027a-JSON/input/persons.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0027a-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0027a-JSON/input/persons.json/> a rmltest:Input;
+  rmltest:input "persons.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0027a-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0027b-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0027b-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0027b-JSON/input/persons.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0027b-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0027b-JSON/input/persons.json/> a rmltest:Input;
+  rmltest:input "persons.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0027b-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0027c-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0027c-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0027c-JSON/input/persons.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0027c-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0027c-JSON/input/persons.json/> a rmltest:Input;
+  rmltest:input "persons.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0027c-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
+
+<http://w3id.org/rml/core/test/RMLTC0027d-JSON> a test:TestCase;
+  dcterms:identifier "RMLTC0027d-JSON";
+  rmltest:hasError false;
+  rmltest:input <http://w3id.org/rml/core/test/RMLTC0027d-JSON/input/persons.json/>;
+  rmltest:mappingDocument "mapping.ttl";
+  rmltest:output <http://w3id.org/rml/core/test/RMLTC0027d-JSON/output/output.nq/> .
+
+<http://w3id.org/rml/core/test/RMLTC0027d-JSON/input/persons.json/> a rmltest:Input;
+  rmltest:input "persons.json";
+  rmltest:inputFormat "application/json" .
+
+<http://w3id.org/rml/core/test/RMLTC0027d-JSON/output/output.nq/> a rmltest:Output;
+  rmltest:output "output.nq";
+  rmltest:outputFormat "application/n-quads" .
