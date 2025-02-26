@@ -5,13 +5,21 @@
 @prefix test: <http://www.w3.org/2006/03/test-description#> .
 @base <http://w3id.org/rml/core/test/> .
 
+# java -jar .\burp.jar -m manifest.rml.ttl -o manifest.ttl -b http://w3id.org/rml/core/test/
+
+_:source 
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" ;
+      rml:null "";
+    ];
+    rml:referenceFormulation rml:CSV;
+.
+
 <#TriplesMapTestcase>
   a rml:TriplesMap;
     
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source;
 
   rml:subjectMap [ 
     rml:reference "ID";
@@ -110,13 +118,10 @@
 <#TriplesMapInput1>
   a rml:TriplesMap;
 
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source ;
 
   rml:subjectMap [ 
-    rml:template "{ID}/input/{input1}/";
+    rml:template "{ID}/input/{input1}";
     rml:class rmltest:Input;
   ];
 
@@ -138,13 +143,10 @@
 <#TriplesMapInput2>
   a rml:TriplesMap;
 
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source;
 
   rml:subjectMap [ 
-    rml:template "{ID}/input/{input2}/";
+    rml:template "{ID}/input/{input2}";
     rml:class rmltest:Input;
   ];
 
@@ -166,13 +168,10 @@
 <#TriplesMapInput3>
   a rml:TriplesMap;
 
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source;
 
   rml:subjectMap [ 
-    rml:template "{ID}/input/{input3}/";
+    rml:template "{ID}/input/{input3}";
     rml:class rmltest:Input;
   ];
 
@@ -194,13 +193,10 @@
 <#TriplesMapOutput1>
   a rml:TriplesMap;
 
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source;
 
   rml:subjectMap [ 
-    rml:template "{ID}/output/{output1}/";
+    rml:template "{ID}/output/{output1}";
     rml:class rmltest:Output;
   ];
 
@@ -222,13 +218,10 @@
 <#TriplesMapOutput2>
   a rml:TriplesMap;
 
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source;
 
   rml:subjectMap [ 
-    rml:template "{ID}/output/{output2}/";
+    rml:template "{ID}/output/{output2}";
     rml:class rmltest:Output;
   ];
 
@@ -250,13 +243,10 @@
 <#TriplesMapOutput3>
   a rml:TriplesMap;
 
-  rml:logicalSource [ 
-    rml:source "metadata.csv";
-    rml:referenceFormulation rml:CSV;
-  ];
+  rml:logicalSource _:source;
 
   rml:subjectMap [ 
-    rml:template "{ID}/output/{output3}/";
+    rml:template "{ID}/output/{output3}";
     rml:class rmltest:Output;
   ];
 
