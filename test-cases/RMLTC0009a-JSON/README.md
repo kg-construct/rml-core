@@ -24,6 +24,19 @@
 
 ```
 
+**Input 1**
+```
+{
+  "sports": [
+    {
+      "ID": 100,
+      "Name": "Tennis"
+    }
+  ]
+}
+
+```
+
 **Mapping**
 ```
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .

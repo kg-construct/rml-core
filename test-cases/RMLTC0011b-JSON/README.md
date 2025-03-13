@@ -18,6 +18,31 @@
 
 ```
 
+**Input 1**
+```
+{
+  "sports": [
+    {"ID":110, "Description":"Tennis"},
+    {"ID":111, "Description":"Football"},
+    {"ID":112, "Description":"Formula1"}
+  ]
+}
+
+```
+
+**Input 2**
+```
+{
+  "links": [
+    {"ID_Student":10, "ID_Sport":110},
+    {"ID_Student":11, "ID_Sport":111},
+    {"ID_Student":11, "ID_Sport":112},
+    {"ID_Student":12, "ID_Sport":111}
+  ]
+}
+
+```
+
 **Mapping**
 ```
 @prefix ex: <http://example.com/> .
