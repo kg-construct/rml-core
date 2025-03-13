@@ -23,7 +23,7 @@
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
       rml:referenceFormulation rml:JSONPath;
-      rml:iterator "$.[*]";
+      rml:iterator "$[*]";
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
           rml:path "data.json"
@@ -46,8 +46,8 @@
 
 **Output**
 ```
-<http://example.com/1> <http://example.com/x> "1"^^<http://www.w3.org/2001/XMLSchema#string> .
-<http://example.com/2> <http://example.com/x> "2"^^<http://www.w3.org/2001/XMLSchema#int> .
+<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/base/datatype#string> .
+<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/base/datatype#int> .
 
 ```
 
