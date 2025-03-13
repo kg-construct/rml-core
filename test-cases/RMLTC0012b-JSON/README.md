@@ -6,6 +6,30 @@
 
 **Error expected?** No
 
+**Input**
+```
+{
+  "lives": [
+    {"fname":"Bob","lname":"Smith","city":"London"},
+    {"fname":"Sue","lname":"Jones","city":"Madrid"},
+    {"fname":"Bob","lname":"Smith","city":"London"}
+  ]
+}
+
+```
+
+**Input 1**
+```
+{
+  "persons": [
+    {"fname":"Bob","lname":"Smith","amount":30},
+    {"fname":"Sue","lname":"Jones","amount":20},
+    {"fname":"Bob","lname":"Smith","amount":30}
+  ]
+}
+
+```
+
 **Mapping**
 ```
 @prefix ex: <http://example.com/> .

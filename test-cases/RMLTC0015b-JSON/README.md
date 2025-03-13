@@ -10,8 +10,8 @@
 ```
 {
   "countries": [
-    {"Code": "BO", "Name": "Bolivia, Plurinational State of"},
-    {"Code": "IE", "Name": "Ireland"}
+    {"Code": "BO", "Name": "Estado Plurinacional de Bolivia"},
+    {"Code": "IE", "Name": "Irlanda"}
   ]
 }
 
