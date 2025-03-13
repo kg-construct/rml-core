@@ -8,12 +8,10 @@
 
 **Input**
 ```
-{
-  "students": [{
-    "ID": 10,
-    "Name":"Venus"
-  }]
-}
+[
+	{ "FOO": 1, "BAR": "string"},
+	{ "FOO": 2, "BAR": "int"}
+]
 
 ```
 
