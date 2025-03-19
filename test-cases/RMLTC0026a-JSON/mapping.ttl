@@ -13,7 +13,7 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.amounts"
+          rml:reference "$.amounts[*]"
         ];
       rml:predicate ex:amount
     ];
