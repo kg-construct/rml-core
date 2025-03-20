@@ -1,10 +1,10 @@
-## RMLTC0026a-JSON
+## RMLTC0026b-JSON
 
-**Title**: "Generation of triples from arrays"
+**Title**: "Generation of triples from arrays with wrong reference"
 
-**Description**: "Tests the generation of triples from array input data structures"
+**Description**: "Tests the generation of triples from array input data structures. Test should fail as reference points to the array and not the values of the array"
 
-**Error expected?** No
+**Error expected?** Yes
 
 **Input**
 ```
@@ -40,14 +40,6 @@
   rml:subjectMap [
       rml:template "http://example.com/Student/{$.fname}/{$.lname}"
     ] .
-
-```
-
-**Output**
-```
-<http://example.com/Student/Bob/Smith> <http://example.com/amount> "30" .
-<http://example.com/Student/Bob/Smith> <http://example.com/amount> "40" .
-<http://example.com/Student/Bob/Smith> <http://example.com/amount> "50" .
 
 ```
 
