@@ -4,7 +4,7 @@
 
 **Description**: "Test handling of invalid IRI template"
 
-**Error expected?** No
+**Error expected?** Yes
 
 **Input**
 ```
@@ -35,12 +35,6 @@
       rml:template "http://example.com/{N\\\ame}";
       rml:class foaf:Person;
     ] .
-
-```
-
-**Output**
-```
-<http://example.com/Venus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 
 ```
 
