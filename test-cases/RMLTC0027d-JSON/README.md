@@ -1,6 +1,6 @@
 ## RMLTC0027d-JSON
 
-**Title**: "Two triples maps,both with rml:bseIRI defined overwritten by baseIRI parameter"
+**Title**: "Two triples maps,both with rml:bseIRI defined and baseIRI parameter defined"
 
 **Description**: "Tests the generation of triples by with base IRIs different than the base IRI parameter"
 
