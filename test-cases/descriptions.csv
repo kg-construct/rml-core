@@ -1,9 +1,4 @@
-ID,Title,Purpose,"Error
-expected?",Input ,"Output
-default","Output
-1","Output
-2","Output
-3",Comment
+ID,Title,Purpose,"Error expected?",Input,"Output default","Output1","Output2","Output3",Comment
 RMLTC0000-CSV,"one table, one column, zero rows",Tests if an empty table produces an empty RDF graph,no,,,,,,
 RMLTC0000-JSON,"one table, one column, zero rows",Tests if an empty table produces an empty RDF graph,no,,,,,,
 RMLTC0000-XML,"one table, one column, zero rows",Tests if an empty table produces an empty RDF graph,no,,,,,,
@@ -409,14 +404,12 @@ RMLTC0021a-SPARQL,Generation of triples referencing object map,Tests the mapping
 RMLTC0022a-JSON,Generating of triples with constant datatype,Test triples with a fixed constant datatype,no,,,,,,
 RMLTC0022b-JSON,Generating of triples with datatypeMap,Test triples with a XSD datatype generated from the data,no,,,,,,
 RMLTC0022c-JSON,Generating of triples with datatypeMap with custom datatype,Test triples with a custom datype from the data,no,,,,,,
-,,,,,,,,,
 RMLTC0023a-JSON,Invalid IRI template 1,Test handling of invalid IRI template,yes,,,,,,
 RMLTC0023b-JSON,Invalid IRI template 2,Test handling of invalid IRI template,yes,,,,,,
 RMLTC0023c-JSON,Invalid IRI template 3,Test handling of invalid IRI template,yes,,,,,,
 RMLTC0023d-JSON,Invalid IRI template 4,Test handling of invalid IRI template,yes,,,,,,
 RMLTC0023e-JSON,Invalid IRI template 5,Test handling of invalid IRI template,yes,,,,,,
 RMLTC0023f-JSON,Invalid IRI template 6,Test handling of invalid IRI template,yes,,,,,,
-RMLTC0025a-JSON,Generation of triples with constant blank node ,Tests the generation of triples with a constant blank node,no,,,,,,
 RMLTC0025b-JSON,Usage of constant term maps in combination with explicitly defined term types,Tests the usage of constant term maps in combination with explicitly defined term types,yes,,,,,,
 RMLTC0026a-JSON,Generation of triples from arrays,Tests the generation of triples from array input data structures,no,,,,,,
 RMLTC0026b-JSON,Generation of triples from arrays with wrong reference,Tests the generation of triples from array input data structures. Test should fail as reference points to the array and not the values of the array,yes,,,,,,

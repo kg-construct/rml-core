@@ -14,23 +14,21 @@
 
 **Mapping**
 ```
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://w3id.org/rml/> .
 
  [
-    a rr:TriplesMap;
+    a rml:TriplesMap;
     rml:logicalSource [
       rml:source "data.json" ;
-      rml:referenceFormulation ql:JSONPath ;
+      rml:referenceFormulation rml:JSONPath ;
       rml:iterator "$[*]";
     ];
-    rr:subjectMap [
-      rr:template "https://example.org/instances/{id}";
+    rml:subjectMap [
+      rml:template "https://example.org/instances/{id}";
     ];
-    rr:predicateObjectMap [
-      rr:predicate <http://example.org/ns/p> ;
-      rr:object true ; # datatype is boolean
+    rml:predicateObjectMap [
+      rml:predicate <http://example.org/ns/p> ;
+      rml:object true ; # datatype is boolean
     ];
   ] .
 
