@@ -1,3 +1,24 @@
+## RMLTC0023e-JSON
+
+**Title**: "Valid IRI template with backslash-escape"
+
+**Description**: "Test handling of a valid IRI template using backslash-escape"
+
+**Error expected?** No
+
+**Input**
+```
+{
+  "students": [{
+    "ID": 10,
+    "{Name}":"Venus"
+  }]
+}
+
+```
+
+**Mapping**
+```
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rml: <http://w3id.org/rml/> .
 
@@ -14,4 +35,13 @@
       rml:template "http://example.com/{\{Name\}}";
       rml:class foaf:Person;
     ] .
+
+
+```
+
+
+**Output**
+```
+<http://example.com/Venus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+```
 
