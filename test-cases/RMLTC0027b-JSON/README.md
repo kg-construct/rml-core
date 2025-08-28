@@ -22,7 +22,6 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rml: <http://w3id.org/rml/> .
-@base <http://example.com/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:baseIRI <http://example.com/>;
