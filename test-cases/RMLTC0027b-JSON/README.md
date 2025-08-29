@@ -1,6 +1,6 @@
 ## RMLTC0027b-JSON
 
-**Title**: "Two triples maps, one with rml:baseIRI one one without and generating relative IRIs using baseIRI parameter"
+**Title**: "Two triples maps, one with rml:baseIRI and one without, generating relative IRIs using baseIRI parameter"
 
 **Description**: "Tests the generation of triples from relative IRI using base IRI parameter"
 
@@ -26,7 +26,7 @@
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
-  rml:baseIRI <http://example.com/>;
+  rml:baseIRI <http://tp1.com/>;
   rml:logicalSource [ a rml:LogicalSource;
       rml:iterator "$.persons[*]";
       rml:referenceFormulation rml:JSONPath;
