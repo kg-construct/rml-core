@@ -4,22 +4,14 @@
 
 **Description**: "Test the generation of triples by using IRI value in attributes, conforming RML mapping with data error (and limited results)"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**
 ```
 {
   "persons": [
-    {
-      "ID": 10,
-      "FirstName": "http://example.com/ns#Jhon",
-      "LastName": "Smith"
-    },
-    {
-      "ID": 20,
-      "FirstName": "Carlos",
-      "LastName": "Mendoza"
-    },
     {
       "ID": 30,
       "FirstName": "Juan Daniel",

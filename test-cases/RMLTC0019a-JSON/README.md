@@ -4,6 +4,8 @@
 
 **Description**: "Test the generation of triples by using IRI value in attributes"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

@@ -4,6 +4,8 @@
 
 **Description**: "Tests if null values in JSON files are handled correctly."
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

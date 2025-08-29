@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples from array input data structures"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**
@@ -45,9 +47,9 @@
 
 **Output**
 ```
-<http://example.com/Student/Bob/Smith> <http://example.com/amount> "30" .
-<http://example.com/Student/Bob/Smith> <http://example.com/amount> "40" .
-<http://example.com/Student/Bob/Smith> <http://example.com/amount> "50" .
+<http://example.com/Student/Bob/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Student/Bob/Smith> <http://example.com/amount> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Student/Bob/Smith> <http://example.com/amount> "50"^^<http://www.w3.org/2001/XMLSchema#integer> .
 
 ```
 

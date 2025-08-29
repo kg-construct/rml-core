@@ -4,6 +4,8 @@
 
 **Description**: "Generation of language tags from a table with language information"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

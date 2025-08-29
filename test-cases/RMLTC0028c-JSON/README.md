@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples with a UnsafeIRI term type in the subject or object"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

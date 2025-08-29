@@ -4,6 +4,8 @@
 
 **Description**: "Tests the typing of resources"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

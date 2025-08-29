@@ -4,6 +4,8 @@
 
 **Description**: "Tests a template with blank space in column value"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

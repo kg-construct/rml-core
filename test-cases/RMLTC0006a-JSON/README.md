@@ -4,6 +4,8 @@
 
 **Description**: "Tests the use of rml:constant in rml:subjectMap, rml:predicateMap, rml:objectMap and rml:graphMap"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

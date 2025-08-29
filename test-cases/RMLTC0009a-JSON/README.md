@@ -4,6 +4,8 @@
 
 **Description**: "Test foreign key relationships among logical tables"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

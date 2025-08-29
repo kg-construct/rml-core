@@ -4,6 +4,8 @@
 
 **Description**: "Tests: (1) one column mapping; (2) subject URI generation by using rml:template; (3) one column to one property"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

@@ -4,6 +4,8 @@
 
 **Description**: "Test if the default graph is also generated correctly."
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**
@@ -14,27 +16,25 @@
 
 **Mapping**
 ```
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix s: <http://schema.org/> .
 
  [
-    a rr:TriplesMap;
+    a rml:TriplesMap;
     rml:logicalSource [
       rml:source "data.json" ;
-      rml:referenceFormulation ql:JSONPath ;
+      rml:referenceFormulation rml:JSONPath ;
       rml:iterator "$[*]";
     ];
-    rr:subjectMap [
-      rr:template "https://example.org/instances/{id}";
-      rr:class s:Person ;
-      rr:graph <graph:1> ;
+    rml:subjectMap [
+      rml:template "https://example.org/instances/{id}";
+      rml:class s:Person ;
+      rml:graph <graph:1> ;
     ];
-    rr:predicateObjectMap [
-      rr:predicate s:givenName ;
-      rr:objectMap [ rml:reference "name" ] ;
-      rr:graph rr:defaultGraph ;
+    rml:predicateObjectMap [
+      rml:predicate s:givenName ;
+      rml:objectMap [ rml:reference "name" ] ;
+      rml:graph rml:defaultGraph ;
     ];
   ] .
 

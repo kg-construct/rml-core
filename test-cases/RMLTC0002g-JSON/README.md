@@ -4,6 +4,8 @@
 
 **Description**: "Test the presence of an invalid JSONPath"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

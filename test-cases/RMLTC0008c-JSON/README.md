@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples by using multiple predicateMaps within a rml:predicateObjectMap"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

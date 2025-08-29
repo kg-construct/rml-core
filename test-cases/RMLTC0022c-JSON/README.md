@@ -4,6 +4,8 @@
 
 **Description**: "Test triples with a custom datype from the data"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

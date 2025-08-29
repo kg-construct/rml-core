@@ -107,6 +107,7 @@ def main(spec: str):
             lines.append(f'## {testcase}\n\n')
             lines.append(f'**Title**: {title}\n\n')
             lines.append(f'**Description**: {description}\n\n')
+            lines.append(f'**Default Base IRI**: http://example.com/\n\n')
             if error == 'true':
                 error_html = 'Yes'
             else:
