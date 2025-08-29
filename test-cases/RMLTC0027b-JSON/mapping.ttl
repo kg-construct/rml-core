@@ -3,7 +3,7 @@
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
-  rml:baseIRI <http://example.com/>;
+  rml:baseIRI <http://tp1.com/>;
   rml:logicalSource [ a rml:LogicalSource;
       rml:iterator "$.persons[*]";
       rml:referenceFormulation rml:JSONPath;
