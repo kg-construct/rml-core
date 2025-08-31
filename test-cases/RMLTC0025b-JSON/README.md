@@ -4,6 +4,8 @@
 
 **Description**: "Tests the usage of constant term maps in combination with explicitly defined term types"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

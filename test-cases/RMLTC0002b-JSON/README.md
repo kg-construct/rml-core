@@ -4,6 +4,8 @@
 
 **Description**: "Tests: (1) two column mapping, no primary key; (2) generation of a BlankNode subject by using rml:template; (3) one column to one property"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

@@ -4,6 +4,8 @@
 
 **Description**: "Tests the mapping specification referencing object map with same logical source and join condition"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

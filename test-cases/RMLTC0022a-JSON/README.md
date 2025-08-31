@@ -4,6 +4,8 @@
 
 **Description**: "Test triples with a fixed constant datatype"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

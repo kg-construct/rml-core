@@ -4,6 +4,8 @@
 
 **Description**: "Test handling of invalid IRI template"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

@@ -4,6 +4,8 @@
 
 **Description**: "Test that results from distinct parts of the mapping can be directed to different target graphs."
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

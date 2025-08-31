@@ -4,6 +4,8 @@
 
 **Description**: "Tests: (1) three column mapping; and (2) the use of rml:template to produce literal"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

@@ -4,6 +4,8 @@
 
 **Description**: "Test that results of the mapping can be directed to a target graph by using rml:graphMap and rml:template"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

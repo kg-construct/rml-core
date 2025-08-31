@@ -4,6 +4,8 @@
 
 **Description**: "Test triples with a custom datype from the data"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**
@@ -46,8 +48,8 @@
 
 **Output**
 ```
-<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/base/datatype#string> .
-<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/base/datatype#int> .
+<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/datatype#string> .
+<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/datatype#int> .
 
 ```
 

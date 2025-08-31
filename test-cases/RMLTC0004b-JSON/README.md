@@ -4,6 +4,8 @@
 
 **Description**: "Tests: (1) one column mapping (2) the presence of rml:termType rml:Literal on rml:subjectMap, which is invalid"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

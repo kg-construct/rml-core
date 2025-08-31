@@ -4,6 +4,8 @@
 
 **Description**: "Tests the typing resources by relying on rdf:type predicate"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

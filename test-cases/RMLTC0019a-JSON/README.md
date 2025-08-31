@@ -4,6 +4,8 @@
 
 **Description**: "Test the generation of triples by using IRI value in attributes"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**
@@ -54,7 +56,7 @@
 **Output**
 ```
 <http://example.com/ns#Jhon> <http://xmlns.com/foaf/0.1/name> "http://example.com/ns#Jhon" .
-<http://example.com/base/Carlos> <http://xmlns.com/foaf/0.1/name> "Carlos" .
+<http://example.com/Carlos> <http://xmlns.com/foaf/0.1/name> "Carlos" .
 
 ```
 

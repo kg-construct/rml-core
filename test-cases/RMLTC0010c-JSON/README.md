@@ -4,6 +4,8 @@
 
 **Description**: "Tests a template with special chars in reference value and backslash escapes in string templates"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

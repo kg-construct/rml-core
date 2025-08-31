@@ -4,6 +4,8 @@
 
 **Description**: "Tests the presence of an undefined rml:path"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

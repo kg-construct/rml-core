@@ -4,6 +4,8 @@
 
 **Description**: "Tests, M to M relations, by using an additional Triples Map"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

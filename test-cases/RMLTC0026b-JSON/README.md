@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples from array input data structures. Test should fail as reference points to the array and not the values of the array"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

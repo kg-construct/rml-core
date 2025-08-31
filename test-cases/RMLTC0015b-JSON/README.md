@@ -4,6 +4,8 @@
 
 **Description**: "Tests a term map with an invalid rml:language value, which is an error"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

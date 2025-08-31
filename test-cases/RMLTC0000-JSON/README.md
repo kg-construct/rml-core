@@ -4,6 +4,8 @@
 
 **Description**: "Tests if an empty table produces an empty RDF graph"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

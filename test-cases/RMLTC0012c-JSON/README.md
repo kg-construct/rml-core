@@ -4,6 +4,8 @@
 
 **Description**: "Tests a RML with missing information, TriplesMap without subjectMap."
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**

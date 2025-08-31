@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples from relative IRI using base IRI parameter"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

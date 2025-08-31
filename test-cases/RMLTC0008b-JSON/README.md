@@ -4,6 +4,8 @@
 
 **Description**: "Tests the mapping specification referencing object map without join"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**

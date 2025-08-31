@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples by with base IRIs different than the base IRI parameter"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** No
 
 **Input**
@@ -22,7 +24,6 @@
 @prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rml: <http://w3id.org/rml/> .
-@base <http://example.com/>.
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:baseIRI <http://example2.com/>;
@@ -68,10 +69,10 @@
 
 **Output**
 ```
-<http://example2.com/Bob> <http://example.com/amount> "30" .
-<http://example2.com/Jones> <http://example.com/amount> "20" .
-<http://example2.com/Smith> <http://example.com/amount> "30" .
-<http://example2.com/Sue> <http://example.com/amount> "20" .
+<http://example2.com/Bob> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example2.com/Jones> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example2.com/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example2.com/Sue> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
 
 ```
 

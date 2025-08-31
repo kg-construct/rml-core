@@ -4,6 +4,8 @@
 
 **Description**: "Tests the generation of triples to a non-IRI named graph, which is an error"
 
+**Default Base IRI**: http://example.com/
+
 **Error expected?** Yes
 
 **Input**
