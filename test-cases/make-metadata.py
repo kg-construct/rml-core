@@ -92,10 +92,12 @@ def main(spec: str):
 
             # Output files
             if os.path.exists(os.path.join(testcase, 'output.nq')):
+                if os.path.getsize(os.path.join(testcase, 'output.nq')) == 0:
+                    error = 'true'
                 output1 = 'output.nq'
                 output_format1 = 'application/n-quads'
             else:
-                error = 'true';
+                error = 'true'
 
             writer.writerow([testcase, title, description, spec, mapping_file,
                              input_format1, input_format2, input_format3,
