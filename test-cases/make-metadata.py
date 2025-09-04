@@ -92,8 +92,6 @@ def main(spec: str):
 
             # Output files
             if os.path.exists(os.path.join(testcase, 'output.nq')):
-                if os.path.getsize(os.path.join(testcase, 'output.nq')) == 0:
-                    error = 'true'
                 output1 = 'output.nq'
                 output_format1 = 'application/n-quads'
             else:
