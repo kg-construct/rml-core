@@ -95,7 +95,7 @@ def main(spec: str):
                 output1 = 'output.nq'
                 output_format1 = 'application/n-quads'
             else:
-                error = 'true';
+                error = 'true'
 
             writer.writerow([testcase, title, description, spec, mapping_file,
                              input_format1, input_format2, input_format3,
