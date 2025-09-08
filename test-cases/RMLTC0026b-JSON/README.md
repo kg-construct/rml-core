@@ -1,18 +1,19 @@
 ## RMLTC0026b-JSON
 
-**Title**: "Generation of triples from arrays with wrong reference"
+**Title**: "Two triples maps, one with rml:baseIRI one one without and generating relative IRIs using baseIRI parameter"
 
-**Description**: "Tests the generation of triples from array input data structures. Test should fail as reference points to the array and not the values of the array"
+**Description**: "Tests the generation of triples from relative IRI using base IRI parameter"
 
 **Default Base IRI**: http://example.com/
 
-**Error expected?** Yes
+**Error expected?** No
 
 **Input**
 ```
 {
   "persons": [
-    {"fname":"Bob","lname":"Smith","amounts":[30, 40, 50]}
+    {"fname":"Bob","lname":"Smith","amount":30},
+    {"fname":"Sue","lname":"Jones","amount":20}
   ]
 }
 
@@ -25,6 +26,7 @@
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:baseIRI <http://tp1.com/>;
   rml:logicalSource [ a rml:LogicalSource;
       rml:iterator "$.persons[*]";
       rml:referenceFormulation rml:JSONPath;
@@ -35,13 +37,41 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.amounts"
+          rml:reference "$.amount"
         ];
       rml:predicate ex:amount
     ];
   rml:subjectMap [
-      rml:template "http://example.com/Student/{$.fname}/{$.lname}"
+      rml:template "{$.fname}"
     ] .
+
+<http://example.com/base/TriplesMap2> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.persons[*]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
+          rml:path "persons.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "$.amount"
+        ];
+      rml:predicate ex:amount
+    ];
+  rml:subjectMap [
+      rml:template "{$.lname}"
+    ] .
+
+```
+
+**Output**
+```
+<http://tp1.com/Bob> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Jones> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://tp1.com/Sue> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
 
 ```
 

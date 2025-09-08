@@ -17,17 +17,19 @@ def get_title_description(testcase: str):
 def main(spec: str):
     with open ('metadata.csv', 'w') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(['ID', 'title', 'description', 'specification',
+        writer.writerow(['ID', 'title', 'description', 'specification','base_iri',
                          'mapping', 'input_format1', 'input_format2',
                          'input_format3', 'output_format1', 'output_format2',
                          'output_format3', 'input1', 'input2', 'input3',
                          'output1', 'output2', 'output3', 'error'])
-        for testcase in glob.glob('RML*'):
-            print(testcase)
+        testcases = sorted(glob.glob("RML*"))
+        for testcase in testcases:
+            print(f'Generating the description of {testcase}')
             title, description = get_title_description(testcase)
             title = '"' + title + '"'
             description = '"' + description + '"'
             error = 'false'
+            base_iri = 'http://example.org/'
             input1 = ''
             input2 = ''
             input3 = ''
@@ -82,7 +84,7 @@ def main(spec: str):
                 input1 = 'lives.json'
                 input_format1 = 'application/json'
 
-            print(input1, input2, input3)
+            #print(input1, input2, input3)
 
             # Mapping file
             if os.path.exists(os.path.join(testcase, 'mapping.ttl')):
@@ -97,7 +99,7 @@ def main(spec: str):
             else:
                 error = 'true'
 
-            writer.writerow([testcase, title, description, spec, mapping_file,
+            writer.writerow([testcase, title, description, spec, base_iri, mapping_file,
                              input_format1, input_format2, input_format3,
                              output_format1, output_format2, output_format3,
                              input1, input2, input3, output1, output2,

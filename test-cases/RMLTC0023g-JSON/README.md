@@ -1,8 +1,10 @@
-## RMLTC0023e-JSON
+## RMLTC0023g-JSON
 
 **Title**: "Valid IRI template with backslash-escape"
 
 **Description**: "Test handling of a valid IRI template using backslash-escape"
+
+**Default Base IRI**: http://example.com/
 
 **Error expected?** No
 
@@ -32,13 +34,12 @@
         ]
     ];
   rml:subjectMap [
-      rml:template "http://example.com/{\{Name\}}";
+      rml:template "http://example.com/{\\{Name\\}}";
       rml:class foaf:Person;
     ] .
 
 
 ```
-
 
 **Output**
 ```

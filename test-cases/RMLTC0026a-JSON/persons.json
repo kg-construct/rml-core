@@ -1,5 +1,6 @@
 {
   "persons": [
-    {"fname":"Bob","lname":"Smith","amounts":[30, 40, 50]}
+    {"fname":"Bob","lname":"Smith","amount":30},
+    {"fname":"Sue","lname":"Jones","amount":20}
   ]
 }
