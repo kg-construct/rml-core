@@ -42,6 +42,10 @@ A <dfn>constant-valued term map</dfn> is a term map that ignores the [=logical i
 
 The [=constant value=] of the `rml:constant` property is the [=generated RDF Term=].
 
+<aside class="note">
+[=Constant expressions=] are only allowed to be IRIs and literals. Blank nodes are explicitly not allowed. The reason for this is that blank node identifiers are always locally scoped to the file or RDF store, and are not persistent or portable identifiers [[rdf11-concepts-20140225]]. This means that they cannot be used as a constant expression, since the idea of a [=constant expression=] is to use that same [=constant value=] as the result of a mapping process. By definition, a blank node identifier cannot be ported from a mapping document to a mapping result.
+</aside>
+
 #### Shortcuts for constant-valued term  maps
 
 [=Constant-valued term maps=] can be expressed more concisely
