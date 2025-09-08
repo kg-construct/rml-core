@@ -1,8 +1,8 @@
 ## RMLTC0027c-JSON
 
-**Title**: "Two triples maps, both with rml:baseIRI defined"
+**Title**: "Generation of triples using the UnsafeIRI term type"
 
-**Description**: "Tests the generation of triples using relative IRIs with base IRIs defined only in triples maps, without base IRI parameter"
+**Description**: "Tests the generation of triples with a UnsafeIRI term type in the subject or object"
 
 **Default Base IRI**: http://example.com/
 
@@ -11,9 +11,12 @@
 **Input**
 ```
 {
-  "persons": [
-    {"fname":"Bob","lname":"Smith","amount":30},
-    {"fname":"Sue","lname":"Jones","amount":20}
+  "students": [
+    {"Name": "Alice"},
+    {"Name": "Bob"},
+    {"Name": "Bob/Charles"},
+    {"Name": "Danny"},
+    {"Name": "Emily Smith"}
   ]
 }
 
@@ -21,58 +24,37 @@
 
 **Mapping**
 ```
-@prefix ex: <http://example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
-  rml:baseIRI <http://example.com/>;
   rml:logicalSource [ a rml:LogicalSource;
-      rml:iterator "$.persons[*]";
+      rml:iterator "$.students[*]";
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
-          rml:path "persons.json"
+          rml:path "student.json"
         ]
     ];
   rml:predicateObjectMap [
-      rml:objectMap [
-          rml:reference "$.amount"
-        ];
-      rml:predicate ex:amount
+      rml:object foaf:Person;
+      rml:predicate rdf:type
     ];
   rml:subjectMap [
-      rml:template "{$.fname}"
-    ] .
-
-<http://example.com/base/TriplesMap2> a rml:TriplesMap;
-  rml:baseIRI <http://example.com/>;
-  rml:logicalSource [ a rml:LogicalSource;
-      rml:iterator "$.persons[*]";
-      rml:referenceFormulation rml:JSONPath;
-      rml:source [ a rml:RelativePathSource;
-          rml:root rml:MappingDirectory;
-          rml:path "persons.json"
-        ]
-    ];
-  rml:predicateObjectMap [
-      rml:objectMap [
-          rml:reference "$.amount"
-        ];
-      rml:predicate ex:amount
-    ];
-  rml:subjectMap [
-      rml:template "{$.lname}"
+      rml:template "http://example.com/Person/{$.Name}";
+      rml:termType rml:UnsafeIRI
     ] .
 
 ```
 
 **Output**
 ```
-<http://example.com/Bob> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Jones> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Sue> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Person/Alice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Bob> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Bob%2FCharles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Danny> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Emily%20Smith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 
 ```
 

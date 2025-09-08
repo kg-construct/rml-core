@@ -40,6 +40,13 @@ var respecConfig = {
       company: "IDLab &ndash; Ghent University &ndash; imec",
       orcid: "0000-0002-7195-9935",
       companyURL: "https://knows.idlab.ugent.be/"
+    },
+    {
+      name: "David Chaves-Fraga",
+      url: "https://davidchavesfraga.com",
+      company: "CiTIUS &ndash; University of Santiago de Compostela",
+      orcid: "0000-0003-3236-2789",
+      companyURL: "https://citius.gal"
     }
   ],
   formerEditors: [

@@ -1,8 +1,8 @@
-## RMLTC0019b-JSON
+## RMLTC0024a-JSON
 
-**Title**: "Generation of triples by using IRI value in columns, with data error"
+**Title**: "Usage of constant term maps in combination with explicitly defined term types"
 
-**Description**: "Test the generation of triples by using IRI value in attributes, conforming RML mapping with data error (and limited results)"
+**Description**: "Tests the usage of constant term maps in combination with explicitly defined term types"
 
 **Default Base IRI**: http://example.com/
 
@@ -11,13 +11,12 @@
 **Input**
 ```
 {
-  "persons": [
-    {
-      "ID": 30,
-      "FirstName": "Juan Daniel",
-      "LastName": "Crespo"
-    }
-  ]
+  "students": [{
+    "Name":"Venus"
+  },
+  {
+    "Name":"Julio"
+  }]
 }
 
 ```
@@ -26,25 +25,27 @@
 ```
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/>.
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
-      rml:iterator "$.persons[*]";
+      rml:iterator "$.students[*]";
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
-          rml:path "persons.json"
+          rml:path "student.json"
         ]
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.FirstName"
+          rml:reference "$.Name"
         ];
-      rml:predicate foaf:name
+      rml:predicate ex:student
     ];
   rml:subjectMap [
-      rml:reference "$.FirstName"
-    ] .
+      rml:constant "School";
+      rml:termType rml:BlankNode
+  ] .
 
 ```
 

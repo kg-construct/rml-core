@@ -1,8 +1,10 @@
 ## RMLTC0026c-JSON
 
-**Title**: "Generation of triples from arrays in subject and object"
+**Title**: "Two triples maps, both with rml:baseIRI defined"
 
-**Description**: "Tests the generation of triples from array input data structures in subject and object"
+**Description**: "Tests the generation of triples using relative IRIs with base IRIs defined only in triples maps, without base IRI parameter"
+
+**Default Base IRI**: http://example.com/
 
 **Error expected?** No
 
@@ -10,7 +12,8 @@
 ```
 {
   "persons": [
-    {"names":["Bob","Smith"],"amounts":[30, 40, 50]}
+    {"fname":"Bob","lname":"Smith","amount":30},
+    {"fname":"Sue","lname":"Jones","amount":20}
   ]
 }
 
@@ -23,6 +26,7 @@
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:baseIRI <http://example.com/>;
   rml:logicalSource [ a rml:LogicalSource;
       rml:iterator "$.persons[*]";
       rml:referenceFormulation rml:JSONPath;
@@ -33,25 +37,42 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.amounts[*]"
+          rml:reference "$.amount"
         ];
       rml:predicate ex:amount
     ];
   rml:subjectMap [
-      rml:template "http://example.com/Student/{$.names[*]}"
+      rml:template "{$.fname}"
+    ] .
+
+<http://example.com/base/TriplesMap2> a rml:TriplesMap;
+  rml:baseIRI <http://example.com/>;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.persons[*]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
+          rml:path "persons.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "$.amount"
+        ];
+      rml:predicate ex:amount
+    ];
+  rml:subjectMap [
+      rml:template "{$.lname}"
     ] .
 
 ```
 
 **Output**
 ```
-<http://example.com/Student/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Student/Smith> <http://example.com/amount> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Student/Smith> <http://example.com/amount> "50"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Student/Bob> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Student/Bob> <http://example.com/amount> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/Student/Bob> <http://example.com/amount> "50"^^<http://www.w3.org/2001/XMLSchema#integer> .
-
+<http://example.com/Bob> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Jones> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Sue> <http://example.com/amount> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
 
 ```
 
