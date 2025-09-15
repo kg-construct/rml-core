@@ -43,12 +43,10 @@
         if an iterator is necessary.  
         """ ;
         sh:message """
-        rml:iterator must be a Literal specifying the iterator to iterate over 
+        rml:iterator specifies the iterator to iterate over
         the data source, and may be provided at most once.
         """ ;
-        sh:maxCount 1 ;
-        sh:nodeKind sh:Literal ;
-        sh:datatype xsd:string ;
+        sh:maxCount 1
     ] ;
 .
 

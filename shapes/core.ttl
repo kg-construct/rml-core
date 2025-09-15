@@ -378,7 +378,8 @@
     rml:AbstractLogicalSource must specify how to generate logical iterations on a data source for a triples map.
     """ ;
     sh:node <http://w3id.org/rml/shapes/RMLIterableShape> ;
-    sh:targetClass rml:AbstractLogicalSource .
+    sh:targetClass rml:AbstractLogicalSource ;
+    sh:targetObjectsOf rml:logicalSource .
 
 <http://w3id.org/rml/shapes/RMLIterableShape> a sh:NodeShape ;
     rdfs:label "Iterable" ;
@@ -407,13 +408,11 @@
         map the data of the input source. Depends on the reference formulation
         if an iterator is necessary.  
         """ ;
-            sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:message """
-        rml:iterator must be a Literal specifying the iterator to iterate over 
+        rml:iterator specifies the iterator to iterate over
         the data source, and may be provided at most once.
         """ ;
-            sh:nodeKind sh:Literal ;
             sh:path rml:iterator ] ;
     sh:targetClass rml:Iterable .
 
