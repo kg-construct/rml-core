@@ -3,6 +3,7 @@
 @prefix rml: <http://w3id.org/rml/> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
+  rml:baseIRI <http://tp1.com/>;
   rml:logicalSource [ a rml:LogicalSource;
       rml:iterator "$.persons[*]";
       rml:referenceFormulation rml:JSONPath;
@@ -13,10 +14,29 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.amounts"
+          rml:reference "$.amount"
         ];
       rml:predicate ex:amount
     ];
   rml:subjectMap [
-      rml:template "http://example.com/Student/{$.fname}/{$.lname}"
+      rml:template "{$.fname}"
+    ] .
+
+<http://example.com/base/TriplesMap2> a rml:TriplesMap;
+  rml:logicalSource [ a rml:LogicalSource;
+      rml:iterator "$.persons[*]";
+      rml:referenceFormulation rml:JSONPath;
+      rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
+          rml:path "persons.json"
+        ]
+    ];
+  rml:predicateObjectMap [
+      rml:objectMap [
+          rml:reference "$.amount"
+        ];
+      rml:predicate ex:amount
+    ];
+  rml:subjectMap [
+      rml:template "{$.lname}"
     ] .

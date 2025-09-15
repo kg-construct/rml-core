@@ -1,4 +1,4 @@
-## RMLTC0027d-JSON
+## RMLTC0026d-JSON
 
 **Title**: "Two triples maps,both with rml:bseIRI defined and baseIRI parameter defined"
 

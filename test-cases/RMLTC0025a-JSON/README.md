@@ -1,12 +1,12 @@
-## RMLTC0025b-JSON
+## RMLTC0025a-JSON
 
-**Title**: "Generation of triples from arrays with wrong reference"
+**Title**: "Generation of triples from arrays"
 
-**Description**: "Tests the generation of triples from array input data structures. Test should fail as reference points to the array and not the values of the array"
+**Description**: "Tests the generation of triples from array input data structures"
 
 **Default Base IRI**: http://example.com/
 
-**Error expected?** Yes
+**Error expected?** No
 
 **Input**
 ```
@@ -35,13 +35,21 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.amounts"
+          rml:reference "$.amounts[*]"
         ];
       rml:predicate ex:amount
     ];
   rml:subjectMap [
       rml:template "http://example.com/Student/{$.fname}/{$.lname}"
     ] .
+
+```
+
+**Output**
+```
+<http://example.com/Student/Bob/Smith> <http://example.com/amount> "30"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Student/Bob/Smith> <http://example.com/amount> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/Student/Bob/Smith> <http://example.com/amount> "50"^^<http://www.w3.org/2001/XMLSchema#integer> .
 
 ```
 
