@@ -313,7 +313,6 @@ _:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 # http://w3id.org/rml/iterator
 <http://w3id.org/rml/iterator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://w3id.org/rml/iterator> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/Iterable> .
-<http://w3id.org/rml/iterator> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
 <http://w3id.org/rml/iterator> <http://www.w3.org/2000/01/rdf-schema#comment> "An expression qualified according to the reference formulation that defines a sequence of logical iterations on the data source."@en .
 <http://w3id.org/rml/iterator> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/core/> .
 <http://w3id.org/rml/iterator> <http://www.w3.org/2000/01/rdf-schema#label> "iterator" .
