@@ -10,7 +10,7 @@ An <dfn>expression map</dfn> (`rml:ExpressionMap`) is an abstract class, that is
 * 0 or 1 `rml:template`, or
 * another property, or properties, defined by a subclass of `rml:ExpressionMap`.
 
-Each of these properties specifies an [=expression=] which, upon evaluation, results in a naturally ordered list of values (i.e., preserving the order in which they are produced by the iterations) called the <dfn>expression evaluation result</dfn>.
+Each of these properties specifies an [=expression=] which, upon evaluation, results in a naturally ordered list of values (i.e., preserving the order in which they are produced by the iterations), called the <dfn>expression evaluation result</dfn>.
 
 The <dfn>reference expression set</dfn> of an [=expression map=] is the set of expressions which are evaluated on a [=logical iteration=].
 
