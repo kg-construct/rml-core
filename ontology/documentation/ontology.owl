@@ -420,6 +420,18 @@
     
 
 
+    <!-- http://w3id.org/rml/strategy -->
+
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/rml/strategy">
+        <rdfs:range rdf:resource="http://w3id.org/rml/Strategy"/>
+        <rdfs:comment xml:lang="en">A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
+        <rdfs:label>strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://w3id.org/rml/subject -->
 
 
@@ -499,7 +511,6 @@
 
     <owl:DatatypeProperty rdf:about="http://w3id.org/rml/iterator">
         <rdfs:domain rdf:resource="http://w3id.org/rml/Iterable"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">An expression qualified according to the reference formulation that defines a sequence of logical iterations on the data source.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
         <rdfs:label>iterator</rdfs:label>
@@ -762,6 +773,17 @@
         <rdfs:comment xml:lang="en">Denotes a Reference Formulation.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
         <rdfs:label>Reference Formulation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/rml/Strategy -->
+
+
+    <owl:Class rdf:about="http://w3id.org/rml/Strategy">
+        <rdfs:comment xml:lang="en">Denotes a strategy to perform a action (e.g. gather for collections and containers, joins).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/core/"/>
+        <rdfs:label>Strategy</rdfs:label>
     </owl:Class>
     
 
