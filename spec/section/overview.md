@@ -28,7 +28,7 @@ place some or all of the triples into [=named graphs=] instead.
 
 An overview of the [=RML vocabulary=] is shown in [[[#fig-rml-core-vocabulary]]]:
 
-![RML-Core vocabulary](../resources/diagram.png "RML-Core vocabulary")
+![RML-Core vocabulary](resources/diagram.png "RML-Core vocabulary")
 
 ## Example input data sources
 
