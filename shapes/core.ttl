@@ -689,7 +689,6 @@
         Exactly one rml:template, one rml:constant, one rml:reference,
         one rml:returnMap, or one rml:functionExecution is required.
         """ ;
-            sh:minCount 1 ;
             sh:path [ sh:alternativePath ( rml:template rml:constant rml:reference rml:returnMap rml:functionExecution ) ] ;
             sh:targetSubjectsOf rml:constant,
                 rml:functionExecution,

@@ -42,7 +42,6 @@
         Exactly one rml:template, one rml:constant, one rml:reference,
         one rml:returnMap, or one rml:functionExecution is required.
         """ ;
-        sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
 
