@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RML-Core</title>
+    <meta charset="utf-8">
+    <script src="resources/highlighter.js"></script>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <style type="text/css">
+        /* Adapted from R2RML */
+        aside.ex-input,
+        aside.ex-mapping,
+        aside.ex-output {
+            word-wrap:normal;
+            margin-top: 1.5em;
+            padding: 1em;
+            font-size: 80%;
+        }
+        aside.ex-input:before,
+        aside.ex-mapping:before,
+        aside.ex-output:before {
+            background: white;
+            display: block;
+            font-family: sans-serif;
+            font-size: 90%;
+            margin: -1.5em 0 0.5em 0;
+            padding: 0.4em 0.4em;
+            width: 18em;
+        }
+        /* Input data example */
+        aside.ex-input {
+            background: #cee;
+        }
+        aside.ex-input,
+        aside.ex-input:before {
+            border: 1px solid #acc;
+            overflow: auto;
+        }
+        aside.ex-input:before {
+            content: "Example input data";
+        }
+        /* RML mapping example */
+        aside.ex-mapping {
+            background: #eeb;
+        }
+        aside.ex-mapping,
+        aside.ex-mapping:before {
+            border: 1px solid #cc9;
+            overflow: auto;
+        }
+        aside.ex-mapping:before {
+            content: "Example RML mapping";
+        }
+        /* Output RDF example */
+        aside.ex-output {
+            background: #cfc;
+        }
+        aside.ex-output,
+        aside.ex-output:before {
+            border: 1px solid #aca;
+            overflow: auto;
+        }
+        aside.ex-output:before {
+            content: "Example output data";
+        }
+        table, th, td {
+          background: white;
+          border-collapse: collapse;
+          border: 1px solid;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        th {
+          font-weight: bold;
+        }
+    </style>
+    <script class="remove">
+        var respecConfig = {
+          // check https://respec.org/docs/ for the meaning of these keys
+          preProcess: [loadTurtle],
+          authors: [
+            {
+              name: "Pano Maria",
+              company: "Skemu",
+              url: "https://skemu.com",
+              orcid: "0009-0000-2598-1894",
+              companyURL: "https://skemu.com"
+            },
+            {
+              name: "Anastasia Dimou",
+              mailto: "anastasia.dimou@kuleuven.be",
+              company: "KU Leuven",
+              orcid: "0000-0003-2138-7972",
+              companyURL: "https://dtai.cs.kuleuven.be/"
+            },
+          ],
+          edDraftURI: "https://w3id.org/rml/core/spec",
+          editors: [
+            {
+              name: "Pano Maria",
+              company: "Skemu",
+              url: "https://skemu.com",
+              orcid: "0009-0000-2598-1894",
+              companyURL: "https://skemu.com"
+            },
+            {
+              name: "Anastasia Dimou",
+              mailto: "anastasia.dimou@kuleuven.be",
+              company: "KU Leuven",
+              orcid: "0000-0003-2138-7972",
+              companyURL: "https://dtai.cs.kuleuven.be/"
+            },
+              {
+              name: "David Chaves-Fraga",
+              mailto: "david.chaves@usc.es",
+              company: "USC",
+              orcid: "0000-0003-3236-2789",
+              companyURL: "https://usc.gal"
+            },
+          ],
+          formerEditors: [
+          ],
+          github: "https://github.com/kg-construct/rml-core",
+          license: "w3c-software-doc",
+          localBiblio: {
+            RML: {
+              title: "RDF Mapping Language (RML)",
+              href: "https://rml.io/specs/rml/",
+              status: "Unofficial Draft",
+              publisher: "",
+              date: "",
+            },
+            "RML-IO": {
+              title: "RML-IO",
+              href: "https://w3id.org/rml/io/spec",
+              status: "Draft Community Group Report",
+              publisher: "W3C",
+              date: "12 February 2025",
+            },
+            "RML-IO-Registry": {
+              title: "RML-IO Registry",
+              href: "http://w3id.org/rml/rml-io-registry",
+              status: "Draft Community Group Report",
+              publisher: "KGC-CG",
+              date: "31 March 2025",
+            }
+          },
+          shortName: "RML-Core",
+          specStatus: "CG-DRAFT",
+          // W3C config
+          copyrightStart: "2021",
+          doJsonLd: true,
+          group: "kg-construct",
+        };
+
+    </script>
+</head>
+
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+<section id="abstract" data-include="section/abstract.md" data-include-format="markdown"></section>
+
+<section id="sotd"></section>
+<section id="conformance"></section>
+
+<!--<section id="introduction" data-include="introduction.md" data-include-format="markdown"></section>-->
+
+<section id="overview" class="informative" data-include="section/overview.md" data-include-format="markdown"></section>
+
+<section id="vocabulary" data-include="section/vocabulary.md" data-include-format="markdown"></section>
+
+<section id="tooling" data-include="section/tooling.md" data-include-format="markdown"></section>
+
+<section id="logicalSource" data-include="section/logicalSource.md" data-include-format="markdown"></section>
+
+<section id="mapping" data-include="section/mapping.md" data-include-format="markdown"></section>
+
+<section id="expressions" data-include="section/expressions.md" data-include-format="markdown"></section>
+
+<section id="termmap" data-include="section/termmap.md" data-include-format="markdown"></section>
+
+<section id="joins" data-include="section/joinconditions.md" data-include-format="markdown"></section>
+
+<section id="graphmaps" data-include="section/graphmap.md" data-include-format="markdown"></section>
+
+<section id="datatype-conversion" data-include="section/datatypeConversion.md" data-include-format="markdown"></section>
+
+<section id="output" data-include="section/output.md" data-include-format="markdown"></section>
+
+<section id="definitions" data-include="section/definitions.md" data-include-format="markdown"></section>
+
+<section id="rdfTerminology" class="informative" data-include="section/rdfTerminology.md" data-include-format="markdown"></section>
+
+<section id="xsdTerminology" class="informative" data-include="section/xsdTerminology.md" data-include-format="markdown"></section>
+
+</body>
+
+</html>
