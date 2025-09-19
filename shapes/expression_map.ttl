@@ -16,7 +16,7 @@
     Represents a Expression Map.
     """ ;
     sh:message """
-    Expression Map requires one rml:template or one rml:constant or one
+    Expression Map may require one rml:template or one rml:constant or one
     rml:reference.
     """ ;
 
@@ -26,23 +26,20 @@
         sh:targetSubjectsOf rml:template ;
         sh:targetSubjectsOf rml:constant ;
         sh:targetSubjectsOf rml:reference ;
-        sh:targetSubjectsOf rml:returnMap ;
         sh:targetSubjectsOf rml:functionExecution ;
         sh:path [sh:alternativePath (rml:template 
                                      rml:constant
                                      rml:reference
-                                     rml:returnMap
                                      rml:functionExecution)] ;
-        rdfs:label "template/constant/reference/returnMap/functionExecution" ;
+        rdfs:label "template/constant/reference/functionExecution" ;
         rdfs:comment """
-        Exactly one rml:template, one rml:constant, one rml:reference,
-        one rml:returnMap, or one rml:functionExecution is required.
+            Only one rml:template, one rml:constant, one rml:reference,
+            or one rml:functionExecution is allowed. rml:returnMap is only allowed if rml:functionExecution is present.
         """ ;
         sh:message """
         Exactly one rml:template, one rml:constant, one rml:reference,
         one rml:returnMap, or one rml:functionExecution is required.
         """ ;
-        sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
 
@@ -134,4 +131,29 @@
         sh:nodeKind sh:BlankNodeOrIRI ;
         # Allow BlankNodes so nested structurces works as well for rml:returnMap
     ] ;
+    # If returnMap appears, then functionExecution must also appear
+    sh:or (
+
+      [
+        sh:not [
+          sh:property [
+            sh:path rml:returnMap ;
+            sh:minCount 1
+          ]
+        ]
+      ]
+
+      [
+        sh:property [
+          sh:path rml:returnMap ;
+          sh:minCount 1 ;
+          sh:maxCount 1
+        ] ;
+        sh:property [
+          sh:path rml:functionExecution ;
+          sh:minCount 1 ;
+          sh:maxCount 1
+        ]
+      ]
+    )
 .
