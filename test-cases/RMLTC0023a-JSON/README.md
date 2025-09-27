@@ -13,7 +13,7 @@
 {
   "students": [{
     "ID": 10,
-    "Name":"Venus"
+    "{Name}":"Venus"
   }]
 }
 
@@ -34,7 +34,7 @@
         ]
     ];
   rml:subjectMap [
-      rml:template "http://example.com/{NON_EXISTING_COLUMN}";
+      rml:template "http://example.com/{{Name}}";
       rml:class foaf:Person;
     ] .
 
