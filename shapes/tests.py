@@ -47,7 +47,7 @@ class MappingValidatorTests(unittest.TestCase):
         print(f'Testing validation with: {path}')
         if 'RMLTC0004b' in path or 'RMLTC0007h' in path or \
                 'RMLTC0012c' in path or 'RMLTC0012d' in path or \
-                'RMLTC0015b' in path or 'RMLTC0023d' in path: 
+                'RMLTC0015b' in path or 'RMLTC0023c' in path:
             with self.assertRaises(Exception):
                 self._validate_rules(path)
         else:
