@@ -19,12 +19,14 @@
 @prefix rml: <http://w3id.org/rml/> .
 @prefix s: <http://schema.org/> .
 
- [
-    a rml:TriplesMap;
+<http://example.com/base/TriplesMap1> a rml:TriplesMap;
     rml:logicalSource [
-      rml:source "data.json" ;
       rml:referenceFormulation rml:JSONPath ;
       rml:iterator "$[*]";
+      rml:source [ a rml:RelativePathSource;
+        rml:root rml:MappingDirectory;
+        rml:path "data.json"
+      ]
     ];
     rml:subjectMap [
       rml:template "https://example.org/instances/{id}";
@@ -35,8 +37,7 @@
       rml:predicate s:givenName ;
       rml:objectMap [ rml:reference "name" ] ;
       rml:graph rml:defaultGraph ;
-    ];
-  ] .
+    ].
 
 ```
 

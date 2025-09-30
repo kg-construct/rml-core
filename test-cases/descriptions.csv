@@ -47,8 +47,7 @@ RMLTC0023b-JSON,Invalid IRI template 2,Test handling of invalid IRI template
 RMLTC0023c-JSON,Invalid IRI template 3,Test handling of invalid IRI template
 RMLTC0023d-JSON,Invalid IRI template 4,Test handling of invalid IRI template
 RMLTC0023e-JSON,Invalid IRI template 5,Test handling of invalid IRI template
-RMLTC0023f-JSON,Invalid IRI template 6,Test handling of invalid IRI template
-RMLTC0023g-JSON,Valid IRI template with backslash-escape,Test handling of a valid IRI template using backslash-escape
+RMLTC0023f-JSON,Valid IRI template with backslash-escape,Test handling of a valid IRI template using backslash-escape
 RMLTC0024a-JSON,Usage of constant term maps in combination with explicitly defined term types,Tests the usage of constant term maps in combination with explicitly defined term types
 RMLTC0025a-JSON,Generation of triples from arrays,Tests the generation of triples from array input data structures
 RMLTC0025b-JSON,Generation of triples from arrays with wrong reference,Tests the generation of triples from array input data structures. Test should fail as reference points to the array and not the values of the array

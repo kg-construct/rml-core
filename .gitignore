@@ -4,4 +4,5 @@
 .DS_Store
 venv
 .venv
+test-cases/burp.jar
 
