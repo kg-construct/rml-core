@@ -91,7 +91,8 @@ Both algorithms are equivalent if all of the following are true:
 4. the relative [=IRI=] does not contain any “.” or “..” path segments.
 </aside>
 
-
+If no specific [=base IRI=] is provided and the [=mapping process=] needs to generate absolute [=IRIs=] from relative ones, 
+the default base IRI to be used by the [=RML Processor=] MUST be http://example.org/.
 
 ### RML Validator
 
