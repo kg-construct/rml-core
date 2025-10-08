@@ -1,6 +1,6 @@
 # Term Maps
 
-An <dfn>RDF term</dfn> is either an [=IRI=], or a [=blank node=], or a [=literal=].
+An <dfn>RDF term</dfn> is either an [=IRI=], a [=URI=], a [=blank node=], or a [=literal=].
 
 A <dfn>term map</dfn> (`rml:TermMap`) is a rule that defines how to generate an [=RDF term=] from a [=logical iteration=].
 The result of the execution of that rule is the <dfn>generated RDF term</dfn>.
@@ -23,17 +23,19 @@ if it is a rule that specifies how the [=RDF triple=]'s [=named graph=] is gener
 
 A [=term map=] generates different types of [=RDF terms=] depending on the position of the [=term map=] in the [=RDF triple=]:
 * a [=subject map=] (`rml:SubjectMap`)
-is a rule that MUST generate either an [=IRI=] or a [=blank node=];
-* a [=predicate map=] (`rml:PredicateMap`)
-is a rule that MUST generate an [=IRI=];
+is a rule that MUST generate either an [=IRI=], a [=URI=] or a [=blank node=];
+* a [=predicate map=] (`rml:PredicateMap`) 
+is a rule that MUST generate an [=IRI=] or a [=URI=];
 * an [=object map=] (`rml:ObjectMap`)
-is a rule that MUST generate an [=IRI=], a [=blank node=] or a [=literal=];
+is a rule that MUST generate an [=IRI=], a [=URI=],  a [=blank node=] or a [=literal=];
 * a [=graph map=] (`rml:GraphMap`)
-is a rule that SHOULD generate an [=IRI=].
+is a rule that SHOULD generate an [=IRI=] or a [=URI=].
 
 A [=term map=] MUST have
 * 0 or 1 [=datatype map=] or 0 or 1 [=language map=];
 * 0 or 1 [=term type=].
+
+
 
 
 ### Constant RDF Terms (`rml:constant`)
@@ -123,8 +125,8 @@ If the [=term type=] of the [=template-valued term map=] is `rml:IRI`, then a [=
 The <dfn data-lt="IRI-safe">IRI-safe version</dfn> of a string is obtained by applying the following transformation
 to any character that is not in the [`iunreserved` production](http://tools.ietf.org/html/rfc3987#section-2.2) in [[RFC3987]]:
 
-1. Convert the character to a sequence of one or more octets using [UTF-8](http://tools.ietf.org/html/rfc3629) [[RFC3629]]
-2. [Percent-encode](http://tools.ietf.org/html/rfc3986#section-2.1) each octet [[RFC3986]]
+1. Convert the character to a sequence of one or more octets using [UTF-8](http://tools.ietf.org/html/rfc3629) in [[RFC3629]]
+2. [=Percent-encode=] each octet
 
 The following table shows examples of strings and their IRI-safe versions:
 
@@ -137,13 +139,14 @@ The following table shows examples of strings and their IRI-safe versions:
 | ~A_17.1-2 |  ~A_17.1-2 |
 
 <aside class="note">
-RML always performs percent-encoding when [=IRIs=] are generated from [=string templates=].
-If [=IRIs=] need to be generated without percent-encoding, then `rml:reference` should be used instead of `rml:template`, with a [=logical source=] that performs the string concatenation.
+RML always performs percent-encoding when [=IRIs=] or [=URIs=] are generated from [=string templates=].
+If [=IRIs=] need to be generated without percent-encoding, then the [=term map=] MUST use
+`rml:UnsafeIRI` or `rml:UnsafeURI` as [=term type=].
 </aside>
 
 <aside class="note">
 Term maps with [=term type=] `rml:IRI` cause [=data errors=] if the value is not a valid [=IRI=] (see [=generated RDF term=] for details).
-Data values from the input database may require percent-encoding before they can be used in [=IRIs=].
+Data values from the [=input data source=] may require percent-encoding before they can be used in [=IRIs=].
 [=Template-valued term maps=] are a convenient way of percent-encoding data values.
 </aside>
 
@@ -195,13 +198,70 @@ Using the [=logical iteration=], the [=template value=] of the [=subject map=] w
 <aside class="ex-output">
 
 ```turtle
-<http://data.example.com/author/John%20Doe>
+<http://data.example.com/author/Zoë%20Krüger>
 ```
 
 </aside>
 
 The space character is not in the [`iunreserved` production](http://tools.ietf.org/html/rfc3987#section-2.2), and therefore percent-encoding is applied to the character, yielding "`%20`".
 
+</aside>
+
+<aside class="example" id="example-template-iri-safe" title="IRI unsafe template values">
+
+The following example shows how an [=IRI=] unsafe template value is created.
+Here the `album.json` [=input data source=] is used to generate an [=IRI=] using the `Author` name.
+
+<aside class="ex-mapping">
+
+```turtle
+
+<#AuthorTriplesMap>
+  rml:subjectMap [
+    rml:template "http://data.example.com/author/{$.Author}" ;
+    rml:termType rml:UnsafeIRI
+  ] .
+```
+
+</aside>
+
+Using the [=logical iteration=], the [=template value=] of the [=subject map=] would be:
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/author/Zoë Krüger>
+```
+</aside>
+</aside>
+
+
+<aside class="example" id="example-template-iri-safe" title="URI template values">
+
+The following example shows how an [=URI=]  template value is created.
+Here the `album.json` [=input data source=] is used to generate an [=URI=] using the `Author` name.
+
+<aside class="ex-mapping">
+
+```turtle
+
+<#AuthorTriplesMap>
+  rml:subjectMap [
+    rml:template "http://data.example.com/author/{$.Author}" ;
+    rml:termType rml:URI
+  ] .
+```
+
+</aside>
+
+Using the [=logical iteration=], the [=template value=] of the [=subject map=] would be:
+
+<aside class="ex-output">
+
+```turtle
+<http://data.example.com/author/Zo%C3%AB%20Kr%C3%BCger>
+```
+</aside>
 </aside>
 
 <aside class="example" id="example-template-backslash-escape" title="Backslash escapes in templates">
@@ -235,39 +295,41 @@ Note that because
 
 </aside>
 
-## IRIs, Literal, Blank Nodes (rml:termType)
+## IRIs, URIs, Literal, Blank Nodes (rml:termType)
 
 The <dfn>term type</dfn> of a [=reference-valued term map=] or [=template-valued term map=]
-determines the kind of [=generated RDF term=] ([=IRIs=], [=blank nodes=] or [=literals=]).
+determines the kind of [=generated RDF term=] ([=IRIs=], [=URI=], [=blank nodes=] or [=literals=]).
 
 If the term map has an optional `rml:termType` property,
 then its [=term type=] is the value of that property.
 The value MUST be an [=IRI=] and MUST be one of the following options:
 
-* If the term map is a [=subject map=]: `rml:IRI` or `rml:BlankNode`
-* If the term map is a [=predicate map=]: `rml:IRI`
-* If the term map is an [=object map=]: `rml:IRI`, `rml:BlankNode`, or `rml:Literal`
-* If the term map is a [=graph map=]: `rml:IRI`
+* If the term map is a [=subject map=]: `rml:IRI`, `rml:URI` or `rml:BlankNode`
+* If the term map is a [=predicate map=]: `rml:IRI`, `rml:URI`
+* If the term map is an [=object map=]: `rml:IRI`, `rml:URI`, `rml:BlankNode`, or `rml:Literal`
+* If the term map is a [=graph map=]: `rml:IRI`, `rml:URI`
+
+<!--ToDo: Shall we mention rml:UnsafeIRI and rml:UnsafeURI or mentioning in the previous encoding is enough? -->
 
 ### Default Term Types
 
 If the [=term map=] does not have a `rml:termType` property, then its [=term type=] is:
 
 * `rml:IRI`, if it is a [=subject map=], [=predicate map=] or [=graph map=]
-* `rml:Literal`, if it is an [=object map=]
-and at least one of the following conditions is true:
-* It is a [=reference-valued term map=].
-    * It has a `rml:languageMap` property (and thus a specified [=language tag=]).
-    * It has a `rml:datatypeMap` property (and thus a specified [=datatype=]).
-* `rml:IRI`, otherwise.
+* `rml:Literal`, if it is an [=object map=] and at least one of the following conditions is true (`rml:IRI`, otherwise):
+  * It is a [=reference-valued term map=].
+  * It has a `rml:languageMap` property (and thus a specified [=language tag=]).
+  * It has a `rml:datatypeMap` property (and thus a specified [=datatype=]).
+
 
 ### Explicitly Defined Term Types
 
 To change the default [=term type=] of a [=subject map=] or [=graph map=]
-to a [=blank node=], the [=term type=] MUST be explicitly defined to be a `rml:BlankNode`.
+to a [=blank node=], the [=term type=] MUST be explicitly defined to be a `rml:BlankNode` or `rml:URI.
 
 To change the default [=term type=] of an [=object map=], the [=term type=] MUST be explicitly defined:
-* If the [=term type=] is `rml:IRI`, an [=IRI=] will be generated;
+* If the [=term type=] is `rml:IRI`, an [=IRI=] will be generated`;`
+* If the [=term type=] is `rml:URI`, a [=URI=] will be generated`;`
 * If the [=term type=] is `rml:BlankNode`, a [=blank node=] will be generated.
 
 If the [=term type=] is explicitly defined to be a `rml:BlankNode`,

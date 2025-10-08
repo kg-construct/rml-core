@@ -79,9 +79,8 @@ SHOULD end in a slash ("`/`") character.
 
 <aside class="note">
 To obtain an absolute [=IRI=] from a relative [=IRI=],
-the [=term generation rules=] of RML use simple string concatenation,
-rather than the more complex algorithm for resolution of relative URIs
-defined in [Section 5.2](https://www.rfc-editor.org/rfc/rfc3986#section-5.2) of [[RFC3986]].
+the term generation rules of RML use simple string concatenation,
+rather than the more complex algorithm for resolution of [=relative URIs=].
 This ensures that the original [=expression evaluation result=] can be reconstructed from the generated absolute [=IRI=].
 Both algorithms are equivalent if all of the following are true:
 

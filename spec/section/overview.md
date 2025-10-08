@@ -72,7 +72,7 @@ Input source: album.json
     "Description": "A collection of stunning cityscape images.",
     "CreatedDate": "2023-10-01",
     "DateFormat": "date",
-    "Author": "John Doe",
+    "Author": "Zoë Krüger",
     "Images": [
       {
         "ID": 116,
