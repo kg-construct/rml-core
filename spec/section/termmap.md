@@ -39,9 +39,6 @@ A [=term map=] MUST have
 * 0 or 1 [=datatype map=] or 0 or 1 [=language map=];
 * 0 or 1 [=term type=].
 
-
-
-
 ### Constant RDF Terms (`rml:constant`)
 
 A <dfn>constant-valued term map</dfn> is a term map that ignores the [=logical iteration=] and always generates the same [=RDF term=]. A [=constant-valued term map=] is a [=constant-valued expression map=], and is thus represented by a resource that has exactly one `rml:constant` property. The [=constant expression=] MUST be a valid [=RDF term=].
