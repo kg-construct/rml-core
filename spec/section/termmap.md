@@ -397,6 +397,16 @@ This creates the following [=RDF triples=].
 
 </aside>
 
+
+<aside class="note">
+The generation of [=language-taggable term map=] in cases where the [=language map=] and its associated [=term map=] 
+require correlated or non-trivial iteration patterns (e.g., alignment of multiple references or nested structures) falls 
+outside the scope of this specification.  
+
+Such advanced iteration behaviour SHOULD be handled using the mechanisms defined in the [RML-LV](https://w3id.org/rml/lv/spec/), 
+which extends RML-Core with logical views and fine-grained control over iteration and data correlation.
+</aside>
+
 ## Datatypes of Literals (`rml:datatypeMap` and `rml:datatype`)
 
 A <dfn>datatypeable term map</dfn> is a [=term map=] with a [=term type=] of `rml:Literal` that does not have a specified [=language map=].
