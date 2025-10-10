@@ -1,4 +1,6 @@
-# RDF Terminology
+# Terminology
+
+## RDF Terminology
 
 This section lists some terms normatively defined in [[RDF11-CONCEPTS]] and used in RML:
 
@@ -24,3 +26,21 @@ This section lists some terms normatively defined in [[RDF11-CONCEPTS]] and used
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-property">property</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-resource">resource</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a></dfn>
+
+
+# XML Schema Definition Language (XSD) Terminology
+
+This section lists some terms normatively defined in [[XMLSCHEMA11-2]] and used in RML:
+
+- <dfn><a data-cite="XMLSCHEMA11-2#datatype">XSD Datatype</a></dfn>
+- <dfn data-lt="XSD Canonical mapping"><a data-cite="XMLSCHEMA11-2#canonical-lexical-representation">Canonical mapping</a></dfn>
+
+
+# Uniform Resource Identifier Terminology 
+
+This section lists some terms normatively defined in [[RFC3986]] and used in RML:
+
+- <dfn><a data-cite="RFC3986#section-1.1.3">URI</a></dfn>
+- <dfn><a data-cite="RFC3986#section-5.2">relative URIs</a></dfn>
+- <dfn><a data-cite="RFC3986#section-4.3">absolute URI</a></dfn>
+- <dfn><a data-cite="RFC3986#section-2.1">Percent-encode</a></dfn>
