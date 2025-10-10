@@ -459,7 +459,7 @@ A [=term map=] that is not a [=datatypeable term map=] MUST NOT have an `rml:dat
 See [=generated RDF term=] for further details on generating [=literals=] from [=term maps=].
 
 <aside class="note">
-One cannot explicitly state that a [=literal=] without [=datatype=] should be generated.
+One cannot explicitly state that a [=literal=] without [=language tag=] should be generated.
 To generate one from a non-string [=reference value=],
 a [=template-valued term map=] with a template such as `"{MY_REFERENCE}"`
 and a term type of `rml:Literal` can be used.
