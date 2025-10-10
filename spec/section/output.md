@@ -1,6 +1,6 @@
 # The Output Dataset
 
-The <dfn>output dataset</dfn> of an [=RML mapping=] is an [=RDF dataset=] that contains the generated [=RDF triples=] for each of the [=triples maps=] of the [=RML mapping=]. The [=output dataset=] MUST NOT contain any other [=RDF triples=] or [=named graphs=] besides these. However, [=RML processors=] MAY provide access to datasets that contain additional triples or graphs beyond those in the [=output dataset=], such as inferred triples or provenance information.
+The <dfn>output dataset</dfn> of an [=RML mapping=] is an [=RDF dataset=] that contains the [=generated RDF triples=] for each of the [=triples maps=] of the [=RML mapping=]. The [=output dataset=] MUST NOT contain any other [=RDF triples=] or [=named graphs=] besides these. However, [=RML processors=] MAY provide access to datasets that contain additional triples or graphs beyond those in the [=output dataset=], such as inferred triples or provenance information.
 
 Conforming [=RML processors=] MAY rename [=blank nodes=] when providing access to the [=output dataset=]. This means that client applications may see actual [=blank node identifiers=] that differ from those produced by the [=RML mapping=]. Client applications SHOULD NOT rely on the specific text of the blank node identifier for any purpose.
 
