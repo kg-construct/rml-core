@@ -20,7 +20,7 @@ RDF syntaxes and RDF APIs generally represent [=blank nodes=] with [=blank node 
 
 This subsection describes the normative process by which [=RDF triples=] are generated from a [=Triples Map=]. This process contributes [=RDF triples=] to the [=output dataset=]. Each generated triple MUST be placed into one or more graphs of the output dataset.
 
-The generated RDF triples are determined by the following algorithm. [=RML Processors=] MAY employ alternative implementations to compute the generated [=RDF triples=], provided that the resulting output dataset is semantically equivalent to the one obtained by this algorithm.
+The <dfn>generated RDF triples</dfn> are determined by the following algorithm. [=RML Processors=] MAY employ alternative implementations to compute the generated [=RDF triples=], provided that the resulting output dataset is semantically equivalent to the one obtained by this algorithm.
 
 
 Let:
