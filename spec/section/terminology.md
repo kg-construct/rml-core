@@ -42,4 +42,5 @@ This section lists some terms normatively defined in [[RFC3986]] and used in RML
 
 - <dfn><a data-cite="RFC3986#section-1.1.3">URI</a></dfn>
 - <dfn><a data-cite="RFC3986#section-5.2">relative URIs</a></dfn>
+- <dfn><a data-cite="RFC3986#section-4.3">absolute URI</a></dfn>
 - <dfn><a data-cite="RFC3986#section-2.1">Percent-encode</a></dfn>
