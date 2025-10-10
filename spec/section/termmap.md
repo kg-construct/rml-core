@@ -1,6 +1,6 @@
 # Term Maps
 
-An <dfn>RDF term</dfn> is either an [=IRI=], a [=URI=], a [=blank node=], or a [=literal=].
+An <dfn>RDF term</dfn> is either an [=IRI=], a [=blank node=], or a [=literal=].
 
 A <dfn>term map</dfn> (`rml:TermMap`) is a rule that defines how to generate an [=RDF term=] from a [=logical iteration=].
 The result of the execution of that rule is the <dfn>generated RDF term</dfn>.
@@ -25,15 +25,15 @@ if it is a rule that specifies how the [=datatype IRI=]'s of an object is genera
 
 A [=term map=] generates different types of [=RDF terms=] depending on the position of the [=term map=] in the [=RDF triple=]:
 * a [=subject map=] (`rml:SubjectMap`)
-is a rule that MUST generate either an [=IRI=], a [=URI=] or a [=blank node=];
+is a rule that MUST generate either an [=IRI=], or a [=blank node=];
 * a [=predicate map=] (`rml:PredicateMap`) 
-is a rule that MUST generate an [=IRI=] or a [=URI=];
+is a rule that MUST generate an [=IRI=];
 * an [=object map=] (`rml:ObjectMap`)
-is a rule that MUST generate an [=IRI=], a [=URI=],  a [=blank node=] or a [=literal=];
+is a rule that MUST generate an [=IRI=],  a [=blank node=] or a [=literal=];
 * a [=graph map=] (`rml:GraphMap`)
-is a rule that SHOULD generate an [=IRI=] or a [=URI=].
+is a rule that SHOULD generate an [=IRI=].
 * a [=datatype map=] (`rml:DatatypeMap`)
-is a rule that MUST generate an [=IRI=] or a [=URI=].
+is a rule that MUST generate an [=IRI=].
 
 A [=term map=] MUST have
 * 0 or 1 [=datatype map=] or 0 or 1 [=language map=];
@@ -140,9 +140,9 @@ The following table shows examples of strings and their IRI-safe versions:
 | ~A_17.1-2 |  ~A_17.1-2 |
 
 <aside class="note">
-RML always performs percent-encoding when [=IRIs=] or [=URIs=] are generated from [=string templates=].
+RML always performs percent-encoding when [=IRIs=] are generated from [=string templates=].
 If [=IRIs=] need to be generated without percent-encoding, then the [=term map=] MUST use
-`rml:UnsafeIRI` or `rml:UnsafeURI` as [=term type=].
+`rml:UnsafeIRI` as [=term type=].
 </aside>
 
 <aside class="note">
@@ -237,34 +237,6 @@ Using the [=logical iteration=], the [=template value=] of the [=subject map=] w
 </aside>
 
 
-<aside class="example" id="example-template-iri-safe" title="URI template values">
-
-The following example shows how an [=URI=]  template value is created.
-Here the `album.json` [=input data source=] is used to generate an [=URI=] using the `Author` name.
-
-<aside class="ex-mapping">
-
-```turtle
-
-<#AuthorTriplesMap>
-  rml:subjectMap [
-    rml:template "http://data.example.com/author/{$.Author}" ;
-    rml:termType rml:URI
-  ] .
-```
-
-</aside>
-
-Using the [=logical iteration=], the [=template value=] of the [=subject map=] would be:
-
-<aside class="ex-output">
-
-```turtle
-<http://data.example.com/author/Zo%C3%AB%20Kr%C3%BCger>
-```
-</aside>
-</aside>
-
 <aside class="example" id="example-template-backslash-escape" title="Backslash escapes in templates">
 
 The following example shows the use of backslash escapes in string templates. The template will generate a fancy title such as
@@ -310,7 +282,10 @@ The value MUST be an [=IRI=] and MUST be one of the following options:
 * If the term map is an [=object map=]: `rml:IRI`, `rml:URI`, `rml:BlankNode`, or `rml:Literal`
 * If the term map is a [=graph map=]: `rml:IRI`, `rml:URI`
 
-<!--ToDo: Shall we mention rml:UnsafeIRI and rml:UnsafeURI or mentioning in the previous encoding is enough? -->
+<aside class="note">
+When [=URIs=] are generated from [=string templates=], RML performs percent-encoding in the same way as for [=IRIs=].
+To generate [=URIs=] without applying percent-encoding, the [=term map=] MUST have a [=term type=] of rml:UnsafeURI.
+</aside>
 
 ### Default Term Types
 
