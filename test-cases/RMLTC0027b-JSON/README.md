@@ -1,8 +1,8 @@
 ## RMLTC0027b-JSON
 
-**Title**: "Generation of triples using the UnsafeURI term type"
+**Title**: "Generation of triples using the UnsafeIRI term type"
 
-**Description**: "Tests the generation of triples with a UnsafeURI term type in the subject or object"
+**Description**: "Tests the generation of triples with a UnsafeIRI term type in the subject or object"
 
 **Default Base IRI**: http://example.com/
 
@@ -52,9 +52,9 @@
 ```
 <http://example.com/Person/Alice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 <http://example.com/Person/Bob> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Bob%2FCharles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Bob/Charles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 <http://example.com/Person/Danny> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Emily%20Smith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Emily Smith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 
 ```
 

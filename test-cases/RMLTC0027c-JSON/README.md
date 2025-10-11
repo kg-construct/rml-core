@@ -1,8 +1,8 @@
 ## RMLTC0027c-JSON
 
-**Title**: "Generation of triples using the UnsafeIRI term type"
+**Title**: "Generation an IRI using the term type IRI"
 
-**Description**: "Tests the generation of triples with a UnsafeIRI term type in the subject or object"
+**Description**: "Tests the generation of triples with a IRI term type in the subject"
 
 **Default Base IRI**: http://example.com/
 

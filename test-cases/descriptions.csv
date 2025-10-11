@@ -57,8 +57,8 @@ RMLTC0026b-JSON,"Two triples maps, one with rml:baseIRI one one without and gene
 RMLTC0026c-JSON,"Two triples maps, both with rml:baseIRI defined","Tests the generation of triples using relative IRIs with base IRIs defined only in triples maps, without base IRI parameter"
 RMLTC0026d-JSON,"Two triples maps,both with rml:bseIRI defined and baseIRI parameter defined",Tests the generation of triples by with base IRIs different than the base IRI parameter
 RMLTC0027a-JSON,Generation of triples using the URI term type,Tests the generation of triples with a URI term type in the subject or object
-RMLTC0027b-JSON,Generation of triples using the UnsafeURI term type,Tests the generation of triples with a UnsafeURI term type in the subject or object
-RMLTC0027c-JSON,Generation of triples using the UnsafeIRI term type,Tests the generation of triples with a UnsafeIRI term type in the subject or object
+RMLTC0027b-JSON,Generation of triples using the UnsafeIRI term type,Tests the generation of triples with a UnsafeIRI term type in the subject or object
+RMLTC0027c-JSON,Generation an IRI using the term type IRI,Tests the generation of triples with a IRI term type in the subject
 RMLTC0028a-JSON,Generation of the right datatype for a constant in the mapping,Test the honoring of the datatype specified by the constant term in the mapping
 RMLTC0028b-JSON,Generation of all named graphs when rml:defaultGraph is involved,Test if the default graph is also generated correctly.
 RMLTC0028c-JSON,Generation of the right language tag for a constant in the mapping,Test the honoring of the language tag specified by the constant term in the mapping

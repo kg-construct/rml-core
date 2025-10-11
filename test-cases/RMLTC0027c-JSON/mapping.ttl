@@ -17,5 +17,5 @@
     ];
   rml:subjectMap [
       rml:template "http://example.com/Person/{$.Name}";
-      rml:termType rml:UnsafeIRI
+      rml:termType rml:IRI
     ] .
