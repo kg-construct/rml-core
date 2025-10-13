@@ -25,14 +25,14 @@ The [=generated RDF triples=] are determined by the following algorithm. [=RML P
 Let:
 
 - **sm** be the [=subject map=] of the [=Triples Map=].
-- **records** be the set of logical records obtained by evaluating the [=logical source=] of the [=Triples Map=] using its declared [=reference formulation=].
+- **iterations** be the set of [=logical iterations=] obtained by evaluating the [=logical source=] of the [=Triples Map=] using its declared [=reference formulation=].
 - **classes** be the set of class [=IRIs=] defined in **sm** (via `rml:class`).
 - **sgm** be the set of [=graph maps=] attached to **sm**.
 
-For each logical record **record** in **records**, apply the following steps:
+For each [=logical iteration=]  **iteration** in **iterations**, apply the following steps:
 
-1. Let [=subject=] be the [=RDF term=] resulting from applying **sm** to **record**.
-2. Let **subject_graphs** be the set of [=RDF term=] resulting from applying each graph map in **sgm** to **record**.
+1. Let [=subject=] be the [=RDF term=] resulting from applying **sm** to **iteration**.
+2. Let **subject_graphs** be the set of [=RDF term=] resulting from applying each graph map in **sgm** to **iteration**.
 3. For each class [=IRI=] in **classes**, add a triple to the [=output dataset=] as follows:
 
    | Component | Value |
@@ -44,10 +44,10 @@ For each logical record **record** in **records**, apply the following steps:
 
 4. For each [=predicate-object map=] of the Triples Map, apply the following steps:
 
-   - Let **predicates** be the set of [=RDF terms=] resulting from applying each predicate map of the predicate-object map to **record**.
-   - Let **objects** be the set of [=RDF terms=] resulting from applying each object map (excluding [=referencing object maps=]) to **record**.
+   - Let **predicates** be the set of [=RDF terms=] resulting from applying each predicate map of the predicate-object map to **iteration**.
+   - Let **objects** be the set of [=RDF terms=] resulting from applying each object map (excluding [=referencing object maps=]) to **iteration**.
    - Let **pogm** be the set of graph maps of the predicate-object map.
-   - Let **predicate_object_graphs** be the set of RDF terms resulting from applying each graph map in **pogm** to **record**.
+   - Let **predicate_object_graphs** be the set of RDF terms resulting from applying each graph map in **pogm** to **iteration**.
 
    For each possible combination `<predicate, object>`, where *predicate* ∈ **predicates** and *object* ∈ **objects**, add a triple to the output dataset as follows:
 
@@ -63,15 +63,15 @@ For each [=referencing object map=] of a [=predicate-object map=] in the [=Tripl
 
 - Let **psm** be the [=subject map=] of the [=parent Triples Map=] referenced by [=referencing object map=].
 - Let **pogm** be the set of [=graph maps=] of the [=predicate-object map=].
-- Let **joined_records** be the result of evaluating the [=join conditions=] defined by the [=referencing object map=], combining records from both the child and parent logical sources.
+- Let **joined_iterations** be the result of evaluating the [=join conditions=] defined by the [=referencing object map=], combining iterations from both the child and parent logical sources.
 
-For each pair `<child_record, parent_record>` in **joined_records**, apply the following steps:
+For each pair `<child_iteration, parent_iteration>` in **joined_iterations**, apply the following steps:
 
-1. Let **subject** be the [=RDF terms=] resulting from applying **sm** to **child_record**.
-2. Let **predicates** be the set of [=RDF terms=] resulting from applying each [=predicate map=] of the [=predicate-object map=] to **child_record**.
-3. Let **object** be the [=RDF terms=] resulting from applying **psm** to **parent_record**.
-4. Let **subject_graphs** be the set of RDF terms resulting from applying each graph map in **sgm** to **child_record**.
-5. Let **predicate_object_graphs** be the set of RDF terms resulting from applying each graph map in **pogm** to **child_record**.
+1. Let **subject** be the [=RDF terms=] resulting from applying **sm** to **child_iteration**.
+2. Let **predicates** be the set of [=RDF terms=] resulting from applying each [=predicate map=] of the [=predicate-object map=] to **child_iteration**.
+3. Let **object** be the [=RDF terms=] resulting from applying **psm** to **parent_iteration**.
+4. Let **subject_graphs** be the set of RDF terms resulting from applying each graph map in **sgm** to **child_iteration**.
+5. Let **predicate_object_graphs** be the set of RDF terms resulting from applying each graph map in **pogm** to **child_iteration**.
 
 For each *predicate* in **predicates**, add a triple to the output dataset as follows:
 
@@ -108,17 +108,17 @@ Execute the following steps:
 
 
 A [=term map=] defines how an [=RDF term=] is generated from the evaluation of a [=logical iteration=] over a [=logical source=].  
-The result of evaluating a term map for a given logical record can be one of the following:
+The result of evaluating a term map for a given [=logical iteration=] can be one of the following:
 
 - **Empty**, if any referenced value of the [=term map=] evaluates to a null, empty or missing value (each data format defines it in [RML-IO-Registry](https://w3id.org/kg-construct/rml-io-registry/));  
 - **An [=RDF term=]**, when evaluation produces a valid [=RDF term=]according to the [=term generation rules=];  
 - **A data error**, when a valid RDF term cannot be produced.
 
-The [=generated RDF term=] of a [=term map=] for a given logical record is determined as follows:
+The [=generated RDF term=] of a [=term map=] for a given [=logical iteration=] is determined as follows:
 
 1. If the term map is a **constant-valued term map**, then the generated RDF term is the term map’s constant value.
-2. If the term map is a **reference-valued term map**, then the generated RDF term is determined by evaluating the [=reference value=] expression over the logical record and applying the *term generation rules* to the resulting value.
-3. If the term map is a **template-valued term map**, then the generated RDF term is determined by evaluating the [=template value=] against the logical record and applying the *term generation rules* to the resulting value.
+2. If the term map is a **reference-valued term map**, then the generated RDF term is determined by evaluating the [=reference value=] expression over the [=logical iteration=] and applying the *term generation rules* to the resulting value.
+3. If the term map is a **template-valued term map**, then the generated RDF term is determined by evaluating the [=template value=] against the [=logical iteration=] and applying the *term generation rules* to the resulting value.
 
 The <dfn>term generation rules</dfn> define how a concrete RDF term is generated from a given value:
 
