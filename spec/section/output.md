@@ -111,7 +111,7 @@ A [=term map=] defines how an [=RDF term=] is generated from the evaluation of a
 The result of evaluating a term map for a given [=logical iteration=] can be one of the following:
 
 - **Empty**, if any referenced value of the [=term map=] evaluates to a null, empty or missing value (each data format defines it in [RML-IO-Registry](https://w3id.org/kg-construct/rml-io-registry/));  
-- **An [=RDF term=]**, when evaluation produces a valid [=RDF term=]according to the [=term generation rules=];  
+- **An [=RDF term=]**, when evaluation produces a valid [=RDF term=] according to the [=term generation rules=];  
 - **A data error**, when a valid RDF term cannot be produced.
 
 The [=generated RDF term=] of a [=term map=] for a given [=logical iteration=] is determined as follows:
@@ -140,8 +140,8 @@ The <dfn>term generation rules</dfn> define how a concrete RDF term is generated
    - Return a blank node that is unique in the target graph.
 
 5. **If the term type is `rml:Literal`:**
-   - If the term map declares a [=language tag=], then return a literal with that language tag and the natural RDF lexical form corresponding to *value*.
-   - Otherwise, if the term map declares a non-empty [=datatype=] different from the natural RDF datatype corresponding to the value’s implicit datatype, then return an RDF literal with the specified datatype.
+   - If the term map declares a [=language map=], then evaluate the [=language map=] to obtain a [=language tag=] and return a literal with that [=language tag=] and the natural RDF lexical form corresponding to *value*.
+   - Otherwise, if the term map declares a [=datatype map=], then evaluate it to obtain a [=datatype IRI=] and return an RDF literal with that [=datatype=] and the natural RDF lexical form corresponding to *value*.
    - Otherwise, return the natural RDF literal corresponding to *value*.
 
 
