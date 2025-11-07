@@ -1,9 +1,7 @@
 {
   "students": [
-    {"Name": "Alice"},
-    {"Name": "Bob"},
     {"Name": "Bob/Charles"},
-    {"Name": "Danny"},
-    {"Name": "Emily Smith"}
+    {"Name": "Emily Smith"},
+    {"Name": "Zoë Krüger"}
   ]
 }

@@ -282,10 +282,6 @@ The value MUST be an [=IRI=] and MUST be one of the following options:
 * If the term map is an [=object map=]: `rml:IRI`, `rml:URI`, `rml:BlankNode`, or `rml:Literal`
 * If the term map is a [=graph map=]: `rml:IRI`, `rml:URI`
 
-<aside class="note">
-When [=URIs=] are generated from [=string templates=], RML performs percent-encoding in the same way as for [=IRIs=].
-To generate [=URIs=] without applying percent-encoding, the [=term map=] MUST have a [=term type=] of rml:UnsafeURI.
-</aside>
 
 ### Default Term Types
 
