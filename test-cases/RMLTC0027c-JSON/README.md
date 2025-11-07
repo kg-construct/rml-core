@@ -12,11 +12,7 @@
 ```
 {
   "students": [
-    {"Name": "Alice"},
-    {"Name": "Bob"},
-    {"Name": "Bob/Charles"},
-    {"Name": "Danny"},
-    {"Name": "Emily Smith"}
+    {"Name": "Zoë Krüger"}
   ]
 }
 
@@ -43,18 +39,15 @@
     ];
   rml:subjectMap [
       rml:template "http://example.com/Person/{$.Name}";
-      rml:termType rml:UnsafeIRI
+      rml:termType rml:IRI
     ] .
 
 ```
 
 **Output**
 ```
-<http://example.com/Person/Alice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Bob> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Bob%2FCharles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Danny> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Emily%20Smith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Zoë%20Krüger> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+
 
 ```
 

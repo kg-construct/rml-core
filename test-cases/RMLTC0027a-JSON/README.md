@@ -15,7 +15,7 @@
     {"Name": "Alice"},
     {"Name": "Bob"},
     {"Name": "Bob/Charles"},
-    {"Name": "Danny"},
+    {"Name": "Zoë Krüger"},
     {"Name": "Emily Smith"}
   ]
 }
@@ -53,7 +53,7 @@
 <http://example.com/Person/Alice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 <http://example.com/Person/Bob> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 <http://example.com/Person/Bob%2FCharles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Danny> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://example.com/Person/Zo%C3%AB%20Kr%C3%BCger> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 <http://example.com/Person/Emily%20Smith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 
 ```
