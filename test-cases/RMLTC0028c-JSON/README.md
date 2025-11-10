@@ -28,7 +28,7 @@
       ]
     ];
     rml:subjectMap [
-      rml:template "https://example.org/instances/{id}";
+      rml:template "https://example.org/instances/{$.id}";
     ];
     rml:predicateObjectMap [
       rml:predicate <http://example.org/ns/p> ;
