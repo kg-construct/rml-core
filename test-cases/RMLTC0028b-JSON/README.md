@@ -29,7 +29,7 @@
       ]
     ];
     rml:subjectMap [
-      rml:template "https://example.org/instances/{id}";
+      rml:template "https://example.org/instances/{$.id}";
       rml:class s:Person ;
       rml:graph <graph:1> ;
     ];
