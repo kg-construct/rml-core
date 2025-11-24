@@ -110,7 +110,7 @@ Execute the following steps:
 A [=term map=] defines how an [=RDF term=] is generated from the evaluation of a [=logical iteration=] over a [=logical source=].  
 The result of evaluating a term map for a given [=logical iteration=] can be one of the following:
 
-- **Empty**, if any referenced value of the [=term map=] evaluates to a null, empty or missing value (each data format defines it in [RML-IO-Registry](https://w3id.org/kg-construct/rml-io-registry/));  
+- **Empty**, if the [=expression evaluation result=] of the [=term map=] evaluates to a null, empty or missing value (each data format defines it in [RML-IO-Registry](https://w3id.org/kg-construct/rml-io-registry/));  
 - **An [=RDF term=]**, when evaluation produces a valid [=RDF term=] according to the [=term generation rules=];  
 - **A [=data error=]**, when a valid RDF term cannot be produced.
 
