@@ -26,7 +26,7 @@ Let:
 
 - **sm** be the [=subject map=] of the [=Triples Map=].
 - **iterations** be the set of [=logical iterations=] obtained by evaluating the [=logical source=] of the [=Triples Map=] using its declared [=reference formulation=].
-- **classes** be the set of class [=IRIs=] defined in **sm** (via `rml:class`).
+- **classes** be the set of [=class IRIs=] defined in **sm** (via `rml:class`).
 - **sgm** be the set of [=graph maps=] attached to **sm**.
 
 For each [=logical iteration=]  **iteration** in **iterations**, apply the following steps:
