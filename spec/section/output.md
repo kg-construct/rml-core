@@ -47,7 +47,7 @@ For each [=logical iteration=]  **iteration** in **iterations**, apply the follo
    - Let **predicates** be the set of [=RDF terms=] resulting from applying each predicate map of the predicate-object map to **iteration**.
    - Let **objects** be the set of [=generated RDF terms=] resulting from applying each [=object map=] (excluding [=referencing object maps=]) to **iteration**.
    - Let **pogm** be the set of graph maps of the predicate-object map.
-   - Let **predicate_object_graphs** be the set of RDF terms resulting from applying each graph map in **pogm** to **iteration**.
+   - Let **predicate_object_graphs** be the set of [=generated RDF terms=] resulting from applying each [=graph map=] in **pogm** to **iteration**.
 
    For each possible combination `<predicate, object>`, where *predicate* ∈ **predicates** and *object* ∈ **objects**, add a triple to the output dataset as follows:
 
