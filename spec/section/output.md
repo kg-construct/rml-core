@@ -68,7 +68,7 @@ For each [=referencing object map=] of a [=predicate-object map=] in the [=Tripl
 For each pair `<child_iteration, parent_iteration>` in **joined_iterations**, apply the following steps:
 
 1. Let **subject** be the [=generated RDF term=] resulting from applying **sm** to **child_iteration**.
-2. Let **predicates** be the set of [=RDF terms=] resulting from applying each [=predicate map=] of the [=predicate-object map=] to **child_iteration**.
+2. Let **predicates** be the set of [=generated RDF terms=] resulting from applying each [=predicate map=] of the [=predicate-object map=] to **child_iteration**.
 3. Let **object** be the [=RDF terms=] resulting from applying **psm** to **parent_iteration**.
 4. Let **subject_graphs** be the set of RDF terms resulting from applying each graph map in **sgm** to **child_iteration**.
 5. Let **predicate_object_graphs** be the set of [=generated RDF terms=] resulting from applying each graph map in **pogm** to **child_iteration**.
