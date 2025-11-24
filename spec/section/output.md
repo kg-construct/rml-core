@@ -116,7 +116,7 @@ The result of evaluating a term map for a given [=logical iteration=] can be one
 
 The [=generated RDF term=] of a [=term map=] for a given [=logical iteration=] is determined as follows:
 
-1. If the term map is a **constant-valued term map**, then the generated RDF term is the term map’s constant value.
+1. If the term map is a [=constant-valued term map=], then the generated RDF term is the term map’s [=constant value=].
 2. If the term map is a **reference-valued term map**, then the generated RDF term is determined by evaluating the [=reference value=] expression over the [=logical iteration=] and applying the [=term generation rules=] to the resulting value.
 3. If the term map is a **template-valued term map**, then the generated RDF term is determined by evaluating the [=template value=] expression over the [=logical iteration=] and applying the [=term generation rules=] to the resulting value.
 
