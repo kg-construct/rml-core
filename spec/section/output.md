@@ -44,7 +44,7 @@ For each [=logical iteration=]  **iteration** in **iterations**, apply the follo
 
 4. For each [=predicate-object map=] of the Triples Map, apply the following steps:
 
-   - Let **predicates** be the set of [=RDF terms=] resulting from applying each predicate map of the predicate-object map to **iteration**.
+   - Let **predicates** be the set of [=generated RDF terms=] resulting from applying each predicate map of the predicate-object map to **iteration**.
    - Let **objects** be the set of [=generated RDF terms=] resulting from applying each [=object map=] (excluding [=referencing object maps=]) to **iteration**.
    - Let **pogm** be the set of graph maps of the predicate-object map.
    - Let **predicate_object_graphs** be the set of [=generated RDF terms=] resulting from applying each [=graph map=] in **pogm** to **iteration**.
