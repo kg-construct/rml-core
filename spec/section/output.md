@@ -142,7 +142,7 @@ The <dfn>term generation rules</dfn> define how a concrete RDF term is generated
 5. **If the term type is `rml:Literal`:**
    - If the term map declares a [=language map=], then evaluate the [=language map=] to obtain a [=language tag=] and return a literal with that [=language tag=] and the natural RDF lexical form corresponding to *value*.
    - Otherwise, if the term map declares a [=datatype map=], then evaluate it to obtain a [=datatype IRI=] and return an RDF literal with that [=datatype=] and the natural RDF lexical form corresponding to *value*.
-   - Otherwise, return the natural RDF literal corresponding to *value*.
+   - Otherwise, return the [=natural RDF literal=] corresponding to *value*.
 
 
 
