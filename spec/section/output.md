@@ -63,7 +63,7 @@ For each [=referencing object map=] of a [=predicate-object map=] in the [=Tripl
 
 - Let **psm** be the [=subject map=] of the [=parent Triples Map=] referenced by [=referencing object map=].
 - Let **pogm** be the set of [=graph maps=] of the [=predicate-object map=].
-- Let **joined_iterations** be the result of evaluating the [=join conditions=] defined by the [=referencing object map=], combining iterations from both the child and parent logical sources.
+- Let **joined_iterations** be the result of evaluating the [=join conditions=] defined by the [=referencing object map=], combining iterations from both the [=child logical source=] and [=parent logical sources=].
 
 For each pair `<child_iteration, parent_iteration>` in **joined_iterations**, apply the following steps:
 
