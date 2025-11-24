@@ -112,7 +112,7 @@ The result of evaluating a term map for a given [=logical iteration=] can be one
 
 - **Empty**, if any referenced value of the [=term map=] evaluates to a null, empty or missing value (each data format defines it in [RML-IO-Registry](https://w3id.org/kg-construct/rml-io-registry/));  
 - **An [=RDF term=]**, when evaluation produces a valid [=RDF term=] according to the [=term generation rules=];  
-- **A data error**, when a valid RDF term cannot be produced.
+- **A [=data error=]**, when a valid RDF term cannot be produced.
 
 The [=generated RDF term=] of a [=term map=] for a given [=logical iteration=] is determined as follows:
 
