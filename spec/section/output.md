@@ -120,7 +120,7 @@ The [=generated RDF term=] of a [=term map=] for a given [=logical iteration=] i
 2. If the term map is a **reference-valued term map**, then the generated RDF term is determined by evaluating the [=reference value=] expression over the [=logical iteration=] and applying the [=term generation rules=] to the resulting value.
 3. If the term map is a [=template-valued term map=], then the generated RDF term is determined by applying the [=term generation rules=] to the [=template value=].
 
-The <dfn>term generation rules</dfn> define how a concrete RDF term is generated from each value from the [=expression evaluation result=]:
+The <dfn>term generation rules</dfn> define how a concrete RDF term is generated from each value from an [=expression evaluation result=]:
 
 1. **If the value is null, empty or missing**, then no RDF term is generated.
 
