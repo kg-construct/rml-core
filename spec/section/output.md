@@ -32,7 +32,7 @@ Let:
 For each [=logical iteration=]  **iteration** in **iterations**, apply the following steps:
 
 1. Let [=subject=] be the [=RDF term=] resulting from applying **sm** to **iteration**.
-2. Let **subject_graphs** be the set of [=RDF term=] resulting from applying each graph map in **sgm** to **iteration**.
+2. Let **subject_graphs** be the set of [=generated RDF terms=] resulting from applying each graph map in **sgm** to **iteration**.
 3. For each class [=IRI=] in **classes**, add a triple to the [=output dataset=] as follows:
 
    | Component | Value |
