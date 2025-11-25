@@ -100,9 +100,9 @@ Execute the following steps:
 2. Otherwise, generate an [=RDF triple=] `<Subject, Predicate, Object>`.  
 3. If the set of target graphs includes `rml:defaultGraph`, add the triple to the [=default graph=] of the [=output dataset=].  
 4. For each [=IRI=] in the set of target graphs not equal to `rml:defaultGraph`, add the triple to the [=named graph=] identified by that [=IRI=] in the [=output dataset=].  
-   - If the [=named graph=] does not yet exist, create it.  
-5. RDF graphs MUST NOT contain duplicate triples. Adding multiple identical triples to the same graph has the same effect as adding it once.  
-6. The scope of blank nodes is limited to the output dataset being generated.
+   - If the [=named graph=] does not yet exist, create it.
+
+RDF graphs MUST NOT contain duplicate triples. Adding multiple identical triples to the same graph has the same effect as adding it once. Also note the [[[#scope-of-blank-nodes]]].  
 
 ### Generated RDF Term of a Term Map
 
