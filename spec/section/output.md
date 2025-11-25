@@ -87,12 +87,12 @@ For each *predicate* in **predicates**, add a triple to the output dataset as fo
 
 “Add triples to the output dataset” is a process that takes the following inputs:
 
-| Input | Description                                     |
-|--------|-------------------------------------------------|
-| **Subject** | an [=IRI=], a [=URI=], [=blank node=], or empty |
-| **Predicate** | an [=IRI=], a [=URI=], or empty                 |
-| **Object** | an [=RDF term=] or empty                        |
-| **Target graphs** | a set of zero or more [=IRIs=]                  |
+| Input | Description               |
+|--------|---------------------------|
+| **Subject** | an [=IRI=], [=blank node=], or empty |
+| **Predicate** | an [=IRI=], or empty      |
+| **Object** | an [=RDF term=] or empty  |
+| **Target graphs** | a set of zero or more [=IRIs=] |
 
 Execute the following steps:
 
