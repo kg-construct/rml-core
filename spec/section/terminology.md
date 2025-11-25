@@ -27,6 +27,11 @@ This section lists some terms normatively defined in [[RDF11-CONCEPTS]] and used
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-resource">resource</a></dfn>
 - <dfn><a data-cite="RDF11-CONCEPTS#dfn-subject">subject</a></dfn>
 
+## RDFS Terminology
+
+This section lists some terms normatively defined in [[RDF11-SCHEMA]] and used in RML:
+
+- <dfn><a data-cite="RDF11-schema#ch_class">RDFS class</a></dfn>
 
 # XML Schema Definition Language (XSD) Terminology
 
