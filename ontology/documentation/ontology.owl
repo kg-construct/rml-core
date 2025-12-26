@@ -860,6 +860,25 @@
 
 
     <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://w3id.org/rml/defaultGraph -->
+
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/rml/defaultGraph"/>
 </rdf:RDF>
 
 
