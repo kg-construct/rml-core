@@ -104,7 +104,7 @@ Execute the following steps:
 
 RDF graphs MUST NOT contain duplicate triples. Adding multiple identical triples to the same graph has the same effect as adding it once. Also note the [[[#scope-of-blank-nodes]]].  
 
-### Generated RDF Term of a Term Map
+## Generated RDF Term of a Term Map
 
 
 A [=term map=] defines how an [=RDF term=] is generated from the evaluation of a [=logical iteration=] over a [=logical source=].  
