@@ -137,7 +137,8 @@ The <dfn>term generation rules</dfn> define how a concrete RDF term is generated
    4. Otherwise, raise a **data error**.
 
 4. **If the term type is `rml:BlankNode`:**
-   - Return a blank node that is unique in the target graph.
+   - If the [=term map=] has an [=expression map=], return a [=blank node=] whose identifier is determined by the [=expression evaluation result=].
+   - If the [=term map=] has no [=expression map=], generate a fresh [=blank node=] with a unique identifier.
 
 5. **If the term type is `rml:Literal`:**
    - If the term map declares a [=language map=], then evaluate the [=language map=] to obtain a [=language tag=]. If the result is a valid [=language tag=] according to [[BCP47]], return a [=literal=] with that [=language tag=] and the [=natural RDF lexical form=] corresponding to *value*. Otherwise, raise a **data error**.
