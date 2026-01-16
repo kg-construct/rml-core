@@ -81,3 +81,8 @@ However, in this example, RDF triples of the [=predicate=] `ex:title` are placed
 
 </aside>
 
+## Scope of Blank Nodes
+
+[=Blank nodes=] in the [=output dataset=] are scoped to a single [=RDF graph=]. If the same [=blank node identifier=] occurs in multiple [=RDF triples=] that are in the same graph, then the triples will share the same blank node. If, however, the same blank node identifier occurs in multiple graphs, then a distinct blank node be created for each graph. An RML-generated blank node can never be shared by two triples in two different graphs.
+
+This implies that triples generated from a single logical source row will have different subjects if the subjects are blank nodes and the triples are placed into different graphs.
