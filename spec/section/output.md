@@ -124,13 +124,13 @@ The <dfn>term generation rules</dfn> define how a concrete RDF term is generated
 
 1. **If the value is null, empty or missing**, then no RDF term is generated.
 
-2. **If the term type is `rml:IRI`:**
+2. **If the term type is `rml:IRI` or `rml:UnsafeIRI`:**
    1. Let *value* be the [=natural RDF lexical form=] corresponding to the evaluated value.
    2. If *value* is a valid [absolute IRI](https://datatracker.ietf.org/doc/html/rfc3987#section-2.2) [[RFC3987]], then return an [=IRI=] generated from *value*.
    3. Otherwise, prepend *value* with the [=base IRI=]. If the result is a valid [absolute IRI](https://datatracker.ietf.org/doc/html/rfc3987#section-2.2) [[RFC3987]], then return that [=IRI=].
    4. Otherwise, raise a **data error**.
 
-3. **If the term type is `rml:URI`:**
+3. **If the term type is `rml:URI` or `rml:UnsafeURI`:**
    1. Let *value* be the [=natural RDF lexical form=] corresponding to the evaluated value.
    2. If *value* is a valid [=absolute URI=] [[RFC3986]], then return an [=URI=] generated from *value*.
    3. Otherwise, prepend *value* with the [=base IRI=]. If the result is a valid [=absolute URI=] [[RFC3986]], then return that [=URI=] .
