@@ -140,7 +140,7 @@ The <dfn>term generation rules</dfn> define how a concrete RDF term is generated
    - Return a blank node that is unique in the target graph.
 
 5. **If the term type is `rml:Literal`:**
-   - If the term map declares a [=language map=], then evaluate the [=language map=] to obtain a [=language tag=] and return a literal with that [=language tag=] and the natural RDF lexical form corresponding to *value*.
+   - If the term map declares a [=language map=], then evaluate the [=language map=] to obtain a [=language tag=]. If the result is a valid [=language tag=] according to [[BCP47]], return a [=literal=] with that [=language tag=] and the [=natural RDF lexical form=] corresponding to *value*. Otherwise, raise a **data error**.
    - Otherwise, if the term map declares a [=datatype map=], then evaluate it to obtain a [=datatype-override RDF literal=] corresponding to *value* and the specified datatype.
    - Otherwise, return the [=natural RDF literal=] corresponding to *value*.
 
