@@ -35,7 +35,7 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:reference "$.IDs"
+          rml:reference "$.ID"
         ];
       rml:predicate ex:id
     ];

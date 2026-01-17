@@ -7,7 +7,7 @@
       rml:referenceFormulation rml:JSONPath;
       rml:source [ a rml:RelativePathSource;
           rml:root rml:MappingDirectory;
-          rml:path "student2.json"
+          rml:path "student.json"
         ]
     ];
   rml:predicateObjectMap [
