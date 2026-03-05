@@ -1,0 +1,4 @@
+[
+	{ "FOO": 1, "BAR": "string", "language":"en"},
+	{ "FOO": 2, "BAR": "integer", "language":"en"}
+]

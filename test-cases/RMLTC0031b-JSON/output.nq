@@ -1,0 +1,2 @@
+<http://example.com/1> <http://example.com/x> "string"@en .
+<http://example.com/2> <http://example.com/x> "integer"@en  .
