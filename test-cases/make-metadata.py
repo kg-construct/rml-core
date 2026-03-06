@@ -29,7 +29,7 @@ def main(spec: str):
             title = '"' + title + '"'
             description = '"' + description + '"'
             error = 'false'
-            base_iri = 'http://example.org/'
+            base_iri = 'http://example.com/'
             input1 = ''
             input2 = ''
             input3 = ''
@@ -109,7 +109,7 @@ def main(spec: str):
             lines.append(f'## {testcase}\n\n')
             lines.append(f'**Title**: {title}\n\n')
             lines.append(f'**Description**: {description}\n\n')
-            lines.append(f'**Default Base IRI**: http://example.com/\n\n')
+            lines.append(f'**Default Base IRI**: {base_iri}\n\n')
             if error == 'true':
                 error_html = 'Yes'
             else:
