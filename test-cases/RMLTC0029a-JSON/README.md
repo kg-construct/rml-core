@@ -1,8 +1,8 @@
-## RMLTC0022c-JSON
+## RMLTC0029a-JSON
 
-**Title**: "Generating of triples with datatypeMap with custom datatype"
+**Title**: "Generating of triples with constant shortcut subject"
 
-**Description**: "Test triples with a custom data type from the data"
+**Description**: "Test triples with a constant shortcut subject from the data"
 
 **Default Base IRI**: http://example.com/
 
@@ -33,23 +33,16 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:datatypeMap [
-              rml:template "datatype#{$.BAR}"
-            ];
           rml:reference "$.FOO"
         ];
       rml:predicate ex:x
     ];
-  rml:subjectMap [
-      rml:template "http://example.com/{$.FOO}"
-    ] .
-
+  rml:subject ex:example .
 ```
 
 **Output**
 ```
-<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/datatype#string> .
-<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/datatype#int> .
-
+<http://example.com/example> <http://example.com/x> "1" .
+<http://example.com/example> <http://example.com/x> "2" .
 ```
 

@@ -1,8 +1,8 @@
-## RMLTC0022c-JSON
+## RMLTC0031a-JSON
 
-**Title**: "Generating of triples with datatypeMap with custom datatype"
+**Title**: "Generating of triples with langaugeMap with custom language"
 
-**Description**: "Test triples with a custom data type from the data"
+**Description**: "Test triples with a custom language from the data"
 
 **Default Base IRI**: http://example.com/
 
@@ -12,7 +12,7 @@
 ```
 [
 	{ "FOO": 1, "BAR": "string"},
-	{ "FOO": 2, "BAR": "int"}
+	{ "FOO": 2, "BAR": "integer"}
 ]
 
 ```
@@ -33,8 +33,8 @@
     ];
   rml:predicateObjectMap [
       rml:objectMap [
-          rml:datatypeMap [
-              rml:template "datatype#{$.BAR}"
+          rml:languageMap [
+              rml:constant "en"
             ];
           rml:reference "$.FOO"
         ];
@@ -43,13 +43,11 @@
   rml:subjectMap [
       rml:template "http://example.com/{$.FOO}"
     ] .
-
 ```
 
 **Output**
 ```
-<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/datatype#string> .
-<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/datatype#int> .
-
+<http://example.com/1> <http://example.com/x> "string"@en .
+<http://example.com/2> <http://example.com/x> "integer"@en  .
 ```
 

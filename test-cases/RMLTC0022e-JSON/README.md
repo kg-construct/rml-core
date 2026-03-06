@@ -1,4 +1,4 @@
-## RMLTC0022c-JSON
+## RMLTC0022e-JSON
 
 **Title**: "Generating of triples with datatypeMap with custom datatype"
 
@@ -11,8 +11,8 @@
 **Input**
 ```
 [
-	{ "FOO": 1, "BAR": "string"},
-	{ "FOO": 2, "BAR": "int"}
+	{ "FOO": 1, "BAR": "http://www.w3.org/2001/XMLSchema#string"},
+	{ "FOO": 2, "BAR": "http://www.w3.org/2001/XMLSchema#int"}
 ]
 
 ```
@@ -34,7 +34,8 @@
   rml:predicateObjectMap [
       rml:objectMap [
           rml:datatypeMap [
-              rml:template "datatype#{$.BAR}"
+              rml:reference "BAR";
+              rml:termType rml:IRI
             ];
           rml:reference "$.FOO"
         ];
@@ -43,13 +44,11 @@
   rml:subjectMap [
       rml:template "http://example.com/{$.FOO}"
     ] .
-
 ```
 
 **Output**
 ```
-<http://example.com/1> <http://example.com/x> "1"^^<http://example.com/datatype#string> .
-<http://example.com/2> <http://example.com/x> "2"^^<http://example.com/datatype#int> .
-
+<http://example.com/1> <http://example.com/x> "1"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://example.com/2> <http://example.com/x> "2"^^<http://www.w3.org/2001/XMLSchema#int> .
 ```
 
