@@ -42,7 +42,7 @@ RMLTC0020a-JSON,Generation of triples by using IRI value in columns,Test the gen
 RMLTC0021a-JSON,Generation of triples referencing object map,Tests the mapping specification referencing object map with same logical source and join condition
 RMLTC0022a-JSON,Generating of triples with constant datatype,Test triples with a fixed constant datatype
 RMLTC0022b-JSON,Generating of triples with datatypeMap,Test triples with a XSD datatype generated from the data
-RMLTC0022c-JSON,Generating of triples with datatypeMap with custom datatype,Test triples with a custom datype from the data
+RMLTC0022c-JSON,Generating of triples with datatypeMap with custom datatype,Test triples with a custom data type from the data
 RMLTC0023a-JSON,Invalid IRI template 1,Test handling of invalid IRI template
 RMLTC0023b-JSON,Invalid IRI template 2,Test handling of invalid IRI template
 RMLTC0023c-JSON,Invalid IRI template 3,Test handling of invalid IRI template
@@ -63,3 +63,14 @@ RMLTC0027c-JSON,Generation an IRI using the term type IRI,Tests the generation o
 RMLTC0028a-JSON,Generation of the right datatype for a constant in the mapping,Test the honoring of the datatype specified by the constant term in the mapping
 RMLTC0028b-JSON,Generation of all named graphs when rml:defaultGraph is involved,Test if the default graph is also generated correctly.
 RMLTC0028c-JSON,Generation of the right language tag for a constant in the mapping,Test the honoring of the language tag specified by the constant term in the mapping
+RMLTC0022d-JSON,Generating of triples with datatypeMap with custom datatype,Test triples with a custom data type from the data
+RMLTC0022e-JSON,Generating of triples with datatypeMap with custom datatype,Test triples with a custom data type from the data
+RMLTC0029a-JSON,Generating of triples with constant shortcut subject,Test triples with a constant shortcut subject from the data
+RMLTC0030a-JSON,Generation of triples from a join between parent and child maps,Test that results from a join between parent and child maps
+RMLTC0030b-JSON,Generation of triples from a join between parent and child maps,Test that results from a join between parent and child maps
+RMLTC0030c-JSON,Generation of triples from a join between parent and child maps,Test that results from a join between parent and child maps
+RMLTC0030d-JSON,Generation of triples from a join between parent and child maps,Test that results from a join between parent and child maps
+RMLTC0030e-JSON,Generation of triples from a join between parent and child maps,Test that results from a join between parent and child maps
+RMLTC0030f-JSON,Generation of triples from a join between parent and child maps,Test that results from a join between parent and child maps
+RMLTC0031a-JSON,Generating of triples with langaugeMap with custom language,Test triples with a custom language from the data
+RMLTC0031b-JSON,Generating of triples with langaugeMap with custom language,Test triples with a custom language from the data

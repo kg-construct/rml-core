@@ -2,7 +2,7 @@
 
 **Title**: "Generating of triples with datatypeMap with custom datatype"
 
-**Description**: "Test triples with a custom datype from the data"
+**Description**: "Test triples with a custom data type from the data"
 
 **Default Base IRI**: http://example.com/
 

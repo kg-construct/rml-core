@@ -11,9 +11,10 @@
 **Input**
 ```
 [
-  { "FOO": 1, "BAR": "string"},
-  { "FOO": 2, "BAR": "int"}
+	{ "FOO": 1, "BAR": "string"},
+	{ "FOO": 2, "BAR": "int"}
 ]
+
 ```
 
 **Mapping**
@@ -37,7 +38,6 @@
       rml:predicate ex:x
     ];
   rml:subject ex:example .
-
 ```
 
 **Output**
@@ -45,3 +45,4 @@
 <http://example.com/example> <http://example.com/x> "1" .
 <http://example.com/example> <http://example.com/x> "2" .
 ```
+

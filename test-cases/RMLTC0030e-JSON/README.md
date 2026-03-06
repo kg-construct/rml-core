@@ -2,7 +2,7 @@
 
 **Title**: "Generation of triples from a join between parent and child maps"
 
-**Description**: "Test that results from a join between parent and child maps."
+**Description**: "Test that results from a join between parent and child maps"
 
 **Default Base IRI**: http://example.com/
 
@@ -23,7 +23,6 @@
     }
   ]
 }
-
 ```
 
 **Input 1**
@@ -36,7 +35,6 @@
     }
   ]
 }
-
 ```
 
 **Mapping**
@@ -95,7 +93,6 @@
       rml:class <http://example.com/ontology/Sport>;
       rml:template "http://example.com/resource/sport_{$.ID}"
     ] .
-
 ```
 
 **Output**
@@ -108,3 +105,4 @@
 <http://example.com/resource/sport_100> <http://www.w3.org/2000/01/rdf-schema#label> "Tennis" .
 <http://example.com/resource/student_10> <http://example.com/ontology/practises> <http://example.com/resource/sport_100>  .
 ```
+

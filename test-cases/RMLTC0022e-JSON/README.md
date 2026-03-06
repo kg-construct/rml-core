@@ -1,8 +1,8 @@
-## RMLTC0022d-JSON
+## RMLTC0022e-JSON
 
 **Title**: "Generating of triples with datatypeMap with custom datatype"
 
-**Description**: "Test triples with a custom datype from the data"
+**Description**: "Test triples with a custom data type from the data"
 
 **Default Base IRI**: http://example.com/
 
@@ -11,8 +11,8 @@
 **Input**
 ```
 [
-  { "FOO": 1, "BAR": "http://www.w3.org/2001/XMLSchema#string"},
-  { "FOO": 2, "BAR": "http://www.w3.org/2001/XMLSchema#int"}
+	{ "FOO": 1, "BAR": "http://www.w3.org/2001/XMLSchema#string"},
+	{ "FOO": 2, "BAR": "http://www.w3.org/2001/XMLSchema#int"}
 ]
 
 ```
@@ -44,12 +44,11 @@
   rml:subjectMap [
       rml:template "http://example.com/{$.FOO}"
     ] .
-
 ```
 
 **Output**
 ```
 <http://example.com/1> <http://example.com/x> "1"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://example.com/2> <http://example.com/x> "2"^^<http://www.w3.org/2001/XMLSchema#int> .
-
 ```
+

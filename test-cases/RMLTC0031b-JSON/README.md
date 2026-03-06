@@ -11,9 +11,10 @@
 **Input**
 ```
 [
-  { "FOO": 1, "BAR": "string"},
-  { "FOO": 2, "BAR": "integer"}
+	{ "FOO": 1, "BAR": "string", "language":"en"},
+	{ "FOO": 2, "BAR": "integer", "language":"en"}
 ]
+
 ```
 
 **Mapping**
@@ -47,5 +48,6 @@
 **Output**
 ```
 <http://example.com/1> <http://example.com/x> "string"@en .
-<http://example.com/2> <http://example.com/x> "integer"@en .
+<http://example.com/2> <http://example.com/x> "integer"@en  .
 ```
+
