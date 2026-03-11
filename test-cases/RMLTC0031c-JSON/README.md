@@ -1,8 +1,8 @@
-## RMLTC0031a-JSON
+## RMLTC0031c-JSON
 
-**Title**: "Generating of triples with a constant-valued language map"
+**Title**: "Generating of triples with a template-valued language map"
 
-**Description**: "Test triples with a constant-valued language map"
+**Description**: "Test triples with a template-valued language map"
 
 **Default Base IRI**: http://example.com/
 
@@ -11,10 +11,19 @@
 **Input**
 ```
 [
-	{"ID": 10,"label": "apple"},
-	{ "ID": 20,"label": "pear"}
+    {
+        "ID": 10,
+        "label": "aubergine",
+        "language": "en", 
+        "region":"GB"
+    },
+    {
+        "ID": 10,
+        "label": "eggplant",
+        "language": "en",
+        "region": "US"
+    }
 ]
-
 ```
 
 **Mapping**
@@ -35,7 +44,7 @@
   rml:predicateObjectMap [
       rml:objectMap [
           rml:languageMap [
-              rml:constant "en"
+              rml:template "{$.language}-{$.region}"
             ];
           rml:reference "$.label"
         ];
@@ -48,7 +57,7 @@
 
 **Output**
 ```
-<http://example.com/10> <http://www.w3.org/2000/01/rdf-schema#label> "apple"@en .
-<http://example.com/20> <http://www.w3.org/2000/01/rdf-schema#label> "pear"@en .
+<http://example.com/10> <http://www.w3.org/2000/01/rdf-schema#label> "aubergine"@en-GB .
+<http://example.com/10> <http://www.w3.org/2000/01/rdf-schema#label> "eggplant"@en-US .
 ```
 

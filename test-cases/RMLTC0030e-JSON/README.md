@@ -1,8 +1,8 @@
 ## RMLTC0030e-JSON
 
-**Title**: "Generation of triples from a join between parent and child maps"
+**Title**: "Generation of triples from a join with constant-valued childMap"
 
-**Description**: "Test that results from a join between parent and child maps"
+**Description**: "Test that results from a join  with constant-valued childMap"
 
 **Default Base IRI**: http://example.com/
 

@@ -14,7 +14,7 @@
   rml:predicateObjectMap [
       rml:objectMap [
           rml:languageMap [
-              rml:reference "$.language"
+              rml:template "{$.language}-{$.region}"
             ];
           rml:reference "$.label"
         ];

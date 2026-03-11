@@ -1,8 +1,8 @@
 ## RMLTC0031b-JSON
 
-**Title**: "Generating of triples with langaugeMap with custom language"
+**Title**: "Generating of triples with a reference-valued language map"
 
-**Description**: "Test triples with a custom language from the data"
+**Description**: "Test triples with a reference-valued language map"
 
 **Default Base IRI**: http://example.com/
 
@@ -11,16 +11,24 @@
 **Input**
 ```
 [
-	{ "FOO": 1, "BAR": "string", "language":"en"},
-	{ "FOO": 2, "BAR": "integer", "language":"en"}
+    {
+        "ID": 10,
+        "label": "apple",
+        "language": "en"
+    },
+    {
+        "ID": 10,
+        "label": "pomme",
+        "language": "fr"
+    }
 ]
-
 ```
 
 **Mapping**
 ```
 @prefix ex: <http://example.com/> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://example.com/base/TriplesMap1> a rml:TriplesMap;
   rml:logicalSource [ a rml:LogicalSource;
@@ -36,18 +44,18 @@
           rml:languageMap [
               rml:reference "$.language"
             ];
-          rml:reference "$.FOO"
+          rml:reference "$.label"
         ];
-      rml:predicate ex:x
+      rml:predicate rdfs:label
     ];
   rml:subjectMap [
-      rml:template "http://example.com/{$.FOO}"
+      rml:template "http://example.com/{$.ID}"
     ] .
 ```
 
 **Output**
 ```
-<http://example.com/1> <http://example.com/x> "string"@en .
-<http://example.com/2> <http://example.com/x> "integer"@en  .
+<http://example.com/10> <http://www.w3.org/2000/01/rdf-schema#label> "apple"@en .
+<http://example.com/10> <http://www.w3.org/2000/01/rdf-schema#label> "pomme"@fr .
 ```
 

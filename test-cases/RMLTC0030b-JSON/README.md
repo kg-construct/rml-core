@@ -1,8 +1,8 @@
 ## RMLTC0030b-JSON
 
-**Title**: "Generation of triples from a join between parent and child maps"
+**Title**: "Generation of triples from a join with template-valued parentMap and childMap"
 
-**Description**: "Test that results from a join between parent and child maps"
+**Description**: "Test that results from a join with template-valued parentMap and childMap"
 
 **Default Base IRI**: http://example.com/
 
@@ -19,6 +19,7 @@
     },
     { 
       "ID": 20,
+      "Sport":200,
       "Name": "Demi Moore"
     }
   ]
@@ -104,5 +105,7 @@
 <http://example.com/resource/sport_100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/ontology/Sport> .
 <http://example.com/resource/sport_100> <http://www.w3.org/2000/01/rdf-schema#label> "Tennis" .
 <http://example.com/resource/student_10> <http://example.com/ontology/practises> <http://example.com/resource/sport_100>  .
+<http://example.com/resource/sport_200> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/ontology/Sport> .
+<http://example.com/resource/sport_200> <http://www.w3.org/2000/01/rdf-schema#label> "Football" .
 ```
 

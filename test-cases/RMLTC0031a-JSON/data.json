@@ -1,4 +1,4 @@
 [
-	{ "FOO": 1, "BAR": "string"},
-	{ "FOO": 2, "BAR": "integer"}
+	{"ID": 10,"label": "apple"},
+	{ "ID": 20,"label": "pear"}
 ]

@@ -1,4 +1,12 @@
 [
-	{ "FOO": 1, "BAR": "string", "language":"en"},
-	{ "FOO": 2, "BAR": "integer", "language":"en"}
+    {
+        "ID": 10,
+        "label": "apple",
+        "language": "en"
+    },
+    {
+        "ID": 10,
+        "label": "pomme",
+        "language": "fr"
+    }
 ]
