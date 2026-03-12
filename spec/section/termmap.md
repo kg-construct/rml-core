@@ -146,7 +146,7 @@ The following table shows examples of strings and their IRI-safe and URI-safe ve
 | Hello World!         | Hello%20World%21         | Hello%20World%21         | 
 | 2011-08-23T22:17:00Z | 2011-08-23T22%3A17%3A00Z | 2011-08-23T22%3A17%3A00Z |
 | ~A_17.1-2            | ~A_17.1-2                | ~A_17.1-2%C2%A2          |
-| Zoë Krüger	          | Zoë%20Krüger             | Zo%C3%AB%20Kr%C3%BCge    | 
+| Zoë Krüger	          | Zoë%20Krüger             | Zo%C3%AB%20Kr%C3%BCger    | 
 
 <aside class="note">
 RML always performs percent-encoding when [=IRIs=] are generated from [=string templates=].
