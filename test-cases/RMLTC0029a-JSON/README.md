@@ -11,8 +11,8 @@
 **Input**
 ```
 [
-	{ "FOO": 1, "BAR": "string"},
-	{ "FOO": 2, "BAR": "int"}
+	{ "FOO": "one", "BAR": "string"},
+	{ "FOO": "two", "BAR": "int"}
 ]
 
 ```
@@ -42,7 +42,7 @@
 
 **Output**
 ```
-<http://example.com/example> <http://example.com/x> "1" .
-<http://example.com/example> <http://example.com/x> "2" .
+<http://example.com/example> <http://example.com/x> "one" .
+<http://example.com/example> <http://example.com/x> "two" .
 ```
 

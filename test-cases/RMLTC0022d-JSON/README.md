@@ -1,8 +1,8 @@
 ## RMLTC0022d-JSON
 
-**Title**: "Generating of triples with datatypeMap with custom datatype with constant-valued datatypeMap"
+**Title**: "Generating of triples with a constant-valued datatypeMap"
 
-**Description**: "Test triples with a custom constant-valued datatypeMap from the data"
+**Description**: "Test triples with a constant-valued datatypeMap"
 
 **Default Base IRI**: http://example.com/
 

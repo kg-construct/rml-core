@@ -1,8 +1,8 @@
 ## RMLTC0022e-JSON
 
-**Title**: "Generating of triples with datatypeMap with custom datatype with referenced-valued datatypeMap"
+**Title**: "Generating of triples with a reference-valued datatypeMap"
 
-**Description**: "Test triples with a custom referenced-valued datatypeMap from the data"
+**Description**: "Test triples with a reference-valued datatypeMap"
 
 **Default Base IRI**: http://example.com/
 

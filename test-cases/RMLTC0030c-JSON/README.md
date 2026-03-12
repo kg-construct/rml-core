@@ -2,7 +2,7 @@
 
 **Title**: "Generation of triples from a join with constant-valued parentMap"
 
-**Description**: "Test that results from a join  with constant-valued parentMap"
+**Description**: "Test that results from a join with constant-valued parentMap"
 
 **Default Base IRI**: http://example.com/
 
@@ -19,6 +19,7 @@
     },
     { 
       "ID": 20,
+      "Sport": 300,
       "Name": "Demi Moore"
     }
   ]
@@ -32,6 +33,10 @@
     {
       "ID": 100,
       "Name": "Tennis"
+    },
+     {
+      "ID": 200,
+      "Name": "Football"
     }
   ]
 }
@@ -104,5 +109,7 @@
 <http://example.com/resource/sport_100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/ontology/Sport> .
 <http://example.com/resource/sport_100> <http://www.w3.org/2000/01/rdf-schema#label> "Tennis" .
 <http://example.com/resource/student_10> <http://example.com/ontology/practises> <http://example.com/resource/sport_100>  .
+<http://example.com/resource/sport_200> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/ontology/Sport> .
+<http://example.com/resource/sport_200> <http://www.w3.org/2000/01/rdf-schema#label> "Football" .
 ```
 
