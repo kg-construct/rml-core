@@ -132,7 +132,7 @@ to any character that is not in the [`iunreserved` production](http://tools.ietf
 If the [=term type=] of the [=template-valued term map=] is `rml:URI`, then a [=reference value transforming function=] MUST be applied during the evaluation of the [=template expression=]. The [=reference value transforming function=] MUST transform a [=reference value=] into a [=URI-safe version=] of that value.
 
 The <dfn data-lt="URI-safe">URI-safe version</dfn> of a string is obtained by applying the following transformation to any character that is
-not in the [`iunreserved` production](https://www.rfc-editor.org/rfc/rfc3986#section-2.2) in [[RFC3986]]:
+not in the [`unreserved` production](https://www.rfc-editor.org/rfc/rfc3986#section-2.3) in [[RFC3986]]:
 
 1. Convert the character to a sequence of one or more octets using [UTF-8](http://tools.ietf.org/html/rfc3629) in [[RFC3629]]
 2. [=Percent-encode=] each octet
