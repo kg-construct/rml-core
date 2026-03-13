@@ -30,7 +30,21 @@ var respecConfig = {
       company: "IDLab &ndash; Ghent University &ndash; imec",
       orcid: "0000-0002-7195-9935",
       companyURL: "https://knows.idlab.ugent.be/"
-    }
+    },
+    {
+      name: "Enrique Iglesias",
+      url: "https://www.tib.eu/en/research-development/research-groups-and-labs/scientific-data-management/staff/enrique-iglesias",
+      company: "TIB – Leibniz Information Centre for Science and Technology",
+      orcid: "0000-0002-8734-3123",
+      companyURL: "https://www.tib.eu/en/"
+    },
+     {
+      name: "Els de Vleeschauwer",
+      url: "https://research.ugent.be/web/person/els-de-vleeschauwer-0/en",
+      company: "IDLab &ndash; Ghent University &ndash; imec",
+      orcid: "0000-0002-8630-3947",
+      companyURL: "https://knows.idlab.ugent.be/"
+    },
   ],
   edDraftURI: "https://w3id.org/rml/core/test-cases/",
   editors: [
