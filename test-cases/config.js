@@ -23,6 +23,8 @@ async function loadTurtle() {
 var respecConfig = {
   // check https://respec.org/docs/ for the meaning of these keys
   preProcess: [loadTurtle],
+  prevVersion: "https://kg-construct.github.io/rml-core/test-cases/docs/20260313/",
+  latestVersion: "https://kg-construct.github.io/rml-core/test-cases/docs/20260316/",
   authors: [
     {
       name: "Dylan Van Assche",
@@ -49,13 +51,6 @@ var respecConfig = {
   edDraftURI: "https://w3id.org/rml/core/test-cases/",
   editors: [
     {
-      name: "Dylan Van Assche",
-      url: "https://dylanvanassche.be",
-      company: "IDLab &ndash; Ghent University &ndash; imec",
-      orcid: "0000-0002-7195-9935",
-      companyURL: "https://knows.idlab.ugent.be/"
-    },
-    {
       name: "David Chaves-Fraga",
       url: "https://davidchavesfraga.com",
       company: "CiTIUS &ndash; University of Santiago de Compostela",
@@ -64,6 +59,13 @@ var respecConfig = {
     }
   ],
   formerEditors: [
+    {
+      name: "Dylan Van Assche",
+      url: "https://dylanvanassche.be",
+      company: "IDLab &ndash; Ghent University &ndash; imec",
+      orcid: "0000-0002-7195-9935",
+      companyURL: "https://knows.idlab.ugent.be/"
+    }
   ],
   github: "https://github.com/kg-construct/rml-core",
   license: "w3c-software-doc",
