@@ -23,8 +23,8 @@ async function loadTurtle() {
 var respecConfig = {
   // check https://respec.org/docs/ for the meaning of these keys
   preProcess: [loadTurtle],
-  prevVersion: "https://kg-construct.github.io/rml-core/test-cases/docs/20260316/",
-  latestVersion: "https://kg-construct.github.io/rml-core/test-cases/docs/20260325/",
+  prevVersion: "https://kg-construct.github.io/rml-core/test-cases/docs/20260325/",
+  latestVersion: "https://kg-construct.github.io/rml-core/test-cases/docs/20260331/",
   authors: [
     {
       name: "Dylan Van Assche",

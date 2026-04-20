@@ -34,7 +34,7 @@
   rml:predicateObjectMap [
       rml:objectMap [
           rml:datatypeMap [
-              rml:reference "BAR";
+              rml:reference "$.BAR";
               rml:termType rml:IRI
             ];
           rml:reference "$.FOO"
