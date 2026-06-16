@@ -36,7 +36,7 @@ The following [=RML Mapping Document=] maps the album.json input source to [=RDF
 <#TriplesMap> a rml:TriplesMap;
     rml:baseIRI <http://example.com/baseIRI/> ;
     rml:source [
-      a rml:RelativePathSource ;
+      a rml:FilePath ;
       rml:root rml:MappingDirectory ;
       rml:path "album.json" ;
     ] ;

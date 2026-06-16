@@ -28,7 +28,7 @@ The following example shows a [=triples map=] including its [=logical source=], 
 <#TM>
   rml:logicalSource [
     rml:source [
-      a rml:RelativePathSource ;
+      a rml:FilePath ;
       rml:root rml:MappingDirectory ;
       rml:path "images.json" ;
     ] ;

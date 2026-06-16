@@ -130,7 +130,7 @@ This example shows a [=referencing object map=] as part of a [=predicate-object 
   rml:logicalSource [
     rdfs:label "Thumbnail source" ;
     rml:source [
-      a rml:RelativePathSource ;
+      a rml:FilePath ;
       rml:root rml:MappingDirectory ;
       rml:path "images.json" ;
     ] ;

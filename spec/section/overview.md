@@ -125,7 +125,7 @@ The following partial [=RML mapping document=] maps the `images.json` input sour
 
 <#ImageLogicalSource>
   rml:source [
-    a rml:RelativePathSource ;
+    a rml:FilePath ;
     rml:root rml:MappingDirectory ;
     rml:path "images.json" ;
   ] ;
@@ -167,7 +167,7 @@ The following partial [=RML mapping document=] maps the `album.json` input sourc
 <#AlbumTriplesMap>
   rml:logicalSource [
     rml:source [
-      a rml:RelativePathSource ;
+      a rml:FilePath ;
       rml:root rml:MappingDirectory ;
       rml:path "album.json" ;
     ] ;
