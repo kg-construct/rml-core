@@ -75,3 +75,7 @@ RMLTC0030f-JSON,Generation of triples from a join with constant-valued childMap,
 RMLTC0031a-JSON,Generating of triples with a constant-valued language map,Test triples with a constant-valued language map
 RMLTC0031b-JSON,Generating of triples with a reference-valued language map,Test triples with a reference-valued language map
 RMLTC0031c-JSON,Generating of triples with a template-valued language map,Test triples with a template-valued language map
+RMLTC0032a,Constant mapping can omit logical source,Test a Triples Map with only constant expressions can omit logical source
+RMLTC0032b,Constant template mapping can omit logical source,Test a Triples Map with only constant template and constant expressions can omit logical source
+RMLTC0032c,"Non constant mapping, while omitting logical source",Test a Triples Map with reference expressions cannot omit logical source
+RMLTC0032d,Blank node subject mapping can omit logical source,Test a Triples Map with a blank node subject map without expressions can omit logical source
