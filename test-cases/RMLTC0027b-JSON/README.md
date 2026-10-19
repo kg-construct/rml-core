@@ -2,11 +2,11 @@
 
 **Title**: "Generation of triples using the UnsafeIRI term type"
 
-**Description**: "Tests the generation of triples with a UnsafeIRI term type in the subject or object"
+**Description**: "Tests an UnsafeIRI term type whose template values are not percent-encoded and contain a space, so the result is not a valid IRI, which is an error"
 
 **Default Base IRI**: http://example.com/
 
-**Error expected?** No
+**Error expected?** Yes
 
 **Input**
 ```
@@ -43,14 +43,6 @@
       rml:template "http://example.com/Person/{$.Name}";
       rml:termType rml:UnsafeIRI
     ] .
-
-```
-
-**Output**
-```
-<http://example.com/Person/Bob/Charles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Emily Smith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://example.com/Person/Zoë Krüger> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 
 ```
 
