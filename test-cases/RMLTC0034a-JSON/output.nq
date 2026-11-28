@@ -1,0 +1,6 @@
+<http://example.com/place/Zoë> <http://example.com/ontology/name> "Zoë" .
+<http://example.com/place/Périgord> <http://example.com/ontology/name> "Périgord" .
+<http://example.com/place/São%20Paulo> <http://example.com/ontology/name> "São Paulo" .
+<http://example.com/place/Ærøskøbing> <http://example.com/ontology/name> "Ærøskøbing" .
+<http://example.com/place/東京> <http://example.com/ontology/name> "東京" .
+<http://example.com/place/Line%3A42%2FA> <http://example.com/ontology/name> "Line:42/A" .
